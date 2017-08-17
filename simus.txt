@@ -1,0 +1,233 @@
+SAPIENS - Resumo operacional
+-------------------------------
+
+A arquitetura do processador Sapiens pode ser facilmente associada a uma evolução do processador Neander-X, sendo uma arquitetura baseada em acumulador, onde o apontador de instruções passou a ter 16 bits, ganhou um apontador de pilha também de 16 bits e a memória foi aumentada para 64 kbytes. Teve ainda várias instruções adicionadas ao seu conjunto de instruções, como podemos ver a seguir.
+
+1) Listagem geral das instruções
+
+As instruções em linguagem de máquina do processador Sapiens podem ter um, dois ou três bytes. Nas instruções, o primeiro byte (8 bits) sempre contém o código de operação nos 6 bits mais significativos e o modo de endereçamento nos 2 bits menos significativos.
+
+- NOP (código 0000 00--) 
+        A instrução NOP não faz nada. Essa instrução tem um tamanho igual a um byte.
+    
+- STA ender ou @ender (código 0001 00-X) 
+        A instrução STA armazena o conteúdo do acumulador(8 bits) na posição de memória definida pelo endereço ender de 16 bits, acessada no modo direto ou indireto. Essa instrução tem um tamanho igual a 3 bytes. 
+    
+- STS ender ou @ender (código 0001 01-X) 
+        A instrução STS armazena o conteúdo do apontador de pilha (SP), de 16 bits, na posição de memória definida pelo endereço ender de 16 bits, acessado no modo direto ou indireto. Essa instrução tem um tamanho igual a 3 bytes.
+    
+- LDA #imed, ender ou @ender (código 0010 00XX)  
+        A instrução LDA carrega um byte no acumulador, que pode ser lido como operando imediato de 8 bits ou de uma posição de memória definida pelo endereço ender de 16 bits, acessada no modo direto ou indireto. Os flags N e Z são modificados de acordo com o valor carregado no acumulador. Essa instrução tem um tamanho igual a 2 ou 3 bytes. 
+    
+- LDS #imed16, ender ou @ender (código 0010 01XX)  
+        A instrução LDS carrega dois bytes no apontador de pilha (SP), que podem lidos como operando imediato de 16 bits ou de uma posição de memória definida pelo endereço ender de 16 bits, acessada no modo direto ou indireto. Essa instrução tem um tamanho igual a 3 bytes.
+    
+- ADD #imed, ender ou @ender (código 0011 00XX)  
+        A instrução ADD soma o acumulador com um byte, que pode ser lido como operando imediato de 8 bits ou de uma posição de memória definida pelo endereço ender de 16 bits, acessada no modo direto ou indireto. Os flags N, Z e C são modificados de acordo com o resultado da operação.  Essa instrução tem um tamanho igual a 2 ou 3 bytes.
+    
+- ADC #imed, ender ou @ender (código 0011 01XX)  
+        A instrução ADC soma o acumulador com o Carry (flag C) e com um byte, que pode ser lido como operando imediato de 8 bits ou de uma posição de memória definida pelo endereço ender de 16 bits, acessada no modo direto ou indireto. Os flags N, Z e C são modificados de acordo com o resultado da operação. Essa instrução tem um tamanho igual a 2 ou 3 bytes.
+    
+- SUB #imed, ender ou @ender (código 0011 10XX) 
+        A instrução SUB subtrai o acumulador de um byte, que pode ser lido como operando imediato de 8 bits ou de uma posição de memória definida pelo endereço ender de 16 bits, acessada no modo direto ou indireto. Os flags N, Z e C são modificados de acordo com o resultado da operação. Essa instrução tem um tamanho igual a 2 ou 3 bytes.
+    
+- SBC #imed, ender ou @ender (código 0011 11XX) 
+        A instrução SUB subtrai o acumulador do Carry (flag C) e de um byte,que pode ser lido como operando imediato de 8 bits ou de uma posição de memória definida pelo endereço ender de 16 bits, acessada no modo direto ou indireto. Os flags N, Z e C são modificados de acordo com o resultado da operação.  Essa instrução tem um tamanho igual a 2 ou 3 bytes. 
+    
+- OR #imed, ender ou @ender (código 0100 00XX) 
+        A instrução OR realiza um ''ou'' bit a bit entre o acumulador e um byte, que pode ser um dado imediato de 8 bits ou lido de uma posição de memória definida pelo endereço ender de 16 bits, acessada no modo direto ou indireto. acessado no modo direto ou indireto. Os flags N e Z são modificados de acordo com o resultado da operação. Essa instrução tem um tamanho igual a 2 ou 3 bytes. 
+    
+- XOR #imed, ender ou @ender (código 0100 01XX) 
+        A instrução XOR realiza um ''ou exclusivo'' bit a bit entre o acumulador e um byte, que pode ser um dado imediato de 8 bits ou lido de uma posição de memória definida pelo endereço ender de 16 bits, acessada no modo direto ou indireto. acessado no modo direto ou indireto. Os flags N e Z são modificados de acordo com o resultado da operação. Essa instrução tem um tamanho igual a 2 ou 3 bytes.  
+    
+- AND #imed, ender ou @ender  (código 0101 00XX) 
+        A instrução AND realiza um ''e'' bit a bit entre o acumulador e um byte, que pode ser um dado imediato de 8 bits ou lido de uma posição de memória definida pelo endereço ender de 16 bits, acessada no modo direto ou indireto. acessado no modo direto ou indireto. Os flags N e Z são modificados de acordo com o resultado da operação.  Essa instrução tem um tamanho igual a 2 ou 3 bytes. 
+    
+- NOT  (código 0110 00--)
+        A instrução NOT complementa ('0' --> '1' e '1' --> '0') os bits do acumulador. Os flags N e Z são modificados de acordo com o resultado da operação. Essa instrução tem um tamanho igual a um byte.
+    
+- SHL  (código 0111 00--) 
+        A instrução SHL (shift left) realiza o deslocamento do acumulador de um bit para a esquerda, através do carry. O bit mais significativo ao ser deslocado para fora do acumulador é colocado no Carry (flag C). São inseridos '0's no bit menos significativo. Os flags N e Z são modificados de acordo com o resultado da operação. Essa instrução tem um tamanho igual a um byte. 
+    
+- SHR  (código 0111 01--) 
+        A instrução SHR (shift right) realiza o deslocamento do acumulador de um bit para a direita através do carry. O bit menos significativo ao ser deslocado para fora do acumulador entra no Carry (flag C). São inseridos '0's no bit mais significativo. Os flags N e Z são modificados de acordo com o resultado da operação. Essa instrução tem um tamanho igual a um byte.
+     
+- SRA  (código 0111 10--) 
+        A instrução SRA (shift right arithmetic) realiza o deslocamento  do acumulador de um bit para a direita através do carry. O bit menos significativo que sai à direita do acumulador entra no Carry (flag C). O bit mais significativo (de sinal) é repetido à esquerda, de modo que um número negativo em complemento a 2 continua sempre negativo. Os flags N e Z são modificados de acordo com o resultado da operação. Essa instrução tem um tamanho igual a um byte. 
+    
+- JMP ender ou @ender (código 1000 00-X)  
+        A instrução JMP (jump) altera o valor do PC e desvia a execução do programa para o endereço de 16 bits definido pelo seu operando, que pode ser acessado no modo direto ou indireto. Essa instrução tem um tamanho igual a 3 bytes.
+    
+- JN ender ou @ender (código 1001 00-X) 
+        A instrução JN (jump if negative) altera o valor do PC e desvia a execução do programa para o endereço de 16 bits definido pelo seu operando, que pode ser acessado no modo direto ou indireto, apenas se a última operação realizada produziu um valor negativo (flag N em '1'). Essa instrução tem um tamanho igual a 3 bytes.
+    
+- JP ender ou @ender (código 1001 01-X) 
+        A instrução JP (jump if positive) altera o valor do PC e desvia a execução do programa para o endereço de 16 bits definido pelo seu operando, que pode ser acessado no modo direto ou indireto, apenas se a última operação realizada produziu um valor positivo (flags N e Z em '0'). Essa instrução tem um tamanho igual a 3 bytes.
+    
+- JZ ender ou @ender (código 1010 00-X)  
+        A instrução JZ (jump if zero) altera o valor do PC e desvia a execução do programa para o endereço de 16bits definido pelo seu operando, que pode ser acessado no modo direto ou indireto, apenas quando a última operação realizada produziu um valor igual a zero (flag Z em '1'). Essa instrução tem um tamanho igual a 3 bytes.
+    
+- JNZ ender ou @ender (código 1010 01-X)  
+        A instrução JNZ (jump if not zero) altera o valor do PC e desvia a execução do programa para o endereço de 16 bits definido pelo seu operando, que pode ser acessado no modo direto ou indireto, apenas quando a última operação realizada produziu um valor diferente de zero (flag Z em '0'). Essa instrução tem um tamanho igual a 3 bytes.
+    
+- JC ender ou @ender (código 1011 00-X)  
+        A instrução JC (jump if carry) altera o valor do PC e desvia a execução do programa para o endereço de 16 bits definido pelo seu operando, que pode ser acessado no modo direto ou indireto, apenas quando a última operação realizada produziu um ''vai-um'' ou ''vem-um'' (flag C em '1'). Essa instrução tem um tamanho igual a 3 bytes.
+    
+- JNC ender ou @ender (código 1011 01-X)  
+        A instrução JNC (jump if not carry) altera o valor do PC e desvia a execução do programa para o endereço de 16 bits definido pelo seu operando, que pode ser acessado no modo direto ou indireto, apenas quando a última operação realizada não produziu um ''vai-um'' ou ''vem-um'' (flag C em '0'). Essa instrução tem um tamanho igual a 3 bytes.
+    
+- IN ender8  (código 1100 00--) 
+        A instrução IN (input) carrega no acumulador o valor lido de um dispositivo de E/S no endereço de 8 bits indicado pelo operando ender8, apenas no modo direto. Essa instrução tem um tamanho igual a 2 bytes.
+    
+- OUT ender8 (código 1100 01--) 
+        A instrução OUT (output) descarrega o conteúdo do acumulador em um dispositivo externo com o endereço de E/S de 8 bits indicado pelo operando ender8, apenas no modo direto. Essa instrução tem um tamanho igual a 2 bytes.
+    
+- JSR ender ou @ender (código 1101 00-X)  
+        A instrução JSR (jump to subroutine) altera o valor do PC e desvia a execução do programa para o endereço ender de 16 bits, que pode ser acessado no modo direto ou indireto, salvando antes o endereço da próxima instrução (endereço de retorno) no topo da pilha. O valor do apontador de pilha é modificado (SP = SP - 2). Essa instrução tem um tamanho igual a 3 bytes.
+    
+- RET (código 1101 01--)  
+        A instrução RET (return) retorna de uma rotina, transferindo  para o PC o endereço de retorno que está no topo da pilha e atualizando o apontador de pilha (SP = SP + 2). Essa instrução tem um tamanho igual a um byte.
+    
+- PUSH (código 1110 00--)  
+        A instrução PUSH coloca o conteúdo do acumulador no topo da pilha, atualizando antes o apontador de pilha (SP = SP - 1). Essa instrução tem um tamanho igual a um byte.
+    
+- POP (código 1110 01--)  
+        A instrução POP retira o valor que está no topo da pilha e coloca no acumulador, atualizando em seguida o apontador de pilha (SP = SP + 1). Os flags N e Z são modificados de acordo com o valor carregado no acumulador. Essa instrução tem um tamanho igual a um byte.
+    
+- TRAP ender ou @ender (código 1111 00-X)  
+        A pseudo instrução TRAP é utilizada para emulação de rotinas de E/S pelo simulador. O tipo de serviço solicitado é passado como parâmetro no acumulador. O operando ender de 16 bits define, no modo direto ou indireto, o endereço de memória para a passagem de parâmetros adicionais.
+    
+- HLT (código 1111 11--) 
+        A instrução HLT (halt) para a máquina. Essa instrução tem um tamanho igual a um byte.
+
+Modos de Endereçamento:
+
+   - 00 - Direto: o segundo e terceiro bytes da instrução contêm o endereço do operando na memória; 
+   - 01 - Indireto: o segundo e terceiro da instrução contêm o endereço da posição de memória com o endereço do operando (ou seja, é o endereço do ponteiro para o operando). Na linguagem de montagem, usou-se como convenção para indicar que um operando é indireto precedê-lo pela letra "@" (arrôba);
+
+    - 10- Imediato 8 bits: o segundo byte da instrução é o próprio operando. Na linguagem de montagem, usou-se como convenção para indicar que um operando é indireto precedê-lo pela letra "\#" (tralha).
+
+    - 11 - Imediato 16 bits:} os dois bytes seguintes à instrução são utilizados como operando. Na linguagem de montagem, usou-se como convenção para indicar que um operando é indireto precedê-lo pela letra "#" (tralha). O compilador fica encarregado de gerar o operando no tamanho correto. A única instrução que utiliza este modo é a LDS (load stack pointer).
+
+2) Códigos de Condição
+
+A seguir são apresentados os códigos de condição do Neander-X, 
+ou seja, flags que indicam o resultado da última operação realizada
+pela UAL.
+
+N – (negativo): sinal do resultado
+	1 – resultado é negativo
+	0 – resultado não é negativo
+
+Z – (zero): indica resultado igual a zero
+	1 – resultado é igual a zero
+	0 – resultado diferente de zero
+
+C – (vai-um): indica que a última operação resultou em ''vai-um'' (carry), no caso de soma, ou ''vem-um'' (borrow) em caso de subtração.
+       1 – o resultado deu ''vai-um'' ou ''vem-um''.
+       0 – o resultado não deu nem ''vai-um'' ou ''vem-um''.
+
+As instruções lógicas e aritméticas (ADD, ADC, SUB, SBC, NOT, AND, OR, XOR, SHL, SHR, SRA) e as instruções de transferência LDA, LDS e POP afetam apenas os códigos de condição N e Z de acordo com o resultado produzido. As instruções lógicas e aritméticas (ADD, ADC, SUB, SBC, SHL, SHR, SRA) afetam também o código de condição Carry de acordo com o resultado produzido. As demais instruções (STA, STS, JMP, JN, JP, JZ, JNZ, JC, JNC, JSR, RET, PUSH, IN, OUT, NOP, TRAP e HLT) não alteram os códigos de condição.
+
+3) Formato geral 
+
+Uma linha pode conter alguns dos seguintes elementos: um
+rótulo, um operador ou uma pseudo-instrução, um operando
+opcional e comentários. São permitidas linhas vazias.
+
+a) Comentários no programa
+
+Os comentários são começados por ponto e vírgula, e podem
+também ocorrer no final das linhas com instruções ou
+pseudo-instruções.
+
+b) Rótulos
+
+Um rótulo é um nome dado à próxima posição de memória.
+Os rótulos são construídos segundo as regras a seguir:
+
+- Usam letras alfabéticas ou numéricas ou $ ou _ mas
+não espaços.
+- A primeira letra não pode ser numérica.
+- Não existe distinção entre maiúsculas e minúsculas (ou
+seja ’a’ é o mesmo que ’A’).
+- O rótulo deve ser seguido por dois pontos. A única
+exceção é rótulo utilizado na pseudo-instrução EQU.
+
+4) Pseudo Instruções
+
+Pseudo instruções são orientações que o programador passa
+para o montador, com o intuito de organizar e posicionar o
+código e variáveis na memória do simulador.
+
+i ORG ender – ORG (origin) indica ao montador que
+a próxima instrução ou dado será colocado na posição
+ender de memória. Por exemplo:
+	ORG 0
+	...
+	Instruções
+	...
+	ORG 100
+	...
+	Dados
+	...
+	END 0
+
+ii) var EQU imed – EQU (equate) atribui um nome
+(rótulo) a um determinado valor. Entre muitos usos
+possíveis, esse comando pode ser usado para especificar
+variáveis que são posicionadas em um endereço específico
+de memória. Pode ser utilizado também para
+definir constantes, por exemplo:
+
+	INC EQU 2
+	MAX EQU 99
+	MIN EQU 0
+
+iii) END ender – END indica que o programa fonte acabou.
+O operando ender é usado para pré-carregar o PC
+com o endereço inicial do programa, ou seja, quando o
+programa é carregado na memória para execução, esse
+valor é carregado no PC para indicar o endereço inicial
+de execução.
+
+iv) DS imed – DS (define storage) reserva um número
+de bytes na memória definido pelo operando imed, sem
+nenhum valor inicial.
+
+	A: 		DS 1
+	VETOR: 	DS 10
+
+v)  DB imed – DB (define byte) carrega esta posição de
+memória com o valor definido pelo operando imed.
+
+	A: 		DB 20
+	VETOR: 	DB 1
+	       	DB 2
+			DB 3
+			DB 4
+
+v)  DW imed – DW (define word) carrega esta posição de
+memória com o valor definido pelo operando imed.
+
+	A: 		DW 2000
+	VETOR: 	DW 1000
+	       	DB 400
+			DW 1200
+			DB 04AFH
+
+5) Exemplos de representação de números
+
+O número 48 teria as seguintes representações possíveis:
+
+- Decimal: 48
+- Hexadecimal: 30h
+- Binário: 00110000b
+
+Obs: Números hexadecimais maiores que 7Fh devem ser
+precedidos por um zero, p. ex. 0F3h.
+
+Os números negativos não tem forma de representação possível
+no montador, embora resultados negativos das operações sejam
+representados em complemento a dois no simulador, logo, os números maiores que 127 (7Fh) podem ser considerados negativos.
+

@@ -1,0 +1,185 @@
+//
+//    Copyright 2016 Gabriel P. Silva and Jose Antonio S. Borges
+//
+//    This file is part of simulator SimuS.
+//
+//    SimuS  is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    SimuS is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with SimuS.  If not, see <http://www.gnu.org/licenses/>.
+//
+//    Este arquivo é parte do programa simulador SimuS.
+//
+//    SimuS é um software livre; você pode redistribuí-lo e/ou
+//    modificá-lo dentro dos termos da Licença Pública Geral GNU como
+//    publicada pela Fundação do Software Livre (FSF); na versão 3 da
+//    Licença, ou (na sua opinião) qualquer versão.
+//
+//    Este programa é distribuído na esperança de que possa ser útil,
+//    mas SEM NENHUMA GARANTIA; sem uma garantia implícita de ADEQUAÇÃO
+//    a qualquer MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a
+//    Licença Pública Geral GNU para maiores detalhes.
+//
+//    Você deve ter recebido uma cópia da Licença Pública Geral GNU junto
+//    com este programa, se não, veja em <http://www.gnu.org/licenses/>.
+//
+
+unit utrap;
+
+{$IFDEF FPC}
+  {$MODE Delphi}
+{$ENDIF}
+
+interface
+uses
+{$IFnDEF FPC}
+  windows,
+{$ELSE}
+  LCLIntf, LCLType, LMessages,
+{$ENDIF}
+  forms, uvars, uConsole, uSound, sysutils, Unix, baseUnix;
+
+procedure execTrap (var ACC: int8; operandReg: int16);
+
+implementation
+uses uSimula;
+
+procedure execTrap (var ACC: int8; operandReg: int16);
+(* var c: byte;*)
+var s: string;
+    i, ncarac, tempo: integer;
+    pino, valor: integer;
+    freq, durMS: integer;
+    p, duty_cycle: string;
+begin
+    application.processMessages;
+    case ACC of
+        1: begin {leitura de um caractere da console}
+               ACC := ord(formConsole.memoChar);
+           end;
+
+        2: begin  {escreve caractere apontado por operandReg na console}
+                  {ACC retorna a letra escrita}
+               formConsole.memoWrite(chr(memoria[operandReg]));
+               ACC := memoria[operandReg];
+           end;
+
+        3: begin  {leitura de linha terminada por CR da console}
+                  {estrutura do buffer:  ncarac (8 bits), buffer[256]}
+                  {retorna em ACC o número de letras lidas, o CR não vem}
+               ncarac := pegaMemoria(operandReg, 8);
+               s := formConsole.memoRead (ncarac);
+               for i := 1 to length(s) do
+                    memoria[(operandReg+i) and $ffff] := ord(s[i]);
+               ACC := length(s);
+           end;
+
+        4: begin   {escreve linha na console, buffer termina por null}
+               s := '';
+               i := 0;
+               while memoria[operandReg+i] <> $0 do
+                   begin
+                       formConsole.memoWrite(chr(pegaMemoria(operandReg+i, 8)));
+                       i := i + 1;
+                   end;
+               ACC := i;
+
+               // nota: ACC volta com o número de letras escritas, ou zero, se problemas
+               // caracteres especiais: CR, LF, FF
+           end;
+
+        5: begin
+               // temporização.  tempo em milésimos de segundos
+               tempo := pegaMemoria(operandReg, 16);
+               sleep (tempo);
+           end;
+
+        6: begin
+               // gerar tom:  frequência, duração em ms  --> bloqueante
+               freq  := pegaMemoria(operandReg, 16);
+               durMS := pegaMemoria(operandReg+2, 16);
+               soundPlay (freq, durMS);
+           end;
+
+        7: begin
+               // retorna número pseudo aleatório entre 0-99
+               ACC := random (100);
+           end;
+
+        8: begin
+               // semente aleatoria
+               randSeed := pegaMemoria(operandReg, 8);
+           end;
+
+        100: begin
+                 pino := pegaMemoria(operandReg, 8);
+                 if pegaMemoria(operandReg+1, 8) <> 0 then
+                     fd := fpopen('/sys/class/gpio/export', O_WrOnly)
+                 else
+                     fd := fpopen('/sys/class/gpio/unexport', O_WrOnly);
+                 if fd <= 0 then
+                     showMessage ('Conflito com uso do GPIO.  Verifique portas alocadas');
+
+                 p := intToStr(pino);
+                 fpwrite(fd, pchar(p), length(p));
+                 fpclose(fd);
+             end;
+
+        101: begin
+                 fd := fpopen('/sys/class/gpio/gpio' + p + '/direction', O_WrOnly);
+                 modo := pegaMemoria(operandReg+1, 8) and $03;
+                 case modo of
+                     0: fpwrite (fd, 'in',  2);
+                     1: fpwrite (fd, 'out', 3);
+                     2: ;
+                     3: fpwrite (fd, 'pwm', 3);
+                  fpclose(fd);
+             end;
+
+        102: begin
+                pino := pegaMemoria(operandReg, 8);
+                valor := pegaMemoria(operandReg+1, 8) and 1;
+                fd := fpopen('/sys/class/gpio/gpio' + p + '/value', O_WrOnly);
+                fpwrite (fd, intToStr(value), 1);
+                fpclose(fd);
+             end;
+
+        103: begin
+                pino := pegaMemoria(operandReg, 8);
+                fd := fpopen('/sys/class/gpio/gpio' + p + '/value', O_RdOnly);
+                fpread (fd, &value, 1);
+                fpclose(fd);
+                ACC := value and 1;
+             end;
+
+        104: begin
+                pino := pegaMemoria(operandReg, 8);
+                valor := pegaMemoria(operandReg+1, 8) and 3;
+                fd := fpopen('/sys/class/gpio/gpio' + p + '/active_low', O_WrOnly);
+                fpwrite (fd, intToStr(value), 1);
+                fpclose(fd);
+             end;
+
+        105: begin
+               pino := pegaMemoria(operandReg, 8);
+               valor := pegaMemoria(operandReg+1, 8) and 3;
+               fd := fpopen('/sys/class/gpio/gpio' + p + '/change_duty_cycle', O_WrOnly);
+               duty_cycle := intToStr(operandReg+2, 8);
+               fpwrite (fd, 'pwm ' + duty_cycle);
+               fpclose(fd);
+             end;
+         end;
+        end;
+    end;
+    application.processMessages;
+end;
+
+end.

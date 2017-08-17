@@ -1,0 +1,123 @@
+object AboutBox: TAboutBox
+  Left = 477
+  Top = 195
+  BorderStyle = bsDialog
+  Caption = 'Sobre o programa'
+  ClientHeight = 310
+  ClientWidth = 288
+  Color = clCream
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  object Panel1: TPanel
+    Left = 8
+    Top = 16
+    Width = 273
+    Height = 249
+    BevelInner = bvRaised
+    BevelOuter = bvLowered
+    Color = clSkyBlue
+    TabOrder = 0
+    object ProductName: TLabel
+      Left = 14
+      Top = 6
+      Width = 228
+      Height = 48
+      Alignment = taCenter
+      Caption = 'SimuS - Simulador didático para '#10'ensino de arquitetura de computadores.'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      WordWrap = True
+    end
+    object Version: TLabel
+      Left = 94
+      Top = 78
+      Width = 133
+      Height = 13
+      Caption = 'Versão 1.0 - Fevereiro/2017'
+    end
+    object Copyright: TLabel
+      Left = 70
+      Top = 158
+      Width = 116
+      Height = 13
+      Caption = 'Copyright (C) 2016/2017'
+    end
+    object Comments: TLabel
+      Left = 54
+      Top = 110
+      Width = 143
+      Height = 32
+      Alignment = taCenter
+      Caption = 'Gabriel Pereira da Silva'#10'José Antonio Borges.'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      WordWrap = True
+    end
+    object Label2: TLabel
+      Left = 62
+      Top = 190
+      Width = 147
+      Height = 26
+      Alignment = taCenter
+      Caption = 'Este simulador é compatível'#10'com o processador Neander-X.'
+      WordWrap = True
+    end
+    object Image1: TImage
+      Left = 38
+      Top = 62
+      Width = 33
+      Height = 33
+      Picture.Data = {
+        055449636F6E0000010001002020100001000400E80200001600000028000000
+        2000000040000000010004000000000000000000000000000000000010000000
+        00000000010101007E221000BD33180043120900DB3B1B00270B05009E2B1400
+        601A0C0017060300CE381A00F0411F0091271300AD301600360F0700701E0E00
+        50160B0000000000000000000000000000000000000000000000000000000000
+        000000000000837E11EEF350000000000000000008E9AAAAAAAAAAAA9B780000
+        000000000CAAAAAAAAAAAAAAAAAA2F000000000004AAAAAAAAAAAAAAAAAAAAC8
+        000000000CAAAAAAAAAAAAAAAAAAAAA98000000005AAAAAAAAAAAAAAAAAAAAAA
+        20000000006A9EF33F3FF7EBC9AAAAAAA300000000012B800000000000519AAA
+        AB000000000000000000000000000E4AA400000000000000000000000000005A
+        A400000000000000000000000000001AAC000000000000000000000000008BAA
+        AD000000000000000000000000D14AAAF000000000000000000008F1C4AAAA9D
+        000000000000000000872AAAAAAA4E000000000000000000814AAAAAAA270000
+        000000000000000D4AAAAAACE50000000000000000000002AAA9BF0000000000
+        0000000000000002AAC0000000000000000000000000000CAAB0000000000000
+        0000000000000001AAAF0000000000D70000000000000003AAAAB8000000000B
+        2D000000000000004AAAAA678000000074278000000000007AAAAAAAA26EFD58
+        852A4E00000000000CAAAAAAAAAAAAAAAAAAAA7000000000006AAAAAAAAAAAAA
+        AAAAAA200000000000032AAAAAAAAAAAAAAAAA400000000000000DB4AAAAAAAA
+        AAAAAA400000000000000000DE694AAAAAAA9B50000000000000000000000855
+        5558000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        00000000
+      }
+    end
+  end
+  object OKButton: TButton
+    Left = 111
+    Top = 276
+    Width = 75
+    Height = 25
+    Caption = 'OK'
+    Default = True
+    ModalResult = 1
+    TabOrder = 1
+    OnClick = OKButtonClick
+  end
+end
