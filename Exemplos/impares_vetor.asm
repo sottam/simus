@@ -96,7 +96,7 @@ ROTINA:
     	STA     PTR+1   ; Salva na parte alta do ponteiro
     	OUT 	CLEARB  ; Limpa o Banner
 LOOP:
-    	LDA 	@PTR	; Lẽ o caractere
+    	LDA 	@PTR	; Le o caractere
     	OR 	#0      ; É NULL?
     	JZ  	RETORNA	; Se for retorna
     	OUT 	BANNER  ; Imprime o caractere no banner
