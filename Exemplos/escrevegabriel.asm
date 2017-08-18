@@ -5,7 +5,7 @@
 ;---------------------------------------
 ORG 0
 INICIO:
-        OUT     CLEARBANNE
+        OUT     CLEARBANNER
 LOOP:
         LDA     @PTR             ; Le um caractere
         OR      #0               ; Se for NULL
