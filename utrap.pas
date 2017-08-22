@@ -45,7 +45,7 @@ uses
 {$ELSE}
   LCLIntf, LCLType, LMessages,
 {$ENDIF}
-  forms, uvars, uConsole, uSound, sysutils, Unix, BaseUnix;
+  forms, uvars, uConsole, uSound, sysutils, Unix, BaseUnix, h2wiringpi;
 
 procedure execTrap (var ACC: int8; operandReg: int16);
 
@@ -56,10 +56,14 @@ procedure execTrap (var ACC: int8; operandReg: int16);
 (* var c: byte;*)
 var s: string;
     i, ncarac, tempo: integer;
-    pino, valor: integer;
+    pino, valor, modo: integer;
     freq, durMS: integer;
 begin
     application.processMessages;
+
+
+
+
     case ACC of
         1: begin {leitura de um caractere da console}
                ACC := ord(formConsole.memoChar);
@@ -117,6 +121,29 @@ begin
                // semente aleatoria
                randSeed := pegaMemoria(operandReg, 8);
            end;
+
+        100: begin   //inicializa wiringPi Lib
+                 wiringPiSetup();
+        end;
+
+        101: begin
+               pino := pegaMemoria(operandReg, 8);
+               modo := PegaMemoria(operandReg+1, 8);
+               pinMode(pino,modo);
+               {
+               INPUT = 0
+               OUTPUT = 1
+               PWM = 2
+                              }
+
+             end;
+        102: begin
+                  pino := pegaMemoria(operandReg, 8);
+                  valor := pegaMemoria(operandReg+1, 8) and 1;
+                  digitalWrite(pino,valor)
+        	   end;
+
+(*
         101: begin
                pino := pegaMemoria(operandReg, 8);
                fpsystem('echo "' + intToStr(pino) + '" > /sys/class/gpio/export');
@@ -133,8 +160,7 @@ begin
                   valor := pegaMemoria(operandReg+1, 8) and 1;
                   fpsystem('echo "' + intToStr(valor)+ '" > /sys/class/gpio/gpio' + intToStr(pino) + '/value');
              end;
-
-
+*)
 
 (*
             fileDesc := fpopen('/sys/class/gpio/gpio17/value', O_WrOnly);

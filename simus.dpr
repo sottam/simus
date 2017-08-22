@@ -52,7 +52,8 @@ uses
   uvars in 'uvars.pas',
   uAssemb in 'uAssemb.pas',
   uconsole in 'uconsole.pas' {FormConsole},
-  uSound in 'uSound.pas';
+  uSound in 'uSound.pas',
+	h2wiringpi in 'h2wiringpi.pas';
 
 {$R *.res}
 
