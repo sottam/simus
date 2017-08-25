@@ -56,7 +56,7 @@ procedure execTrap (var ACC: int8; operandReg: int16);
 (* var c: byte;*)
 var s: string;
     i, ncarac, tempo: integer;
-    pino, valor, modo: integer;
+    pino, valor, pud, modo: integer;
     freq, durMS: integer;
 begin
     application.processMessages;
@@ -124,9 +124,9 @@ begin
 
         100: begin   //inicializa wiringPi Lib
                  wiringPiSetup();
-        end;
+        		 end;
 
-        101: begin
+        101: begin   //Define Modo do pino
                pino := pegaMemoria(operandReg, 8);
                modo := PegaMemoria(operandReg+1, 8);
                pinMode(pino,modo);
@@ -134,44 +134,40 @@ begin
                INPUT = 0
                OUTPUT = 1
                PWM = 2
-                              }
+        			 }
 
              end;
-        102: begin
+        102: begin //define um valor no pino digital
                   pino := pegaMemoria(operandReg, 8);
                   valor := pegaMemoria(operandReg+1, 8) and 1;
-                  digitalWrite(pino,valor)
+                  digitalWrite(pino,valor);
         	   end;
-
-(*
-        101: begin
-               pino := pegaMemoria(operandReg, 8);
-               fpsystem('echo "' + intToStr(pino) + '" > /sys/class/gpio/export');
-               case pegaMemoria(operandReg+1, 8) mod 5 of
-                  0: fpsystem('echo "in"  > /sys/class/gpio/gpio' + intToStr(pino) + '/direction');
-                  1: fpsystem('echo "out" > /sys/class/gpio/gpio' + intToStr(pino) + '/direction');
-                  2: ;
-                  3: fpsystem('echo "pwm" > /sys/class/gpio/gpio' + intToStr(pino) + '/direction');
-                  4: fpsystem('echo "' + intToStr(pino) + '" > /sys/class/gpio/unexport');
-               end;
+        103: begin  //le um valor de um pino digital
+             			pino := pegaMemoria(operandReg, 8);
+                  ACC := digitalRead(pino);
              end;
-        102: begin
+
+        104: begin    //Configura o modo da resistencia Pull-up
                   pino := pegaMemoria(operandReg, 8);
-                  valor := pegaMemoria(operandReg+1, 8) and 1;
-                  fpsystem('echo "' + intToStr(valor)+ '" > /sys/class/gpio/gpio' + intToStr(pino) + '/value');
+                  pud := pegaMemoria(operandReg+1, 8);
+                  case pud of
+                      0:begin
+                          pullUpDnControl(pino, PUD_OFF);
+                      	end;
+                      1:begin
+                         	pullUpDnControl(pino, PUD_DOWN);
+                      	end;
+                      2:begin
+                      		pullUpDnControl(pino, PUD_UP);
+                        end;
+                  end;
              end;
-*)
 
-(*
-            fileDesc := fpopen('/sys/class/gpio/gpio17/value', O_WrOnly);
-      gReturnCode := fpwrite(fileDesc, PIN_ON[0], 1);
-      LogMemo.Lines.Add(IntToStr(gReturnCode));
-    finally
-      gReturnCode := fpclose(fileDesc);
-*)
-
-
-
+        105: begin  //configura o duty-cicle de um registrador PWM
+               		pino := pegaMemoria(operandReg, 8);
+               		//valor := ???
+               		pwmWrite(pino,valor);
+        		 end;
     end;
     application.processMessages;
 end;
