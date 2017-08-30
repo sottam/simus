@@ -1,7 +1,4 @@
-ORG 0
-      LDA #100
-      TRAP TRAP_PARAM
-; pino desejado = 18
+; pino desejado = 1 (wiringpi e gpio pins)
       LDA #PWM_PIN
       STA TRAP_PARAM
 ; modo PWM
@@ -12,8 +9,8 @@ ORG 0
 ;
 ; loop de fade in / fade out
 LOOP:
+	  JSR FADEIN
       JSR FADEOUT
-      JSR FADEIN 
       JMP LOOP
 ;-----------------------------------
 FADEIN:
@@ -21,6 +18,7 @@ FADEIN:
 LDA #0
 STA PWM_HIGH
 STA PWM_LOW
+
 LOOPFIN:
 ; Gera sinal PWM (0 – 1023)
 JSR TRAP_PWM
@@ -39,7 +37,7 @@ STA PWM_HIGH
 SUB #04H
 JNZ LOOPFIN
 ; retorna
- RET
+RET
 ;-----------------------------------
 FADEOUT:
 ; Valor inicial PWM = 1008
@@ -69,7 +67,6 @@ RET
 ;-----------------------------------
 TRAP_PWM:
 ; prepara parametros 
-
 LDA PWM_LOW
 STA TRAP_PARAM+1
 LDA PWM_HIGH
@@ -79,17 +76,17 @@ LDA #PWM_TRAP
 TRAP TRAP_PARAM
 ; espera 200 Milissegundos
 LDA #DELAY_TRAP
-TRAP TIME_200
+TRAP TIME
 RET
 ;-----------------------------------
-      TIME_200: DW 200
+      TIME: DW 50
 ; área para passar parâmetros do trap
       TRAP_PARAM: DS 3
 ; Valor do PWM
       PWM_LOW: DB 0FFH
       PWM_HIGH: DB 03H
-; pino PWM (18 é o único por hardware)
-      PWM_PIN EQU 18
+; pino PWM (1 é o único por hardware)
+      PWM_PIN EQU 1
 ; parâmetro do modo do pino PWM
       PWM_MODE EQU 2
       PWM_TRAP EQU 105
