@@ -1,4 +1,6 @@
-; pino desejado = 1 (wiringpi e gpio pins)
+;somente pinos 12 e 33 (fisicos) suportam pwm
+
+; pino desejado = PWM_PIN (wiringpi e gpio pins)
       LDA #PWM_PIN
       STA TRAP_PARAM
 ; modo PWM
@@ -9,7 +11,7 @@
 ;
 ; loop de fade in / fade out
 LOOP:
-	  JSR FADEIN
+      JSR FADEIN
       JSR FADEOUT
       JMP LOOP
 ;-----------------------------------
@@ -25,7 +27,7 @@ JSR TRAP_PWM
 ; lê a parte baixa do PWM
 LDA PWM_LOW
 ; incrementa de 16 (passo)
-ADD #16
+ADD VELFADE
 ; armazena 8 bits da parte baixa
 STA PWM_LOW
 LDA #0
@@ -51,7 +53,7 @@ JSR TRAP_PWM
 ; Lê da parte baixa do PWM
 LDA PWM_LOW
 ; Diminui de 16
-SUB #16
+SUB VELFADE
 ; armazena 8 bits da parte baixa
 STA PWM_LOW
 ; Carrega parte alta
@@ -74,18 +76,19 @@ STA TRAP_PARAM+2
 LDA #PWM_TRAP
 ; executa o trap
 TRAP TRAP_PARAM
-; espera 200 Milissegundos
+; espera 20 Milissegundos
 LDA #DELAY_TRAP
 TRAP TIME
 RET
 ;-----------------------------------
-      TIME: DW 50
+      TIME: DW 1
+      VELFADE: DW 8
 ; área para passar parâmetros do trap
       TRAP_PARAM: DS 3
 ; Valor do PWM
       PWM_LOW: DB 0FFH
       PWM_HIGH: DB 03H
-; pino PWM (1 é o único por hardware)
+; pino PWM (1 e 23 que funcionam por hardware)
       PWM_PIN EQU 1
 ; parâmetro do modo do pino PWM
       PWM_MODE EQU 2
