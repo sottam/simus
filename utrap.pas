@@ -48,9 +48,22 @@ uses
   forms, uvars, uConsole, uSound, sysutils, Unix, BaseUnix, h2wiringpi;
 
 procedure execTrap (var ACC: int8; operandReg: int16);
+procedure wiringPiStarted();
 
 implementation
 uses uSimula;
+
+var isWiringPiStarted: boolean = false;
+
+procedure wiringPiStarted();
+begin
+    if isWiringPiStarted = false then
+    begin
+      wiringPiSetup();
+      isWiringPiStarted := true;
+    end;
+
+end;
 
 procedure execTrap (var ACC: int8; operandReg: int16);
 (* var c: byte;*)
@@ -58,6 +71,7 @@ var s: string;
     i, ncarac, tempo: integer;
     pino, valor, pud, modo: integer;
     freq, durMS: integer;
+    wPiStarted: boolean;
 begin
     application.processMessages;
 
@@ -123,13 +137,23 @@ begin
            end;
 
         100: begin   //inicializa wiringPi Lib
-                 wiringPiSetup();
+                 wiringPiStarted();
         		 end;
 
         101: begin   //Define Modo do pino
+               wiringPiStarted();
                pino := pegaMemoria(operandReg, 8);
                modo := PegaMemoria(operandReg+1, 8);
-               pinMode(pino,modo);
+               if modo = PWM_OUTPUT then
+                   begin
+                 		    s:= 'gpio mode ' + IntToStr(pino) + ' pwm';
+                        fpsystem(s);
+                   end
+               else
+                   begin
+                          pinMode(pino,modo);
+                   end;
+
                {
                INPUT = 0
                OUTPUT = 1
@@ -138,16 +162,19 @@ begin
 
              end;
         102: begin //define um valor no pino digital
+               		wiringPiStarted();
                   pino := pegaMemoria(operandReg, 8);
                   valor := pegaMemoria(operandReg+1, 8) and 1;
                   digitalWrite(pino,valor);
         	   end;
         103: begin  //le um valor de um pino digital
+               		wiringPiStarted();
              			pino := pegaMemoria(operandReg, 8);
                   ACC := digitalRead(pino);
              end;
 
         104: begin    //Configura o modo da resistencia Pull-up
+               		wiringPiStarted();
                   pino := pegaMemoria(operandReg, 8);
                   pud := pegaMemoria(operandReg+1, 8);
                   case pud of
@@ -164,9 +191,12 @@ begin
              end;
 
         105: begin  //configura o duty-cicle de um registrador PWM
+            			wiringPiStarted();
                		pino := pegaMemoria(operandReg, 8);
-               		//valor := ???
-               		pwmWrite(pino,valor);
+                  valor := pegaMemoria(operandReg+1, 16) and $3FF;
+               		//pwmWrite(pino,valor);
+                  s:= 'gpio pwm ' + IntToStr(pino) + ' ' + IntToStr(valor);
+                  fpsystem(s);
         		 end;
     end;
     application.processMessages;
