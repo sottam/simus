@@ -1,18 +1,20 @@
-; Converte números entre 00 e 99 em decimal
-; Programa:
+; --------------------------------------------------------
+; Programa: Converte nÃºmeros hexadecimais para decimal (entre 00 e 99) 
+; Autor: Gabriel P. Silva
+; Data: 2016
+;----------------------------------------------------------
 ORG  100
 VALOR:   DS   1    ;
 MOSTRA:  DS   1    ;
-DEZ:     DB   10   ;
 
 ORG  0
 MAIN:    IN   0      ; ACC = Chaves
          STA  VALOR  ;
          STA  MOSTRA ; 
-LACO:    SUB  DEZ    ; 
+LACO:    SUB  #10    ; 
          JN   SAIDA  ;
          STA  VALOR  ;
-         LDI  6      ;
+         LDA  #6     ;
          ADD  MOSTRA ;
          STA  MOSTRA ;
          LDA  VALOR  ;
