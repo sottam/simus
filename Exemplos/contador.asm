@@ -13,13 +13,10 @@ LOOP:   STA  X                ; Armazena o conteúdo na memória
         OUT  00               ; Mostra o valor lido no visor 
         LDA  X                ; Lê o ultimo valor armazenado
         NOT                   ; Complementa a um
-        ADD  UM               ; Decrementa
-        NOT                   ; 
+        SUB  #1               ; Subtrai 
         JMP  LOOP             ; Em LOOP para sempre
         END STATUS1           ; Termina o código
 
         ORG 100
 X:      DS  1
 ZERO:   DB  0
-UM:     DB  1 
-        
