@@ -2,35 +2,29 @@
 ; Programa: Contagem regressiva manual
 ; Autor: Gabriel P. Silva
 ; Data: 15.09.2003
-; Lê o valor das teclas e deposi espera a tecla 
-; "Entrar" ser acionada para decrementar o 
+; LÃª o valor das teclas e depois espera a tecla 
+; "Entra" ser acionada para decrementar o 
 ; valor do visor.
 ;---------------------------------------------------
+ORG 0 
 STATUS1:
-        IN   01               ; Verifica se o valor está pronto
-        ADD  ZERO             ; Soma com o valor 0 
-        JZ   STATUS1          ; Enquanto não estiver pronto fica em loop
-        IN   00               ; Lê o primeiro valor
-        STA  X                ; Armazena o conteúdo na memória
+        IN   01               ; Verifica se o valor estÃ¡ pronto
+        ADD  #0               ; Soma com o valor 0 
+        JZ   STATUS1          ; Enquanto nÃ£o estiver pronto fica em loop
+        IN   00               ; LÃª o primeiro valor
+        STA  X                ; Armazena o conteÃºdo na memÃ³ria
         OUT  00               ; Mostra o valor lido no visor 
 STATUS2:
         IN 01
-        ADD  ZERO             ; Soma com o valor 0
-        JZ   STATUS2          ; Enquanto não estiver pronto fica em loop 
-        LDA  X                ; Lê o ultimo valor armazenado
-        NOT                   ; Complementa a um
-        ADD  UM               ; Complementa a dois
-        ADD  UM               ; Decrementa
-        NOT                   ; 
-        ADD  UM               ; Complementa a dois
-        STA  X                ; Soma com o primeiro valor
+        ADD  #0               ; Soma com o valor 0
+        JZ   STATUS2          ; Enquanto nÃ£o estiver pronto fica em loop 
+        LDA  X                ; LÃª o ultimo valor armazenado
+        SUB  #1               ; Subtrai de um 
+        STA  X                ; Armazena
         OUT  00               ; Coloca o resultado no visor
         IN   00               ; Descarta o valor do teclado
         JMP STATUS2           ; Em LOOP para sempre
-        END STATUS1           ; Termina o código
+        END STATUS1           ; Termina o cÃ³digo
 
         ORG 100
 X:      DS  1
-ZERO:   DB  0
-UM:     DB  1 
-        
