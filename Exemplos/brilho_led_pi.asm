@@ -1,4 +1,9 @@
-;somente pinos 12 e 33 (fisicos) suportam pwm
+;------------------------------
+; Programa;
+; Autor:
+; Data:
+;------------------------------
+; somente pinos 12 e 33 (fisicos) suportam pwm
 
 ; pino desejado = PWM_PIN (wiringpi e gpio pins)
       LDA #PWM_PIN
