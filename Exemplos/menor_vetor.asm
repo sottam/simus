@@ -1,4 +1,3 @@
-
 ;--------------------------------
 ; Programa: Encontra o menor elemento de um vetor
 ;           e calcula a soma de todos os elementos

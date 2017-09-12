@@ -8,8 +8,6 @@ ORG	 0
 	LDA	#23	; pino desejado = 23
 	STA	PIN_TRAP
 ;
-        LDA     #100
-        TRAP    PIN_TRAP ;inicializa wiringPi
 	LDA	#1	; modo de saída
 	STA	PIN_TRAP +1
 	LDA	#101
