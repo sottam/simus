@@ -53,7 +53,8 @@ uses
   uAssemb in 'uAssemb.pas',
   uconsole in 'uconsole.pas' {FormConsole},
   uSound in 'uSound.pas',
-	h2wiringpi in 'h2wiringpi.pas';
+	h2wiringpi in 'h2wiringpi.pas',
+	FirmataPascal in 'firmatapascal.pas';
 
 {$R *.res}
 
@@ -65,4 +66,5 @@ begin
   Application.CreateForm(TformAutoMonta, formAutoMonta);
   Application.CreateForm(TFormConsole, FormConsole);
   Application.Run;
+  FirmataPascal.finalizeComm;
 end.

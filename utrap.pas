@@ -45,15 +45,17 @@ uses
 {$ELSE}
   LCLIntf, LCLType, LMessages,
 {$ENDIF}
-  forms, uvars, uConsole, uSound, sysutils, Unix, BaseUnix, h2wiringpi;
+  forms, uvars, uConsole, uSound, sysutils, Unix, BaseUnix, h2wiringpi, firmataPascal;
 
 procedure execTrap (var ACC: int8; operandReg: int16);
 procedure wiringPiStarted();
+procedure arduinoSerialStarted();
 
 implementation
 uses uSimula;
 
 var isWiringPiStarted: boolean = false;
+    isArduinoSerialStarted: boolean = false;
 
 procedure wiringPiStarted();
 begin
@@ -62,7 +64,15 @@ begin
       wiringPiSetup();
       isWiringPiStarted := true;
     end;
+end;
 
+procedure arduinoSerialStarted();
+begin
+    if isArduinoSerialStarted = false then
+    begin
+      initializeComm;
+      isArduinoSerialStarted := true;
+    end;
 end;
 
 procedure execTrap (var ACC: int8; operandReg: int16);
@@ -151,7 +161,7 @@ begin
                    end
                else
                    begin
-                          pinMode(pino,modo);
+                          h2wiringpi.pinMode(pino,modo);
                    end;
 
                {
@@ -165,16 +175,75 @@ begin
                		wiringPiStarted();
                   pino := pegaMemoria(operandReg, 8);
                   valor := pegaMemoria(operandReg+1, 8) and 1;
-                  digitalWrite(pino,valor);
+                  h2wiringpi.digitalWrite(pino,valor);
         	   end;
         103: begin  //le um valor de um pino digital
                		wiringPiStarted();
              			pino := pegaMemoria(operandReg, 8);
-                  ACC := digitalRead(pino);
+                  ACC := h2wiringpi.digitalRead(pino);
              end;
 
         104: begin    //Configura o modo da resistencia Pull-up
                		wiringPiStarted();
+                  pino := pegaMemoria(operandReg, 8);
+                  pud := pegaMemoria(operandReg+1, 8);
+                  case pud of
+                      0:begin
+                          h2wiringpi.pullUpDnControl(pino, PUD_OFF);
+                      	end;
+                      1:begin
+                         	h2wiringpi.pullUpDnControl(pino, PUD_DOWN);
+                      	end;
+                      2:begin
+                      		h2wiringpi.pullUpDnControl(pino, PUD_UP);
+                        end;
+                  end;
+             end;
+
+        105: begin  //configura o duty-cicle de um registrador PWM
+            			wiringPiStarted();
+               		pino := pegaMemoria(operandReg, 8);
+                  valor := pegaMemoria(operandReg+1, 16) and $3FF;
+               		//pwmWrite(pino,valor);
+                  s:= 'gpio pwm ' + IntToStr(pino) + ' ' + IntToStr(valor);
+                  fpsystem(s);
+        		 end;
+
+        //ARDUINO TRAPS
+
+        200: begin   //inicializa porta SERIAL COM ARDUINO
+                 arduinoSerialStarted();
+        		 end;
+
+        201: begin   //Define Modo do pino
+               arduinoSerialStarted();
+               pino := pegaMemoria(operandReg, 8);
+               modo := PegaMemoria(operandReg+1, 8);
+
+               FirmataPascal.setPinMode(pino, modo);
+
+               {
+               INPUT = 0
+               OUTPUT = 1
+               PWM = 2
+        			 }
+
+             end;
+        202: begin //define um valor no pino digital
+               		arduinoSerialStarted();
+                  pino := pegaMemoria(operandReg, 8);
+                  valor := pegaMemoria(operandReg+1, 8) and 1;
+                  FirmataPascal.digitalWrite(pino,valor);
+        	   end;
+
+        203: begin  //le um valor de um pino digital
+               		arduinoSerialStarted();
+             			pino := pegaMemoria(operandReg, 8);
+                  //ACC := FirmataPascal.digitalRead(pino);
+             end;
+
+        204: begin    //Configura o modo da resistencia Pull-up
+               		arduinoSerialStarted();
                   pino := pegaMemoria(operandReg, 8);
                   pud := pegaMemoria(operandReg+1, 8);
                   case pud of
@@ -190,8 +259,8 @@ begin
                   end;
              end;
 
-        105: begin  //configura o duty-cicle de um registrador PWM
-            			wiringPiStarted();
+        205: begin  //configura o duty-cicle de um registrador PWM
+            			arduinoSerialStarted();
                		pino := pegaMemoria(operandReg, 8);
                   valor := pegaMemoria(operandReg+1, 16) and $3FF;
                		//pwmWrite(pino,valor);
