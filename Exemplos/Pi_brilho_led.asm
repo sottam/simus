@@ -94,7 +94,7 @@ RET
       PWM_LOW: DB 0FFH
       PWM_HIGH: DB 03H
 ; pino PWM (1 e 23 que funcionam por hardware)
-      PWM_PIN EQU 1
+      PWM_PIN EQU 23
 ; parâmetro do modo do pino PWM
       PWM_MODE EQU 2
       PWM_TRAP EQU 105

@@ -108,7 +108,8 @@ procedure initializeComm;
     begin
       dev:= TBlockserial.Create;
 
-      dev.Connect('/dev/ttyACM0');
+      //dev.Connect('/dev/ttyACM0');
+      dev.Connect('/dev/ttyUSB0');
       dev.config(57600,8,'N',SB1,false,false);
 
       if (dev.LastError <> 0) then
