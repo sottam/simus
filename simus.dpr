@@ -53,8 +53,7 @@ uses
   uAssemb in 'uAssemb.pas',
   uconsole in 'uconsole.pas' {FormConsole},
   uSound in 'uSound.pas',
-	h2wiringpi in 'h2wiringpi.pas',
-	FirmataPascal in 'firmatapascal.pas';
+  FirmataPascal in 'firmatapascal.pas';
 
 {$R *.res}
 

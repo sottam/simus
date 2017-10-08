@@ -40,12 +40,15 @@ unit uSound;
 
 interface
 uses
-{$IFnDEF FPC}
-  Windows,
+{$IFDef win32}
+  MMSystem, Windows,
+{$ENDIF}
+{$IFnDEF Win32}
+  Unix, BaseUnix,
 {$ELSE}
   LCLIntf, LCLType, LMessages;
 {$ENDIF}
- // MMSystem;
+
 
 procedure SoundPlay(Hz: Word; durMS: integer);
 
@@ -105,4 +108,4 @@ begin
     freeMem (psound, sizeof (psound^)+2);  {1 second}
 end;
 
-end.
+end.
