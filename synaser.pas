@@ -200,7 +200,11 @@ const
   {$IFDEF DARWIN}
   MaxRates = 18;  //MAC
   {$ELSE}
-   MaxRates = 19; //UNIX
+  	{$IFDEF CPUARM}
+    	MaxRates = 19; //RPI
+    {$ELSE}
+   		MaxRates = 30; //UNIX
+    {$ENDIF}
   {$ENDIF}
 {$ELSE}
   MaxRates = 19;  //WIN
@@ -229,7 +233,7 @@ const
 {$IFNDEF DARWIN}
     ,(460800, B460800)
     {$IFDEF UNIX}
-      {$IFnDEF ARMCPU}
+      {$IFnDEF CPUARM}
         ,(500000, B500000),
         (576000, B576000),
         (921600, B921600),

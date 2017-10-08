@@ -45,10 +45,8 @@ uses
 {$ENDIF}
 {$IFnDEF MSWINDOWS}
   Unix, BaseUnix,
-{$ELSE}
-  LCLIntf, LCLType, LMessages;
 {$ENDIF}
-
+  LCLIntf, LCLType, LMessages;
 
 procedure SoundPlay(Hz: Word; durMS: integer);
 

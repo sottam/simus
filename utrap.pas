@@ -45,7 +45,7 @@ uses
 {$ENDIF}
 {$IFnDEF MSWINDOWS}
   Unix, BaseUnix,
-  {$IFDef ARMCPU}
+  {$IFDef CPUARM}
     h2wiringpi,
   {$ENDIF}
 {$ELSE}
@@ -68,7 +68,7 @@ var isWiringPiStarted: boolean = false;
     isArduinoSerialStarted: boolean = false;
 
 {$IFnDEF Win32}
-  {$IFDef ARMCPU}
+  {$IFDef CPUARM}
 procedure wiringPiStarted();
 begin
   if isWiringPiStarted = false then
@@ -99,10 +99,6 @@ var s: string;
     wPiStarted: boolean;
 begin
     application.processMessages;
-
-
-
-
     case ACC of
         1: begin {leitura de um caractere da console}
                ACC := ord(formConsole.memoChar);
@@ -162,7 +158,7 @@ begin
            end;
         //RaspPiTraps
 {$IFnDEF Win32}
-  {$IFDef ARMCPU}
+  {$IFDef CPUARM}
         100: begin   //inicializa wiringPi Lib
                wiringPiStarted();
              end;
