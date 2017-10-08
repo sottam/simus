@@ -40,10 +40,10 @@ unit uSound;
 
 interface
 uses
-{$IFDef win32}
+{$IFDef MSWINDOWS}
   MMSystem, Windows,
 {$ENDIF}
-{$IFnDEF Win32}
+{$IFnDEF MSWINDOWS}
   Unix, BaseUnix,
 {$ELSE}
   LCLIntf, LCLType, LMessages;

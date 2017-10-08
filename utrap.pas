@@ -40,10 +40,10 @@ unit utrap;
 
 interface
 uses
-{$IFDef Win32}
+{$IFDef MSWINDOWS}
   windows,
 {$ENDIF}
-{$IFnDEF Win32}
+{$IFnDEF MSWINDOWS}
   Unix, BaseUnix,
   {$IFDef ARMCPU}
     h2wiringpi,
