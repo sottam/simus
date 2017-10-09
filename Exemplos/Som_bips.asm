@@ -8,9 +8,5 @@ loop:
 
     nop
     hlt
-
-
-
-
 freq:   dw 440
 dur:    dw 100

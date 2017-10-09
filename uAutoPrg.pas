@@ -282,7 +282,7 @@ begin
 
     s := s + #$0d + #$0a;
     Clipboard.SetTextBuf(@s[1]);
-    formPrincipal.editor.PasteFromClipboard;
+    formPrincipal.SynEditor.PasteFromClipboard;
 
     e_operando.text := '';
     e_comentario.text := '';

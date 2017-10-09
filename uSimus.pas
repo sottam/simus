@@ -46,8 +46,9 @@ uses
 {$ELSE}
   LCLIntf, LCLType, LMessages,
 {$ENDIF}
-  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Menus, Buttons, uSimula, ExtCtrls, ComCtrls;
+  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, Menus, Buttons, uSimula, ExtCtrls, ComCtrls, SynEdit,
+  SynHighlighterPas, SynHighlighterAny, SynCompletion, Types;
 
 type
 
@@ -80,6 +81,10 @@ type
     ledOn_exec: TSpeedButton;
     ledOff_exec: TSpeedButton;
     Label4: TLabel;
+    Highlighter: TSynAnySyn;
+    SynCompletion: TSynCompletion;
+    SynEditor: TSynEdit;
+    TabSheet4: TTabSheet;
     Timer1: TTimer;
     AbrirLingMquina1: TMenuItem;
     SalvarLingMquina1: TMenuItem;
@@ -157,9 +162,7 @@ type
     Bevel3: TBevel;
     Bevel4: TBevel;
     PageControl1: TPageControl;
-    TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
-    editor: TMemo;
     lb_instrucoes: TListBox;
     TabSheet3: TTabSheet;
     m_listagem: TMemo;
@@ -168,7 +171,6 @@ type
     ProgramaoTutorada1: TMenuItem;
     Conversordebases1: TMenuItem;
     PainelControle: TPanel;
-    l_posCursor: TLabel;
     lb_dados: TListBox;
     Splitter1: TSplitter;
     b_0: TButton;
@@ -186,7 +188,12 @@ type
     Bevel5: TBevel;
     CompileBtn: TSpeedButton;
     procedure b_pararClick(Sender: TObject);
+    procedure editorChange(Sender: TObject);
     procedure l_bannerClick(Sender: TObject);
+    procedure PageControl1Change(Sender: TObject);
+    procedure SynEditorChange(Sender: TObject);
+    procedure TabSheet4ContextPopup(Sender: TObject; MousePos: TPoint;
+      var Handled: Boolean);
     procedure Timer1Timer(Sender: TObject);
     procedure b_executarClick(Sender: TObject);
     procedure b_resetClick(Sender: TObject);
@@ -236,10 +243,6 @@ type
     procedure cb_hexaClick(Sender: TObject);
     procedure Conversordebases1Click(Sender: TObject);
     procedure dumpMemClick(Sender: TObject);
-    procedure editorEnter(Sender: TObject);
-    procedure editorExit(Sender: TObject);
-    procedure editorMouseUp(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
     procedure b_tecladoClick(Sender: TObject);
   private
     { Private declarations }
@@ -530,7 +533,7 @@ end;
 
 procedure TformPrincipal.Sair1Click(Sender: TObject);
 begin
-    if editor.Lines.count <> 0 then
+    if SynEditor.Lines.count <> 0 then
         if MessageDlg('Tudo foi salvo?',
               mtConfirmation, [mbYes, mbNo], 0) = mrYes then
             Close;
@@ -550,7 +553,7 @@ procedure TformPrincipal.Abrir1Click(Sender: TObject);
 begin
     b_pararClick(Sender);
 
-    if editor.Lines.count <> 0 then
+    if SynEditor.Lines.count <> 0 then
         if MessageDlg('Tudo foi salvo?',
               mtConfirmation, [mbYes, mbNo], 0) <> mrYes then exit;
 
@@ -558,7 +561,8 @@ begin
         begin
             nomeArq := openDialog1.FileName;
             try
-                editor.lines.LoadFromFile(nomeArq);
+                SynEditor.Lines.LoadFromFile(nomeArq);
+                //editor.lines.LoadFromFile(nomeArq);
                 caption := nomeArq + ' - Simulador do processador Sapiens-8';
                 m_listagem.Clear;
                 lb_instrucoes.Clear;
@@ -583,7 +587,7 @@ begin
             nomeArq := SaveDialog1.FileName;
             if nomeArq <> '' then
                 begin
-                    editor.Lines.SaveToFile(nomeArq);
+                    SynEditor.Lines.SaveToFile(nomeArq);
                     caption := nomeArq + ' - Simulador do processador Sapiens-8';
                 end;
         end;
@@ -591,20 +595,21 @@ end;
 
 procedure TformPrincipal.limpaEditor;
 begin
-    editor.clear;
-    editor.lines.add (';---------------------------------------------------');
-    editor.lines.add ('; Programa:');
-    editor.lines.add ('; Autor:');
-    editor.lines.add ('; Data:');
-    editor.lines.add (';---------------------------------------------------');
-    editor.SelStart := editor.GetTextLen;
+    SynEditor.clear;
+    SynEditor.lines.add (';---------------------------------------------------');
+    SynEditor.lines.add ('; Programa:');
+    SynEditor.lines.add ('; Autor:');
+    SynEditor.lines.add ('; Data:');
+    SynEditor.lines.add (';---------------------------------------------------');
+    SynEditor.Lines.Add('');
+    SynEditor.SelStart := SynEditor.GetTextLen;
 end;
 
 procedure TformPrincipal.Novo1Click(Sender: TObject);
 begin
     b_pararClick(Sender);
 
-    if editor.Lines.count <> 0 then
+    if SynEditor.Lines.count <> 0 then
         if MessageDlg('Tudo foi salvo?',
               mtConfirmation, [mbYes, mbNo], 0) <> mrYes then exit;
 
@@ -622,7 +627,7 @@ end;
 procedure TformPrincipal.Salvar1Click(Sender: TObject);
 begin
     if nomeArq <> '' then
-        editor.Lines.SaveToFile(nomeArq)
+        SynEditor.Lines.SaveToFile(nomeArq)
     else
         salvarComo1Click (sender);
 end;
@@ -947,22 +952,23 @@ end;
 
 procedure TformPrincipal.CutBtnClick(Sender: TObject);
 begin
-    editor.CutToClipboard;
+    SynEditor.CutToClipboard;
 end;
 
 procedure TformPrincipal.CopyBtnClick(Sender: TObject);
 begin
-    editor.CopyToClipboard;
+    SynEditor.CopyToClipboard;
 end;
 
 procedure TformPrincipal.PasteBtnClick(Sender: TObject);
 begin
-    editor.PasteFromClipboard;
+    SynEditor.PasteFromClipboard;
 end;
 
 procedure TformPrincipal.Desfazer1Click(Sender: TObject);
 begin
-    editor.Undo;
+    SynEditor.Undo;
+
 end;
 
 procedure TformPrincipal.Ajuda2Click(Sender: TObject);
@@ -976,13 +982,7 @@ end;
 
 procedure TformPrincipal.editorKeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
-var
-   posx, posy: string;
 begin
-    str (editor.CaretPos.x+1, posx);
-    str (editor.CaretPos.y+1, posy);
-    l_posCursor.Caption := 'L=' + posy + ' C=' + posx;
-
     if Key = VK_F5 then
         Compilar1Click(Sender)
     else
@@ -1013,26 +1013,6 @@ procedure TformPrincipal.dumpMemClick(Sender: TObject);
 begin
     enderAlterado := dumpMem.ItemIndex * 8;
     mostraAlterado (true);
-end;
-
-procedure TformPrincipal.editorEnter(Sender: TObject);
-begin
-    l_posCursor.visible := true;
-end;
-
-procedure TformPrincipal.editorExit(Sender: TObject);
-begin
-    l_posCursor.visible := false;
-end;
-
-procedure TformPrincipal.editorMouseUp(Sender: TObject;
-  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
-var
-    posx, posy: string;
-begin
-    str (editor.CaretPos.x+1, posx);
-    str (editor.CaretPos.y+1, posy);
-    l_posCursor.Caption := 'L=' + posy + ' C=' + posx;
 end;
 
 procedure TformPrincipal.b_tecladoClick(Sender: TObject);
@@ -1075,7 +1055,28 @@ begin
     atualizaInterface;
 end;
 
+procedure TformPrincipal.editorChange(Sender: TObject);
+begin
+
+end;
+
 procedure TformPrincipal.l_bannerClick(Sender: TObject);
+begin
+
+end;
+
+procedure TformPrincipal.PageControl1Change(Sender: TObject);
+begin
+
+end;
+
+procedure TformPrincipal.SynEditorChange(Sender: TObject);
+begin
+
+end;
+
+procedure TformPrincipal.TabSheet4ContextPopup(Sender: TObject;
+  MousePos: TPoint; var Handled: Boolean);
 begin
 
 end;

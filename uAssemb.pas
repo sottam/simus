@@ -495,9 +495,9 @@ begin
     lc := 0;
 
     with formPrincipal do
-        for l := 0 to editor.Lines.Count-1 do
+        for l := 0 to SynEditor.Lines.Count-1 do
             begin
-                s := editor.lines[l];
+                s := SynEditor.lines[l];
                 s := trim (s);
                 if (s = '') or (s[1] = ';') then continue;
 
@@ -623,13 +623,13 @@ begin
     setLength (debugDados, 0);
 
     with formPrincipal do
-        for l := 0 to editor.Lines.Count-1 do
+        for l := 0 to SynEditor.Lines.Count-1 do
             begin
                 str (l+1:4, numS);
                 enderS := '    ';
                 codS   := '        ';
 
-                s := trim (editor.lines[l]);
+                s := trim (SynEditor.lines[l]);
                 s := StringReplace(s, #9, '        ', [rfReplaceAll]);   // provisório
 
                 if (s <> '') and (s[1] <> ';') then
@@ -792,7 +792,7 @@ fazListagem:
                 s := copy (numS+ '          ', 1, 5);
                 s := s + '  ' + copy (enderS + '      ', 1, 6);
                 s := s + '  ' + copy (codS   + '          ', 1, 12);
-                s := s + '  ' + editor.lines[l];
+                s := s + '  ' + SynEditor.lines[l];
                 listagem.add (s);
             end;
 end;
