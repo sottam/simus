@@ -1,7 +1,7 @@
 object formPrincipal: TformPrincipal
-  Left = 390
+  Left = 734
   Height = 686
-  Top = 147
+  Top = 234
   Width = 956
   Caption = 'SimuS - Simulador do processador Sapiens-8'
   ClientHeight = 666
@@ -13,6 +13,7 @@ object formPrincipal: TformPrincipal
   Font.Name = 'MS Sans Serif'
   Menu = Simulador
   OnActivate = FormActivate
+  OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnResize = FormResize
   Position = poDesktopCenter
@@ -742,6 +743,8 @@ object formPrincipal: TformPrincipal
           Lines.Strings = (
             'SynEditor'
           )
+          Options = [eoAutoIndent, eoBracketHighlight, eoGroupUndo, eoHideRightMargin, eoPersistentCaret, eoScrollPastEol, eoSmartTabs, eoTabIndent, eoTabsToSpaces, eoTrimTrailingSpaces, eoDragDropEditing]
+          MouseOptions = [emDragDropEditing]
           VisibleSpecialChars = [vscSpace, vscTabAtLast]
           SelectedColor.BackPriority = 50
           SelectedColor.ForePriority = 50
@@ -4462,7 +4465,7 @@ object formPrincipal: TformPrincipal
   end
   object Highlighter: TSynAnySyn
     Enabled = False
-    CommentAttri.Foreground = clActiveBorder
+    CommentAttri.Foreground = clBlue
     CommentAttri.Style = []
     Comments = [csAsmStyle]
     DetectPreprocessor = False
@@ -4571,5 +4574,53 @@ object formPrincipal: TformPrincipal
     Editor = SynEditor
     left = 64
     top = 280
+  end
+  object SynAutoComplete: TSynAutoComplete
+    AutoCompleteList.Strings = (
+      'ADC'
+      'ADD'
+      'AND'
+      'DB'
+      'DS'
+      'DW'
+      'END'
+      'EQU'
+      'HLT'
+      'IN'
+      'JC'
+      'JMP'
+      'JN'
+      'JNC'
+      'JNZ'
+      'JP'
+      'JSR'
+      'JZ'
+      'LDA'
+      'LDI'
+      'LDS'
+      'NOP'
+      'NOT'
+      'OR'
+      'ORG'
+      'OUT'
+      'POP'
+      'PUSH'
+      'RET'
+      'SBC'
+      'SHL'
+      'SHR'
+      'SRA'
+      'STA'
+      'STS'
+      'SUB'
+      'TRAP'
+      'XOR'
+    )
+    EndOfTokenChr = '()[].'
+    ShortCut = 8224
+    ExecCommandID = ecSynAutoCompletionExecute
+    Editor = SynEditor
+    left = 64
+    top = 320
   end
 end

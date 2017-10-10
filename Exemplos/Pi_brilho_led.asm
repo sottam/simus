@@ -22,69 +22,69 @@ LOOP:
 ;-----------------------------------
 FADEIN:
 ; Valor inicial PWM = 0
-LDA #0
-STA PWM_HIGH
-STA PWM_LOW
+      LDA #0
+      STA PWM_HIGH
+      STA PWM_LOW
 
 LOOPFIN:
 ; Gera sinal PWM (0 – 1023)
-JSR TRAP_PWM
+      JSR TRAP_PWM
 ; lê a parte baixa do PWM
-LDA PWM_LOW
+      LDA PWM_LOW
 ; incrementa de 16 (passo)
-ADD VELFADE
+      ADD VELFADE
 ; armazena 8 bits da parte baixa
-STA PWM_LOW
-LDA #0
+      STA PWM_LOW
+      LDA #0
 ; se deu carry soma 1 na parte alta
-ADC PWM_HIGH
+      ADC PWM_HIGH
 ; armazena 8 bits da parte alta
-STA PWM_HIGH
+      STA PWM_HIGH
 ; se chegou ao final (ou seja 1024)
-SUB #04H
-JNZ LOOPFIN
+      SUB #04H
+      JNZ LOOPFIN
 ; retorna
-RET
+      RET
 ;-----------------------------------
 FADEOUT:
 ; Valor inicial PWM = 1008
-LDA #03
-STA PWM_HIGH
-LDA #0F0H
-STA PWM_LOW
+      LDA #03
+      STA PWM_HIGH
+      LDA #0F0H
+      STA PWM_LOW
 LOOPFOUT:
 ; Gera sinal PWM (0 - 1023)
-JSR TRAP_PWM
+      JSR TRAP_PWM
 ; Lê da parte baixa do PWM
-LDA PWM_LOW
+      LDA PWM_LOW
 ; Diminui de 16
-SUB VELFADE
+      SUB VELFADE
 ; armazena 8 bits da parte baixa
-STA PWM_LOW
+      STA PWM_LOW
 ; Carrega parte alta
-LDA PWM_HIGH
+      LDA PWM_HIGH
 ; Se deu carry subtrai 1 da parte alta
-SBC #0
+      SBC #0
 ; armazena 8 bits da parte alta
-STA PWM_HIGH
-JP LOOPFOUT
-JZ LOOPFOUT
+      STA PWM_HIGH
+      JP LOOPFOUT
+      JZ LOOPFOUT
 ; Se for negativo retorna
-RET
+      RET
 ;-----------------------------------
 TRAP_PWM:
 ; prepara parametros 
-LDA PWM_LOW
-STA TRAP_PARAM+1
-LDA PWM_HIGH
-STA TRAP_PARAM+2
-LDA #PWM_TRAP
+      LDA PWM_LOW
+      STA TRAP_PARAM+1
+      LDA PWM_HIGH
+      STA TRAP_PARAM+2
+      LDA #PWM_TRAP
 ; executa o trap
-TRAP TRAP_PARAM
+      TRAP TRAP_PARAM
 ; espera 20 Milissegundos
-LDA #DELAY_TRAP
-TRAP TIME
-RET
+      LDA #DELAY_TRAP
+      TRAP TIME
+      RET
 ;-----------------------------------
       TIME: DW 1
       VELFADE: DW 8

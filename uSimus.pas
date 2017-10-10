@@ -82,6 +82,7 @@ type
     ledOff_exec: TSpeedButton;
     Label4: TLabel;
     Highlighter: TSynAnySyn;
+    SynAutoComplete: TSynAutoComplete;
     SynCompletion: TSynCompletion;
     SynEditor: TSynEdit;
     TabSheet4: TTabSheet;
@@ -188,7 +189,7 @@ type
     Bevel5: TBevel;
     CompileBtn: TSpeedButton;
     procedure b_pararClick(Sender: TObject);
-    procedure editorChange(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure l_bannerClick(Sender: TObject);
     procedure PageControl1Change(Sender: TObject);
     procedure SynEditorChange(Sender: TObject);
@@ -215,6 +216,7 @@ type
     procedure Abrir1Click(Sender: TObject);
     procedure SalvarComo1Click(Sender: TObject);
     procedure Novo1Click(Sender: TObject);
+    procedure NovoArquivo;
     procedure Salvar1Click(Sender: TObject);
     procedure SalvarLingMquina1Click(Sender: TObject);
     procedure AbrirLingMquina1Click(Sender: TObject);
@@ -256,6 +258,7 @@ type
     procedure atualizaDump;
     procedure atualizaLeds;
     procedure atualizaDados (zerando: boolean);
+    //procedure NovoArquivo;
   end;
 
 var
@@ -533,10 +536,7 @@ end;
 
 procedure TformPrincipal.Sair1Click(Sender: TObject);
 begin
-    if SynEditor.Lines.count <> 0 then
-        if MessageDlg('Tudo foi salvo?',
-              mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-            Close;
+  Close;
 end;
 
 procedure TformPrincipal.Sobreoprograma1Click(Sender: TObject);
@@ -553,7 +553,7 @@ procedure TformPrincipal.Abrir1Click(Sender: TObject);
 begin
     b_pararClick(Sender);
 
-    if SynEditor.Lines.count <> 0 then
+    if SynEditor.Modified <> false then
         if MessageDlg('Tudo foi salvo?',
               mtConfirmation, [mbYes, mbNo], 0) <> mrYes then exit;
 
@@ -562,7 +562,6 @@ begin
             nomeArq := openDialog1.FileName;
             try
                 SynEditor.Lines.LoadFromFile(nomeArq);
-                //editor.lines.LoadFromFile(nomeArq);
                 caption := nomeArq + ' - Simulador do processador Sapiens-8';
                 m_listagem.Clear;
                 lb_instrucoes.Clear;
@@ -605,23 +604,48 @@ begin
     SynEditor.SelStart := SynEditor.GetTextLen;
 end;
 
+procedure TformPrincipal.NovoArquivo;
+begin
+  nomeArq := '';
+  caption := 'Simulador do processador Sapiens-8';
+  limpaEditor;
+  m_listagem.Clear;
+  lb_instrucoes.Clear;
+
+  ndebugDados := 0;
+  setLength (debugDados, ndebugDados);
+  lb_dados.Clear;
+end;
+
 procedure TformPrincipal.Novo1Click(Sender: TObject);
 begin
     b_pararClick(Sender);
 
-    if SynEditor.Lines.count <> 0 then
-        if MessageDlg('Tudo foi salvo?',
-              mtConfirmation, [mbYes, mbNo], 0) <> mrYes then exit;
+    if SynEditor.Modified <> false then
+        if MessageDlg('Tudo foi salvo?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+            begin
+              NovoArquivo;
+            end
+        else
+            begin
+              if nomeArq <> '' then
+                 SaveDialog1.FileName := nomeArq;
 
-    nomeArq := '';
-    caption := 'Simulador do processador Sapiens-8';
-    limpaEditor;
-    m_listagem.Clear;
-    lb_instrucoes.Clear;
-
-    ndebugDados := 0;
-    setLength (debugDados, ndebugDados);
-    lb_dados.Clear;
+              if SaveDialog1.execute then
+                  begin
+                    nomeArq := SaveDialog1.FileName;
+                    if nomeArq <> '' then
+                       begin
+                         SynEditor.Lines.SaveToFile(nomeArq);
+                         caption := nomeArq + ' - Simulador do processador Sapiens-8';
+                       end;
+                    NovoArquivo;
+                  end
+              else
+                begin
+                  exit;
+                end;
+            end;
 end;
 
 procedure TformPrincipal.Salvar1Click(Sender: TObject);
@@ -1055,9 +1079,33 @@ begin
     atualizaInterface;
 end;
 
-procedure TformPrincipal.editorChange(Sender: TObject);
+procedure TformPrincipal.FormCloseQuery(Sender: TObject; var CanClose: boolean);
 begin
+  if SynEditor.Modified <> false then
+        if MessageDlg('Deseja salvar antes de sair?', mtConfirmation, [mbYes, mbNo], 0) = mrNo then
+            begin
+              exit;
+            end
+        else
+            begin
+              if nomeArq <> '' then
+                 SaveDialog1.FileName := nomeArq;
 
+
+              if SaveDialog1.execute then
+                  begin
+                    nomeArq := SaveDialog1.FileName;
+                    if nomeArq <> '' then
+                       begin
+                         SynEditor.Lines.SaveToFile(nomeArq);
+                         caption := nomeArq + ' - Simulador do processador Sapiens-8';
+                       end;
+                  end
+              else
+                 begin
+                   canClose := false;
+                 end;
+            end;
 end;
 
 procedure TformPrincipal.l_bannerClick(Sender: TObject);
