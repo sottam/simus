@@ -1,12 +1,12 @@
 loop:
-    ldi 6
-    trap freq
-    lda  freq
-    add  #10
-    sta  freq
-    jmp  loop 
+    LDI 6
+    TRAP freq
+    LDA  freq
+    ADD  #10
+    STA  freq
+    JMP  loop
 
-    nop
-    hlt
+    NOP
+    HLT
 freq:   dw 440
 dur:    dw 100

@@ -53,11 +53,14 @@ uses
   uAssemb in 'uAssemb.pas',
   uconsole in 'uconsole.pas' {FormConsole},
   uSound in 'uSound.pas',
-  FirmataPascal in 'firmatapascal.pas';
+  FirmataPascal in 'firmatapascal.pas',
+  openAl in 'openal.pas';
 
 {$R *.res}
 
 begin
+  openal.InitOpenAL;
+  openal.alutInit(nil, PALbyte(argv));
   Application.Initialize;
   Application.CreateForm(TformPrincipal, formPrincipal);
   Application.CreateForm(TformHex, formHex);
@@ -65,5 +68,6 @@ begin
   Application.CreateForm(TformAutoMonta, formAutoMonta);
   Application.CreateForm(TFormConsole, FormConsole);
   Application.Run;
+  openal.AlutExit;
   FirmataPascal.finalizeComm;
 end.

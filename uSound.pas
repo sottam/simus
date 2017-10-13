@@ -46,7 +46,7 @@ uses
 {$IFnDEF MSWINDOWS}
   Unix, BaseUnix,
 {$ENDIF}
-  LCLIntf, LCLType, LMessages;
+  LCLIntf, LCLType, LMessages, openal, Sysutils;
 
 procedure SoundPlay(Hz: Word; durMS: integer);
 
@@ -66,10 +66,28 @@ type
 var
     PSound: ^TSound;
 
+    buffer : TALuint;
+    source : TALuint;
+    sourcepos: array [0..2] of TALfloat= ( 0.0, 0.0, 0.0 );
+    sourcevel: array [0..2] of TALfloat= ( 0.0, 0.0, 0.0 );
+    listenerpos: array [0..2] of TALfloat= ( 0.0, 0.0, 0.0);
+    listenervel: array [0..2] of TALfloat= ( 0.0, 0.0, 0.0);
+    listenerori: array [0..5] of TALfloat= ( 0.0, 0.0, -1.0, 0.0, 1.0, 0.0);
+
+    argv: array of PALByte;
+    format: TALEnum;
+    size: TALSizei;
+    freq: TALSizei;
+    loop: TALInt;
+    data: TALVoid;
+
+    openalinitialized: boolean;
+
 procedure SoundPlay(Hz: Word; durMS: integer);
 var l: longint;
     p, period: integer;
 begin
+{$ifdef MSWINDOWS}
     getMem (psound, sizeof (psound^)+2);  {1 second}
     if hz <> 0 then
         period := 11025 div hz
@@ -93,17 +111,50 @@ begin
     move (l, wavHdr[4], 4);
     move (wavHdr, psound^, sizeof (wavHdr));
 
-{$ifdef Win32}
+
     sndPlaySound (pchar (psound), snd_async + snd_memory + snd_loop);
     sleep (durMS);
     sndPlaySound (NIL, snd_sync);
-{$else}
 
-    // Gabriel, complete isso
+    freeMem (psound, sizeof (psound^)+2);  {1 second}
+{$else}
+       (*if openalinitialized <> true then
+           begin
+             InitOpenAL;
+             AlutInit(nil,argv);
+             openalinitialized:= true;
+           end; *)
+
+    format:= AL_FORMAT_MONO8;
+    data:= @wavHdr;
+    size:= sizeof (Psound);
+    freq:= Hz;
+
+    AlGenBuffers (1, @buffer);
+    AlBufferData (buffer, format, data, size, freq);
+
+    AlGenSources (1, @source);
+    AlSourcei    ( source, AL_BUFFER, buffer);
+    AlSourcef    ( source, AL_PITCH, 1.0 );
+    AlSourcef    ( source, AL_GAIN, 1.0 );
+    AlSourcefv   ( source, AL_POSITION, @sourcepos);
+    AlSourcefv   ( source, AL_VELOCITY, @sourcevel);
+    AlSourcei    ( source, AL_LOOPING, AL_TRUE);
+
+    AlListenerfv ( AL_POSITION, @listenerpos);
+    AlListenerfv ( AL_VELOCITY, @listenervel);
+    AlListenerfv ( AL_ORIENTATION, @listenerori);
+
+    AlSourcePlay(source);
+    sleep(durMS);
+    //AlSourceStop(source);
+    alSourcePause(source);
+    //AlDeleteBuffers(1, @buffer);
+    //AlDeleteSources(1, @source);
 
 {$endif}
 
-    freeMem (psound, sizeof (psound^)+2);  {1 second}
+
 end;
 
 end.
