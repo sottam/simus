@@ -71,16 +71,12 @@ var
     listenervel: array [0..2] of TALfloat= ( 0.0, 0.0, 0.0);
     listenerori: array [0..5] of TALfloat= ( 0.0, 0.0, -1.0, 0.0, 1.0, 0.0);
 
-    argv: array of PALByte;
     format: TALEnum;
     size: TALSizei;
     freq: TALSizei;
-    loop: TALInt;
     data: TALVoid;
 
 procedure SoundPlay(Hz: Word; durMS: integer);
-var l: longint;
-    p, period: integer;
 begin
     format:= AL_FORMAT_MONO8;
     data:= @wavHdr;
