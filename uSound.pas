@@ -41,7 +41,7 @@ unit uSound;
 interface
 uses
 {$IFDef MSWINDOWS}
-  MMSystem, Windows,
+  Windows,
 {$ENDIF}
 {$IFnDEF MSWINDOWS}
   Unix, BaseUnix,
@@ -51,7 +51,6 @@ uses
 procedure SoundPlay(Hz: Word; durMS: integer);
 
 implementation
-
 const
      soundSize = 11025;
 var
@@ -59,10 +58,8 @@ var
         $52, $49, $46, $46, $ff, $ff, $ff, $ff, $57, $41, $56, $45, $66, $6d, $74, $20,
         $10, $00, $00, $00, $01, $00, $01, $00, $11, $2b, $00, $00, $11, $2b, $00, $00,
         $01, $00, $08, $00, $64, $61, $74, $61, $ff, $ff, $ff, $ff);
-
 type
     TSound = array [0.. sizeof (wavHdr) + soundSize-1] of byte;
-
 var
     PSound: ^TSound;
 
@@ -81,54 +78,14 @@ var
     loop: TALInt;
     data: TALVoid;
 
-    openalinitialized: boolean;
-
 procedure SoundPlay(Hz: Word; durMS: integer);
 var l: longint;
     p, period: integer;
 begin
-{$ifdef MSWINDOWS}
-    getMem (psound, sizeof (psound^)+2);  {1 second}
-    if hz <> 0 then
-        period := 11025 div hz
-    else
-        period := 11025;
-    p := sizeof (wavHdr);
-    l := 0;
-    while p <= soundSize-period do
-        begin
-            fillchar (psound^[p], period div 2 + 1, $60);
-            p := p + period div 2;
-            fillchar (psound^[p], period-(period div 2)+1, $a0);
-            p := sizeof (wavHdr) +
-                 integer (longint(11025)* l div longint(hz));
-            l := l + 1;
-        end;
-    psound^[p-1] := $80;
-    l := p - sizeof (wavHdr);
-    move (l, wavHdr[40], 4);
-    l := l + 36;
-    move (l, wavHdr[4], 4);
-    move (wavHdr, psound^, sizeof (wavHdr));
-
-
-    sndPlaySound (pchar (psound), snd_async + snd_memory + snd_loop);
-    sleep (durMS);
-    sndPlaySound (NIL, snd_sync);
-
-    freeMem (psound, sizeof (psound^)+2);  {1 second}
-{$else}
-       (*if openalinitialized <> true then
-           begin
-             InitOpenAL;
-             AlutInit(nil,argv);
-             openalinitialized:= true;
-           end; *)
-
     format:= AL_FORMAT_MONO8;
     data:= @wavHdr;
     size:= sizeof (Psound);
-    freq:= Hz;
+    freq:= hz;
 
     AlGenBuffers (1, @buffer);
     AlBufferData (buffer, format, data, size, freq);
@@ -149,12 +106,8 @@ begin
     sleep(durMS);
     //AlSourceStop(source);
     alSourcePause(source);
-    //AlDeleteBuffers(1, @buffer);
-    //AlDeleteSources(1, @source);
-
-{$endif}
-
-
+    AlDeleteBuffers(1, @buffer);
+    AlDeleteSources(1, @source);
 end;
 
 end.

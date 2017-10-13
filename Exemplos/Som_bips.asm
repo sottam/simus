@@ -9,4 +9,4 @@ loop:
     NOP
     HLT
 freq:   dw 440
-dur:    dw 100
+dur:    dw 200
