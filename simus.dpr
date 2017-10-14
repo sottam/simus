@@ -69,5 +69,7 @@ begin
   Application.CreateForm(TFormConsole, FormConsole);
   Application.Run;
   openal.AlutExit;
+  {$IFNDEF MSWINDOWS}
   FirmataPascal.finalizeComm;
+  {$ENDIF}
 end.

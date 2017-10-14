@@ -265,6 +265,7 @@ begin
                arduinoSerialStarted();
                pino := pegaMemoria(operandReg, 8);
                valor := pegaMemoria(operandReg+1, 16) and $3FF;
+               firmataPascal.analogWrite(pino, valor);
              end;
     end;
     application.processMessages;

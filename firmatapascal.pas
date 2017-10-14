@@ -59,7 +59,7 @@ procedure initializeComm;
       dev:= TBlockserial.Create;
       writeln('Waiting for arduino to initialize...');
       writeln( synaser.GetSerialPortNames);
-      dev.Connect('COM3');
+      dev.Connect('COM6');
 
       dev.config(57600,8,'N',SB1,false,false);
 
@@ -266,8 +266,11 @@ end;
 procedure finalizeComm;
 begin
   if initialized = true then
-    dev.Purge;
-    dev.free;
+     begin
+       dev.Purge;
+       dev.free;
+     end;
+
 end;
 
 end.
