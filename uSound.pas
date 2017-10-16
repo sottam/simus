@@ -41,17 +41,16 @@ unit uSound;
 interface
 uses
 {$IFDef MSWINDOWS}
-  MMSystem, Windows,
+  Windows,
 {$ENDIF}
 {$IFnDEF MSWINDOWS}
   Unix, BaseUnix,
 {$ENDIF}
-  LCLIntf, LCLType, LMessages;
+  LCLIntf, LCLType, LMessages, openal, Sysutils;
 
 procedure SoundPlay(Hz: Word; durMS: integer);
 
 implementation
-
 const
      soundSize = 11025;
 var
@@ -59,51 +58,52 @@ var
         $52, $49, $46, $46, $ff, $ff, $ff, $ff, $57, $41, $56, $45, $66, $6d, $74, $20,
         $10, $00, $00, $00, $01, $00, $01, $00, $11, $2b, $00, $00, $11, $2b, $00, $00,
         $01, $00, $08, $00, $64, $61, $74, $61, $ff, $ff, $ff, $ff);
-
 type
     TSound = array [0.. sizeof (wavHdr) + soundSize-1] of byte;
-
 var
     PSound: ^TSound;
 
+    buffer : TALuint;
+    source : TALuint;
+    sourcepos: array [0..2] of TALfloat= ( 0.0, 0.0, 0.0 );
+    sourcevel: array [0..2] of TALfloat= ( 0.0, 0.0, 0.0 );
+    listenerpos: array [0..2] of TALfloat= ( 0.0, 0.0, 0.0);
+    listenervel: array [0..2] of TALfloat= ( 0.0, 0.0, 0.0);
+    listenerori: array [0..5] of TALfloat= ( 0.0, 0.0, -1.0, 0.0, 1.0, 0.0);
+
+    format: TALEnum;
+    size: TALSizei;
+    freq: TALSizei;
+    data: TALVoid;
+
 procedure SoundPlay(Hz: Word; durMS: integer);
-var l: longint;
-    p, period: integer;
 begin
-    getMem (psound, sizeof (psound^)+2);  {1 second}
-    if hz <> 0 then
-        period := 11025 div hz
-    else
-        period := 11025;
-    p := sizeof (wavHdr);
-    l := 0;
-    while p <= soundSize-period do
-        begin
-            fillchar (psound^[p], period div 2 + 1, $60);
-            p := p + period div 2;
-            fillchar (psound^[p], period-(period div 2)+1, $a0);
-            p := sizeof (wavHdr) +
-                 integer (longint(11025)* l div longint(hz));
-            l := l + 1;
-        end;
-    psound^[p-1] := $80;
-    l := p - sizeof (wavHdr);
-    move (l, wavHdr[40], 4);
-    l := l + 36;
-    move (l, wavHdr[4], 4);
-    move (wavHdr, psound^, sizeof (wavHdr));
+    format:= AL_FORMAT_MONO8;
+    data:= @wavHdr;
+    size:= sizeof (Psound);
+    freq:= hz;
 
-{$ifdef Win32}
-    sndPlaySound (pchar (psound), snd_async + snd_memory + snd_loop);
-    sleep (durMS);
-    sndPlaySound (NIL, snd_sync);
-{$else}
+    AlGenBuffers (1, @buffer);
+    AlBufferData (buffer, format, data, size, freq);
 
-    // Gabriel, complete isso
+    AlGenSources (1, @source);
+    AlSourcei    ( source, AL_BUFFER, buffer);
+    AlSourcef    ( source, AL_PITCH, 1.0 );
+    AlSourcef    ( source, AL_GAIN, 1.0 );
+    AlSourcefv   ( source, AL_POSITION, @sourcepos);
+    AlSourcefv   ( source, AL_VELOCITY, @sourcevel);
+    AlSourcei    ( source, AL_LOOPING, AL_TRUE);
 
-{$endif}
+    AlListenerfv ( AL_POSITION, @listenerpos);
+    AlListenerfv ( AL_VELOCITY, @listenervel);
+    AlListenerfv ( AL_ORIENTATION, @listenerori);
 
-    freeMem (psound, sizeof (psound^)+2);  {1 second}
+    AlSourcePlay(source);
+    sleep(durMS);
+    //AlSourceStop(source);
+    alSourcePause(source);
+    AlDeleteBuffers(1, @buffer);
+    AlDeleteSources(1, @source);
 end;
 
 end.
