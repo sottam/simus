@@ -1,0 +1,507 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: resstring.sautor
+msgid "; Autor:"
+msgstr ""
+
+#: resstring.scadeiascomecameterminamporaspasouplics
+msgid "Cadeias começam e terminam por aspas ou plics."
+msgstr ""
+
+#: resstring.scomentarioouparametromalformado
+msgid "Comentário ou parâmetro mal formado"
+msgstr ""
+
+#: resstring.scompilacaoemassemblydotexto
+msgid "Compilação (assembly) do texto "
+msgstr ""
+
+#: resstring.sdata
+msgid "; Data:"
+msgstr ""
+
+#: resstring.sdesejasalvarantesdesair
+msgid "Deseja salvar antes de sair?"
+msgstr ""
+
+#: resstring.serroaocarregararquivo
+msgid "Erro ao carregar o arquivo"
+msgstr ""
+
+#: resstring.sestainstrucaonaopossuiparametros
+msgid "Esta instrução não possui parâmetros"
+msgstr ""
+
+#: resstring.sinforme
+msgid "Informe"
+msgstr ""
+
+#: resstring.sinstrucaoinvalida
+msgid "Instrução inválida"
+msgstr ""
+
+#: resstring.slistagem
+msgid "Listagem"
+msgstr ""
+
+#: resstring.snovovalordoacc
+msgid "Novo valor do ACC"
+msgstr ""
+
+#: resstring.snovovalordoflagc
+msgid "Novo valor do flag C"
+msgstr ""
+
+#: resstring.snovovalordoflagn
+msgid "Novo valor do flag N"
+msgstr ""
+
+#: resstring.snovovalordoflagz
+msgid "Novo valor do flag Z"
+msgstr ""
+
+#: resstring.snovovalordopc
+msgid "Novo valor do PC"
+msgstr ""
+
+#: resstring.snumerodeerrosencontrados
+msgid "Número de erros encontrados: "
+msgstr ""
+
+#: resstring.soperandoinvalido
+msgid "Operando inválido"
+msgstr ""
+
+#: resstring.soperandomalformado
+msgid "Operando mal formado"
+msgstr ""
+
+#: resstring.sorigeminvalida
+msgid "Origem inválida"
+msgstr ""
+
+#: resstring.sotipodeparametroeincompativelcomainstrucao
+msgid "O tipo de parâmetro é incompatível com a instrução"
+msgstr ""
+
+#: resstring.sparametrodoequcomerro
+msgid "Parâmetro do EQU com erro"
+msgstr ""
+
+#: resstring.sprograma
+msgid "; Programa:"
+msgstr ""
+
+#: resstring.spseudoinstrucaonaopermiteimediatonemindireto
+msgid "Pseudo-instrução não permite imediato nem indireto"
+msgstr ""
+
+#: resstring.srotuloduplicado
+msgid " - rótulo duplicado"
+msgstr ""
+
+#: resstring.ssimbolo_________linha__endereco
+msgid "Símbolo         Linha  Endereço"
+msgstr ""
+
+#: resstring.ssimuladordoprocsapiens8
+msgid "Simulador do processador Sapiens-8"
+msgstr ""
+
+#: resstring.studofoisalvo
+msgctxt "resstring.studofoisalvo"
+msgid "Tudo foi salvo?"
+msgstr ""
+
+#: resstring.s_databeladesimbolos
+msgid " da tabela de símbolos"
+msgstr ""
+
+#: resstring.s_em
+msgid "Em "
+msgstr ""
+
+#: resstring.s_simuladordoprocsapiens8
+msgid " - Simulador do processador Sapiens-8"
+msgstr ""
+
+#: resstring.s___sapiens8
+msgctxt "resstring.s___sapiens8"
+msgid "   SAPIENS-8"
+msgstr ""
+
+#: resstring.s________atencao
+msgid "********* Atenção: "
+msgstr ""
+
+#: resstring.s________erro
+msgid "********* Erro: "
+msgstr ""
+
+#: tformprincipal.abrir1.caption
+msgid "&Abrir"
+msgstr ""
+
+#: tformprincipal.abrirlingmquina1.caption
+msgid "&Carregar Hexa"
+msgstr ""
+
+#: tformprincipal.ajuda2.caption
+msgid "&Ajuda"
+msgstr ""
+
+#: tformprincipal.arquivo1.caption
+msgid "&Arquivo"
+msgstr ""
+
+#: tformprincipal.assistente1.caption
+msgid "&Tutor de programação"
+msgstr ""
+
+#: tformprincipal.button1.caption
+msgid "2"
+msgstr ""
+
+#: tformprincipal.button10.caption
+msgctxt "TFORMPRINCIPAL.BUTTON10.CAPTION"
+msgid "0"
+msgstr ""
+
+#: tformprincipal.button11.caption
+msgid "#"
+msgstr ""
+
+#: tformprincipal.button2.caption
+msgid "3"
+msgstr ""
+
+#: tformprincipal.button3.caption
+msgid "6"
+msgstr ""
+
+#: tformprincipal.button4.caption
+msgid "5"
+msgstr ""
+
+#: tformprincipal.button5.caption
+msgid "4"
+msgstr ""
+
+#: tformprincipal.button6.caption
+msgid "7"
+msgstr ""
+
+#: tformprincipal.button7.caption
+msgid "8"
+msgstr ""
+
+#: tformprincipal.button8.caption
+msgid "9"
+msgstr ""
+
+#: tformprincipal.button9.caption
+msgid "*"
+msgstr ""
+
+#: tformprincipal.b_0.caption
+msgctxt "TFORMPRINCIPAL.B_0.CAPTION"
+msgid "1"
+msgstr ""
+
+#: tformprincipal.b_acc.caption
+msgid "ACC"
+msgstr ""
+
+#: tformprincipal.b_avanca.caption
+msgid ">>"
+msgstr ""
+
+#: tformprincipal.b_c.caption
+msgid "C"
+msgstr ""
+
+#: tformprincipal.b_entrar.caption
+msgid "Entrar"
+msgstr ""
+
+#: tformprincipal.b_executar.caption
+msgid "Executar"
+msgstr ""
+
+#: tformprincipal.b_n.caption
+msgid "N"
+msgstr ""
+
+#: tformprincipal.b_parar.caption
+msgid "Parar"
+msgstr ""
+
+#: tformprincipal.b_passoapasso.caption
+msgid "Passo a passo"
+msgstr ""
+
+#: tformprincipal.b_pc.caption
+msgid "PC"
+msgstr ""
+
+#: tformprincipal.b_recua.caption
+msgid "<<"
+msgstr ""
+
+#: tformprincipal.b_reset.caption
+msgid "Reset"
+msgstr ""
+
+#: tformprincipal.b_sp.caption
+msgid "SP"
+msgstr ""
+
+#: tformprincipal.b_z.caption
+msgid "Z"
+msgstr ""
+
+#: tformprincipal.b_zera.caption
+msgid "Limpar"
+msgstr ""
+
+#: tformprincipal.caption
+msgid "SimuS - Simulador do processador Sapiens-8"
+msgstr ""
+
+#: tformprincipal.cb_hexa.caption
+msgid "Hexa"
+msgstr ""
+
+#: tformprincipal.cb_rapido.caption
+msgid "Rápido"
+msgstr ""
+
+#: tformprincipal.colar1.caption
+msgid "Co&lar"
+msgstr ""
+
+#: tformprincipal.compilar1.caption
+msgid "&Compilar"
+msgstr ""
+
+#: tformprincipal.compilebtn.hint
+msgid "Compilar"
+msgstr ""
+
+#: tformprincipal.console1.caption
+msgid "C&onsole"
+msgstr ""
+
+#: tformprincipal.conversordebases1.caption
+msgid "&Conversor de bases"
+msgstr ""
+
+#: tformprincipal.copiar1.caption
+msgid "&Copiar"
+msgstr ""
+
+#: tformprincipal.copybtn.hint
+msgid "Copiar seleção"
+msgstr ""
+
+#: tformprincipal.cutbtn.hint
+msgid "Cortar seleção"
+msgstr ""
+
+#: tformprincipal.desfazer1.caption
+msgid "&Desfazer"
+msgstr ""
+
+#: tformprincipal.editar1.caption
+msgid "&Editar"
+msgstr ""
+
+#: tformprincipal.exitbtn.hint
+msgid "Sair"
+msgstr ""
+
+#: tformprincipal.e_ender.text
+msgid "AAAA"
+msgstr ""
+
+#: tformprincipal.label1.caption
+msgid "Pronto"
+msgstr ""
+
+#: tformprincipal.label10.caption
+msgctxt "tformprincipal.label10.caption"
+msgid "1"
+msgstr ""
+
+#: tformprincipal.label11.caption
+msgctxt "tformprincipal.label11.caption"
+msgid "0"
+msgstr ""
+
+#: tformprincipal.label2.caption
+msgid "Instrução:"
+msgstr ""
+
+#: tformprincipal.label3.caption
+msgid "Endereço"
+msgstr ""
+
+#: tformprincipal.label4.caption
+msgid "Executando:"
+msgstr ""
+
+#: tformprincipal.label5.caption
+msgid "Visor"
+msgstr ""
+
+#: tformprincipal.label6.caption
+msgid "Valor:"
+msgstr ""
+
+#: tformprincipal.label8.caption
+msgid "Novo valor"
+msgstr ""
+
+#: tformprincipal.label9.caption
+msgid "Registradores"
+msgstr ""
+
+#: tformprincipal.l_acc.caption
+msgctxt "TFORMPRINCIPAL.L_ACC.CAPTION"
+msgid "00"
+msgstr ""
+
+#: tformprincipal.l_banner.caption
+msgctxt "tformprincipal.l_banner.caption"
+msgid "   SAPIENS-8"
+msgstr ""
+
+#: tformprincipal.l_c.caption
+msgctxt "TFORMPRINCIPAL.L_C.CAPTION"
+msgid "0"
+msgstr ""
+
+#: tformprincipal.l_display.caption
+msgctxt "TFORMPRINCIPAL.L_DISPLAY.CAPTION"
+msgid "00"
+msgstr ""
+
+#: tformprincipal.l_instrucao.caption
+msgid "NOPE"
+msgstr ""
+
+#: tformprincipal.l_n.caption
+msgctxt "TFORMPRINCIPAL.L_N.CAPTION"
+msgid "0"
+msgstr ""
+
+#: tformprincipal.l_operinstrucao.caption
+msgid "@AAAA"
+msgstr ""
+
+#: tformprincipal.l_pc.caption
+msgctxt "tformprincipal.l_pc.caption"
+msgid "0000"
+msgstr ""
+
+#: tformprincipal.l_sp.caption
+msgctxt "TFORMPRINCIPAL.L_SP.CAPTION"
+msgid "0000"
+msgstr ""
+
+#: tformprincipal.l_teclado.caption
+msgctxt "tformprincipal.l_teclado.caption"
+msgid "00"
+msgstr ""
+
+#: tformprincipal.l_z.caption
+msgctxt "TFORMPRINCIPAL.L_Z.CAPTION"
+msgid "0"
+msgstr ""
+
+#: tformprincipal.n1.caption
+msgid "&?"
+msgstr ""
+
+#: tformprincipal.newbnt.hint
+msgid "Novo"
+msgstr ""
+
+#: tformprincipal.novo1.caption
+msgid "&Novo"
+msgstr ""
+
+#: tformprincipal.openbtn.hint
+msgid "Abrir"
+msgstr ""
+
+#: tformprincipal.panel2.caption
+msgid "Panel2"
+msgstr ""
+
+#: tformprincipal.panel3.caption
+msgid "Panel3"
+msgstr ""
+
+#: tformprincipal.pastebtn.hint
+msgid "Colar"
+msgstr ""
+
+#: tformprincipal.programaotutorada1.caption
+msgid "&Programação Tutorada"
+msgstr ""
+
+#: tformprincipal.recortar1.caption
+msgid "&Recortar"
+msgstr ""
+
+#: tformprincipal.sair1.caption
+msgid "Sai&r"
+msgstr ""
+
+#: tformprincipal.salvar1.caption
+msgid "&Salvar"
+msgstr ""
+
+#: tformprincipal.salvarcomo1.caption
+msgid "Salvar &Como"
+msgstr ""
+
+#: tformprincipal.salvarlingmquina1.caption
+msgid "&Descarregar Hexa"
+msgstr ""
+
+#: tformprincipal.savebtn.hint
+msgid "Salvar"
+msgstr ""
+
+#: tformprincipal.sobreoprograma1.caption
+msgid "&Sobre o programa"
+msgstr ""
+
+#: tformprincipal.tabsheet2.caption
+msgid "Compilação"
+msgstr ""
+
+#: tformprincipal.tabsheet3.caption
+msgid "Execução"
+msgstr ""
+
+#: tformprincipal.tabsheet4.caption
+msgid "Edição"
+msgstr ""
+
+#: tformprincipal.tutorbtn.hint
+msgid "Tutor"
+msgstr ""
+
+#: tformprincipal.zerarmemria1.caption
+msgid "&Zerar memória"
+msgstr ""
+
+#: usimus.studofoisalvo
+msgctxt "usimus.studofoisalvo"
+msgid "Tudo foi salvo?"
+msgstr ""
+

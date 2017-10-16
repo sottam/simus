@@ -41,7 +41,7 @@ unit uAssemb;
 interface
 
 uses
-    classes, sysUtils, uHex, uvars, dialogs;
+    classes, sysUtils, uHex, uvars, dialogs,ResString;
 
 var
     listagem: TStringList;
@@ -74,13 +74,13 @@ var
 
 procedure mostraErro (s: string);
 begin
-    listagem.add ('********* Erro: ' + s);
+    listagem.add (S________Erro + s);
     numErros := numErros + 1;
 end;
 
 procedure mostraAviso (s: string);
 begin
-    listagem.add ('********* Atenção: ' + s);
+    listagem.add (S________Atencao + s);
 end;
 
 procedure inicAssembler;
@@ -297,7 +297,7 @@ begin
                                tamParam := 0;
                                if passo = 2 then
                                    begin
-                                       mostraErro ('Cadeias começam e terminam por aspas ou plics.');
+                                       mostraErro (SCadeiasComecamETerminamPorAspasOuPlics);
                                        goto fimDaLinha;
                                    end;
                            end
@@ -338,7 +338,7 @@ begin
                            erro := true;
                            if passo = 2 then
                                begin
-                                   mostraErro ('Pseudo-instrução não permite imediato nem indireto');
+                                   mostraErro (SPseudoInstrucaoNaoPermiteImediatoNemIndireto);
                                    goto fimDaLinha;
                                end;
                        end;
@@ -364,7 +364,7 @@ veSeTerminou:
         begin
             erro := true;
             if passo = 2 then
-                mostraErro ('Comentário ou parâmetro mal formado');
+                mostraErro (SComentarioOuParametroMalFormado);
         end;
 
 fimDaLinha:
@@ -377,8 +377,8 @@ begin
     if numErros <> 0 then
         begin
             listagem.add ('');
-            listagem.add ('Número de erros encontrados: ' + intToStr (numErros));
-            showMessage  ('Número de erros encontrados: ' + intToStr (numErros));
+            listagem.add (SNumeroDeErrosEncontrados + intToStr (numErros));
+            showMessage  (SNumeroDeErrosEncontrados + intToStr (numErros));
         end;
 
     for i := 0 to tabSimbolos.count-1 do
@@ -477,7 +477,7 @@ begin
     infoSimb.Ender := valor;
 
     if tabSimbolos.Find(rotulo, i) then
-        mostraErro (rotulo + ' - rótulo duplicado')
+        mostraErro (rotulo + SRotuloDuplicado)
     else
        tabSimbolos.AddObject(rotulo, infoSimb);
 end;
@@ -508,7 +508,7 @@ begin
                         begin
                             insereTabSimb (rotulo, l, pegaValor(operando, $ffff, erro));
                             if erro then
-                                mostraErro('Parâmetro do EQU com erro');
+                                mostraErro(SParametroDoEQUcomErro);
                             erro := false;
                         end
                     else
@@ -563,7 +563,7 @@ begin
         v := pegaValorOuSimbolo (umOper, '', mask, erro);
         if erro then
             begin
-                mostraErro('Operando inválido');
+                mostraErro(SOperandoInvalido);
                 exit;
             end;
 
@@ -648,18 +648,18 @@ begin
                             indTI := indTabInstrPorCod[instrucao];
 
                         if indTI = INVALIDA then
-                            mostraErro('Instrução inválida')
+                            mostraErro(SInstrucaoInvalida)
                         else
                         if instrucao <> _END then
                             begin
                                 if tipoParam = NADA then
                                     begin
                                         if tabInstrucoes[indTI].params <> NADA then
-                                             mostraErro('Esta instrução não possui parâmetros');
+                                             mostraErro(SEstaInstrucaoNaoPossuiParametros);
                                     end
                                 else
                                 if (tipoParam and tabInstrucoes[indTI].params) = 0 then
-                                    mostraErro('O tipo de parâmetro é incompatível com a instrução');
+                                    mostraErro(SOTipoDeParametroEIncompativelComAInstrucao);
                             end;
 
                           if indTI <= NUMINSTR then
@@ -701,7 +701,7 @@ begin
                                 end;
 
                             if erro then
-                                mostraErro('Operando mal formado');
+                                mostraErro(SOperandoMalFormado);
 
                             end
                         else
@@ -711,7 +711,7 @@ begin
                                     _ORG:  begin
                                                lc := pegaValor (operando, $ffff, erro);
                                                if erro then
-                                                    mostraErro('Origem inválida');
+                                                    mostraErro(SOrigemInvalida);
                                            end;
 
                                     _EQU:   ;
@@ -721,7 +721,7 @@ begin
                                                 v := pegaValor (operando, $ffff, erro);
                                                 if erro then
                                                      begin
-                                                         mostraErro('Operando inválido');
+                                                         mostraErro(SOperandoInvalido);
                                                          v := 1;
                                                      end;
                                                 registraDadosParaDebug (lc, v, 'B', rotulo);
@@ -801,7 +801,7 @@ procedure listaTabSimbolos;
 var i: integer;
     s1, s2, s3: string;
 begin
-    listagem.add ('Símbolo         Linha  Endereço');
+    listagem.add (SSimbolo_________Linha__Endereco);
 
     for i := 0 to tabSimbolos.count-1 do
         begin
@@ -828,8 +828,8 @@ begin
     with listagem do
         begin
             clear;
-            add ('Compilação (assembly) do texto ' + nomeArq);
-            add ('Em ' + dateTimeToStr(date));
+            add (SCompilacaoEmAssemblyDoTexto + nomeArq);
+            add (S_Em + dateTimeToStr(date));
 
             inicAssembler;
 
@@ -839,7 +839,7 @@ begin
             if tabSimbolos.count  <> 0 then
                 begin
                     add ('');
-                    add ('Listagem da tabela de símbolos');
+                    add (SListagem + S_DaTabelaDeSimbolos);
                     add ('');
 
                     listaTabSimbolos;

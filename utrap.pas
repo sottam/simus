@@ -55,7 +55,7 @@ uses
 
 procedure execTrap (var ACC: int8; operandReg: int16);
 procedure arduinoSerialStarted();
-{$IFnDEF Win32}
+{$IFnDEF MSWINDOWS}
   {$IFDef ARMCPU}
     procedure wiringPiStarted();
   {$ENDIF}
@@ -67,7 +67,7 @@ uses uSimula;
 var isWiringPiStarted: boolean = false;
     isArduinoSerialStarted: boolean = false;
 
-{$IFnDEF Win32}
+{$IFnDEF MSWINDOWS}
   {$IFDef CPUARM}
 procedure wiringPiStarted();
 begin
@@ -157,7 +157,7 @@ begin
                randSeed := pegaMemoria(operandReg, 8);
            end;
         //RaspPiTraps
-{$IFnDEF Win32}
+{$IFnDEF MSWINDOWS}
   {$IFDef CPUARM}
         100: begin   //inicializa wiringPi Lib
                wiringPiStarted();

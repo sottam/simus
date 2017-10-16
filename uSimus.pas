@@ -48,7 +48,7 @@ uses
 {$ENDIF}
   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, Menus, Buttons, uSimula, ExtCtrls, ComCtrls, SynEdit,
-  SynHighlighterPas, SynHighlighterAny, SynCompletion, Types;
+  SynHighlighterPas, SynHighlighterAny, SynCompletion, Types, LCLTranslator, ResString;
 
 type
 
@@ -355,7 +355,7 @@ begin
     atualizaLeds;
     s := intToHex (PC, 4);
     l_PC.caption := s;
-    if inputQuery ('Informe', 'Novo valor do PC', s) then
+    if inputQuery (SInforme, SNovoValorDoPC, s) then
         PC := hexToInt (s) and $ffff;
     atualizaInterface;
 end;
@@ -367,7 +367,7 @@ begin
     atualizaLeds;
     s := intToHex (ACC, 2);
     l_ACC.caption := s;
-    if inputQuery ('Informe', 'Novo valor do ACC', s) then
+    if inputQuery (SInforme, SNovoValorDoAcc, s) then
         ACC := hexToInt (s) and $ff;
     atualizaInterface;
 end;
@@ -554,7 +554,7 @@ begin
     b_pararClick(Sender);
 
     if SynEditor.Modified <> false then
-        if MessageDlg('Tudo foi salvo?',
+        if MessageDlg(STudoFoiSalvo,
               mtConfirmation, [mbYes, mbNo], 0) <> mrYes then exit;
 
     if openDialog1.Execute then
@@ -562,7 +562,7 @@ begin
             nomeArq := openDialog1.FileName;
             try
                 SynEditor.Lines.LoadFromFile(nomeArq);
-                caption := nomeArq + ' - Simulador do processador Sapiens-8';
+                caption := nomeArq + S_SimuladorDoProcSapiens8;
                 m_listagem.Clear;
                 lb_instrucoes.Clear;
 
@@ -570,7 +570,7 @@ begin
                 setLength (debugDados, ndebugDados);
                 lb_dados.Clear;
             except
-                showMessage ('Erro ao carregar o arquivo');
+                showMessage (SErroAoCarregarArquivo);
             end;
 
         end;
@@ -587,7 +587,7 @@ begin
             if nomeArq <> '' then
                 begin
                     SynEditor.Lines.SaveToFile(nomeArq);
-                    caption := nomeArq + ' - Simulador do processador Sapiens-8';
+                    caption := nomeArq + S_SimuladorDoProcSapiens8;
                 end;
         end;
 end;
@@ -596,9 +596,9 @@ procedure TformPrincipal.limpaEditor;
 begin
     SynEditor.clear;
     SynEditor.lines.add (';---------------------------------------------------');
-    SynEditor.lines.add ('; Programa:');
-    SynEditor.lines.add ('; Autor:');
-    SynEditor.lines.add ('; Data:');
+    SynEditor.lines.add (SPrograma);
+    SynEditor.lines.add (SAutor);
+    SynEditor.lines.add (SData);
     SynEditor.lines.add (';---------------------------------------------------');
     SynEditor.Lines.Add('');
     SynEditor.SelStart := SynEditor.GetTextLen;
@@ -607,7 +607,7 @@ end;
 procedure TformPrincipal.NovoArquivo;
 begin
   nomeArq := '';
-  caption := 'Simulador do processador Sapiens-8';
+  caption := SSimuladorDoProcSapiens8;
   limpaEditor;
   m_listagem.Clear;
   lb_instrucoes.Clear;
@@ -622,7 +622,7 @@ begin
     b_pararClick(Sender);
 
     if SynEditor.Modified <> false then
-        if MessageDlg('Tudo foi salvo?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+        if MessageDlg(STudoFoiSalvo, mtConfirmation, [mbYes, mbNo], 0) = mrYes then
             begin
               NovoArquivo;
             end
@@ -637,7 +637,7 @@ begin
                     if nomeArq <> '' then
                        begin
                          SynEditor.Lines.SaveToFile(nomeArq);
-                         caption := nomeArq + ' - Simulador do processador Sapiens-8';
+                         caption := nomeArq + S_SimuladorDoProcSapiens8;
                        end;
                     NovoArquivo;
                   end
@@ -730,7 +730,7 @@ begin
     for i := 0 to listagem.Count-1 do
             begin
                 l := trim (listagem[i]);
-                if copy (l, 1, 8)  = 'Listagem' then break;
+                if copy (l, 1, 8)  = SListagem then break; //cuidado com a traducao desse SListagem
 
                 if copy (l, 5, 99) = '' then continue;
                 if not (l[1] in ['0'..'9']) then continue;
@@ -873,7 +873,7 @@ begin
     s := boolToStr (ALU_Z);
     if s[1] = '-' then delete (s, 1, 1);
     l_Z.caption := s;
-    if inputQuery ('Informe', 'Novo valor do flag Z', s) then
+    if inputQuery (SInforme, SNovoValorDoFlagZ, s) then
         ALU_Z := s = '1';
     atualizaInterface;
 end;
@@ -886,7 +886,7 @@ begin
     s := boolToStr (ALU_N);
     if s[1] = '-' then delete (s, 1, 1);
     l_N.caption := s;
-    if inputQuery ('Informe', 'Novo valor do flag N', s) then
+    if inputQuery (SInforme, SNovoValorDoFlagN, s) then
         ALU_N := s = '1';
     atualizaInterface;
 end;
@@ -899,7 +899,7 @@ begin
     s := boolToStr (ALU_C);
     if s[1] = '-' then delete (s, 1, 1);
     l_C.caption := s;
-    if inputQuery ('Informe', 'Novo valor do flag C', s) then
+    if inputQuery (SInforme, SNovoValorDoFlagC, s) then
         ALU_C := s = '1';
     atualizaInterface;
 end;
@@ -1058,7 +1058,7 @@ begin
     keyReg := hexToInt (salva);
     kbdReg := 0;
     kbdStatusReg := 0;
-    bannerReg := '   SAPIENS-8';
+    bannerReg := S___Sapiens8;
 
     PC := PC_Original;
     atualizaInterface;
@@ -1082,7 +1082,7 @@ end;
 procedure TformPrincipal.FormCloseQuery(Sender: TObject; var CanClose: boolean);
 begin
   if SynEditor.Modified <> false then
-        if MessageDlg('Deseja salvar antes de sair?', mtConfirmation, [mbYes, mbNo], 0) = mrNo then
+        if MessageDlg(SDesejaSalvarAntesDeSair, mtConfirmation, [mbYes, mbNo], 0) = mrNo then
             begin
               exit;
             end
@@ -1098,7 +1098,7 @@ begin
                     if nomeArq <> '' then
                        begin
                          SynEditor.Lines.SaveToFile(nomeArq);
-                         caption := nomeArq + ' - Simulador do processador Sapiens-8';
+                         caption := nomeArq + S_SimuladorDoProcSapiens8;
                        end;
                   end
               else

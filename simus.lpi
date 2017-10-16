@@ -16,7 +16,8 @@
       <ResourceType Value="res"/>
     </General>
     <i18n>
-      <EnableI18N LFM="False"/>
+      <EnableI18N Value="True"/>
+      <OutDir Value="locale"/>
     </i18n>
     <VersionInfo>
       <StringTable ProductVersion=""/>
@@ -40,7 +41,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="16">
+    <Units Count="17">
       <Unit0>
         <Filename Value="simus.dpr"/>
         <IsPartOfProject Value="True"/>
@@ -118,6 +119,11 @@
         <Filename Value="synafpc.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit15>
+      <Unit16>
+        <Filename Value="resstring.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ResString"/>
+      </Unit16>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
