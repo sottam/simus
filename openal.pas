@@ -47,7 +47,7 @@ unit openal;
   {$DEFINE CPU386}
   {$ASMMODE INTEL}
  {$ENDIF}
- {$IFNDEF WIN32}
+ {$IFNDEF MSWINDOWS}
   {$LINKLIB c}
  {$ENDIF}
 {$ENDIF}
@@ -56,14 +56,14 @@ interface
 
 uses
   Classes
-  , SysUtils
-  {$IFDEF Win32},Windows{$ENDIF}
+  ,SysUtils
+  {$IFDEF MSWINDOWS},Windows{$ENDIF}
   ;
 
 { $ DEFINE ALUT} //define ALUT to use alut.dll
 
 const
-{$IFDEF Win32}
+{$IFDEF MSWINDOWS}
   callibname='OpenAL32.dll';
   calutlibname='Alut.dll';
 {$ENDIF}

@@ -241,24 +241,17 @@ begin
         203: begin  //le um valor de um pino digital
                arduinoSerialStarted();
                pino := pegaMemoria(operandReg, 8);
-               //ACC := FirmataPascal.digitalRead(pino);
+               ACC := FirmataPascal.digitalRead(pino);
+               write(FirmataPascal.digitalRead(pino));
              end;
 
-        204: begin    //Configura o modo da resistencia Pull-up
+        204: begin    //le um valor de um pino analogico
                arduinoSerialStarted();
                pino := pegaMemoria(operandReg, 8);
-               pud := pegaMemoria(operandReg+1, 8);
-               case pud of
-                 0:begin
-                     //pullUpDnControl(pino, PUD_OFF);
-                   end;
-                 1:begin
-                     //pullUpDnControl(pino, PUD_DOWN);
-                   end;
-                 2:begin
-                     //pullUpDnControl(pino, PUD_UP);
-                   end;
-               end;
+               valor:=firmataPascal.analogRead(pino);
+               memoria[operandReg+1]:= valor shr 8;
+               memoria[operandReg+2]:= valor;
+               ACC:= valor shr 2;
              end;
 
         205: begin  //configura o duty-cicle de um registrador PWM
@@ -266,6 +259,17 @@ begin
                pino := pegaMemoria(operandReg, 8);
                valor := pegaMemoria(operandReg+1, 16) and $3FF;
                firmataPascal.analogWrite(pino, valor);
+             end;
+
+        220: begin
+                arduinoSerialStarted();
+                pino := pegaMemoria(operandReg, 8);
+                firmataPascal.digitalReport(pino div 8, true);
+             end;
+        221: begin
+                arduinoSerialStarted();
+                pino := pegaMemoria(operandReg, 8);
+                firmataPascal.analogReport(pino, true);
              end;
     end;
     application.processMessages;

@@ -41,7 +41,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="17">
+    <Units Count="19">
       <Unit0>
         <Filename Value="simus.dpr"/>
         <IsPartOfProject Value="True"/>
@@ -124,6 +124,15 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ResString"/>
       </Unit16>
+      <Unit17>
+        <Filename Value="openal.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="firmataconstants.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="FirmataConstants"/>
+      </Unit18>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

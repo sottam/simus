@@ -46,7 +46,7 @@ uses
 {$IFnDEF MSWINDOWS}
   Unix, BaseUnix,
 {$ENDIF}
-  LCLIntf, LCLType, LMessages, openal, Sysutils;
+  LCLIntf, LCLType, LMessages,Sysutils, openal;
 
 procedure SoundPlay(Hz: Word; durMS: integer);
 
@@ -100,8 +100,8 @@ begin
 
     AlSourcePlay(source);
     sleep(durMS);
-    //AlSourceStop(source);
-    alSourcePause(source);
+    AlSourceStop(source);
+    //alSourcePause(source);
     AlDeleteBuffers(1, @buffer);
     AlDeleteSources(1, @source);
 end;
