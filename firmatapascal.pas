@@ -24,7 +24,8 @@ type
 
 var
   dev: TBlockserial;
-  buf: array[0..MAX_DATA_BYTES] of byte;
+  bufIn: array[0..MAX_DATA_BYTES] of byte;
+  burOut: array[..MAX_DATA_BYTES] OF byte;
   pins: array[0 .. 127] of TPino;
   Major_version, Minor_version: byte;
   Firmware_name: UnicodeString;
@@ -115,23 +116,23 @@ begin
   buf[0] := START_SYSEX;
   buf[1] := REPORT_FIRMWARE;
   buf[2] := END_SYSEX;
-  dev.SendBuffer(@buf,3);
+  dev.SendBuffer(@bufOut,3);
   dev.Purge;
-  dev.RecvBufferEx(@buf,MAX_DATA_BYTES,5000);
+  dev.RecvBufferEx(@bufIn,MAX_DATA_BYTES,5000);
 
   //Get and save firmware info acquired
-  Major_version := buf[1];
-  Minor_version := buf[2];
+  Major_version := bufIn[1];
+  Minor_version := bufIn[2];
 
   idx:= 7;
   idx2 := 0;
   while idx < MAX_DATA_BYTES do
   begin
-       letra := buf[idx] OR buf[idx + 1] shr 7;
+       letra := bufIn[idx] OR bufIn[idx + 1] shr 7;
        idx += 2;
        widecharArray[idx2] := wideChar(letra);
 
-       if buf[idx] OR buf[idx + 1] = $F7 then
+       if bufIn[idx] OR bufIn[idx + 1] = $F7 then
           begin
             widecharArray[idx2 + 1] := #0;
             Firmware_name := WideCharToString(widecharArray);
@@ -150,43 +151,43 @@ end;
 
 procedure setPinMode( pin: byte; mode: byte);
 begin
-  buf[0] := SET_PIN_MODE;
-  buf[1] := pin;
-  buf[2] := mode;
+  bufOut[0] := SET_PIN_MODE;
+  bufOut[1] := pin;
+  bufOut[2] := mode;
   pins[pin].mode:= mode;
-  dev.SendBuffer(@buf,3);
+  dev.SendBuffer(@bufOut,3);
   end;
 
 procedure digitalWrite( pin: byte; value: byte);
 begin
-  buf[0] := SET_DIGITAL_PIN_VALUE;
-  buf[1] := pin;
-  buf[2] := value;
+  bufOut[0] := SET_DIGITAL_PIN_VALUE;
+  bufOut[1] := pin;
+  bufOut[2] := value;
   pins[pin].digitalValue:= boolean(value);
-  dev.SendBuffer(@buf,3);
+  dev.SendBuffer(@bufOut,3);
   end;
 
 procedure analogWrite(pin: byte; value: byte);
 begin
-  buf[0] := ANALOG_MESSAGE OR pin;
-  buf[1] := value AND $7F;
-  buf[2] := value >> 7 AND $7F;
-  pins[pin].pwmValue:= buf[1] OR buf[2] << 7;;
-  dev.SendBuffer(@buf,3);
+  bufOut[0] := ANALOG_MESSAGE OR pin;
+  bufOut[1] := value AND $7F;
+  bufOut[2] := value >> 7 AND $7F;
+  pins[pin].pwmValue:= bufOut[1] OR bufOut[2] << 7;;
+  dev.SendBuffer(@bufOut,3);
   end;
 
 procedure digitalReport(port: byte; enabled: boolean);
 begin
-  buf[0] := REPORT_DIGITAL OR port;
-  buf[1] := byte(enabled);
-  dev.SendBuffer(@buf,2);
+  bufOut[0] := REPORT_DIGITAL OR port;
+  bufOut[1] := byte(enabled);
+  dev.SendBuffer(@bufOut,2);
 end;
 
 procedure analogReport(pin: byte; enabled: boolean);
 begin
-  buf[0] := REPORT_ANALOG OR pin;
-  buf[1] := byte(enabled);
-  dev.SendBuffer(@buf,2);
+  bufOut[0] := REPORT_ANALOG OR pin;
+  bufOut[1] := byte(enabled);
+  dev.SendBuffer(@bufOut,2);
 end;
 
 function digitalRead(pin: integer) : integer;
@@ -217,19 +218,19 @@ var
     mask : uint16;
   begin
     dev.CanRead(-1);
-    dev.RecvBufferEx(@buf,MAX_DATA_BYTES, 1);
-    if ( (buf[0] AND $F0 ) = ANALOG_MESSAGE ) then
+    dev.RecvBufferEx(@bufIn,MAX_DATA_BYTES, 1);
+    if ( (bufIn[0] AND $F0 ) = ANALOG_MESSAGE ) then
        begin
-            Read:= buf[1] OR buf[2] << 7;
-            pins[(buf[0] AND $0F )].analogValue:= Read;
+            Read:= bufIn[1] OR bufIn[2] << 7;
+            pins[(bufIn[0] AND $0F )].analogValue:= Read;
        end
     else
-        if  ( (buf[0] AND $F0 ) = DIGITAL_MESSAGE ) then
+        if  ( (bufIn[0] AND $F0 ) = DIGITAL_MESSAGE ) then
            begin
-                port := (buf[0] AND $0F );
+                port := (bufIn[0] AND $0F );
                 pin  := port * 8;
                 mask := $0001;
-                Read := buf[1] OR buf[2] << 7;
+                Read := bufIn[1] OR bufIn[2] << 7;
                 for pin := (port * 8) to (pin + 8) do
                 begin
                      pins[pin].digitalValue:= ToBoolean(read AND mask);
