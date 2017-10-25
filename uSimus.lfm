@@ -1,7 +1,7 @@
 object formPrincipal: TformPrincipal
-  Left = 655
+  Left = 204
   Height = 686
-  Top = 179
+  Top = 180
   Width = 956
   Caption = 'SimuS - Simulador do processador Sapiens-8'
   ClientHeight = 666

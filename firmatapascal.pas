@@ -43,6 +43,7 @@ procedure analogWrite(pin: byte; value: byte);      //working
 procedure digitalReport(port: byte; enabled: boolean);
 procedure analogReport(pin: byte; enabled: boolean);
 procedure SamplingInterval(interval : uint16);
+procedure firmataReset();
 
 function digitalRead(pin:integer) : integer;
 function analogRead(pin:integer)  : integer;
@@ -74,7 +75,7 @@ procedure initializeComm;
 
       askFirmware;
       initializePins;
-      SamplingInterval(500);
+      SamplingInterval(250);
       TThread.CreateAnonymousThread( CommListener ).Start;
       initialized := true;
       writeln('Arduino is ready!');
@@ -105,6 +106,12 @@ begin
   else
      ToBoolean := false;
 
+end;
+
+procedure firmataReset();
+begin
+  buf[0] := SYSTEM_RESET;
+  dev.SendBuffer(@buf, 1);
 end;
 
 procedure askFirmware;

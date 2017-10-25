@@ -10,6 +10,10 @@
 P_RED:     DS 3
 P_GREEN:   DS 3
 P_BLUE:    DS 3
+
+P_LED1:    DS 3
+P_LED2:    DS 3
+P_LED3:    DS 3
 ;VALORES (255 = APAGADO 0 = ACESO MAX)
 V_RED:     DB 255
 V_GREEN:   DB 255
@@ -36,6 +40,15 @@ ORG 50
      LDA #11
      STA P_BLUE
 
+     LDA #6
+     STA P_LED1
+
+     LDA #4
+     STA P_LED2
+
+     LDA #3
+     STA P_LED3
+
      LDA PWMMDE
      STA P_RED +1
      LDA PINMDE
@@ -51,6 +64,21 @@ ORG 50
      LDA PINMDE
      TRAP P_BLUE
 
+     LDA #1
+     STA P_LED1 +1
+     LDA PINMDE
+     TRAP P_LED1
+
+     LDA #1
+     STA P_LED2 +1
+     LDA PINMDE
+     TRAP P_LED2
+
+     LDA #1
+     STA P_LED3 +1
+     LDA PINMDE
+     TRAP P_LED3
+
 MAINLOOP:
      LDA #0
      STA V_GREEN
@@ -60,6 +88,11 @@ MAINLOOP:
 
      LDA #255  ;COMECA COM 255 E VAI SUBTRAINDO
      STA CONTROLE
+
+     LDA #1
+     STA P_LED1 +1
+     LDA #202
+     TRAP P_LED1
 
      LOOP1:
      LDA #1
@@ -100,6 +133,16 @@ MAINLOOP:
      LDA #255  ;COMECA COM 255 E VAI SUBTRAINDO
      STA CONTROLE
 
+     LDA #0
+     STA P_LED1 +1
+     LDA #202
+     TRAP P_LED1
+
+     LDA #1
+     STA P_LED2 +1
+     LDA #202
+     TRAP P_LED2
+
      LOOP2:
      LDA #1
      ADD V_BLUE
@@ -139,6 +182,16 @@ MAINLOOP:
      LDA #255  ;COMECA COM 255 E VAI SUBTRAINDO
      STA CONTROLE
 
+     LDA #0
+     STA P_LED2 +1
+     LDA #202
+     TRAP P_LED2
+
+     LDA #1
+     STA P_LED3 +1
+     LDA #202
+     TRAP P_LED3
+
      LOOP3:
      LDA #1
      ADD V_RED
@@ -168,6 +221,11 @@ MAINLOOP:
      STA CONTROLE
 
      JNZ LOOP3      ;FIM DO TERCEIRO LOOP
+
+     LDA #0
+     STA P_LED3 +1
+     LDA #202
+     TRAP P_LED3
 
      JMP MAINLOOP
 

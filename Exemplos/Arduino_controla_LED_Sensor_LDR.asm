@@ -1,5 +1,5 @@
 ;---------------------------------------------------
-; Programa: Controla LED potenciometro
+; Programa: Controla LED Sensor LDR
 ; Autor: Alonso Matos
 ; Data: 18.10.2017
 ;---------------------------------------------------
@@ -10,7 +10,7 @@ ORG	 0
 	LDA	#5	; pino desejado = 5
 	STA	PIN_LED
 
-        LDA     #3      ; PINO BOTAO = A0
+        LDA     #0     ; PINO BOTAO = A0
         STA     PIN_POT
 ;
 	LDA	#3	; modo de saída
