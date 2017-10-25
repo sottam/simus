@@ -261,6 +261,11 @@ begin
                firmataPascal.analogWrite(pino, valor);
              end;
 
+        219: begin
+               arduinoSerialStarted();
+               firmataReset();
+             end;
+
         220: begin
                 arduinoSerialStarted();
                 pino := pegaMemoria(operandReg, 8);
