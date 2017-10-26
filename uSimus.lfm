@@ -1,7 +1,7 @@
 object formPrincipal: TformPrincipal
-  Left = 204
+  Left = 1996
   Height = 686
-  Top = 180
+  Top = 167
   Width = 956
   Caption = 'SimuS - Simulador do processador Sapiens-8'
   ClientHeight = 666
@@ -285,12 +285,10 @@ object formPrincipal: TformPrincipal
       Anchors = [akTop, akLeft, akRight, akBottom]
       TabIndex = 0
       TabOrder = 1
-      OnChange = PageControl1Change
       object TabSheet4: TTabSheet
         Caption = 'Edição'
         ClientHeight = 467
         ClientWidth = 689
-        OnContextPopup = TabSheet4ContextPopup
         inline SynEditor: TSynEdit
           AnchorSideLeft.Control = TabSheet4
           AnchorSideTop.Control = TabSheet4
@@ -764,7 +762,6 @@ object formPrincipal: TformPrincipal
           MouseLinkColor.Foreground = clBlue
           LineHighlightColor.Background = clNone
           LineHighlightColor.Foreground = clNone
-          OnChange = SynEditorChange
           inline SynLeftGutterPartList1: TSynGutterPartList
             object SynGutterMarks1: TSynGutterMarks
               Width = 24
@@ -4431,6 +4428,15 @@ object formPrincipal: TformPrincipal
         Caption = '&Sobre o programa'
         OnClick = Sobreoprograma1Click
       end
+    end
+    object Arduino1: TMenuItem
+      Caption = 'Arduino'
+      ShowAlwaysCheckable = True
+    end
+    object ArduinoState: TMenuItem
+      Caption = 'Não Conectado'
+      Enabled = False
+      Visible = False
     end
   end
   object Timer1: TTimer

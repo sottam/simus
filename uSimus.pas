@@ -48,7 +48,7 @@ uses
 {$ENDIF}
   Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, Menus, Buttons, uSimula, ExtCtrls, ComCtrls, SynEdit,
-  SynHighlighterPas, SynHighlighterAny, SynCompletion, Types, LCLTranslator, ResString;
+  SynHighlighterPas, SynHighlighterAny, SynCompletion, Types, LCLTranslator, ResString, synaser, FirmataPascal;
 
 type
 
@@ -57,6 +57,8 @@ type
   TformPrincipal = class(TForm)
     Label10: TLabel;
     Label11: TLabel;
+    Arduino1: TMenuItem;
+    ArduinoState: TMenuItem;
     Panel2: TPanel;
     Simulador: TMainMenu;
     Arquivo1: TMenuItem;
@@ -191,10 +193,6 @@ type
     procedure b_pararClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure l_bannerClick(Sender: TObject);
-    procedure PageControl1Change(Sender: TObject);
-    procedure SynEditorChange(Sender: TObject);
-    procedure TabSheet4ContextPopup(Sender: TObject; MousePos: TPoint;
-      var Handled: Boolean);
     procedure Timer1Timer(Sender: TObject);
     procedure b_executarClick(Sender: TObject);
     procedure b_resetClick(Sender: TObject);
@@ -246,6 +244,7 @@ type
     procedure Conversordebases1Click(Sender: TObject);
     procedure dumpMemClick(Sender: TObject);
     procedure b_tecladoClick(Sender: TObject);
+
   private
     { Private declarations }
     minWidth, minHeight: integer;
@@ -258,6 +257,9 @@ type
     procedure atualizaDump;
     procedure atualizaLeds;
     procedure atualizaDados (zerando: boolean);
+    procedure Splitter( const Delimiter: Char; Str: string; ListOfStrings: TStrings);
+    procedure CreateCommList;
+    procedure ArduinoSelectedComm(Sender: TObject);
     //procedure NovoArquivo;
   end;
 
@@ -492,6 +494,8 @@ begin
         dumpMem.Items.add (geraLinhaDump(i*8));
 
     atualizaDump;
+
+    CreateCommList;
 end;
 
 procedure TformPrincipal.b_passoAPassoClick(Sender: TObject);
@@ -1113,20 +1117,46 @@ begin
 
 end;
 
-procedure TformPrincipal.PageControl1Change(Sender: TObject);
+procedure TformPrincipal.Splitter( const Delimiter: Char; Str: string; ListOfStrings: TStrings);
 begin
-
+   ListOfStrings.Clear;
+   ListOfStrings.Delimiter       := Delimiter;
+   ListOfStrings.StrictDelimiter := True; // Requires D2006 or newer.
+   ListOfStrings.DelimitedText   := Str;
 end;
 
-procedure TformPrincipal.SynEditorChange(Sender: TObject);
+procedure TformPrincipal.CreateCommList;
+var
+  tempItem : TMenuItem;
+  OutPutList: TStringList;
+  porta : String;
+const
+  Delimiter : Char = ',';
 begin
+  OutPutList := TStringList.Create;
+  try
+     Splitter(Delimiter, synaser.GetSerialPortNames, OutPutList);
+     for porta in OutPutList do
+         begin
+            tempItem := TMenuItem.Create(self);
+            tempItem.RadioItem := true;
+            tempItem.AutoCheck := true;
+            tempItem.Caption   := porta;
+            tempItem.OnClick:= ArduinoSelectedComm;
+            Arduino1.Add(tempItem);
+         end;
 
+  finally
+      OutPutList.Free;
+  end;
 end;
 
-procedure TformPrincipal.TabSheet4ContextPopup(Sender: TObject;
-  MousePos: TPoint; var Handled: Boolean);
+procedure TformPrincipal.ArduinoSelectedComm(Sender: TObject);
 begin
-
+  FirmataPascal.SelectedComm:= (Sender as TMenuItem).Caption;
+  FirmataPascal.initializeComm( (Sender as TMenuItem).Caption );
+  ArduinoState.Caption:= 'Pronto';
+  ArduinoState.Visible:= true;
 end;
 
 procedure TformPrincipal.Timer1Timer(Sender: TObject);

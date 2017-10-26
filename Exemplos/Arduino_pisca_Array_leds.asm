@@ -17,19 +17,19 @@ ORG	 30
         LDA     #219
         TRAP    0
 
-	LDA	#7
+	LDA	#12
 	STA	PIN_LED1
 
-        LDA	#6
+        LDA	#8
 	STA	PIN_LED2
 
-        LDA	#4
+        LDA	#7
 	STA	PIN_LED3
 
-        LDA	#3
+        LDA	#6
 	STA	PIN_LED4
 
-        LDA	#8
+        LDA	#5
 	STA	PIN_LED5
 
         LDA     #0
@@ -51,8 +51,8 @@ ORG	 30
         TRAP	PIN_LED5
         TRAP    PIN_POT
 
-        LDA     #221
-        TRAP    PIN_POT
+        ;LDA     #221
+        ;TRAP    PIN_POT
 
 
 
@@ -84,7 +84,7 @@ LOOP:
 	LDA	#5	; espera (500 ms)
 	TRAP	T500
 
-        	LDA	#0
+        LDA	#0
 	STA	PIN_LED2+1
 	LDA	#202
 	TRAP	PIN_LED2
@@ -97,7 +97,7 @@ LOOP:
         LDA	#5	; espera (500 ms)
 	TRAP	T500
 
-        	LDA	#0
+        LDA	#0
 	STA	PIN_LED3+1
 	LDA	#202
 	TRAP	PIN_LED3
@@ -110,7 +110,7 @@ LOOP:
         LDA	#5	; espera (500 ms)
 	TRAP	T500
 
-        	LDA	#0
+        LDA	#0
 	STA	PIN_LED4+1
 	LDA	#202
 	TRAP	PIN_LED4
@@ -128,9 +128,6 @@ LOOP:
 	LDA	#202
 	TRAP	PIN_LED5
 
-        LDA	#5	; espera (500 ms)
-	TRAP	T500
-;
 	JMP	LOOP
 
 

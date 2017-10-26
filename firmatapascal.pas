@@ -25,15 +25,20 @@ type
 var
   dev: TBlockserial;
   bufIn: array[0..MAX_DATA_BYTES] of byte;
-  burOut: array[..MAX_DATA_BYTES] OF byte;
+  bufOut: array[0..MAX_DATA_BYTES] OF byte;
   pins: array[0 .. 127] of TPino;
   Major_version, Minor_version: byte;
   Firmware_name: UnicodeString;
   CommListener : TProcedure;
+  RunningListener : TThread;
   initialized : boolean;
+  SelectedComm : String;
+
+
 
 
 procedure initializeComm;  //Implementar algum tipo de auto deteccao de arduino
+procedure initializeComm(port : String);
 procedure finalizeComm;
 procedure initializePins;
 procedure askFirmware;     // Does not return the firmware, it is only used to determine if firmata is ready.
@@ -62,13 +67,11 @@ procedure initializeComm;
       dev:= TBlockserial.Create;
       writeln('Waiting for arduino to initialize...');
       writeln( synaser.GetSerialPortNames);
-      dev.Connect('COM5');
-
+      dev.Connect(selectedComm);
       dev.config(57600,8,'N',SB1,false,false);
 
       if (dev.LastError <> 0) then
          begin
-            writeLn(dev.LastErrorDesc);
             Exit;
          end;
 
@@ -79,6 +82,59 @@ procedure initializeComm;
       TThread.CreateAnonymousThread( CommListener ).Start;
       initialized := true;
       writeln('Arduino is ready!');
+    end;
+
+procedure initializeComm(port : String);
+    begin
+      if (initialized = false) then
+         begin
+            CommListener := @listenTx;
+            dev:= TBlockserial.Create;
+            writeln('Waiting for arduino to initialize...');
+            dev.Connect(port);
+            dev.config(57600,8,'N',SB1,false,false);
+
+            if (dev.LastError <> 0) then
+               begin
+                  Exit;
+               end
+            else
+              begin
+                  askFirmware;
+                  initializePins;
+                  SamplingInterval(250);
+                  RunningListener := TThread.CreateAnonymousThread( CommListener );
+                  RunningListener.Start;
+                  initialized := true;
+                  writeln('Arduino is ready!');
+              end;
+         end
+      else
+        begin
+          RunningListener.Terminate;
+          dev.Purge;
+          dev.Free;
+          dev:= TBlockserial.Create;
+
+          writeln('Waiting for arduino to initialize...');
+          dev.Connect(port);
+          dev.config(57600,8,'N',SB1,false,false);
+
+          if (dev.LastError <> 0) then
+               begin
+                  Exit;
+               end
+            else
+              begin
+                  askFirmware;
+                  initializePins;
+                  SamplingInterval(250);
+                  RunningListener := TThread.CreateAnonymousThread( CommListener );
+                  RunningListener.Start;
+                  initialized := true;
+                  writeln('Arduino is ready!');
+              end;
+        end;
     end;
 
 procedure initializePins;
@@ -110,8 +166,8 @@ end;
 
 procedure firmataReset();
 begin
-  buf[0] := SYSTEM_RESET;
-  dev.SendBuffer(@buf, 1);
+  bufOut[0] := SYSTEM_RESET;
+  dev.SendBuffer(@bufOut, 1);
 end;
 
 procedure askFirmware;
@@ -120,9 +176,9 @@ var
   letra: uint16;
   widecharArray: array[0..MAX_DATA_BYTES] of widechar;
 begin
-  buf[0] := START_SYSEX;
-  buf[1] := REPORT_FIRMWARE;
-  buf[2] := END_SYSEX;
+  bufOut[0] := START_SYSEX;
+  bufOut[1] := REPORT_FIRMWARE;
+  bufOut[2] := END_SYSEX;
   dev.SendBuffer(@bufOut,3);
   dev.Purge;
   dev.RecvBufferEx(@bufIn,MAX_DATA_BYTES,5000);
@@ -213,7 +269,7 @@ begin
   idx:= 0;
   while idx < MAX_DATA_BYTES do
   begin
-       buf[idx] := 0;
+       bufOut[idx] := 0;
        idx +=1;
   end;
 end;
@@ -261,15 +317,12 @@ var
 
 procedure SamplingInterval(interval : uint16);
 begin
-   //writeln(IntToBin(interval, 16, 4));
-   buf[0] := START_SYSEX;
-   buf[1] := SAMPLING_INTERVAL;
-   buf[2] := interval ;
-   //writeln(IntToBin(buf[2], 16, 4));
-   buf[3] := interval >> 8;
-   //writeln(IntToBin(buf[3], 16, 4));
-   buf[4] := END_SYSEX;
-   dev.SendBuffer(@buf,5);
+   bufOut[0] := START_SYSEX;
+   bufOut[1] := SAMPLING_INTERVAL;
+   bufOut[2] := interval ;
+   bufOut[3] := interval >> 8;
+   bufOut[4] := END_SYSEX;
+   dev.SendBuffer(@bufOut,5);
 
 end;
 

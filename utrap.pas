@@ -221,32 +221,24 @@ begin
 {$ENDIF}
         //ARDUINO TRAPS
 
-        200: begin   //inicializa porta SERIAL COM ARDUINO
-               arduinoSerialStarted();
-             end;
-
         201: begin   //Define Modo do pino
-               arduinoSerialStarted();
                pino := pegaMemoria(operandReg, 8);
                modo := PegaMemoria(operandReg+1, 8);
                FirmataPascal.setPinMode(pino, modo);
              end;
         202: begin //define um valor no pino digital
-               arduinoSerialStarted();
                pino := pegaMemoria(operandReg, 8);
                valor := pegaMemoria(operandReg+1, 8) and 1;
                FirmataPascal.digitalWrite(pino,valor);
              end;
 
         203: begin  //le um valor de um pino digital
-               arduinoSerialStarted();
                pino := pegaMemoria(operandReg, 8);
                ACC := FirmataPascal.digitalRead(pino);
                write(FirmataPascal.digitalRead(pino));
              end;
 
         204: begin    //le um valor de um pino analogico
-               arduinoSerialStarted();
                pino := pegaMemoria(operandReg, 8);
                valor:=firmataPascal.analogRead(pino);
                memoria[operandReg+1]:= valor shr 8;
@@ -255,24 +247,20 @@ begin
              end;
 
         205: begin  //configura o duty-cicle de um registrador PWM
-               arduinoSerialStarted();
                pino := pegaMemoria(operandReg, 8);
                valor := pegaMemoria(operandReg+1, 16) and $3FF;
                firmataPascal.analogWrite(pino, valor);
              end;
 
         219: begin
-               arduinoSerialStarted();
                firmataReset();
              end;
 
         220: begin
-                arduinoSerialStarted();
                 pino := pegaMemoria(operandReg, 8);
                 firmataPascal.digitalReport(pino div 8, true);
              end;
         221: begin
-                arduinoSerialStarted();
                 pino := pegaMemoria(operandReg, 8);
                 firmataPascal.analogReport(pino, true);
              end;
