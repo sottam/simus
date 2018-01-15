@@ -8,10 +8,10 @@ ORG	 0
          TRAP   0
 
 
-	LDA	#5	; pino desejado = 5
+	LDA	#3	; pino desejado = 5
 	STA	PIN_LED
 
-        LDA     #12      ; PINO BOTAO = 2
+        LDA     #4      ; PINO BOTAO = 2
         STA     PIN_BUT
 ;
 	LDA	#1	; modo de saída

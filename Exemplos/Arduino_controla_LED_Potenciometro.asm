@@ -7,10 +7,10 @@ ORG	 0
          LDA    #219
          TRAP   0
 
-	LDA	#5	; pino desejado = 5
+	LDA	#3	; pino desejado = 5
 	STA	PIN_LED
 
-        LDA     #3      ; PINO BOTAO = A0
+        LDA     #0      ; PINO pontenciometro = A0
         STA     PIN_POT
 ;
 	LDA	#3	; modo de saída

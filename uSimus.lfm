@@ -1,7 +1,7 @@
 object formPrincipal: TformPrincipal
-  Left = 1996
+  Left = 1919
   Height = 686
-  Top = 167
+  Top = 11
   Width = 956
   Caption = 'SimuS - Simulador do processador Sapiens-8'
   ClientHeight = 666
@@ -277,13 +277,13 @@ object formPrincipal: TformPrincipal
     ClientWidth = 705
     TabOrder = 1
     object PageControl1: TPageControl
-      Left = 0
+      Left = 1
       Height = 493
       Top = 144
       Width = 697
-      ActivePage = TabSheet4
+      ActivePage = TabSheet3
       Anchors = [akTop, akLeft, akRight, akBottom]
-      TabIndex = 0
+      TabIndex = 2
       TabOrder = 1
       object TabSheet4: TTabSheet
         Caption = 'Edição'
@@ -846,9 +846,13 @@ object formPrincipal: TformPrincipal
           Font.Height = -16
           Font.Name = 'Courier New'
           ItemHeight = 0
+          OnClick = lb_instrucoesClick
+          OnDrawItem = lb_instrucoesDrawItem
           OnKeyUp = editorKeyUp
+          OnSelectionChange = lb_instrucoesSelectionChange
           ParentFont = False
           ScrollWidth = 685
+          Style = lbOwnerDrawFixed
           TabOrder = 0
         end
         object lb_dados: TListBox
@@ -4524,8 +4528,7 @@ object formPrincipal: TformPrincipal
     Entity = False
     DollarVariables = False
     ActiveDot = False
-    left = 64
-    top = 248
+    left = 696
   end
   object SynCompletion: TSynCompletion
     ItemList.Strings = (
@@ -4578,8 +4581,7 @@ object formPrincipal: TformPrincipal
     EndOfTokenChr = '()[].'
     ExecCommandID = ecSynCompletionExecute
     Editor = SynEditor
-    left = 64
-    top = 280
+    left = 744
   end
   object SynAutoComplete: TSynAutoComplete
     AutoCompleteList.Strings = (
@@ -4626,7 +4628,6 @@ object formPrincipal: TformPrincipal
     ShortCut = 8224
     ExecCommandID = ecSynAutoCompletionExecute
     Editor = SynEditor
-    left = 64
-    top = 320
+    left = 792
   end
 end

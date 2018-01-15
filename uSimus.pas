@@ -192,6 +192,10 @@ type
     CompileBtn: TSpeedButton;
     procedure b_pararClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
+    procedure lb_instrucoesClick(Sender: TObject);
+    procedure lb_instrucoesDrawItem(Control: TWinControl; Index: Integer;
+      ARect: TRect; State: TOwnerDrawState);
+    procedure lb_instrucoesSelectionChange(Sender: TObject; User: boolean);
     procedure l_bannerClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure b_executarClick(Sender: TObject);
@@ -268,6 +272,9 @@ var
   enderAlterado: integer;
   nomeArq: string;
   execucaoRapida: boolean;
+
+  BreakpointList : TStringList;
+  //nBreakpoint    : integer;
 
 implementation
 
@@ -496,6 +503,10 @@ begin
     atualizaDump;
 
     CreateCommList;
+
+    BreakpointList:= TStringList.Create;
+    BreakpointList.Duplicates:= dupIgnore;
+    BreakpointList.Sorted:= true;
 end;
 
 procedure TformPrincipal.b_passoAPassoClick(Sender: TObject);
@@ -1112,6 +1123,81 @@ begin
             end;
 end;
 
+procedure TformPrincipal.lb_instrucoesClick(Sender: TObject);
+var
+  idx : integer;
+  isBreakPoint : integer;
+
+begin
+   {
+  idx := lb_instrucoes.ItemIndex;
+
+  isBreakpoint :=  BreakpointList.IndexOf( IntToStr(idx));
+
+  if  isBreakpoint = -1 then
+     BreakpointList.Add(IntToStr(idx))
+  else
+     BreakpointList.Delete(isBreakPoint);
+
+  lb_instrucoes.Repaint;
+   }
+end;
+
+procedure TformPrincipal.lb_instrucoesDrawItem(Control: TWinControl;
+  Index: Integer; ARect: TRect; State: TOwnerDrawState);
+var
+   Vermelho : TColor;
+   aColor: TColor;             //Background color
+   ind : integer;
+   line: string;
+begin
+   aColor:=$FFFFFF;
+
+   if BreakpointList.IndexOf(IntToStr(Index)) < 0
+     then  aColor:=$FFFFFF
+     else  aColor := $0000FF;
+
+    if odSelected in State then
+       begin
+         if aColor = $0000FF then
+         aColor := $FF00FF
+      else
+         aColor:=$FF0000;  //If item is selected, then blue as background color
+       end;
+
+    lb_instrucoes.Canvas.Brush.Color:=aColor;  //Set background color
+    lb_instrucoes.Canvas.FillRect(ARect);      //Draw a filled rectangle
+
+    //lb_instrucoes.Canvas.Font.Bold:=True;      //Set the font to "bold"
+    lb_instrucoes.Canvas.TextRect(ARect, 2, ARect.Top+2, lb_instrucoes.Items[Index]);  //Draw Itemtext
+
+end;
+
+procedure TformPrincipal.lb_instrucoesSelectionChange(Sender: TObject;
+  User: boolean);
+
+var
+  idx : integer;
+  isBreakPoint : integer;
+
+begin
+  idx := 0;
+  if User = true then
+    begin
+      idx := lb_instrucoes.ItemIndex;
+
+      isBreakpoint :=  BreakpointList.IndexOf( IntToStr(idx));
+
+      if  isBreakpoint = -1 then
+         BreakpointList.Add(IntToStr(idx))
+      else
+         BreakpointList.Delete(isBreakPoint);
+
+      //lb_instrucoes.Repaint;
+    end;
+
+end;
+
 procedure TformPrincipal.l_bannerClick(Sender: TObject);
 begin
 
@@ -1160,7 +1246,7 @@ begin
 end;
 
 procedure TformPrincipal.Timer1Timer(Sender: TObject);
-var i: integer;
+var i, idx, isBreakpoint: integer;
 begin
     if running then
         begin
@@ -1169,13 +1255,25 @@ begin
                     i := 0;
                     while running and (i < 100) do
                         begin
-                            executaInstrucao;
-                            i := i + 1;
+                          idx := lb_instrucoes.ItemIndex;
+                          isBreakpoint :=  BreakpointList.IndexOf( IntToStr(idx));
+                          if  isBreakpoint > -1 then break;
+                          executaInstrucao;
+                          i := i + 1;
                         end;
                 end;
 
             executaInstrucao;
             atualizaInterface;
+
+            idx := lb_instrucoes.ItemIndex;
+            isBreakpoint :=  BreakpointList.IndexOf( IntToStr(idx));
+            if isBreakpoint > -1 then
+               begin
+                   running:= false;
+                   Timer1.Enabled:= false;
+               end;
+
         end
     else
         timer1.enabled := false;

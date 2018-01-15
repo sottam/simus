@@ -179,9 +179,11 @@ begin
   bufOut[0] := START_SYSEX;
   bufOut[1] := REPORT_FIRMWARE;
   bufOut[2] := END_SYSEX;
+  dev.CanWrite(10);
   dev.SendBuffer(@bufOut,3);
   dev.Purge;
-  dev.RecvBufferEx(@bufIn,MAX_DATA_BYTES,5000);
+  dev.CanReadEx(5000);
+  dev.RecvBuffer(@bufIn,MAX_DATA_BYTES);
 
   //Get and save firmware info acquired
   Major_version := bufIn[1];
@@ -219,6 +221,7 @@ begin
   bufOut[2] := mode;
   pins[pin].mode:= mode;
   dev.SendBuffer(@bufOut,3);
+  dev.CanWrite(10);
   end;
 
 procedure digitalWrite( pin: byte; value: byte);
@@ -227,6 +230,7 @@ begin
   bufOut[1] := pin;
   bufOut[2] := value;
   pins[pin].digitalValue:= boolean(value);
+  dev.CanWrite(10);
   dev.SendBuffer(@bufOut,3);
   end;
 
@@ -235,7 +239,8 @@ begin
   bufOut[0] := ANALOG_MESSAGE OR pin;
   bufOut[1] := value AND $7F;
   bufOut[2] := value >> 7 AND $7F;
-  pins[pin].pwmValue:= bufOut[1] OR bufOut[2] << 7;;
+  pins[pin].pwmValue:= bufOut[1] OR bufOut[2] << 7;
+  dev.CanWrite(10);
   dev.SendBuffer(@bufOut,3);
   end;
 
@@ -250,6 +255,7 @@ procedure analogReport(pin: byte; enabled: boolean);
 begin
   bufOut[0] := REPORT_ANALOG OR pin;
   bufOut[1] := byte(enabled);
+  dev.CanWrite(10);
   dev.SendBuffer(@bufOut,2);
 end;
 
@@ -260,7 +266,7 @@ end;
 
 function analogRead(pin:integer)  : integer;
 begin
-     analogRead := pins[pin].analogValue;
+   analogRead := pins[pin].analogValue;
 end;
 
 procedure purgeBuffer();
@@ -279,9 +285,9 @@ var
     Read: uint16;
     port, pin : integer;
     mask : uint16;
-  begin
+begin
     dev.CanRead(-1);
-    dev.RecvBufferEx(@bufIn,MAX_DATA_BYTES, 1);
+    dev.RecvBuffer(@bufIn,MAX_DATA_BYTES);
     if ( (bufIn[0] AND $F0 ) = ANALOG_MESSAGE ) then
        begin
             Read:= bufIn[1] OR bufIn[2] << 7;
@@ -300,20 +306,17 @@ var
                      mask := mask shl 1;
                 end;
            end;
-    dev.Purge();
-    purgeBuffer();
-  end;
+    //dev.Purge();
+    //purgeBuffer();
+end;
 
 procedure listenTx();
-var
-    repetir : boolean;
-    begin
-      repetir := true;
-      while repetir = true do
-           begin
-                firmataParser();
-           end;
-    end;
+label inicio;
+begin
+  inicio:
+    firmataParser();
+    goto inicio
+end;
 
 procedure SamplingInterval(interval : uint16);
 begin
@@ -322,6 +325,7 @@ begin
    bufOut[2] := interval ;
    bufOut[3] := interval >> 8;
    bufOut[4] := END_SYSEX;
+   dev.CanWrite(10);
    dev.SendBuffer(@bufOut,5);
 
 end;
