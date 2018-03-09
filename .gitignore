@@ -3,7 +3,7 @@
 *.dll
 *.so
 *.dylib
-*.lrs
+#*.lrs
 *.compiled
 *.dbg
 *.ppu
