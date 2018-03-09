@@ -44,12 +44,15 @@ uses
 {$IFnDEF FPC}
   Windows,
 {$ELSE}
-  LCLIntf, LCLType, LMessages,
+  LCLIntf, LCLType,
 {$ENDIF}
   SysUtils, Classes, Graphics, Forms, Controls, StdCtrls,
-  Buttons, ExtCtrls;
+  Buttons, ExtCtrls, LCLTranslator, DefaultTranslator;
 
 type
+
+  { TAboutBox }
+
   TAboutBox = class(TForm)
     Panel1: TPanel;
     ProductName: TLabel;
@@ -60,6 +63,7 @@ type
     Label2: TLabel;
     Image1: TImage;
     procedure OKButtonClick(Sender: TObject);
+    procedure VersionClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -80,6 +84,11 @@ implementation
 procedure TAboutBox.OKButtonClick(Sender: TObject);
 begin
     close;
+end;
+
+procedure TAboutBox.VersionClick(Sender: TObject);
+begin
+
 end;
 
 end.

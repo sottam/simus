@@ -44,10 +44,10 @@ uses
 {$IFnDEF FPC}
   Windows,
 {$ELSE}
-  LCLIntf, LCLType, LMessages,
+  LCLIntf, LCLType,
 {$ENDIF}
-  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls;
+  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls, LCLTranslator, DefaultTranslator, ResString;
 
 type
   TformHex = class(TForm)
@@ -153,7 +153,7 @@ begin
     exit;
 
 erro:
-    showMessage ('Valor digitado inconsistente com a base especificada');
+    showMessage (SValorDigitadoInconsistente);
 end;
 
 end.

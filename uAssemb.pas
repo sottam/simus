@@ -41,7 +41,7 @@ unit uAssemb;
 interface
 
 uses
-    classes, sysUtils, uHex, uvars, dialogs,ResString;
+    classes, sysUtils, uHex, uvars, dialogs,ResString, DefaultTranslator;
 
 var
     listagem: TStringList;

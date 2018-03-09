@@ -10,9 +10,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.7\n"
 
+#: resstring.sadc
+msgid "O comando ADC (add with carry) soma ao acumulador o conteúdo de uma posição de memória indicada pelo operando, acrescido do valor do Carry (vai um)."
+msgstr "O comando ADC (add with carry) soma ao acumulador o conteúdo de uma posição de memória indicada pelo operando, acrescido do valor do Carry (vai um)."
+
+#: resstring.sadd
+msgid "O comando ADD soma ao acumulador o conteúdo de uma posição de memória indicada pelo operando."
+msgstr "O comando ADD soma ao acumulador o conteúdo de uma posição de memória indicada pelo operando."
+
+#: resstring.sand
+msgid "O comando AND realiza um \"e\" lógico entre o acumulador e o conteúdo de uma posição de memória indicada pelo operando."
+msgstr "O comando AND realiza um \"e\" lógico entre o acumulador e o conteúdo de uma posição de memória indicada pelo operando."
+
 #: resstring.sautor
 msgid "; Autor:"
-msgstr ""
+msgstr "; Autor:"
 
 #: resstring.scadeiascomecameterminamporaspasouplics
 msgid "Cadeias começam e terminam por aspas ou plics."
@@ -30,9 +42,29 @@ msgstr "Compilação (assembly) do texto "
 msgid "; Data:"
 msgstr "; Data:"
 
+#: resstring.sdb
+msgid "A pseudo-instrução DB (define bytes) carrega nesta palavra de memória o valor definido pelo operando."
+msgstr "A pseudo-instrução DB (define bytes) carrega nesta palavra de memória o valor definido pelo operando."
+
 #: resstring.sdesejasalvarantesdesair
 msgid "Deseja salvar antes de sair?"
 msgstr "Deseja salvar antes de sair?"
+
+#: resstring.sdoispontos
+msgid "Um rótulo é um nome dado à posição de memória da instrução a seguir. O nome é seguido por dois pontos"
+msgstr "Um rótulo é um nome dado à posição de memória da instrução a seguir. O nome é seguido por dois pontos"
+
+#: resstring.sds
+msgid "A pseudo-instrução DS (define storage) reserva um número de palavras na memória definido pelo operando."
+msgstr "A pseudo-instrução DS (define storage) reserva um número de palavras na memória definido pelo operando."
+
+#: resstring.send
+msgid "A pseudo-instrução END indica que o programa fonte acabou. O operando é usado para pré-carregar o PC com o endereço inicial de execução do programa."
+msgstr "A pseudo-instrução END indica que o programa fonte acabou. O operando é usado para pré-carregar o PC com o endereço inicial de execução do programa."
+
+#: resstring.sequ
+msgid "A pseudo-instrução EQU (equate) atribui um nome a um certo valor. Esse comando é frequentemente usado para especificar variáveis que são posicionadas em certo endereço de memória. Por exemplo para posicionar a variável x no endereço hexa f0 use: X EQU 0F0H"
+msgstr "A pseudo-instrução EQU (equate) atribui um nome a um certo valor. Esse comando é frequentemente usado para especificar variáveis que são posicionadas em certo endereço de memória. Por exemplo para posicionar a variável x no endereço hexa f0 use: X EQU 0F0H"
 
 #: resstring.serroaocarregararquivo
 msgid "Erro ao carregar o arquivo"
@@ -42,6 +74,14 @@ msgstr "Erro ao carregar o arquivo"
 msgid "Esta instrução não possui parâmetros"
 msgstr "Esta instrução não possui parâmetros"
 
+#: resstring.shlt
+msgid "O comando HLT (halt) para a máquina."
+msgstr "O comando HLT (halt) para a máquina."
+
+#: resstring.sin
+msgid "O comando IN (input) carrega no acumulador o valor lido num dispositivo externo indicado pelo operando.  Nesse simulador os dispositivos são: chaves (endereço 0) e o status de \"dado disponível\" das chaves (endereço 1)."
+msgstr "O comando IN (input) carrega no acumulador o valor lido num dispositivo externo indicado pelo operando.  Nesse simulador os dispositivos são: chaves (endereço 0) e o status de \"dado disponível\" das chaves (endereço 1)."
+
 #: resstring.sinforme
 msgid "Informe"
 msgstr "Informe"
@@ -50,9 +90,53 @@ msgstr "Informe"
 msgid "Instrução inválida"
 msgstr "Instrução inválida"
 
+#: resstring.sjc
+msgid "O comando JC (jump if carry) desvia a execução do programa para o endereço indicado pelo operando ender, apenas quando a última operação aritmética realizada não coube nos 8 bits do destino."
+msgstr "O comando JC (jump if carry) desvia a execução do programa para o endereço indicado pelo operando ender, apenas quando a última operação aritmética realizada não coube nos 8 bits do destino."
+
+#: resstring.sjmp
+msgid "O comando JMP (jump) desvia a execução do programa para o endereço indicado pelo operando (ou seja, coloca este endereço no registrador PC)."
+msgstr "O comando JMP (jump) desvia a execução do programa para o endereço indicado pelo operando (ou seja, coloca este endereço no registrador PC)."
+
+#: resstring.sjn
+msgid "O comando JN (jump if negative) desvia a execução do programa para o endereço indicado pelo operando, apenas quando a última operação realizada produziu um valor com o bit 7 ligado."
+msgstr "O comando JN (jump if negative) desvia a execução do programa para o endereço indicado pelo operando, apenas quando a última operação realizada produziu um valor com o bit 7 ligado."
+
+#: resstring.sjnc
+msgid "O comando JNC (jump if not carry) desvia a execução do programa para o endereço indicado pelo operando ender, apenas quando a última operação aritmética realizada coube nos 8 bits do destino."
+msgstr "O comando JNC (jump if not carry) desvia a execução do programa para o endereço indicado pelo operando ender, apenas quando a última operação aritmética realizada coube nos 8 bits do destino."
+
+#: resstring.sjnz
+msgid "O comando JNZ (jump if not zero) desvia a execução do programa para o endereço indicado pelo operando ender, apenas quando a última operação realizada produziu um valor diferente de zero."
+msgstr "O comando JNZ (jump if not zero) desvia a execução do programa para o endereço indicado pelo operando ender, apenas quando a última operação realizada produziu um valor diferente de zero."
+
+#: resstring.sjsr
+msgid "O comando JSR (jump to subroutine) executa uma chamada de subrotina. Para isso, transfere os 16 bits do PC (Program Counter) para a pilha e coloca no PC os 16 bits indicados no operando.  O SP é decrementado de 2."
+msgstr "O comando JSR (jump to subroutine) executa uma chamada de subrotina. Para isso, transfere os 16 bits do PC (Program Counter) para a pilha e coloca no PC os 16 bits indicados no operando.  O SP é decrementado de 2."
+
+#: resstring.sjz
+msgid "O comando JZ (jump if zero) desvia a execução do programa para o endereço indicado pelo operando, apenas quando a última operação realizada produziu um valor zero"
+msgstr "O comando JZ (jump if zero) desvia a execução do programa para o endereço indicado pelo operando, apenas quando a última operação realizada produziu um valor zero"
+
+#: resstring.slda
+msgid "O comando LDA (load accumulator) atribui ao acumulador o conteúdo da posição de memória indicada pelo operando."
+msgstr "O comando LDA (load accumulator) atribui ao acumulador o conteúdo da posição de memória indicada pelo operando."
+
+#: resstring.slds
+msgid "O comando STS (load from stack pointer) transfere o apontador da pilha (Stack Pointer) para 16 bits na memória indicada pelo operando."
+msgstr "O comando STS (load from stack pointer) transfere o apontador da pilha (Stack Pointer) para 16 bits na memória indicada pelo operando."
+
 #: resstring.slistagem
 msgid "Listagem"
 msgstr "Listagem"
+
+#: resstring.snop
+msgid "O comando NOP (no operation) é usado apenas para gastar tempo."
+msgstr "O comando NOP (no operation) é usado apenas para gastar tempo."
+
+#: resstring.snot
+msgid "O comando NOT (negate) transforma 1 em 0 e 0 em 1 nos bits do acumulador."
+msgstr "O comando NOT (negate) transforma 1 em 0 e 0 em 1 nos bits do acumulador."
 
 #: resstring.snovovalordoacc
 msgid "Novo valor do ACC"
@@ -86,6 +170,14 @@ msgstr "Operando inválido"
 msgid "Operando mal formado"
 msgstr "Operando mal formado"
 
+#: resstring.sor
+msgid "O comando OR realiza um \"ou\" lógico entre o acumulador e o conteúdo  de uma posição de memória indicada pelo operando."
+msgstr "O comando OR realiza um \"ou\" lógico entre o acumulador e o conteúdo  de uma posição de memória indicada pelo operando."
+
+#: resstring.sorg
+msgid "A pseudo-instrução ORG (origin) indica ao assembler a posição de memória onde será colocada a próxima instrução."
+msgstr "A pseudo-instrução ORG (origin) indica ao assembler a posição de memória onde será colocada a próxima instrução."
+
 #: resstring.sorigeminvalida
 msgid "Origem inválida"
 msgstr "Origem inválida"
@@ -94,9 +186,29 @@ msgstr "Origem inválida"
 msgid "O tipo de parâmetro é incompatível com a instrução"
 msgstr "O tipo de parâmetro é incompatível com a instrução"
 
+#: resstring.sout
+msgid "O comando OUT (output) transfere o valor do acumulador para um dispositivo externo indicado pelo operando.  Nesse simulador o único dispositivo disponível é um visor (endereço 0)."
+msgstr "O comando OUT (output) transfere o valor do acumulador para um dispositivo externo indicado pelo operando.  Nesse simulador o único dispositivo disponível é um visor (endereço 0)."
+
 #: resstring.sparametrodoequcomerro
 msgid "Parâmetro do EQU com erro"
 msgstr "Parâmetro do EQU com erro"
+
+#: resstring.spontoevirgula
+msgid "Os comentários são começados por ponto e vírgula."
+msgstr "Os comentários são começados por ponto e vírgula."
+
+#: resstring.spop
+msgid "O comando POP (pop from stack), traz para o acumulador o topo da pilha (8 bits). O SP é decrementado de 1."
+msgstr "O comando POP (pop from stack), traz para o acumulador o topo da pilha (8 bits). O SP é decrementado de 1."
+
+#: resstring.sporfavorpreenchaooperando
+msgid "Por favor, preencha o operando"
+msgstr "Por favor, preencha o operando"
+
+#: resstring.sporfavorpreenchaorotulo
+msgid "Por favor, preencha o rótulo"
+msgstr "Por favor, preencha o rótulo"
 
 #: resstring.sprograma
 msgid "; Programa:"
@@ -106,9 +218,33 @@ msgstr "; Programa:"
 msgid "Pseudo-instrução não permite imediato nem indireto"
 msgstr "Pseudo-instrução não permite imediato nem indireto"
 
+#: resstring.spush
+msgid "O comando PUSH (push to stack), coloca o conteúdo do acumulador no topo da pilha.  O SP é decrementado de 1."
+msgstr "O comando PUSH (push to stack), coloca o conteúdo do acumulador no topo da pilha.  O SP é decrementado de 1."
+
+#: resstring.sret
+msgid "O comando RET (return from subroutine), retorna de uma chamada JSR. Para isso, transfere para o PC 16 bits da pilha, e atualiza o SP. O SP é decrementado de 2."
+msgstr "O comando RET (return from subroutine), retorna de uma chamada JSR. Para isso, transfere para o PC 16 bits da pilha, e atualiza o SP. O SP é decrementado de 2."
+
 #: resstring.srotuloduplicado
 msgid " - rótulo duplicado"
 msgstr " - rótulo duplicado"
+
+#: resstring.ssbc
+msgid "O comando SBC (subtract with carry) subtrai do acumulador o conteúdo de uma posição de memória indicada pelo operando, decrementando-o se o carry ligado."
+msgstr "O comando SBC (subtract with carry) subtrai do acumulador o conteúdo de uma posição de memória indicada pelo operando, decrementando-o se o carry ligado."
+
+#: resstring.ssha
+msgid "O comando SHA(shift right aritmético) desloca os bits do acumulador para a direita (ou seja, divide por 2). O bit 7 é mantido igual. O bit 0 (que seria perdido) é armazenado no Carry."
+msgstr "O comando SHA(shift right aritmético) desloca os bits do acumulador para a direita (ou seja, divide por 2). O bit 7 é mantido igual. O bit 0 (que seria perdido) é armazenado no Carry."
+
+#: resstring.sshl
+msgid "O comando SHL (shift left) desloca os bits do acumulador para a esquerda (ou seja, multiplica por 2). O bit 0 recebe o valor 0. O bit 7 (que seria perdido) é armazenado no Carry."
+msgstr "O comando SHL (shift left) desloca os bits do acumulador para a esquerda (ou seja, multiplica por 2). O bit 0 recebe o valor 0. O bit 7 (que seria perdido) é armazenado no Carry."
+
+#: resstring.sshr
+msgid "O comando SHR (shift right) desloca os bits do acumulador para a direita (ou seja, divide por 2).  O bit 7 recebe o valor 0. O bit 0 (que seria perdido) é armazenado no Carry."
+msgstr "O comando SHR (shift right) desloca os bits do acumulador para a direita (ou seja, divide por 2).  O bit 7 recebe o valor 0. O bit 0 (que seria perdido) é armazenado no Carry."
 
 #: resstring.ssimbolo_________linha__endereco
 msgid "Símbolo         Linha  Endereço"
@@ -118,10 +254,34 @@ msgstr "Símbolo         Linha  Endereço"
 msgid "Simulador do processador Sapiens-8"
 msgstr "Simulador do processador Sapiens-8"
 
+#: resstring.ssta
+msgid "O comando STA (store accumulator) transfere o valor do acumulador para a posição de memória indicada pelo operando."
+msgstr "O comando STA (store accumulator) transfere o valor do acumulador para a posição de memória indicada pelo operando."
+
+#: resstring.ssts
+msgid "O comando STS (store into stack pointer) transfere 16 bits da memória indicada pelo operando para o apontador da pilha (Stack Pointer)."
+msgstr "O comando STS (store into stack pointer) transfere 16 bits da memória indicada pelo operando para o apontador da pilha (Stack Pointer)."
+
+#: resstring.ssub
+msgid "O comando SUB (subtract) subtrai do acumulador o conteúdo de uma posição de memória indicada pelo operando."
+msgstr "O comando SUB (subtract) subtrai do acumulador o conteúdo de uma posição de memória indicada pelo operando."
+
+#: resstring.strap
+msgid "O comando TRAP simula a execução uma função de sistema operacional, para simplificar a programação de entrada e saída."
+msgstr "O comando TRAP simula a execução uma função de sistema operacional, para simplificar a programação de entrada e saída."
+
 #: resstring.studofoisalvo
 msgctxt "resstring.studofoisalvo"
 msgid "Tudo foi salvo?"
 msgstr "Tudo foi salvo?"
+
+#: resstring.svalordigitadoinconsistente
+msgid "Valor digitado inconsistente com a base especificada"
+msgstr "Valor digitado inconsistente com a base especificada"
+
+#: resstring.sxor
+msgid "O comando XOR (exclusive OR) realiza um \"xor\" lógico entre o acumulador e o conteúdo de uma posição de memória indicada pelo operando."
+msgstr "O comando XOR (exclusive OR) realiza um \"xor\" lógico entre o acumulador e o conteúdo de uma posição de memória indicada pelo operando."
 
 #: resstring.s_databeladesimbolos
 msgid " da tabela de símbolos"
@@ -148,9 +308,298 @@ msgstr "********* Atenção: "
 msgid "********* Erro: "
 msgstr "********* Erro: "
 
+#: taboutbox.caption
+msgid "Sobre o programa"
+msgstr "Sobre o programa"
+
+#: taboutbox.comments.caption
+msgid "Gabriel Pereira da Silva José Antonio Borges Alonso M. do Amparo Neto"
+msgstr "Gabriel Pereira da Silva José Antonio Borges Alonso M. do Amparo Neto"
+
+#: taboutbox.copyright.caption
+msgid "Copyright (C) 2016/2017/2018"
+msgstr "Copyright (C) 2016/2017/2018"
+
+#: taboutbox.label2.caption
+msgid "Este simulador é compatível com o processador Neander-X."
+msgstr "Este simulador é compatível com o processador Neander-X."
+
+#: taboutbox.okbutton.caption
+msgid "OK"
+msgstr "OK"
+
+#: taboutbox.productname.caption
+msgid "SimuS - Simulador didático para ensino de arquitetura de computadores."
+msgstr "SimuS - Simulador didático para ensino de arquitetura de computadores."
+
+#: taboutbox.version.caption
+msgid "Versão 1.1 - Fevereiro/2018"
+msgstr "Versão 1.1 - Fevereiro/2018"
+
+#: tformautomonta.b_adc.caption
+msgid "ADC"
+msgstr "ADC"
+
+#: tformautomonta.b_add.caption
+msgid "ADD"
+msgstr "ADD"
+
+#: tformautomonta.b_and.caption
+msgid "AND"
+msgstr "AND"
+
+#: tformautomonta.b_coment.caption
+msgid "Comentários"
+msgstr "Comentários"
+
+#: tformautomonta.b_db.caption
+msgid "DB"
+msgstr "DB"
+
+#: tformautomonta.b_ds.caption
+msgid "DS"
+msgstr "DS"
+
+#: tformautomonta.b_dw.caption
+msgid "DW"
+msgstr "DW"
+
+#: tformautomonta.b_end.caption
+msgid "END"
+msgstr "END"
+
+#: tformautomonta.b_equ.caption
+msgid "EQU"
+msgstr "EQU"
+
+#: tformautomonta.b_hlt.caption
+msgid "HLT"
+msgstr "HLT"
+
+#: tformautomonta.b_in.caption
+msgid "IN"
+msgstr "IN"
+
+#: tformautomonta.b_incluir.caption
+msgid "Incluir no programa fonte"
+msgstr "Incluir no programa fonte"
+
+#: tformautomonta.b_jc.caption
+msgid "JC"
+msgstr "JC"
+
+#: tformautomonta.b_jmp.caption
+msgid "JMP"
+msgstr "JMP"
+
+#: tformautomonta.b_jn.caption
+msgid "JN"
+msgstr "JN"
+
+#: tformautomonta.b_jnc.caption
+msgid "JNC"
+msgstr "JNC"
+
+#: tformautomonta.b_jnz.caption
+msgid "JNZ"
+msgstr "JNZ"
+
+#: tformautomonta.b_jsr.caption
+msgid "JSR"
+msgstr "JSR"
+
+#: tformautomonta.b_jz.caption
+msgid "JZ"
+msgstr "JZ"
+
+#: tformautomonta.b_lda.caption
+msgid "LDA"
+msgstr "LDA"
+
+#: tformautomonta.b_lds.caption
+msgid "LDS"
+msgstr "LDS"
+
+#: tformautomonta.b_nop.caption
+msgctxt "tformautomonta.b_nop.caption"
+msgid "NOP"
+msgstr "NOP"
+
+#: tformautomonta.b_not.caption
+msgid "NOT"
+msgstr "NOT"
+
+#: tformautomonta.b_or.caption
+msgid "OR"
+msgstr "OR"
+
+#: tformautomonta.b_org.caption
+msgid "ORG"
+msgstr "ORG"
+
+#: tformautomonta.b_out.caption
+msgid "OUT"
+msgstr "OUT"
+
+#: tformautomonta.b_pop.caption
+msgid "POP"
+msgstr "POP"
+
+#: tformautomonta.b_push.caption
+msgid "PUSH"
+msgstr "PUSH"
+
+#: tformautomonta.b_ret.caption
+msgid "RET"
+msgstr "RET"
+
+#: tformautomonta.b_rotulo.caption
+msgctxt "tformautomonta.b_rotulo.caption"
+msgid "Rótulo"
+msgstr "Rótulo"
+
+#: tformautomonta.b_sbc.caption
+msgid "SBC"
+msgstr "SBC"
+
+#: tformautomonta.b_shl.caption
+msgid "SHL"
+msgstr "SHL"
+
+#: tformautomonta.b_shr.caption
+msgid "SHR"
+msgstr "SHR"
+
+#: tformautomonta.b_sra.caption
+msgid "SRA"
+msgstr "SRA"
+
+#: tformautomonta.b_sta.caption
+msgid "STA"
+msgstr "STA"
+
+#: tformautomonta.b_sts.caption
+msgid "STS"
+msgstr "STS"
+
+#: tformautomonta.b_sub.caption
+msgid "SUB"
+msgstr "SUB"
+
+#: tformautomonta.b_trap.caption
+msgid "TRAP"
+msgstr "TRAP"
+
+#: tformautomonta.b_xor.caption
+msgid "XOR"
+msgstr "XOR"
+
+#: tformautomonta.caption
+msgid "Criação tutorada de programas"
+msgstr "Criação tutorada de programas"
+
+#: tformautomonta.c_imediato.caption
+msgid "Imediato"
+msgstr "Imediato"
+
+#: tformautomonta.c_indireto.caption
+msgid "Indireto"
+msgstr "Indireto"
+
+#: tformautomonta.label1.caption
+msgid "Descrição:"
+msgstr "Descrição:"
+
+#: tformautomonta.l_instr.caption
+msgctxt "tformautomonta.l_instr.caption"
+msgid "NOP"
+msgstr "NOP"
+
+#: tformautomonta.l_operando.caption
+msgid "Operando"
+msgstr "Operando"
+
+#: tformautomonta.l_rotulo.caption
+msgctxt "tformautomonta.l_rotulo.caption"
+msgid "Rótulo"
+msgstr "Rótulo"
+
+#: tformconsole.caption
+msgid "Console"
+msgstr "Console"
+
+#: tformconsole.esconder1.caption
+msgid "Esconder"
+msgstr "Esconder"
+
+#: tformconsole.limpar1.caption
+msgctxt "tformconsole.limpar1.caption"
+msgid "Limpar"
+msgstr "Limpar"
+
+#: tformhex.button1.caption
+msgid "Converter"
+msgstr "Converter"
+
+#: tformhex.caption
+msgid "Conversão entre bases"
+msgstr "Conversão entre bases"
+
+#: tformhex.de_binario.caption
+msgctxt "tformhex.de_binario.caption"
+msgid "Binário"
+msgstr "Binário"
+
+#: tformhex.de_decimal.caption
+msgctxt "tformhex.de_decimal.caption"
+msgid "Decimal"
+msgstr "Decimal"
+
+#: tformhex.de_hexa.caption
+msgctxt "tformhex.de_hexa.caption"
+msgid "Hexadecimal"
+msgstr "Hexadecimal"
+
+#: tformhex.edit1.text
+msgctxt "tformhex.edit1.text"
+msgid "0"
+msgstr "0"
+
+#: tformhex.groupbox1.caption
+msgid "De"
+msgstr "De"
+
+#: tformhex.groupbox2.caption
+msgid "Para"
+msgstr "Para"
+
+#: tformhex.l_resposta.caption
+msgctxt "tformhex.l_resposta.caption"
+msgid "0000"
+msgstr "0000"
+
+#: tformhex.para_binario.caption
+msgctxt "tformhex.para_binario.caption"
+msgid "Binário"
+msgstr "Binário"
+
+#: tformhex.para_decimal.caption
+msgctxt "tformhex.para_decimal.caption"
+msgid "Decimal"
+msgstr "Decimal"
+
+#: tformhex.para_hexa.caption
+msgctxt "tformhex.para_hexa.caption"
+msgid "Hexadecimal"
+msgstr "Hexadecimal"
+
 #: tformprincipal.abrir1.caption
 msgid "&Abrir"
 msgstr "&Abrir"
+
+#: tformprincipal.abrirexemplo.caption
+msgid "Abrir exemplo"
+msgstr "Abrir exemplo"
 
 #: tformprincipal.abrirlingmquina1.caption
 msgid "&Carregar Hexa"
@@ -175,56 +624,6 @@ msgstr "&Arquivo"
 #: tformprincipal.assistente1.caption
 msgid "&Tutor de programação"
 msgstr "&Tutor de programação"
-
-#: tformprincipal.button1.caption
-msgid "2"
-msgstr "2"
-
-#: tformprincipal.button10.caption
-msgctxt "TFORMPRINCIPAL.BUTTON10.CAPTION"
-msgid "0"
-msgstr "0"
-
-#: tformprincipal.button11.caption
-msgid "#"
-msgstr "#"
-
-#: tformprincipal.button2.caption
-msgid "3"
-msgstr "3"
-
-#: tformprincipal.button3.caption
-msgid "6"
-msgstr "6"
-
-#: tformprincipal.button4.caption
-msgid "5"
-msgstr "5"
-
-#: tformprincipal.button5.caption
-msgid "4"
-msgstr "4"
-
-#: tformprincipal.button6.caption
-msgid "7"
-msgstr "7"
-
-#: tformprincipal.button7.caption
-msgid "8"
-msgstr "8"
-
-#: tformprincipal.button8.caption
-msgid "9"
-msgstr "9"
-
-#: tformprincipal.button9.caption
-msgid "*"
-msgstr "*"
-
-#: tformprincipal.b_0.caption
-msgctxt "TFORMPRINCIPAL.B_0.CAPTION"
-msgid "1"
-msgstr "1"
 
 #: tformprincipal.b_acc.caption
 msgid "ACC"
@@ -279,6 +678,7 @@ msgid "Z"
 msgstr "Z"
 
 #: tformprincipal.b_zera.caption
+msgctxt "tformprincipal.b_zera.caption"
 msgid "Limpar"
 msgstr "Limpar"
 
@@ -294,9 +694,27 @@ msgstr "Hexa"
 msgid "Rápido"
 msgstr "Rápido"
 
+#: tformprincipal.chave0.caption
+#, fuzzy
+msgctxt "tformprincipal.chave0.caption"
+msgid "0"
+msgstr "0"
+
+#: tformprincipal.chave1.caption
+#, fuzzy
+msgctxt "tformprincipal.chave1.caption"
+msgid "1"
+msgstr "1"
+
 #: tformprincipal.colar1.caption
 msgid "Co&lar"
 msgstr "Co&lar"
+
+#: tformprincipal.compilacao.caption
+#, fuzzy
+msgctxt "tformprincipal.compilacao.caption"
+msgid "Compilação"
+msgstr "Compilação"
 
 #: tformprincipal.compilar1.caption
 msgid "&Compilar"
@@ -330,9 +748,31 @@ msgstr "Cortar seleção"
 msgid "&Desfazer"
 msgstr "&Desfazer"
 
+#: tformprincipal.displaytitulo.caption
+#, fuzzy
+msgctxt "tformprincipal.displaytitulo.caption"
+msgid "Visor"
+msgstr "Visor"
+
+#: tformprincipal.edicao.caption
+#, fuzzy
+msgctxt "tformprincipal.edicao.caption"
+msgid "Edição"
+msgstr "Edição"
+
 #: tformprincipal.editar1.caption
 msgid "&Editar"
 msgstr "&Editar"
+
+#: tformprincipal.editorepaineldecontrole.caption
+msgid "EditorEPainelDeControle"
+msgstr ""
+
+#: tformprincipal.execucao.caption
+#, fuzzy
+msgctxt "tformprincipal.execucao.caption"
+msgid "Execução"
+msgstr "Execução"
 
 #: tformprincipal.exitbtn.hint
 msgid "Sair"
@@ -342,56 +782,16 @@ msgstr "Sair"
 msgid "AAAA"
 msgstr "AAAA"
 
-#: tformprincipal.label1.caption
-msgid "Pronto"
-msgstr "Pronto"
-
-#: tformprincipal.label10.caption
-msgctxt "tformprincipal.label10.caption"
-msgid "1"
-msgstr "1"
-
-#: tformprincipal.label11.caption
-msgctxt "tformprincipal.label11.caption"
-msgid "0"
-msgstr "0"
-
-#: tformprincipal.label2.caption
-msgid "Instrução:"
-msgstr "Instrução:"
-
-#: tformprincipal.label3.caption
-msgid "Endereço"
-msgstr "Endereço"
-
-#: tformprincipal.label4.caption
-msgid "Executando:"
-msgstr "Executando:"
-
-#: tformprincipal.label5.caption
-msgid "Visor"
-msgstr "Visor"
-
-#: tformprincipal.label6.caption
-msgid "Valor:"
-msgstr "Valor:"
-
-#: tformprincipal.label8.caption
-msgid "Novo valor"
-msgstr "Novo valor"
-
-#: tformprincipal.label9.caption
-msgid "Registradores"
-msgstr "Registradores"
-
 #: tformprincipal.l_acc.caption
 msgctxt "TFORMPRINCIPAL.L_ACC.CAPTION"
 msgid "00"
 msgstr "00"
 
 #: tformprincipal.l_banner.caption
+#, fuzzy
+#| msgid "   SAPIENS-8"
 msgctxt "tformprincipal.l_banner.caption"
-msgid "   SAPIENS-8"
+msgid "SAPIENS-8"
 msgstr "   SAPIENS-8"
 
 #: tformprincipal.l_c.caption
@@ -404,6 +804,24 @@ msgctxt "TFORMPRINCIPAL.L_DISPLAY.CAPTION"
 msgid "00"
 msgstr "00"
 
+#: tformprincipal.l_endereco.caption
+#, fuzzy
+msgctxt "tformprincipal.l_endereco.caption"
+msgid "Endereço"
+msgstr "Endereço"
+
+#: tformprincipal.l_executando.caption
+#, fuzzy
+msgctxt "tformprincipal.l_executando.caption"
+msgid "Executando:"
+msgstr "Executando:"
+
+#: tformprincipal.l_instr.caption
+#, fuzzy
+msgctxt "tformprincipal.l_instr.caption"
+msgid "Instrução:"
+msgstr "Instrução:"
+
 #: tformprincipal.l_instrucao.caption
 msgid "NOPE"
 msgstr "NOPE"
@@ -412,6 +830,12 @@ msgstr "NOPE"
 msgctxt "TFORMPRINCIPAL.L_N.CAPTION"
 msgid "0"
 msgstr "0"
+
+#: tformprincipal.l_novovalor.caption
+#, fuzzy
+msgctxt "tformprincipal.l_novovalor.caption"
+msgid "Novo valor"
+msgstr "Novo valor"
 
 #: tformprincipal.l_operinstrucao.caption
 msgid "@AAAA"
@@ -422,6 +846,12 @@ msgctxt "tformprincipal.l_pc.caption"
 msgid "0000"
 msgstr "0000"
 
+#: tformprincipal.l_registrador.caption
+#, fuzzy
+msgctxt "tformprincipal.l_registrador.caption"
+msgid "Registradores"
+msgstr "Registradores"
+
 #: tformprincipal.l_sp.caption
 msgctxt "TFORMPRINCIPAL.L_SP.CAPTION"
 msgid "0000"
@@ -431,6 +861,12 @@ msgstr "0000"
 msgctxt "tformprincipal.l_teclado.caption"
 msgid "00"
 msgstr "00"
+
+#: tformprincipal.l_valor.caption
+#, fuzzy
+msgctxt "tformprincipal.l_valor.caption"
+msgid "Valor:"
+msgstr "Valor:"
 
 #: tformprincipal.l_z.caption
 msgctxt "TFORMPRINCIPAL.L_Z.CAPTION"
@@ -453,14 +889,6 @@ msgstr "&Novo"
 msgid "Abrir"
 msgstr "Abrir"
 
-#: tformprincipal.panel2.caption
-msgid "Panel2"
-msgstr "Panel2"
-
-#: tformprincipal.panel3.caption
-msgid "Panel3"
-msgstr "Panel3"
-
 #: tformprincipal.pastebtn.hint
 msgid "Colar"
 msgstr "Colar"
@@ -469,9 +897,19 @@ msgstr "Colar"
 msgid "&Programação Tutorada"
 msgstr "&Programação Tutorada"
 
+#: tformprincipal.pronto.caption
+#, fuzzy
+msgctxt "tformprincipal.pronto.caption"
+msgid "Pronto"
+msgstr "Pronto"
+
 #: tformprincipal.recortar1.caption
 msgid "&Recortar"
 msgstr "&Recortar"
+
+#: tformprincipal.registradoresememoria.caption
+msgid "RegistradoresEMemoria"
+msgstr ""
 
 #: tformprincipal.sair1.caption
 msgid "Sai&r"
@@ -497,17 +935,77 @@ msgstr "Salvar"
 msgid "&Sobre o programa"
 msgstr "&Sobre o programa"
 
-#: tformprincipal.tabsheet2.caption
-msgid "Compilação"
-msgstr "Compilação"
+#: tformprincipal.teclado0.caption
+#, fuzzy
+msgctxt "tformprincipal.teclado0.caption"
+msgid "0"
+msgstr "0"
 
-#: tformprincipal.tabsheet3.caption
-msgid "Execução"
-msgstr "Execução"
+#: tformprincipal.teclado1.caption
+#, fuzzy
+msgctxt "tformprincipal.teclado1.caption"
+msgid "1"
+msgstr "1"
 
-#: tformprincipal.tabsheet4.caption
-msgid "Edição"
-msgstr "Edição"
+#: tformprincipal.teclado2.caption
+#, fuzzy
+msgctxt "tformprincipal.teclado2.caption"
+msgid "2"
+msgstr "2"
+
+#: tformprincipal.teclado3.caption
+#, fuzzy
+msgctxt "tformprincipal.teclado3.caption"
+msgid "3"
+msgstr "3"
+
+#: tformprincipal.teclado4.caption
+#, fuzzy
+msgctxt "tformprincipal.teclado4.caption"
+msgid "4"
+msgstr "4"
+
+#: tformprincipal.teclado5.caption
+#, fuzzy
+msgctxt "tformprincipal.teclado5.caption"
+msgid "5"
+msgstr "5"
+
+#: tformprincipal.teclado6.caption
+#, fuzzy
+msgctxt "tformprincipal.teclado6.caption"
+msgid "6"
+msgstr "6"
+
+#: tformprincipal.teclado7.caption
+#, fuzzy
+msgctxt "tformprincipal.teclado7.caption"
+msgid "7"
+msgstr "7"
+
+#: tformprincipal.teclado8.caption
+#, fuzzy
+msgctxt "tformprincipal.teclado8.caption"
+msgid "8"
+msgstr "8"
+
+#: tformprincipal.teclado9.caption
+#, fuzzy
+msgctxt "tformprincipal.teclado9.caption"
+msgid "9"
+msgstr "9"
+
+#: tformprincipal.tecladoasterico.caption
+#, fuzzy
+msgctxt "tformprincipal.tecladoasterico.caption"
+msgid "*"
+msgstr "*"
+
+#: tformprincipal.tecladohashtag.caption
+#, fuzzy
+msgctxt "tformprincipal.tecladohashtag.caption"
+msgid "#"
+msgstr "#"
 
 #: tformprincipal.tutorbtn.hint
 msgid "Tutor"
@@ -521,3 +1019,4 @@ msgstr "&Zerar memória"
 msgctxt "usimus.studofoisalvo"
 msgid "Tudo foi salvo?"
 msgstr "Tudo foi salvo?"
+

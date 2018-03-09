@@ -4,8 +4,8 @@
 ; Data: 14/10/17
 ;---------------------------------------------------
 ;O LED deve estar conectado em 3 pinos PWM-capable do
-;Arduino. Neste programa iremos utilizar os pinos 9,
-;10 e 11.
+;Arduino. Neste programa iremos utilizar os pinos 3,
+;9 e 11.
 ;PINOS
 P_RED:     DS 3
 P_GREEN:   DS 3
@@ -27,10 +27,10 @@ ORG 50
      LDA    #219
      TRAP   0
 
-     LDA #9
+     LDA #3
      STA P_RED
 
-     LDA #10
+     LDA #9
      STA P_GREEN
 
      LDA #11

@@ -69,7 +69,7 @@ const
 {$ENDIF}
 {$IFDEF Linux}
   callibname='libopenal.so';
-  calutlibname='libalut.so';
+  //calutlibname='libalut.so';
 {$ENDIF}
 
 

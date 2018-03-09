@@ -7,13 +7,13 @@ ORG	 0
          LDA    #219
          TRAP   0
 
-	LDA	#3	; pino desejado = 5
+	LDA	#13	; pino desejado = 13
 	STA	PIN_LED
 
-        LDA     #0      ; PINO pontenciometro = A0
+        LDA     #56      ; PINO potenciometro = A2
         STA     PIN_POT
 ;
-	LDA	#3	; modo de saída
+	LDA	#3	; modo de saída PWM
 	STA	PIN_LED +1
 	LDA	#201
 	TRAP	PIN_LED

@@ -1,61 +1,64 @@
 object formHex: TformHex
-  Left = 287
-  Top = 204
-  Width = 393
+  Left = 746
   Height = 171
+  Top = 430
+  Width = 393
   Caption = 'Conversão entre bases'
+  ClientHeight = 171
+  ClientWidth = 393
   Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
-  Font.Style = []
   FormStyle = fsStayOnTop
-  PixelsPerInch = 96
+  LCLVersion = '1.8.0.6'
   object l_resposta: TLabel
     Left = 8
+    Height = 13
     Top = 48
     Width = 24
-    Height = 13
     Caption = '0000'
+    ParentColor = False
   end
   object Edit1: TEdit
     Left = 8
+    Height = 21
     Top = 16
     Width = 97
-    Height = 21
     TabOrder = 0
     Text = '0'
   end
   object Button1: TButton
     Left = 8
+    Height = 25
     Top = 80
     Width = 97
-    Height = 25
     Caption = 'Converter'
-    TabOrder = 1
     OnClick = Button1Click
+    TabOrder = 1
   end
   object GroupBox1: TGroupBox
     Left = 112
+    Height = 105
     Top = 8
     Width = 113
-    Height = 105
     Caption = 'De'
+    ClientHeight = 87
+    ClientWidth = 109
     TabOrder = 2
     object de_binario: TRadioButton
       Left = 14
+      Height = 19
       Top = 10
-      Width = 57
-      Height = 17
+      Width = 52
       Caption = 'Binário'
       TabOrder = 0
     end
     object de_decimal: TRadioButton
       Left = 14
+      Height = 19
       Top = 34
-      Width = 65
-      Height = 17
+      Width = 58
       Caption = 'Decimal'
       Checked = True
       TabOrder = 1
@@ -63,41 +66,43 @@ object formHex: TformHex
     end
     object de_hexa: TRadioButton
       Left = 14
+      Height = 19
       Top = 58
-      Width = 89
-      Height = 17
+      Width = 81
       Caption = 'Hexadecimal'
       TabOrder = 2
     end
   end
   object GroupBox2: TGroupBox
     Left = 240
+    Height = 105
     Top = 8
     Width = 113
-    Height = 105
     Caption = 'Para'
+    ClientHeight = 87
+    ClientWidth = 109
     TabOrder = 3
     object para_binario: TRadioButton
       Left = 14
+      Height = 19
       Top = 10
-      Width = 57
-      Height = 17
+      Width = 52
       Caption = 'Binário'
       TabOrder = 0
     end
     object para_decimal: TRadioButton
       Left = 14
+      Height = 19
       Top = 34
-      Width = 65
-      Height = 17
+      Width = 58
       Caption = 'Decimal'
       TabOrder = 1
     end
     object para_hexa: TRadioButton
       Left = 14
+      Height = 19
       Top = 58
-      Width = 89
-      Height = 17
+      Width = 81
       Caption = 'Hexadecimal'
       Checked = True
       TabOrder = 2

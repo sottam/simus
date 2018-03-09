@@ -1,29 +1,30 @@
 object FormConsole: TFormConsole
-  Left = 757
-  Top = 244
-  Width = 508
+  Left = 633
   Height = 237
+  Top = 277
+  Width = 508
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'Console'
+  ClientHeight = 217
+  ClientWidth = 508
   Color = clWhite
-  Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
-  Font.Style = []
   FormStyle = fsStayOnTop
   Menu = MainMenu1
   OnKeyPress = FormKeyPress
-  PixelsPerInch = 96
+  LCLVersion = '1.8.0.6'
   object texto: TLabel
     Left = 16
+    Height = 1
     Top = 8
-    Width = 3
-    Height = 13
+    Width = 1
+    ParentColor = False
   end
   object MainMenu1: TMainMenu
-    Left = 168
-    Top = 64
+    left = 56
+    top = 8
     object Limpar1: TMenuItem
       Caption = 'Limpar'
       OnClick = Limpar1Click

@@ -46,64 +46,15 @@ uses
 {$IFnDEF MSWINDOWS}
   Unix, BaseUnix,
 {$ENDIF}
-  LCLIntf, LCLType, LMessages,Sysutils, openal;
+  LCLIntf, LCLType, Sysutils;
 
 procedure SoundPlay(Hz: Word; durMS: integer);
 
 implementation
-const
-     soundSize = 11025;
-var
-     wavHdr: array [0..43] of byte = (
-        $52, $49, $46, $46, $ff, $ff, $ff, $ff, $57, $41, $56, $45, $66, $6d, $74, $20,
-        $10, $00, $00, $00, $01, $00, $01, $00, $11, $2b, $00, $00, $11, $2b, $00, $00,
-        $01, $00, $08, $00, $64, $61, $74, $61, $ff, $ff, $ff, $ff);
-type
-    TSound = array [0.. sizeof (wavHdr) + soundSize-1] of byte;
-var
-    PSound: ^TSound;
-
-    buffer : TALuint;
-    source : TALuint;
-    sourcepos: array [0..2] of TALfloat= ( 0.0, 0.0, 0.0 );
-    sourcevel: array [0..2] of TALfloat= ( 0.0, 0.0, 0.0 );
-    listenerpos: array [0..2] of TALfloat= ( 0.0, 0.0, 0.0);
-    listenervel: array [0..2] of TALfloat= ( 0.0, 0.0, 0.0);
-    listenerori: array [0..5] of TALfloat= ( 0.0, 0.0, -1.0, 0.0, 1.0, 0.0);
-
-    format: TALEnum;
-    size: TALSizei;
-    freq: TALSizei;
-    data: TALVoid;
 
 procedure SoundPlay(Hz: Word; durMS: integer);
 begin
-    format:= AL_FORMAT_MONO8;
-    data:= @wavHdr;
-    size:= sizeof (Psound);
-    freq:= hz;
 
-    AlGenBuffers (1, @buffer);
-    AlBufferData (buffer, format, data, size, freq);
-
-    AlGenSources (1, @source);
-    AlSourcei    ( source, AL_BUFFER, buffer);
-    AlSourcef    ( source, AL_PITCH, 1.0 );
-    AlSourcef    ( source, AL_GAIN, 1.0 );
-    AlSourcefv   ( source, AL_POSITION, @sourcepos);
-    AlSourcefv   ( source, AL_VELOCITY, @sourcevel);
-    AlSourcei    ( source, AL_LOOPING, AL_TRUE);
-
-    AlListenerfv ( AL_POSITION, @listenerpos);
-    AlListenerfv ( AL_VELOCITY, @listenervel);
-    AlListenerfv ( AL_ORIENTATION, @listenerori);
-
-    AlSourcePlay(source);
-    sleep(durMS);
-    AlSourceStop(source);
-    //alSourcePause(source);
-    AlDeleteBuffers(1, @buffer);
-    AlDeleteSources(1, @source);
 end;
 
 end.

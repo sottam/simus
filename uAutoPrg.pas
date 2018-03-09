@@ -44,10 +44,10 @@ uses
 {$IFnDEF FPC}
   Windows,
 {$ELSE}
-  LCLIntf, LCLType, LMessages,
+  LCLIntf, LCLType,
 {$ENDIF}
-  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, uSimus, Clipbrd;
+  SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, uSimus, Clipbrd, LCLTranslator, DefaultTranslator, ResString;
 
 type
   TformAutoMonta = class(TForm)
@@ -246,14 +246,14 @@ var s: string;
 begin
     if e_operando.Visible and (trim(e_operando.text) = '') then
         begin
-            showMessage ('Por favor, preencha o operando');
+            showMessage (SPorfavorPreenchaOOperando);
             exit;
         end;
 
     if (operador = 'ORG') or (operador = 'EQU') or (operador = ':') then
         if trim (e_rotulo.text) = '' then
             begin
-                showMessage ('Por favor, preencha o rótulo');
+                showMessage (SPorFavorPreenchaORotulo);
                 exit;
             end;
 
@@ -294,215 +294,151 @@ end;
 procedure TformAutoMonta.b_nopClick(Sender: TObject);
 begin
     preset ('NOP');
-    l_descricao.caption :=
-        'O comando NOP (no operation) é usado apenas para gastar tempo.';
+    l_descricao.caption := SNOP;
 end;
 
 procedure TformAutoMonta.b_hltClick(Sender: TObject);
 begin
     preset ('HLT');
-    l_descricao.caption :=
-        'O comando HLT (halt) para a máquina.';
+    l_descricao.caption := SHLT;
 end;
 
 procedure TformAutoMonta.b_staClick(Sender: TObject);
 begin
     presetComOper ('STA');
-    l_descricao.caption :=
-        'O comando STA (store accumulator) transfere o valor do acumulador ' +
-        'para a posição de memória indicada pelo operando.';
+    l_descricao.caption :=  SSTA;
 end;
 
 procedure TformAutoMonta.b_ldaClick(Sender: TObject);
 begin
     presetComOper ('LDA');
-    l_descricao.caption :=
-        'O comando LDA (load accumulator) atribui ao acumulador o conteúdo da ' +
-        'posição de memória indicada pelo operando.';
+    l_descricao.caption := SLDA;
 end;
 
 procedure TformAutoMonta.b_addClick(Sender: TObject);
 begin
     presetComOper ('ADD');
-    l_descricao.caption :=
-        'O comando ADD soma ao acumulador o conteúdo de uma posição de ' +
-        'memória indicada pelo operando.';
+    l_descricao.caption := SADD;
 end;
 
 procedure TformAutoMonta.b_adcClick(Sender: TObject);
 begin
     presetComOper ('ADC');
-    l_descricao.caption :=
-        'O comando ADC (add with carry) soma ao acumulador o conteúdo de uma '+
-        'posição de memória indicada pelo operando, acrescido do valor do Carry (vai um).';
+    l_descricao.caption :=  SADC;
 end;
 
 procedure TformAutoMonta.b_subClick(Sender: TObject);
 begin
     presetComOper ('SUB');
-    l_descricao.caption :=
-        'O comando SUB (subtract) subtrai do acumulador o conteúdo de uma ' +
-        'posição de memória indicada pelo operando.';
+    l_descricao.caption := SSUB;
 end;
 
 procedure TformAutoMonta.b_sbcClick(Sender: TObject);
 begin
     presetComOper ('SBC');
-    l_descricao.caption :=
-        'O comando SBC (subtract with carry) subtrai do acumulador o conteúdo ' +
-        'de uma posição de memória indicada pelo operando, decrementando-o se ' +
-        'o carry ligado.';
+    l_descricao.caption := SSBC;
 end;
 
 procedure TformAutoMonta.b_notClick(Sender: TObject);
 begin
     preset('NOT');
-    l_descricao.caption :=
-        'O comando NOT (negate) transforma 1 em 0 e 0 em 1 nos bits do acumulador.';
+    l_descricao.caption := SNOT;
 end;
 
 procedure TformAutoMonta.b_andClick(Sender: TObject);
 begin
     presetComOper('AND');
-    l_descricao.caption :=
-        'O comando AND realiza um "e" lógico entre o acumulador e o conteúdo ' +
-        ' de uma posição de memória indicada pelo operando.';
+    l_descricao.caption := SAND;
 end;
 
 procedure TformAutoMonta.b_orClick(Sender: TObject);
 begin
     presetComOper('OR');
-    l_descricao.caption :=
-        'O comando OR realiza um "ou" lógico entre o acumulador e o conteúdo ' +
-        ' de uma posição de memória indicada pelo operando.';
+    l_descricao.caption :=  SOR;
 end;
 
 procedure TformAutoMonta.b_xorClick(Sender: TObject);
 begin
     presetComOper('XOR');
-    l_descricao.caption :=
-        'O comando XOR (exclusive OR) realiza um "xor" lógico entre o acumulador ' +
-        'e o conteúdo de uma posição de memória indicada pelo operando.';
+    l_descricao.caption :=  SXOR;
 end;
 
 procedure TformAutoMonta.b_shlClick(Sender: TObject);
 begin
     preset('SHL');
-    l_descricao.caption :=
-        'O comando SHL (shift left) desloca os bits do acumulador para ' +
-        'a esquerda (ou seja, multiplica por 2). O bit 0 recebe o valor 0. ' +
-        'O bit 7 (que seria perdido) é armazenado no Carry.';
+    l_descricao.caption := SSHL;
 end;
 
 procedure TformAutoMonta.b_shrClick(Sender: TObject);
 begin
     preset('SHR');
-    l_descricao.caption :=
-        'O comando SHR (shift right) desloca os bits do acumulador para ' +
-        'a direita (ou seja, divide por 2).  O bit 7 recebe o valor 0. ' +
-        'O bit 0 (que seria perdido) é armazenado no Carry.';
+    l_descricao.caption := SSHR;
 end;
 
 procedure TformAutoMonta.b_sraClick(Sender: TObject);
 begin
     preset('SHA');
-    l_descricao.caption :=
-        'O comando SHA(shift right aritmético) desloca os bits do acumulador para ' +
-        'a direita (ou seja, divide por 2). O bit 7 é mantido igual.  ' +
-        'O bit 0 (que seria perdido) é armazenado no Carry.';
+    l_descricao.caption := SSHA;
 end;
 
 procedure TformAutoMonta.b_inClick(Sender: TObject);
 begin
     presetIO('IN');
-    l_descricao.caption :=
-        'O comando IN (input) carrega no acumulador o ' +
-        'valor lido num dispositivo externo indicado pelo operando.  Nesse '+
-        'simulador os dispositivos são: chaves (endereço 0) e o status ' +
-        'de "dado disponível" das chaves (endereço 1).';
+    l_descricao.caption := SIN;
 end;
 
 procedure TformAutoMonta.b_outClick(Sender: TObject);
 begin
     presetIO('OUT');
-    l_descricao.caption :=
-        'O comando OUT (output) transfere o valor do acumulador para ' +
-        'um dispositivo externo indicado pelo operando.  Nesse '+
-        'simulador o único dispositivo disponível é um visor '+
-        '(endereço 0).';
+    l_descricao.caption :=  SOUT;
 end;
 
 procedure TformAutoMonta.b_trapClick(Sender: TObject);
 begin
     presetIO('TRAP');
-    l_descricao.caption :=
-        'O comando TRAP simula a execução uma função de sistema operacional, '+
-        'para simplificar a programação de entrada e saída.';
+    l_descricao.caption :=  STRAP;
 end;
 
 procedure TformAutoMonta.b_jmpClick(Sender: TObject);
 begin
     presetDesvio('JMP');
-    l_descricao.caption :=
-        'O comando JMP (jump) desvia a execução do programa para o endereço ' +
-        'indicado pelo operando (ou seja, coloca este endereço no registrador ' +
-        'PC).';
+    l_descricao.caption :=  SJMP;
 end;
 
 procedure TformAutoMonta.b_jnClick(Sender: TObject);
 begin
     presetDesvio('JN');
-    l_descricao.caption :=
-        'O comando JN (jump if negative) desvia a execução do programa ' +
-        'para o endereço indicado pelo operando, apenas quando a última ' +
-        'operação realizada produziu um valor com o bit 7 ligado.';
+    l_descricao.caption := SJN;
 end;
 
 procedure TformAutoMonta.b_jzClick(Sender: TObject);
 begin
     presetDesvio('JZ');
-    l_descricao.caption :=
-        'O comando JZ (jump if zero) desvia a execução do programa ' +
-        'para o endereço indicado pelo operando, apenas quando a última ' +
-        'operação realizada produziu um valor zero';
+    l_descricao.caption := SJZ;
 end;
 
 procedure TformAutoMonta.b_jnzClick(Sender: TObject);
 begin
     presetDesvio('JNZ');
-    l_descricao.caption :=
-        'O comando JNZ (jump if not zero) desvia a execução do programa ' +
-        'para o endereço indicado pelo operando ender, apenas quando a ' +
-        'última operação realizada produziu um valor diferente de ' +
-        'zero.';
+    l_descricao.caption := SJNZ;
 end;
 
 procedure TformAutoMonta.b_jcClick(Sender: TObject);
 begin
     presetDesvio('JC');
-    l_descricao.caption :=
-        'O comando JC (jump if carry) desvia a execução do programa ' +
-        'para o endereço indicado pelo operando ender, apenas quando a ' +
-        'última operação aritmética realizada não coube nos 8 bits do' +
-        'destino.';
+    l_descricao.caption :=  SJC;
 end;
 
 procedure TformAutoMonta.b_jncClick(Sender: TObject);
 begin
     presetDesvio('JNC');
-    l_descricao.caption :=
-        'O comando JNC (jump if not carry) desvia a execução do programa ' +
-        'para o endereço indicado pelo operando ender, apenas quando a ' +
-        'última operação aritmética realizada coube nos 8 bits do' +
-        'destino.';
+    l_descricao.caption := SJNC;
 end;
 
 procedure TformAutoMonta.b_orgClick(Sender: TObject);
 begin
     presetPseudo ('ORG');
-    l_descricao.caption :=
-        'A pseudo-instrução ORG (origin) indica ao assembler ' +
-        'a posição de memória onde será colocada a próxima instrução.';
+    l_descricao.caption := SORG;
     operador := 'ORG ';
     l_instr.caption := operador;
 end;
@@ -510,37 +446,25 @@ end;
 procedure TformAutoMonta.b_equClick(Sender: TObject);
 begin
     presetPseudo ('EQU');
-    l_descricao.caption :=
-        'A pseudo-instrução EQU (equate) atribui um nome a um certo valor.' +
-        'Esse comando é frequentemente usado para especificar variáveis que ' +
-        'são posicionadas em certo endereço de memória.'+#$0d+
-        'Por exemplo para posicionar a variável x no endereço hexa f0 use:'#$0d+
-        '            X EQU 0F0H';
+    l_descricao.caption :=  SEQU;
 end;
 
 procedure TformAutoMonta.b_endClick(Sender: TObject);
 begin
     presetPseudo ('END');
-    l_descricao.caption :=
-        'A pseudo-instrução END indica que o programa fonte acabou.  '+
-        'O operando é usado para pré-carregar o PC com o endereço inicial de ' +
-        'execução do programa.';
+    l_descricao.caption := SEND;
 end;
 
 procedure TformAutoMonta.b_dsClick(Sender: TObject);
 begin
     presetPseudo ('DS');
-    l_descricao.caption :=
-        'A pseudo-instrução DS (define storage) reserva um número de ' +
-        'palavras na memória definido pelo operando.';
+    l_descricao.caption := SDS;
 end;
 
 procedure TformAutoMonta.b_dbClick(Sender: TObject);
 begin
     presetPseudo ('DB');
-    l_descricao.caption :=
-        'A pseudo-instrução DB (define bytes) carrega nesta palavra ' +
-        'de memória o valor definido pelo operando.';
+    l_descricao.caption := SDB;
 end;
 
 procedure TformAutoMonta.b_comentClick(Sender: TObject);
@@ -549,67 +473,49 @@ begin
     l_rotulo.visible := false;
     e_rotulo.visible := false;
 
-    l_descricao.caption :=
-        'Os comentários são começados por ponto e vírgula.';
+    l_descricao.caption := SPontoEVirgula;
 end;
 
 procedure TformAutoMonta.b_rotuloClick(Sender: TObject);
 begin
     preset (':');
-    l_descricao.caption :=
-        'Um rótulo é um nome dado à posição de memória da instrução a seguir. ' +
-        'O nome é seguido por dois pontos';
+    l_descricao.caption := SDoisPontos;
 end;
 
 procedure TformAutoMonta.b_stsClick(Sender: TObject);
 begin
     presetDesvio('STS');
-    l_descricao.caption :=
-        'O comando STS (store into stack pointer) transfere 16 bits da memória ' +
-        'indicada pelo operando para o apontador da pilha (Stack Pointer).';
+    l_descricao.caption := SSTS;
 end;
 
 procedure TformAutoMonta.b_ldsClick(Sender: TObject);
 begin
     presetComOper ('LDS');
-    l_descricao.caption :=
-        'O comando STS (load from stack pointer) transfere o apontador da pilha ' +
-        '(Stack Pointer) para 16 bits na memória indicada pelo operando.';
+    l_descricao.caption := SLDS;
 end;
 
 procedure TformAutoMonta.b_jsrClick(Sender: TObject);
 begin
     presetDesvio ('JSR');
-    l_descricao.caption :=
-        'O comando JSR (jump to subroutine) executa uma chamada de subrotina. ' +
-        'Para isso, transfere os 16 bits do PC (Program Counter) para a pilha ' +
-        'e coloca no PC os 16 bits indicados no operando.  O SP é decrementado ' +
-        'de 2.';
+    l_descricao.caption := SJSR;
     end;
 
 procedure TformAutoMonta.b_retClick(Sender: TObject);
 begin
     preset ('RET');
-    l_descricao.caption :=
-        'O comando RET (return from subroutine), retorna de uma chamada JSR. ' +
-        'Para isso, transfere para o PC 16 bits da pilha, e atualiza o SP. ' +
-        'O SP é decrementado de 2.';
+    l_descricao.caption := SRET;
 end;
 
 procedure TformAutoMonta.b_pushClick(Sender: TObject);
 begin
     preset ('PUSH');
-    l_descricao.caption :=
-        'O comando PUSH (push to stack), coloca o conteúdo do acumulador no ' +
-        'topo da pilha.  O SP é decrementado de 1.';
+    l_descricao.caption := SPUSH;
 end;
 
 procedure TformAutoMonta.b_popClick(Sender: TObject);
 begin
     preset ('POP');
-    l_descricao.caption :=
-        'O comando POP (pop from stack), traz para o acumulador o topo da pilha ' +
-        '(8 bits).  O SP é decrementado de 1.';
+    l_descricao.caption := SPOP;
 end;
 
 end.

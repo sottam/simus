@@ -49,12 +49,14 @@ uses
     h2wiringpi,
   {$ENDIF}
 {$ELSE}
-  LCLIntf, LCLType, LMessages,
+  LCLIntf, LCLType,
 {$ENDIF}
-  forms, uvars, uConsole, uSound, sysutils, firmataPascal;
+  forms, uvars, uConsole, uSound, sysutils, firmataClient, firmataConstants;
+
+var
+  firmata : TFirmata;
 
 procedure execTrap (var ACC: int8; operandReg: int16);
-procedure arduinoSerialStarted();
 {$IFnDEF MSWINDOWS}
   {$IFDef ARMCPU}
     procedure wiringPiStarted();
@@ -62,10 +64,11 @@ procedure arduinoSerialStarted();
 {$ENDIF}
 
 implementation
-uses uSimula;
+uses uSimula, uSimus;
 
-var isWiringPiStarted: boolean = false;
-    isArduinoSerialStarted: boolean = false;
+var
+   isWiringPiStarted: boolean = false;
+
 
 {$IFnDEF MSWINDOWS}
   {$IFDef CPUARM}
@@ -80,14 +83,13 @@ end;
   {$ENDIF}
 {$ENDIF}
 
-
-procedure arduinoSerialStarted();
+procedure NoBlockingSleep(miliseconds : Cardinal);
+var
+  tc : DWORD;
 begin
-    if isArduinoSerialStarted = false then
-    begin
-      initializeComm;
-      isArduinoSerialStarted := true;
-    end;
+  tc := GetTickCount64;
+  while (GetTickCount64 < tc + miliseconds) and (not Application.Terminated) do
+    Application.ProcessMessages;
 end;
 
 procedure execTrap (var ACC: int8; operandReg: int16);
@@ -137,7 +139,10 @@ begin
         5: begin
                // temporização.  tempo em milésimos de segundos
                tempo := pegaMemoria(operandReg, 16);
-               sleep (tempo);
+               formPrincipal.TimerDeExecucao.Enabled:=false;
+               NoBlockingSleep(tempo);
+               formPrincipal.TimerDeExecucao.Enabled:=true;
+               //sleep (tempo);
            end;
 
         6: begin
@@ -156,6 +161,7 @@ begin
                // semente aleatoria
                randSeed := pegaMemoria(operandReg, 8);
            end;
+
         //RaspPiTraps
 {$IFnDEF MSWINDOWS}
   {$IFDef CPUARM}
@@ -219,28 +225,33 @@ begin
              end;
   {$ENDIF}
 {$ENDIF}
-        //ARDUINO TRAPS
-
+        //firmata TRAPS
         201: begin   //Define Modo do pino
                pino := pegaMemoria(operandReg, 8);
                modo := PegaMemoria(operandReg+1, 8);
-               FirmataPascal.setPinMode(pino, modo);
+               if(firmata = nil) then exit;
+               firmata.setPinMode(pino,modo);
+               if modo = PIN_MODE_INPUT then firmata.digitalReport(pino div 8, true);
+               //if modo = PIN_MODE_ANALOG then firmata.analogReport(pino, true);
              end;
-        202: begin //define um valor no pino digital
+        202: begin   //define um valor no pino digital
                pino := pegaMemoria(operandReg, 8);
                valor := pegaMemoria(operandReg+1, 8) and 1;
-               FirmataPascal.digitalWrite(pino,valor);
+               if(firmata = nil) then exit;
+               firmata.digitalWrite(pino,valor);
+
              end;
 
         203: begin  //le um valor de um pino digital
                pino := pegaMemoria(operandReg, 8);
-               ACC := FirmataPascal.digitalRead(pino);
-               write(FirmataPascal.digitalRead(pino));
+               if(firmata = nil) then exit;
+               ACC:= firmata.digitalRead(pino);
              end;
 
         204: begin    //le um valor de um pino analogico
                pino := pegaMemoria(operandReg, 8);
-               valor:=firmataPascal.analogRead(pino);
+               if(firmata = nil) then exit;
+               valor:=firmata.analogRead(pino);
                memoria[operandReg+1]:= valor shr 8;
                memoria[operandReg+2]:= valor;
                ACC:= valor shr 2;
@@ -249,20 +260,23 @@ begin
         205: begin  //configura o duty-cicle de um registrador PWM
                pino := pegaMemoria(operandReg, 8);
                valor := pegaMemoria(operandReg+1, 16) and $3FF;
-               firmataPascal.analogWrite(pino, valor);
+               if(firmata = nil) then exit;
+               firmata.analogWrite(pino, valor);
              end;
 
         219: begin
-               firmataReset();
+               //firmataReset();
              end;
 
         220: begin
                 pino := pegaMemoria(operandReg, 8);
-                firmataPascal.digitalReport(pino div 8, true);
+                if(firmata = nil) then exit;
+                firmata.digitalReport(pino div 8, true);
              end;
         221: begin
                 pino := pegaMemoria(operandReg, 8);
-                firmataPascal.analogReport(pino, true);
+                if(firmata = nil) then exit;
+                firmata.analogReport(pino, true);
              end;
     end;
     application.processMessages;

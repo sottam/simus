@@ -19,9 +19,6 @@
       <EnableI18N Value="True"/>
       <OutDir Value="locale"/>
     </i18n>
-    <VersionInfo>
-      <StringTable ProductVersion=""/>
-    </VersionInfo>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>
     </BuildModes>
@@ -33,15 +30,21 @@
         <FormatVersion Value="1"/>
       </local>
     </RunParams>
-    <RequiredPackages Count="2">
+    <RequiredPackages Count="4">
       <Item1>
-        <PackageName Value="SynEdit"/>
+        <PackageName Value="LazSerialPort"/>
       </Item1>
       <Item2>
-        <PackageName Value="LCL"/>
+        <PackageName Value="FirmataPascal"/>
       </Item2>
+      <Item3>
+        <PackageName Value="SynEdit"/>
+      </Item3>
+      <Item4>
+        <PackageName Value="LCL"/>
+      </Item4>
     </RequiredPackages>
-    <Units Count="19">
+    <Units Count="13">
       <Unit0>
         <Filename Value="simus.dpr"/>
         <IsPartOfProject Value="True"/>
@@ -61,7 +64,9 @@
       <Unit3>
         <Filename Value="uHex.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="formHex"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit3>
       <Unit4>
         <Filename Value="uAbout.pas"/>
@@ -88,7 +93,9 @@
       <Unit8>
         <Filename Value="uconsole.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormConsole"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit8>
       <Unit9>
         <Filename Value="uSound.pas"/>
@@ -103,43 +110,21 @@
         <IsPartOfProject Value="True"/>
       </Unit11>
       <Unit12>
-        <Filename Value="synaser.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit12>
-      <Unit13>
-        <Filename Value="firmatapascal.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="FirmataPascal"/>
-      </Unit13>
-      <Unit14>
-        <Filename Value="synautil.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit14>
-      <Unit15>
-        <Filename Value="synafpc.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit15>
-      <Unit16>
         <Filename Value="resstring.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ResString"/>
-      </Unit16>
-      <Unit17>
-        <Filename Value="openal.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit17>
-      <Unit18>
-        <Filename Value="firmataconstants.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="FirmataConstants"/>
-      </Unit18>
+      </Unit12>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="11"/>
     <PathDelim Value="\"/>
+    <Target>
+      <Filename Value="Simus"/>
+    </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
+      <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Parsing>
       <SyntaxOptions>

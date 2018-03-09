@@ -16,7 +16,7 @@
 //    You should have received a copy of the GNU General Public License
 //    along with SimuS.  If not, see <http://www.gnu.org/licenses/>.
 //
-//    Este arquivo é parte do programa simulador SimuS.
+//    Este arquivo é parte do programa MainMenu SimuS.
 //
 //    SimuS é um software livre; você pode redistribuí-lo e/ou
 //    modificá-lo dentro dos termos da Licença Pública Geral GNU como
@@ -44,11 +44,12 @@ uses
 {$IFnDEF FPC}
   shellApi, Windows,
 {$ELSE}
-  LCLIntf, LCLType, LMessages,
+  LCLIntf, LCLType,
 {$ENDIF}
-  Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, Dialogs,
+  SysUtils, Variants, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, Menus, Buttons, uSimula, ExtCtrls, ComCtrls, SynEdit,
-  SynHighlighterPas, SynHighlighterAny, SynCompletion, Types, LCLTranslator, ResString, synaser, FirmataPascal;
+  SynHighlighterPas, SynHighlighterAny, SynCompletion, Types, LCLTranslator,
+  DefaultTranslator, ResString, FirmataClient, utrap;
 
 type
 
@@ -59,10 +60,12 @@ type
     Label11: TLabel;
     Arduino1: TMenuItem;
     ArduinoState: TMenuItem;
-    Panel2: TPanel;
-    Simulador: TMainMenu;
+    AbrirExemplo: TMenuItem;
+    EditorEPainelDeControle: TPanel;
+    MainMenu: TMainMenu;
     Arquivo1: TMenuItem;
     Abrir1: TMenuItem;
+    MolduraBanner: TBevel;
     Salvar1: TMenuItem;
     SalvarComo1: TMenuItem;
     Sair1: TMenuItem;
@@ -82,13 +85,13 @@ type
     b_reset: TButton;
     ledOn_exec: TSpeedButton;
     ledOff_exec: TSpeedButton;
-    Label4: TLabel;
+    l_executando: TLabel;
     Highlighter: TSynAnySyn;
     SynAutoComplete: TSynAutoComplete;
     SynCompletion: TSynCompletion;
     SynEditor: TSynEdit;
-    TabSheet4: TTabSheet;
-    Timer1: TTimer;
+    Edicao: TTabSheet;
+    TimerDeExecucao: TTimer;
     AbrirLingMquina1: TMenuItem;
     SalvarLingMquina1: TMenuItem;
     Sobreoprograma1: TMenuItem;
@@ -123,7 +126,7 @@ type
     cOlar1: TMenuItem;
     Recortar1: TMenuItem;
     Desfazer1: TMenuItem;
-    Panel1: TPanel;
+    BarButton: TPanel;
     OpenBtn: TSpeedButton;
     SaveBtn: TSpeedButton;
     CutBtn: TSpeedButton;
@@ -134,24 +137,24 @@ type
     NewBnt: TSpeedButton;
     Ajuda2: TMenuItem;
     Bevel1: TBevel;
-    Panel3: TPanel;
-    Panel4: TPanel;
-    Label3: TLabel;
-    Label8: TLabel;
+    RegistradoresEMemoria: TPanel;
+    AlteraMemoria: TPanel;
+    l_endereco: TLabel;
+    l_novoValor: TLabel;
     e_ender: TEdit;
     b_recua: TButton;
     b_avanca: TButton;
     e_valor: TEdit;
     PainelRegs: TPanel;
-    Label2: TLabel;
+    l_instr: TLabel;
     l_instrucao: TLabel;
     l_operInstrucao: TLabel;
-    Label9: TLabel;
+    l_registrador: TLabel;
     l_PC: TLabel;
     l_ACC: TLabel;
     l_Z: TLabel;
     l_N: TLabel;
-    Bevel2: TBevel;
+    MolduraInstrAtual: TBevel;
     b_PC: TButton;
     b_ACC: TButton;
     b_Z: TButton;
@@ -164,10 +167,10 @@ type
     l_C: TLabel;
     Bevel3: TBevel;
     Bevel4: TBevel;
-    PageControl1: TPageControl;
-    TabSheet2: TTabSheet;
+    Codigo: TPageControl;
+    Compilacao: TTabSheet;
     lb_instrucoes: TListBox;
-    TabSheet3: TTabSheet;
+    Execucao: TTabSheet;
     m_listagem: TMemo;
     Console1: TMenuItem;
     cb_hexa: TCheckBox;
@@ -175,29 +178,31 @@ type
     Conversordebases1: TMenuItem;
     PainelControle: TPanel;
     lb_dados: TListBox;
-    Splitter1: TSplitter;
-    b_0: TButton;
-    Button1: TButton;
-    Button2: TButton;
-    Button3: TButton;
-    Button4: TButton;
-    Button5: TButton;
-    Button6: TButton;
-    Button7: TButton;
-    Button8: TButton;
-    Button9: TButton;
-    Button10: TButton;
-    Button11: TButton;
-    Bevel5: TBevel;
+    Splitter: TSplitter;
+    teclado1: TButton;
+    teclado2: TButton;
+    teclado3: TButton;
+    teclado6: TButton;
+    teclado5: TButton;
+    teclado4: TButton;
+    teclado7: TButton;
+    teclado8: TButton;
+    teclado9: TButton;
+    tecladoAsterico: TButton;
+    teclado0: TButton;
+    tecladoHashTag: TButton;
+    MolduraKeypad: TBevel;
     CompileBtn: TSpeedButton;
+
+    procedure AbrirExemploClick(Sender: TObject);
     procedure b_pararClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
-    procedure lb_instrucoesClick(Sender: TObject);
     procedure lb_instrucoesDrawItem(Control: TWinControl; Index: Integer;
       ARect: TRect; State: TOwnerDrawState);
+    procedure lb_instrucoesKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
     procedure lb_instrucoesSelectionChange(Sender: TObject; User: boolean);
-    procedure l_bannerClick(Sender: TObject);
-    procedure Timer1Timer(Sender: TObject);
+    procedure TimerDeExecucaoTimer(Sender: TObject);
     procedure b_executarClick(Sender: TObject);
     procedure b_resetClick(Sender: TObject);
     procedure e_enderExit(Sender: TObject);
@@ -207,8 +212,7 @@ type
     procedure b_avancaClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure e_valorKeyUp(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure e_valorKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure e_valorExit(Sender: TObject);
     procedure b_passoAPassoClick(Sender: TObject);
     procedure b_entrarClick(Sender: TObject);
@@ -224,7 +228,6 @@ type
     procedure AbrirLingMquina1Click(Sender: TObject);
     procedure Compilar1Click(Sender: TObject);
     procedure b_zeraClick(Sender: TObject);
-    procedure FormResize(Sender: TObject);
     procedure b_ZClick(Sender: TObject);
     procedure b_NClick(Sender: TObject);
     procedure b_CClick(Sender: TObject);
@@ -241,8 +244,7 @@ type
     procedure atualizaListagem;
     procedure preparaDebug;
     procedure atualizaDebug (pc: integer);
-    procedure editorKeyUp(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
+    procedure editorKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure Console1Click(Sender: TObject);
     procedure cb_hexaClick(Sender: TObject);
     procedure Conversordebases1Click(Sender: TObject);
@@ -251,7 +253,7 @@ type
 
   private
     { Private declarations }
-    minWidth, minHeight: integer;
+    function VerificaBreakpoint() : boolean;
   public
     { Public declarations }
     procedure atualizaInterface;
@@ -261,7 +263,6 @@ type
     procedure atualizaDump;
     procedure atualizaLeds;
     procedure atualizaDados (zerando: boolean);
-    procedure Splitter( const Delimiter: Char; Str: string; ListOfStrings: TStrings);
     procedure CreateCommList;
     procedure ArduinoSelectedComm(Sender: TObject);
     //procedure NovoArquivo;
@@ -273,8 +274,8 @@ var
   nomeArq: string;
   execucaoRapida: boolean;
 
-  BreakpointList : TStringList;
-  //nBreakpoint    : integer;
+  BreakpointList    : TStringList;
+  controlKeyPressed : boolean;
 
 implementation
 
@@ -298,6 +299,7 @@ begin
 
     instr := (memoria[PC] shr 2) and $3f;
     ind_ti := indTabInstrPorCod[instr];
+
     if ind_ti < 0 then   // instrução inválida
         begin
             l_instrucao.caption := '???';
@@ -488,8 +490,8 @@ end;
 procedure TformPrincipal.FormCreate(Sender: TObject);
 var i: integer;
 begin
-    minWidth := width;
-    minHeight := height;
+    //minWidth := width;
+    //minHeight := height;
 
     inicMaquina (true);
 
@@ -511,7 +513,7 @@ end;
 
 procedure TformPrincipal.b_passoAPassoClick(Sender: TObject);
 begin
-    PageControl1.ActivePage := TabSheet3;
+    Codigo.ActivePage := Execucao;
     running := false;
 
     executaInstrucao;
@@ -562,6 +564,37 @@ end;
 procedure TformPrincipal.Assistente1Click(Sender: TObject);
 begin
     formAutoMonta.visible := true;
+end;
+
+procedure TformPrincipal.AbrirExemploClick(Sender: TObject);
+begin
+     b_pararClick(Sender);
+
+    if SynEditor.Modified <> false then
+        if MessageDlg(STudoFoiSalvo,
+              mtConfirmation, [mbYes, mbNo], 0) <> mrYes then exit;
+    {$IFDEF MSWINDOWS}
+    OpenDialog1.InitialDir:= ExtractFilePath(Application.ExeName) + '\Exemplos';
+    {$ELSE}
+    OpenDialog1.InitialDir:= ExtractFilePath(Application.ExeName) + '/Exemplos';
+    {$ENDIF}
+    if openDialog1.Execute then
+        begin
+            nomeArq := openDialog1.FileName;
+            try
+                SynEditor.Lines.LoadFromFile(nomeArq);
+                caption := nomeArq + S_SimuladorDoProcSapiens8;
+                m_listagem.Clear;
+                lb_instrucoes.Clear;
+
+                ndebugDados := 0;
+                setLength (debugDados, ndebugDados);
+                lb_dados.Clear;
+            except
+                showMessage (SErroAoCarregarArquivo);
+            end;
+
+        end;
 end;
 
 procedure TformPrincipal.Abrir1Click(Sender: TObject);
@@ -852,7 +885,7 @@ begin
     m_listagem.Clear;
     for i := 0 to listagem.count-1 do
          m_listagem.Lines.add (listagem[i]);
-    PageControl1.ActivePage := TabSheet2;
+    Codigo.ActivePage := Compilacao;
 end;
 
 procedure TformPrincipal.Compilar1Click(Sender: TObject);
@@ -872,12 +905,6 @@ procedure TformPrincipal.b_zeraClick(Sender: TObject);
 begin
     keyStatusReg := 0;
     atualizaInterface;
-end;
-
-procedure TformPrincipal.FormResize(Sender: TObject);
-begin
-    if width  < minWidth  then width  := minWidth;
-    if height < minHeight then height := minHeight;
 end;
 
 procedure TformPrincipal.b_ZClick(Sender: TObject);
@@ -980,6 +1007,10 @@ end;
 procedure TformPrincipal.cb_rapidoClick(Sender: TObject);
 begin
     execucaoRapida := (Sender as TCheckBox).checked;
+    if execucaoRapida = true then
+        TimerDeExecucao.Interval:=20
+    else
+        TimerDeExecucao.Interval:=100;
 end;
 
 procedure TformPrincipal.Zerarmemria1Click(Sender: TObject);
@@ -1029,7 +1060,10 @@ begin
         b_passoAPassoClick(Sender)
     else
     if Key = VK_F9 then
-        b_executarClick(Sender);
+        b_executarClick(Sender)
+    else
+    if Key = VK_CONTROL then
+        controlKeyPressed:= false;
 end;
 
 procedure TformPrincipal.Console1Click(Sender: TObject);
@@ -1061,7 +1095,7 @@ begin
 end;
 
 {----------------------------------------------------------------------}
-{                     controle de execução                                                 }
+{                     controle de execução                             }
 {----------------------------------------------------------------------}
 
 procedure TformPrincipal.b_resetClick(Sender: TObject);
@@ -1079,13 +1113,19 @@ begin
     atualizaInterface;
     dumpMem.TopIndex := 0;
     dumpMem.ItemIndex := 0;
+
+    if firmata <> nil then firmata.SystemReset();
 end;
 
 procedure TformPrincipal.b_executarClick(Sender: TObject);
 begin
     running := true;
+    //verificaa se está em breakpoint, se estiver, executa a proxima instrucao
+    if VerificaBreakpoint() = true then
+        executaInstrucao;
+
     atualizaInterface;
-    timer1.enabled := true;
+    TimerDeExecucao.enabled := true;
 end;
 
 procedure TformPrincipal.b_pararClick(Sender: TObject);
@@ -1123,33 +1163,10 @@ begin
             end;
 end;
 
-procedure TformPrincipal.lb_instrucoesClick(Sender: TObject);
-var
-  idx : integer;
-  isBreakPoint : integer;
-
-begin
-   {
-  idx := lb_instrucoes.ItemIndex;
-
-  isBreakpoint :=  BreakpointList.IndexOf( IntToStr(idx));
-
-  if  isBreakpoint = -1 then
-     BreakpointList.Add(IntToStr(idx))
-  else
-     BreakpointList.Delete(isBreakPoint);
-
-  lb_instrucoes.Repaint;
-   }
-end;
-
 procedure TformPrincipal.lb_instrucoesDrawItem(Control: TWinControl;
   Index: Integer; ARect: TRect; State: TOwnerDrawState);
 var
-   Vermelho : TColor;
    aColor: TColor;             //Background color
-   ind : integer;
-   line: string;
 begin
    aColor:=$FFFFFF;
 
@@ -1167,20 +1184,25 @@ begin
 
     lb_instrucoes.Canvas.Brush.Color:=aColor;  //Set background color
     lb_instrucoes.Canvas.FillRect(ARect);      //Draw a filled rectangle
+    lb_instrucoes.Canvas.TextRect(ARect, 2, ARect.Top, lb_instrucoes.Items[Index]);  //Draw Itemtext
 
-    //lb_instrucoes.Canvas.Font.Bold:=True;      //Set the font to "bold"
-    lb_instrucoes.Canvas.TextRect(ARect, 2, ARect.Top+2, lb_instrucoes.Items[Index]);  //Draw Itemtext
+end;
+
+procedure TformPrincipal.lb_instrucoesKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Key = VK_CONTROL then
+    controlKeyPressed:= true;
 
 end;
 
 procedure TformPrincipal.lb_instrucoesSelectionChange(Sender: TObject;
   User: boolean);
-
 var
   idx : integer;
   isBreakPoint : integer;
-
 begin
+  if(controlKeyPressed = false) then exit;
   idx := 0;
   if User = true then
     begin
@@ -1192,93 +1214,86 @@ begin
          BreakpointList.Add(IntToStr(idx))
       else
          BreakpointList.Delete(isBreakPoint);
-
-      //lb_instrucoes.Repaint;
+      lb_instrucoes.Repaint;
     end;
-
-end;
-
-procedure TformPrincipal.l_bannerClick(Sender: TObject);
-begin
-
-end;
-
-procedure TformPrincipal.Splitter( const Delimiter: Char; Str: string; ListOfStrings: TStrings);
-begin
-   ListOfStrings.Clear;
-   ListOfStrings.Delimiter       := Delimiter;
-   ListOfStrings.StrictDelimiter := True; // Requires D2006 or newer.
-   ListOfStrings.DelimitedText   := Str;
 end;
 
 procedure TformPrincipal.CreateCommList;
 var
   tempItem : TMenuItem;
-  OutPutList: TStringList;
-  porta : String;
-const
-  Delimiter : Char = ',';
+  AvailablePorts: TStringList;
+  port : String;
 begin
-  OutPutList := TStringList.Create;
+  AvailablePorts := TStringList.Create;
   try
-     Splitter(Delimiter, synaser.GetSerialPortNames, OutPutList);
-     for porta in OutPutList do
+     AvailablePorts:= Firmata.availableSerialPorts();
+     for port in AvailablePorts do
          begin
             tempItem := TMenuItem.Create(self);
             tempItem.RadioItem := true;
             tempItem.AutoCheck := true;
-            tempItem.Caption   := porta;
+            tempItem.Caption   := port;
             tempItem.OnClick:= ArduinoSelectedComm;
             Arduino1.Add(tempItem);
          end;
-
   finally
-      OutPutList.Free;
+      AvailablePorts.Free;
   end;
 end;
 
 procedure TformPrincipal.ArduinoSelectedComm(Sender: TObject);
 begin
-  FirmataPascal.SelectedComm:= (Sender as TMenuItem).Caption;
-  FirmataPascal.initializeComm( (Sender as TMenuItem).Caption );
+  //FirmataPascal.SelectedComm:= (Sender as TMenuItem).Caption;
+  //FirmataPascal.initializeComm( (Sender as TMenuItem).Caption );
+  utrap.firmata:= TFirmata.Create((Sender as TMenuItem).Caption);
   ArduinoState.Caption:= 'Pronto';
   ArduinoState.Visible:= true;
 end;
 
-procedure TformPrincipal.Timer1Timer(Sender: TObject);
-var i, idx, isBreakpoint: integer;
+procedure TformPrincipal.TimerDeExecucaoTimer(Sender: TObject);
 begin
     if running then
-        begin
-            if execucaoRapida then
-                begin
-                    i := 0;
-                    while running and (i < 100) do
-                        begin
-                          idx := lb_instrucoes.ItemIndex;
-                          isBreakpoint :=  BreakpointList.IndexOf( IntToStr(idx));
-                          if  isBreakpoint > -1 then break;
-                          executaInstrucao;
-                          i := i + 1;
-                        end;
-                end;
+    begin
+      {
+       if execucaoRapida then
+       begin
+          if  VerificaBreakpoint() = true then
+          begin
+            running:= false;
+            execucaoRapida:= false;
+            TimerDeExecucao.Enabled:= false;
+            exit;
+          end;
+          executaInstrucao;
+          atualizaInterface;
+          exit;
+       end;
+       }
+       if VerificaBreakpoint() = true then
+           begin
+             running:= false;
+             TimerDeExecucao.Enabled:= false;
+             exit;
+           end;
 
-            executaInstrucao;
-            atualizaInterface;
-
-            idx := lb_instrucoes.ItemIndex;
-            isBreakpoint :=  BreakpointList.IndexOf( IntToStr(idx));
-            if isBreakpoint > -1 then
-               begin
-                   running:= false;
-                   Timer1.Enabled:= false;
-               end;
-
-        end
+        executaInstrucao;
+        atualizaInterface;
+    end
     else
-        timer1.enabled := false;
+        TimerDeExecucao.enabled := false;
 end;
 
+function TformPrincipal.VerificaBreakpoint() : boolean;
+var idx, isBreakpoint : integer;
+begin
+    idx := lb_instrucoes.ItemIndex;
+    isBreakpoint :=  BreakpointList.IndexOf( IntToStr(idx));
+
+    if isBreakpoint > -1 then
+       VerificaBreakpoint:= true
+    else
+       VerificaBreakpoint:= false;
+end;
 
 end.
 
