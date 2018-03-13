@@ -30,19 +30,13 @@
         <FormatVersion Value="1"/>
       </local>
     </RunParams>
-    <RequiredPackages Count="4">
+    <RequiredPackages Count="2">
       <Item1>
-        <PackageName Value="LazSerialPort"/>
+        <PackageName Value="SynEdit"/>
       </Item1>
       <Item2>
-        <PackageName Value="FirmataPascal"/>
-      </Item2>
-      <Item3>
-        <PackageName Value="SynEdit"/>
-      </Item3>
-      <Item4>
         <PackageName Value="LCL"/>
-      </Item4>
+      </Item2>
     </RequiredPackages>
     <Units Count="13">
       <Unit0>

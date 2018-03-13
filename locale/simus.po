@@ -609,14 +609,6 @@ msgstr ""
 msgid "&Ajuda"
 msgstr ""
 
-#: tformprincipal.arduino1.caption
-msgid "Arduino"
-msgstr ""
-
-#: tformprincipal.arduinostate.caption
-msgid "Não Conectado"
-msgstr ""
-
 #: tformprincipal.arquivo1.caption
 msgid "&Arquivo"
 msgstr ""

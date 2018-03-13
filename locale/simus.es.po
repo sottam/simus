@@ -618,14 +618,6 @@ msgstr "&Cargar Hexa"
 msgid "&Ajuda"
 msgstr "&Ayuda"
 
-#: tformprincipal.arduino1.caption
-msgid "Arduino"
-msgstr "Arduino"
-
-#: tformprincipal.arduinostate.caption
-msgid "Não Conectado"
-msgstr "No Conectado"
-
 #: tformprincipal.arquivo1.caption
 msgid "&Arquivo"
 msgstr "&Archivo"

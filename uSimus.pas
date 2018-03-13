@@ -49,7 +49,7 @@ uses
   SysUtils, Variants, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, Menus, Buttons, uSimula, ExtCtrls, ComCtrls, SynEdit,
   SynHighlighterPas, SynHighlighterAny, SynCompletion, Types, LCLTranslator,
-  DefaultTranslator, ResString, FirmataClient, utrap;
+  DefaultTranslator, ResString, utrap;
 
 type
 
@@ -58,8 +58,6 @@ type
   TformPrincipal = class(TForm)
     Label10: TLabel;
     Label11: TLabel;
-    Arduino1: TMenuItem;
-    ArduinoState: TMenuItem;
     AbrirExemplo: TMenuItem;
     EditorEPainelDeControle: TPanel;
     MainMenu: TMainMenu;
@@ -263,8 +261,6 @@ type
     procedure atualizaDump;
     procedure atualizaLeds;
     procedure atualizaDados (zerando: boolean);
-    procedure CreateCommList;
-    procedure ArduinoSelectedComm(Sender: TObject);
     //procedure NovoArquivo;
   end;
 
@@ -490,9 +486,6 @@ end;
 procedure TformPrincipal.FormCreate(Sender: TObject);
 var i: integer;
 begin
-    //minWidth := width;
-    //minHeight := height;
-
     inicMaquina (true);
 
     execucaoRapida := cb_rapido.Checked;
@@ -503,8 +496,6 @@ begin
         dumpMem.Items.add (geraLinhaDump(i*8));
 
     atualizaDump;
-
-    CreateCommList;
 
     BreakpointList:= TStringList.Create;
     BreakpointList.Duplicates:= dupIgnore;
@@ -1114,7 +1105,6 @@ begin
     dumpMem.TopIndex := 0;
     dumpMem.ItemIndex := 0;
 
-    if firmata <> nil then firmata.SystemReset();
 end;
 
 procedure TformPrincipal.b_executarClick(Sender: TObject);
@@ -1216,38 +1206,6 @@ begin
          BreakpointList.Delete(isBreakPoint);
       lb_instrucoes.Repaint;
     end;
-end;
-
-procedure TformPrincipal.CreateCommList;
-var
-  tempItem : TMenuItem;
-  AvailablePorts: TStringList;
-  port : String;
-begin
-  AvailablePorts := TStringList.Create;
-  try
-     AvailablePorts:= Firmata.availableSerialPorts();
-     for port in AvailablePorts do
-         begin
-            tempItem := TMenuItem.Create(self);
-            tempItem.RadioItem := true;
-            tempItem.AutoCheck := true;
-            tempItem.Caption   := port;
-            tempItem.OnClick:= ArduinoSelectedComm;
-            Arduino1.Add(tempItem);
-         end;
-  finally
-      AvailablePorts.Free;
-  end;
-end;
-
-procedure TformPrincipal.ArduinoSelectedComm(Sender: TObject);
-begin
-  //FirmataPascal.SelectedComm:= (Sender as TMenuItem).Caption;
-  //FirmataPascal.initializeComm( (Sender as TMenuItem).Caption );
-  utrap.firmata:= TFirmata.Create((Sender as TMenuItem).Caption);
-  ArduinoState.Caption:= 'Pronto';
-  ArduinoState.Visible:= true;
 end;
 
 procedure TformPrincipal.TimerDeExecucaoTimer(Sender: TObject);

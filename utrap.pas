@@ -51,10 +51,7 @@ uses
 {$ELSE}
   LCLIntf, LCLType,
 {$ENDIF}
-  forms, uvars, uConsole, uSound, sysutils, firmataClient, firmataConstants;
-
-var
-  firmata : TFirmata;
+  forms, uvars, uConsole, uSound, sysutils;
 
 procedure execTrap (var ACC: int8; operandReg: int16);
 {$IFnDEF MSWINDOWS}
@@ -225,59 +222,6 @@ begin
              end;
   {$ENDIF}
 {$ENDIF}
-        //firmata TRAPS
-        201: begin   //Define Modo do pino
-               pino := pegaMemoria(operandReg, 8);
-               modo := PegaMemoria(operandReg+1, 8);
-               if(firmata = nil) then exit;
-               firmata.setPinMode(pino,modo);
-               if modo = PIN_MODE_INPUT then firmata.digitalReport(pino div 8, true);
-               //if modo = PIN_MODE_ANALOG then firmata.analogReport(pino, true);
-             end;
-        202: begin   //define um valor no pino digital
-               pino := pegaMemoria(operandReg, 8);
-               valor := pegaMemoria(operandReg+1, 8) and 1;
-               if(firmata = nil) then exit;
-               firmata.digitalWrite(pino,valor);
-
-             end;
-
-        203: begin  //le um valor de um pino digital
-               pino := pegaMemoria(operandReg, 8);
-               if(firmata = nil) then exit;
-               ACC:= firmata.digitalRead(pino);
-             end;
-
-        204: begin    //le um valor de um pino analogico
-               pino := pegaMemoria(operandReg, 8);
-               if(firmata = nil) then exit;
-               valor:=firmata.analogRead(pino);
-               memoria[operandReg+1]:= valor shr 8;
-               memoria[operandReg+2]:= valor;
-               ACC:= valor shr 2;
-             end;
-
-        205: begin  //configura o duty-cicle de um registrador PWM
-               pino := pegaMemoria(operandReg, 8);
-               valor := pegaMemoria(operandReg+1, 16) and $3FF;
-               if(firmata = nil) then exit;
-               firmata.analogWrite(pino, valor);
-             end;
-
-        219: begin
-               //firmataReset();
-             end;
-
-        220: begin
-                pino := pegaMemoria(operandReg, 8);
-                if(firmata = nil) then exit;
-                firmata.digitalReport(pino div 8, true);
-             end;
-        221: begin
-                pino := pegaMemoria(operandReg, 8);
-                if(firmata = nil) then exit;
-                firmata.analogReport(pino, true);
-             end;
     end;
     application.processMessages;
 end;

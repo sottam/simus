@@ -1,7 +1,7 @@
 object formPrincipal: TformPrincipal
-  Left = 2034
+  Left = 713
   Height = 750
-  Top = 57
+  Top = 151
   Width = 980
   Caption = 'SimuS - Simulador do processador Sapiens-8'
   ClientHeight = 730
@@ -17,7 +17,7 @@ object formPrincipal: TformPrincipal
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   Position = poDesktopCenter
-  LCLVersion = '1.8.0.6'
+  LCLVersion = '1.8.2.0'
   Visible = True
   object BarButton: TPanel
     Left = 0
@@ -4449,15 +4449,6 @@ object formPrincipal: TformPrincipal
         Caption = '&Sobre o programa'
         OnClick = Sobreoprograma1Click
       end
-    end
-    object Arduino1: TMenuItem
-      Caption = 'Arduino'
-      ShowAlwaysCheckable = True
-    end
-    object ArduinoState: TMenuItem
-      Caption = 'Não Conectado'
-      Enabled = False
-      Visible = False
     end
   end
   object TimerDeExecucao: TTimer

@@ -86,7 +86,5 @@
 {"hash":224764533,"name":"tformprincipal.console1.caption","sourcebytes":[67,38,111,110,115,111,108,101],"value":"C&onsole"},
 {"hash":671,"name":"tformprincipal.n1.caption","sourcebytes":[38,63],"value":"&?"},
 {"hash":44571553,"name":"tformprincipal.ajuda2.caption","sourcebytes":[38,65,106,117,100,97],"value":"&Ajuda"},
-{"hash":16791249,"name":"tformprincipal.sobreoprograma1.caption","sourcebytes":[38,83,111,98,114,101,32,111,32,112,114,111,103,114,97,109,97],"value":"&Sobre o programa"},
-{"hash":143376399,"name":"tformprincipal.arduino1.caption","sourcebytes":[65,114,100,117,105,110,111],"value":"Arduino"},
-{"hash":152824239,"name":"tformprincipal.arduinostate.caption","sourcebytes":[78,195,163,111,32,67,111,110,101,99,116,97,100,111],"value":"N\u00E3o Conectado"}
+{"hash":16791249,"name":"tformprincipal.sobreoprograma1.caption","sourcebytes":[38,83,111,98,114,101,32,111,32,112,114,111,103,114,97,109,97],"value":"&Sobre o programa"}
 ]}
