@@ -3,7 +3,7 @@ object formHex: TformHex
   Height = 171
   Top = 430
   Width = 393
-  Caption = 'Conversão entre bases'
+  Caption = 'Base Converter'
   ClientHeight = 171
   ClientWidth = 393
   Color = clBtnFace
@@ -33,7 +33,7 @@ object formHex: TformHex
     Height = 25
     Top = 80
     Width = 97
-    Caption = 'Converter'
+    Caption = 'Convert'
     OnClick = Button1Click
     TabOrder = 1
   end
@@ -42,7 +42,7 @@ object formHex: TformHex
     Height = 105
     Top = 8
     Width = 113
-    Caption = 'De'
+    Caption = 'From'
     ClientHeight = 87
     ClientWidth = 109
     TabOrder = 2
@@ -50,8 +50,8 @@ object formHex: TformHex
       Left = 14
       Height = 19
       Top = 10
-      Width = 52
-      Caption = 'Binário'
+      Width = 49
+      Caption = 'Binary'
       TabOrder = 0
     end
     object de_decimal: TRadioButton
@@ -78,7 +78,7 @@ object formHex: TformHex
     Height = 105
     Top = 8
     Width = 113
-    Caption = 'Para'
+    Caption = 'To'
     ClientHeight = 87
     ClientWidth = 109
     TabOrder = 3
@@ -86,8 +86,8 @@ object formHex: TformHex
       Left = 14
       Height = 19
       Top = 10
-      Width = 52
-      Caption = 'Binário'
+      Width = 49
+      Caption = 'Binary'
       TabOrder = 0
     end
     object para_decimal: TRadioButton

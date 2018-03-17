@@ -26,11 +26,11 @@ object FormConsole: TFormConsole
     left = 56
     top = 8
     object Limpar1: TMenuItem
-      Caption = 'Limpar'
+      Caption = 'Clean'
       OnClick = Limpar1Click
     end
     object Esconder1: TMenuItem
-      Caption = 'Esconder'
+      Caption = 'Hide'
       OnClick = Esconder1Click
     end
   end

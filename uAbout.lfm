@@ -4,7 +4,7 @@ object AboutBox: TAboutBox
   Top = 381
   Width = 288
   BorderStyle = bsDialog
-  Caption = 'Sobre o programa'
+  Caption = 'About SimuS'
   ClientHeight = 312
   ClientWidth = 288
   Color = clCream
@@ -37,7 +37,7 @@ object AboutBox: TAboutBox
       Alignment = taCenter
       Anchors = [akTop]
       AutoSize = False
-      Caption = 'SimuS - Simulador didático para ensino de arquitetura de computadores.'
+      Caption = 'Simus - Didactic Simulator for computer architecture teaching.'
       Font.Color = clWindowText
       Font.Height = -15
       Font.Name = 'MS Sans Serif'
@@ -55,7 +55,7 @@ object AboutBox: TAboutBox
       Alignment = taCenter
       Anchors = [akTop]
       AutoSize = False
-      Caption = 'Versão 1.1 - Fevereiro/2018'
+      Caption = 'Version 1.1 - February/2018'
       ParentColor = False
       OnClick = VersionClick
     end
@@ -67,7 +67,7 @@ object AboutBox: TAboutBox
       Alignment = taCenter
       Anchors = [akTop]
       AutoSize = False
-      Caption = 'Copyright (C) 2016/2017/2018'
+      Caption = 'Copyright (C) 2016/2018'
       ParentColor = False
     end
     object Comments: TLabel
@@ -93,7 +93,7 @@ object AboutBox: TAboutBox
       Alignment = taCenter
       Anchors = [akTop]
       AutoSize = False
-      Caption = 'Este simulador é compatível com o processador Neander-X.'
+      Caption = 'This simulator is compatible with Neander-X processor.'
       ParentColor = False
       WordWrap = True
     end

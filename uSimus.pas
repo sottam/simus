@@ -193,6 +193,7 @@ type
     CompileBtn: TSpeedButton;
 
     procedure AbrirExemploClick(Sender: TObject);
+    procedure Arquivo1Click(Sender: TObject);
     procedure b_pararClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure lb_instrucoesDrawItem(Control: TWinControl; Index: Integer;
@@ -586,6 +587,11 @@ begin
             end;
 
         end;
+end;
+
+procedure TformPrincipal.Arquivo1Click(Sender: TObject);
+begin
+
 end;
 
 procedure TformPrincipal.Abrir1Click(Sender: TObject);

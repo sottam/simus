@@ -9,127 +9,127 @@ uses
 
 resourcestring
   //uSimus
-  STudoFoiSalvo = 'Tudo foi salvo?';
-  SDesejaSalvarAntesDeSair = 'Deseja salvar antes de sair?';
-  SInforme = 'Informe';
-  SNovoValorDoPC = 'Novo valor do PC';
-  SNovoValorDoAcc = 'Novo valor do ACC';
-  SNovoValorDoFlagZ = 'Novo valor do flag Z';
-  SNovoValorDoFlagN = 'Novo valor do flag N';
-  SNovoValorDoFlagC = 'Novo valor do flag C';
+  STudoFoiSalvo = 'Are you sure?';
+  SDesejaSalvarAntesDeSair = 'Save before exiting?';
+  SInforme = 'Insert';
+  SNovoValorDoPC = 'New PC value';
+  SNovoValorDoAcc = 'New ACC value';
+  SNovoValorDoFlagZ = 'New flag Z value';
+  SNovoValorDoFlagN = 'New flag N value';
+  SNovoValorDoFlagC = 'New flag C value';
 
-  S_SimuladorDoProcSapiens8 = ' - Simulador do processador Sapiens-8';
-  SSimuladorDoProcSapiens8 = 'Simulador do processador Sapiens-8';
+  S_SimuladorDoProcSapiens8 = ' - Sapiens-8 processor simulator';
+  SSimuladorDoProcSapiens8 = 'Sapiens-8 processor simulator';
 
-  SErroAoCarregarArquivo = 'Erro ao carregar o arquivo';
-  SPrograma = '; Programa:';
-  SAutor =    '; Autor:' ;
-  SData =     '; Data:';
+  SErroAoCarregarArquivo = 'Error when loading file';
+  SPrograma = '; Program:';
+  SAutor =    '; Author:' ;
+  SData =     '; Date:';
 
-  SListagem = 'Listagem'; // primeira palavra da frase: Listagem da tabela de símbolos
-  S___Sapiens8 = '   SAPIENS-8';
+  SListagem = 'List'; // primeira palavra da frase: Listagem da tabela de símbolos
+  S___Sapiens8 = 'SAPIENS-8';
 
   //uAssemb
-  S________Atencao = '********* Atenção: ';
-  S________Erro = '********* Erro: ';
-  SCadeiasComecamETerminamPorAspasOuPlics = 'Cadeias começam e terminam por aspas ou plics.';
-  SPseudoInstrucaoNaoPermiteImediatoNemIndireto = 'Pseudo-instrução não permite imediato nem indireto';
-  SComentarioOuParametroMalFormado = 'Comentário ou parâmetro mal formado';
-  SNumeroDeErrosEncontrados = 'Número de erros encontrados: ';
-  SRotuloDuplicado = ' - rótulo duplicado';
-  SParametroDoEQUcomErro = 'Parâmetro do EQU com erro';
-  SOperandoInvalido = 'Operando inválido';
-  SInstrucaoInvalida = 'Instrução inválida';
-  SEstaInstrucaoNaoPossuiParametros = 'Esta instrução não possui parâmetros';
-  SOTipoDeParametroEIncompativelComAInstrucao = 'O tipo de parâmetro é incompatível com a instrução';
-  SOperandoMalFormado = 'Operando mal formado';
-  SOrigemInvalida = 'Origem inválida';
-  SSimbolo_________Linha__Endereco = 'Símbolo         Linha  Endereço';
-  SCompilacaoEmAssemblyDoTexto = 'Compilação (assembly) do texto ';
-  S_Em = 'Em '; // precede escrita da Data
-  S_DaTabelaDeSimbolos = ' da tabela de símbolos'; //inicio completado pela palavra listagem contiaem uSimus
+  S________Atencao = '********* Warning: ';
+  S________Erro = '********* Error: ';
+  SCadeiasComecamETerminamPorAspasOuPlics = 'Strings start and end with quotation marks.';
+  SPseudoInstrucaoNaoPermiteImediatoNemIndireto = 'Pseudo-instruction does not permit immediate neither indirect';
+  SComentarioOuParametroMalFormado = 'Malformed comment or parameter';
+  SNumeroDeErrosEncontrados = 'Number of errors found: ';
+  SRotuloDuplicado = ' - duplicate label';
+  SParametroDoEQUcomErro = 'EQU Parameter with error';
+  SOperandoInvalido = 'Invalid operand';
+  SInstrucaoInvalida = 'Illegal instruction';
+  SEstaInstrucaoNaoPossuiParametros = 'This instruction has no parameters';
+  SOTipoDeParametroEIncompativelComAInstrucao = 'This parameter type is incompatible with the instruction';
+  SOperandoMalFormado = 'Malformed operand';
+  SOrigemInvalida = 'Invalid source';
+  SSimbolo_________Linha__Endereco = 'Symbol           Line  Address';
+  SCompilacaoEmAssemblyDoTexto = 'Compilation Report: ';
+  S_Em = 'In '; // precede escrita da Data
+  S_DaTabelaDeSimbolos = ' of symbol table'; //inicio completado pela palavra listagem contida em uSimus
 
   //uHex
-  SValorDigitadoInconsistente = 'Valor digitado inconsistente com a base especificada';
+  SValorDigitadoInconsistente = 'Typed value inconsistent with specified base';
 
   //uAutoProg
 
-  SPorfavorPreenchaOOperando = 'Por favor, preencha o operando';
-  SPorFavorPreenchaORotulo = 'Por favor, preencha o rótulo';
+  SPorfavorPreenchaOOperando = 'Please, fill in the operand.';
+  SPorFavorPreenchaORotulo = 'Please fill in the label.';
 
-  SNOP = 'O comando NOP (no operation) é usado apenas para gastar tempo.';
+  SNOP = 'NOP (no operation) does nothing.';
 
-  SHLT = 'O comando HLT (halt) para a máquina.';
+  SHLT = 'HLT (halt) stops the machine.';
 
-  SSTA = 'O comando STA (store accumulator) transfere o valor do acumulador para a posição de memória indicada pelo operando.';
+  SSTA = 'STA (store accumulator) transfers the value of the accumulator to the memory location indicated by the operand.';
 
-  SLDA =  'O comando LDA (load accumulator) atribui ao acumulador o conteúdo da posição de memória indicada pelo operando.';
+  SLDA = 'LDA (load accumulator) assigns the accumulator the contents of the memory location indicated by the operand.';
 
-  SADD = 'O comando ADD soma ao acumulador o conteúdo de uma posição de memória indicada pelo operando.';
+  SADD = 'ADD instruction adds the contents of the memory position to the contents of the accumulator. The result is stored in the accumulator.';
 
-  SADC = 'O comando ADC (add with carry) soma ao acumulador o conteúdo de uma posição de memória indicada pelo operando, acrescido do valor do Carry (vai um).';
+  SADC = 'ADC (add with carry) instruction adds the contents of the memory position to the contents of the accumulator and the carry.';
 
-  SSUB = 'O comando SUB (subtract) subtrai do acumulador o conteúdo de uma posição de memória indicada pelo operando.';
+  SSUB = 'SUB (subtract) instruction subtracts from the accumulator the contents of a memory location indicated by the operand.';
 
-  SSBC = 'O comando SBC (subtract with carry) subtrai do acumulador o conteúdo de uma posição de memória indicada pelo operando, decrementando-o se o carry ligado.';
+  SSBC = 'SBC (subtract with carry) subtracts from the accumulator the contents of a memory location indicated by the operand, decreasing it if the carry is on.';
 
-  SNOT = 'O comando NOT (negate) transforma 1 em 0 e 0 em 1 nos bits do acumulador.';
+  SNOT = 'NOT complements the accumulator contents. In other words, it flips ''1''s  into ''0''s  and ''0''s into ''1''s.';
 
-  SAND = 'O comando AND realiza um "e" lógico entre o acumulador e o conteúdo de uma posição de memória indicada pelo operando.';
+  SAND = 'AND performs a binary "AND" between the accumulator and the contents of a memory location indicated by the operand.';
 
-  SOR = 'O comando OR realiza um "ou" lógico entre o acumulador e o conteúdo  de uma posição de memória indicada pelo operando.';
+  SOR = 'OR performs a logical  "OR" between the accumulator and the contents of a memory location indicated by the operand.';
 
-  SXOR = 'O comando XOR (exclusive OR) realiza um "xor" lógico entre o acumulador e o conteúdo de uma posição de memória indicada pelo operando.';
+  SXOR = 'XOR (exclusive OR) performs a logical "xor" between the accumulator and the contents of a memory location indicated by the operand.';
 
-  SSHL = 'O comando SHL (shift left) desloca os bits do acumulador para a esquerda (ou seja, multiplica por 2). O bit 0 recebe o valor 0. O bit 7 (que seria perdido) é armazenado no Carry.';
+  SSHL = 'SHL (shift left) instruction shifts the accumulator bits to the left (the same as multiplying by 2). Bit 0 is set to 0. Bit 7 (which would be lost) is stored in the Carry.';
 
-  SSHR = 'O comando SHR (shift right) desloca os bits do acumulador para a direita (ou seja, divide por 2).  O bit 7 recebe o valor 0. O bit 0 (que seria perdido) é armazenado no Carry.';
+  SSHR = 'SHR (shift right) instruction shifts the accumulator bits to the right (the same as dividing by 2). Bit 7 is set to 0. Bit 0 (which would be lost) is stored in the Carry.';
 
-  SSHA = 'O comando SHA(shift right aritmético) desloca os bits do acumulador para a direita (ou seja, divide por 2). O bit 7 é mantido igual. O bit 0 (que seria perdido) é armazenado no Carry.';
+  SSHA = 'The SHA (shift right arithmetic) instruction shifts the accumulator bits to the right (the same as divide by 2). Bit 7 is kept the same. Bit 0 (which would be lost) is stored in the Carry.';
 
-  SIN = 'O comando IN (input) carrega no acumulador o valor lido num dispositivo externo indicado pelo operando.  Nesse simulador os dispositivos são: chaves (endereço 0) e o status de "dado disponível" das chaves (endereço 1).';
+  SIN = 'IN (input) loads the value read into an external device indicated by the operand in the accumulator. In this simulator the devices are: keys (address 0) and the status of  "data available " of the keys (address 1).';
 
-  SOUT = 'O comando OUT (output) transfere o valor do acumulador para um dispositivo externo indicado pelo operando.  Nesse simulador o único dispositivo disponível é um visor (endereço 0).';
+  SOUT = 'OUT (output) transfers the accumulator  value to an external device indicated by the operand. In this simulator the only available device is a display (address 0).';
 
-  STRAP = 'O comando TRAP simula a execução uma função de sistema operacional, para simplificar a programação de entrada e saída.';
+  STRAP = 'TRAP simulates an operating system function, to simplify input and output programming.';
 
-  SJMP = 'O comando JMP (jump) desvia a execução do programa para o endereço indicado pelo operando (ou seja, coloca este endereço no registrador PC).';
+  SJMP = 'JMP (jump) transfers program execution to the memory address given in the operand, (i.e., it places this address into PC register).';
 
-  SJN = 'O comando JN (jump if negative) desvia a execução do programa para o endereço indicado pelo operando, apenas quando a última operação realizada produziu um valor com o bit 7 ligado.';
+  SJN = 'JN (jump if negative) transfers program execution to the memory address given in the operand, only when the last operation performed produced a value with bit 7 connected.';
 
-  SJZ = 'O comando JZ (jump if zero) desvia a execução do programa para o endereço indicado pelo operando, apenas quando a última operação realizada produziu um valor zero';
+  SJZ = 'JZ (jump if zero) transfers program execution to the memory address given in the operand, only when the last executed operation produced a zero value.';
 
-  SJNZ = 'O comando JNZ (jump if not zero) desvia a execução do programa para o endereço indicado pelo operando ender, apenas quando a última operação realizada produziu um valor diferente de zero.';
+  SJNZ = 'JNZ (jump if not zero) transfers program execution to the memory address given in the operand, only when the last operation performed produced a nonzero value.';
 
-  SJC =  'O comando JC (jump if carry) desvia a execução do programa para o endereço indicado pelo operando ender, apenas quando a última operação aritmética realizada não coube nos 8 bits do destino.';
+  SJC =  'JC (jump if carry) transfers program execution to the memory address given in the operand, only if carry flag equals ''1".';
 
-  SJNC = 'O comando JNC (jump if not carry) desvia a execução do programa para o endereço indicado pelo operando ender, apenas quando a última operação aritmética realizada coube nos 8 bits do destino.';
+  SJNC = 'JNC (jump if not carry) transfers program execution to the memory address given in the operand, only if carry flag equals ''0".';
 
-  SORG = 'A pseudo-instrução ORG (origin) indica ao assembler a posição de memória onde será colocada a próxima instrução.';
+  SORG = 'ORG (origin) pseudo-instruction indicates to the assembler the memory location where the next instruction will be placed.';
 
-  SEQU =  'A pseudo-instrução EQU (equate) atribui um nome a um certo valor. Esse comando é frequentemente usado para especificar variáveis que são posicionadas em certo endereço de memória. Por exemplo para posicionar a variável x no endereço hexa f0 use: X EQU 0F0H';
+  SEQU =  'EQU (equate) pseudo-instruction assigns an alias to a numeric value. This command is often used to define a specific memory address to a program variable. For example, to position the variable X into  F0H address you shall use: X EQU 0F0H';
 
-  SEND = 'A pseudo-instrução END indica que o programa fonte acabou. O operando é usado para pré-carregar o PC com o endereço inicial de execução do programa.';
+  SEND = 'END pseudo-instruction indicates that the source program has ended. This operand is used to pre-load the PC with the starting address of the program execution.';
 
-  SDS = 'A pseudo-instrução DS (define storage) reserva um número de palavras na memória definido pelo operando.';
+  SDS = 'DS (define storage) pseudo-instruction reserves in memory the amount of bytes specified by the operand.';
 
-  SDB = 'A pseudo-instrução DB (define bytes) carrega nesta palavra de memória o valor definido pelo operando.';
+  SDB = 'DB (define bytes) pseudo-instruction loads the value defined by the operand into the current memory position.';
 
-  SPontoEVirgula = 'Os comentários são começados por ponto e vírgula.';
+  SPontoEVirgula = 'Comments start with a semicolon.';
 
-  SDoisPontos = 'Um rótulo é um nome dado à posição de memória da instrução a seguir. O nome é seguido por dois pontos';
+  SDoisPontos = 'A label is a name given to the current memory position. The name must be followed by a colon.';
 
-  SSTS = 'O comando STS (store into stack pointer) transfere 16 bits da memória indicada pelo operando para o apontador da pilha (Stack Pointer).';
+  SSTS = 'STS (store into stack pointer) transfers 16 bits of the memory indicated by the operand to the stack pointer (Stack Pointer).';
 
-  SLDS = 'O comando STS (load from stack pointer) transfere o apontador da pilha (Stack Pointer) para 16 bits na memória indicada pelo operando.';
+  SLDS = 'LDS (load from stack pointer) transfers the stack pointer to 16 bits in the memory indicated by the operand.';
 
-  SJSR = 'O comando JSR (jump to subroutine) executa uma chamada de subrotina. Para isso, transfere os 16 bits do PC (Program Counter) para a pilha e coloca no PC os 16 bits indicados no operando.  O SP é decrementado de 2.';
+  SJSR = 'JSR (jump to subroutine) executes a subroutine call. To do this, transfer the 16 bits of the PC (Program Counter) to the stack and put in the PC the 16 bits indicated in the operand. The SP is incremented by 2.';
 
-  SRET = 'O comando RET (return from subroutine), retorna de uma chamada JSR. Para isso, transfere para o PC 16 bits da pilha, e atualiza o SP. O SP é decrementado de 2.';
+  SRET = 'RET (return from subroutine) instruction returns from a JSR call. In other words, it transfers 16 bits of the stack to the PC, and updates the SP. The SP is decremented by 2.';
 
-  SPUSH = 'O comando PUSH (push to stack), coloca o conteúdo do acumulador no topo da pilha.  O SP é decrementado de 1.';
+  SPUSH = 'The PUSH (push to stack) command copies the contents of the accumulator to the top of the stack. The SP is incremented by 1.';
 
-  SPOP = 'O comando POP (pop from stack), traz para o acumulador o topo da pilha (8 bits). O SP é decrementado de 1.';
+  SPOP = 'The POP (pop from stack) command copies the top of the stack (8 bits) to the accumulator. The SP is decremented by 1.';
 
 
 implementation

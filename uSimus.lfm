@@ -1,9 +1,9 @@
 object formPrincipal: TformPrincipal
-  Left = 713
+  Left = 840
   Height = 750
-  Top = 151
+  Top = 224
   Width = 980
-  Caption = 'SimuS - Simulador do processador Sapiens-8'
+  Caption = 'SimuS - Sapiens-8 Processor Simulator'
   ClientHeight = 730
   ClientWidth = 980
   Color = clBtnFace
@@ -17,7 +17,7 @@ object formPrincipal: TformPrincipal
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   Position = poDesktopCenter
-  LCLVersion = '1.8.2.0'
+  LCLVersion = '1.8.0.6'
   Visible = True
   object BarButton: TPanel
     Left = 0
@@ -277,16 +277,16 @@ object formPrincipal: TformPrincipal
     ClientWidth = 725
     TabOrder = 1
     object Codigo: TPageControl
-      Left = 1
+      Left = 0
       Height = 557
       Top = 144
       Width = 723
-      ActivePage = Compilacao
+      ActivePage = Edicao
       Anchors = [akTop, akLeft, akRight, akBottom]
-      TabIndex = 1
+      TabIndex = 0
       TabOrder = 1
       object Edicao: TTabSheet
-        Caption = 'Edição'
+        Caption = 'Editing'
         ClientHeight = 531
         ClientWidth = 715
         inline SynEditor: TSynEdit
@@ -794,7 +794,7 @@ object formPrincipal: TformPrincipal
         end
       end
       object Compilacao: TTabSheet
-        Caption = 'Compilação'
+        Caption = 'Compilation'
         ClientHeight = 531
         ClientWidth = 715
         ImageIndex = 1
@@ -816,7 +816,7 @@ object formPrincipal: TformPrincipal
         end
       end
       object Execucao: TTabSheet
-        Caption = 'Execução'
+        Caption = 'Debugging'
         ClientHeight = 531
         ClientWidth = 715
         ImageIndex = 2
@@ -3735,7 +3735,7 @@ object formPrincipal: TformPrincipal
         Height = 13
         Top = 56
         Width = 31
-        Caption = 'Pronto'
+        Caption = 'Ready'
         ParentColor = False
       end
       object l_Valor: TLabel
@@ -3745,7 +3745,7 @@ object formPrincipal: TformPrincipal
         Width = 51
         Alignment = taRightJustify
         AutoSize = False
-        Caption = 'Valor:'
+        Caption = 'Value:'
         Layout = tlCenter
         ParentColor = False
         WordWrap = True
@@ -3777,7 +3777,7 @@ object formPrincipal: TformPrincipal
         Width = 60
         Alignment = taCenter
         AutoSize = False
-        Caption = 'Visor'
+        Caption = 'Display'
         Layout = tlCenter
         ParentColor = False
       end
@@ -3852,7 +3852,7 @@ object formPrincipal: TformPrincipal
         Width = 95
         Alignment = taRightJustify
         AutoSize = False
-        Caption = 'Executando:'
+        Caption = 'Running:'
         Layout = tlCenter
         ParentColor = False
       end
@@ -3887,7 +3887,7 @@ object formPrincipal: TformPrincipal
         Height = 25
         Top = 109
         Width = 50
-        Caption = 'Limpar'
+        Caption = 'Reset'
         OnClick = b_zeraClick
         TabOrder = 0
       end
@@ -3896,7 +3896,7 @@ object formPrincipal: TformPrincipal
         Height = 25
         Top = 109
         Width = 50
-        Caption = 'Entrar'
+        Caption = 'Enter'
         OnClick = b_entrarClick
         TabOrder = 1
       end
@@ -3905,7 +3905,7 @@ object formPrincipal: TformPrincipal
         Height = 50
         Top = 26
         Width = 75
-        Caption = 'Executar'
+        Caption = 'Run'
         Font.Color = clBlack
         Font.Height = -11
         Font.Name = 'MS Sans Serif'
@@ -3918,8 +3918,8 @@ object formPrincipal: TformPrincipal
         Left = 461
         Height = 19
         Top = 89
-        Width = 54
-        Caption = 'Rápido'
+        Width = 40
+        Caption = 'Fast'
         OnClick = cb_rapidoClick
         TabOrder = 13
       end
@@ -3928,7 +3928,7 @@ object formPrincipal: TformPrincipal
         Height = 50
         Top = 26
         Width = 81
-        Caption = 'Passo a passo'
+        Caption = 'Step-by-Step'
         OnClick = b_passoAPassoClick
         TabOrder = 14
       end
@@ -3937,7 +3937,7 @@ object formPrincipal: TformPrincipal
         Height = 24
         Top = 26
         Width = 72
-        Caption = 'Parar'
+        Caption = 'Halt'
         OnClick = b_pararClick
         TabOrder = 15
       end
@@ -4088,16 +4088,16 @@ object formPrincipal: TformPrincipal
         Left = 6
         Height = 13
         Top = 2
-        Width = 46
-        Caption = 'Endereço'
+        Width = 38
+        Caption = 'Address'
         ParentColor = False
       end
       object l_novoValor: TLabel
         Left = 81
         Height = 13
         Top = 2
-        Width = 52
-        Caption = 'Novo valor'
+        Width = 51
+        Caption = 'New value'
         ParentColor = False
       end
       object e_ender: TEdit
@@ -4142,7 +4142,7 @@ object formPrincipal: TformPrincipal
         Top = 0
         Width = 88
         Anchors = [akLeft, akRight, akBottom]
-        Caption = 'Hexa'
+        Caption = 'Hex'
         Checked = True
         OnClick = cb_hexaClick
         State = cbChecked
@@ -4171,9 +4171,9 @@ object formPrincipal: TformPrincipal
         Left = 6
         Height = 13
         Top = 8
-        Width = 47
+        Width = 52
         Alignment = taCenter
-        Caption = 'Instrução:'
+        Caption = 'Instruction:'
         ParentColor = False
       end
       object l_instrucao: TLabel
@@ -4207,7 +4207,7 @@ object formPrincipal: TformPrincipal
         Width = 251
         Alignment = taCenter
         AutoSize = False
-        Caption = 'Registradores'
+        Caption = 'Registers'
         ParentColor = False
       end
       object l_PC: TLabel
@@ -4359,80 +4359,81 @@ object formPrincipal: TformPrincipal
   object MainMenu: TMainMenu
     left = 648
     object Arquivo1: TMenuItem
-      Caption = '&Arquivo'
+      Caption = 'File'
+      OnClick = Arquivo1Click
       object Novo1: TMenuItem
-        Caption = '&Novo'
+        Caption = 'New'
         OnClick = Novo1Click
       end
       object Abrir1: TMenuItem
-        Caption = '&Abrir'
+        Caption = 'Open'
         OnClick = Abrir1Click
       end
       object AbrirExemplo: TMenuItem
-        Caption = 'Abrir exemplo'
+        Caption = 'Open Example'
         OnClick = AbrirExemploClick
       end
       object Salvar1: TMenuItem
-        Caption = '&Salvar'
+        Caption = 'Save'
         OnClick = Salvar1Click
       end
       object SalvarComo1: TMenuItem
-        Caption = 'Salvar &Como'
+        Caption = 'Save As'
         OnClick = SalvarComo1Click
       end
       object AbrirLingMquina1: TMenuItem
-        Caption = '&Carregar Hexa'
+        Caption = 'Load Hex'
         OnClick = AbrirLingMquina1Click
       end
       object SalvarLingMquina1: TMenuItem
-        Caption = '&Descarregar Hexa'
+        Caption = 'Dump Hex'
         OnClick = SalvarLingMquina1Click
       end
       object Zerarmemria1: TMenuItem
-        Caption = '&Zerar memória'
+        Caption = 'Clear Memory'
         OnClick = Zerarmemria1Click
       end
       object Sair1: TMenuItem
-        Caption = 'Sai&r'
+        Caption = 'Exit'
         OnClick = Sair1Click
       end
     end
     object Editar1: TMenuItem
-      Caption = '&Editar'
+      Caption = 'Edit'
       object Desfazer1: TMenuItem
-        Caption = '&Desfazer'
+        Caption = 'Undo'
         ShortCut = 16474
         OnClick = Desfazer1Click
       end
       object Copiar1: TMenuItem
-        Caption = '&Copiar'
+        Caption = 'Copy'
         ShortCut = 16451
         OnClick = CopyBtnClick
       end
       object cOlar1: TMenuItem
-        Caption = 'Co&lar'
+        Caption = 'Paste'
         ShortCut = 16470
         OnClick = PasteBtnClick
       end
       object Recortar1: TMenuItem
-        Caption = '&Recortar'
+        Caption = 'Cut'
         ShortCut = 16472
         OnClick = CutBtnClick
       end
     end
     object Assistente1: TMenuItem
-      Caption = '&Tutor de programação'
+      Caption = 'Programming Guide'
       object ProgramaoTutorada1: TMenuItem
-        Caption = '&Programação Tutorada'
+        Caption = 'Guided Programming'
         OnClick = Assistente1Click
       end
       object Conversordebases1: TMenuItem
-        Caption = '&Conversor de bases'
+        Caption = 'Base Converter'
         OnClick = Conversordebases1Click
       end
     end
     object Compilar1: TMenuItem
-      Caption = '&Compilar'
+      Caption = 'Compile'
       OnClick = Compilar1Click
     end
     object Console1: TMenuItem

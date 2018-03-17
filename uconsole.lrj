@@ -1,5 +1,5 @@
 {"version":1,"strings":[
 {"hash":174433893,"name":"tformconsole.caption","sourcebytes":[67,111,110,115,111,108,101],"value":"Console"},
-{"hash":87049858,"name":"tformconsole.limpar1.caption","sourcebytes":[76,105,109,112,97,114],"value":"Limpar"},
-{"hash":161893890,"name":"tformconsole.esconder1.caption","sourcebytes":[69,115,99,111,110,100,101,114],"value":"Esconder"}
+{"hash":4860798,"name":"tformconsole.limpar1.caption","sourcebytes":[67,108,101,97,110],"value":"Clean"},
+{"hash":323493,"name":"tformconsole.esconder1.caption","sourcebytes":[72,105,100,101],"value":"Hide"}
 ]}
