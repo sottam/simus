@@ -39,7 +39,8 @@ program Simus;
 {$ENDIF}
 
 uses
-{$IFnDEF FPC}
+{$IFnDEF MSWINDOWS}
+  clocale,
 {$ELSE}
   Interfaces,
 {$ENDIF}
