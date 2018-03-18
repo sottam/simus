@@ -17,7 +17,7 @@ object formPrincipal: TformPrincipal
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   Position = poDesktopCenter
-  LCLVersion = '1.8.0.6'
+  LCLVersion = '1.8.2.0'
   Visible = True
   object BarButton: TPanel
     Left = 0
@@ -281,9 +281,9 @@ object formPrincipal: TformPrincipal
       Height = 557
       Top = 144
       Width = 723
-      ActivePage = Edicao
+      ActivePage = Execucao
       Anchors = [akTop, akLeft, akRight, akBottom]
-      TabIndex = 0
+      TabIndex = 2
       TabOrder = 1
       object Edicao: TTabSheet
         Caption = 'Editing'
@@ -4360,7 +4360,6 @@ object formPrincipal: TformPrincipal
     left = 648
     object Arquivo1: TMenuItem
       Caption = 'File'
-      OnClick = Arquivo1Click
       object Novo1: TMenuItem
         Caption = 'New'
         OnClick = Novo1Click

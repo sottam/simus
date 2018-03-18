@@ -193,7 +193,6 @@ type
     CompileBtn: TSpeedButton;
 
     procedure AbrirExemploClick(Sender: TObject);
-    procedure Arquivo1Click(Sender: TObject);
     procedure b_pararClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure lb_instrucoesDrawItem(Control: TWinControl; Index: Integer;
@@ -272,6 +271,7 @@ var
   execucaoRapida: boolean;
 
   BreakpointList    : TStringList;
+  ExecutingLine     : integer;
   controlKeyPressed : boolean;
 
 implementation
@@ -565,11 +565,7 @@ begin
     if SynEditor.Modified <> false then
         if MessageDlg(STudoFoiSalvo,
               mtConfirmation, [mbYes, mbNo], 0) <> mrYes then exit;
-    {$IFDEF MSWINDOWS}
-    OpenDialog1.InitialDir:= ExtractFilePath(Application.ExeName) + '\Exemplos';
-    {$ELSE}
-    OpenDialog1.InitialDir:= ExtractFilePath(Application.ExeName) + '/Exemplos';
-    {$ENDIF}
+    OpenDialog1.InitialDir:= ExtractFilePath(Application.ExeName) + DirectorySeparator + 'Exemplos';
     if openDialog1.Execute then
         begin
             nomeArq := openDialog1.FileName;
@@ -587,11 +583,6 @@ begin
             end;
 
         end;
-end;
-
-procedure TformPrincipal.Arquivo1Click(Sender: TObject);
-begin
-
 end;
 
 procedure TformPrincipal.Abrir1Click(Sender: TObject);
@@ -798,21 +789,35 @@ var
     spc, l: string;
     i: integer;
 begin
-    if not cb_rapido.checked then
+    //modified to support breakpoint in fastmode
+    if cb_rapido.Checked = true then
+    begin
+      spc := intToHex (PC, 4);
+      for i := 0 to lb_instrucoes.Count-1 do
+      begin
+        l := lb_instrucoes.Items[i];
+        if copy (l, 8, 4) = spc then
         begin
-            spc := intToHex (PC, 4);
-            for i := 0 to lb_instrucoes.Count-1 do
-                begin
-                    l := lb_instrucoes.Items[i];
-                    if copy (l, 8, 4) = spc then
-                        begin
-                           lb_instrucoes.ItemIndex := i;
-                           exit;
-                        end;
-                end;
+          ExecutingLine := i;
+          exit;
         end;
-
-    lb_instrucoes.ItemIndex := -1;
+      end;
+      lb_instrucoes.ItemIndex := -1;
+    end
+    else
+    begin
+      spc := intToHex (PC, 4);
+      for i := 0 to lb_instrucoes.Count-1 do
+      begin
+        l := lb_instrucoes.Items[i];
+        if copy (l, 8, 4) = spc then
+        begin
+          lb_instrucoes.ItemIndex := i;
+          ExecutingLine :=i;
+          exit;
+        end;
+      end;
+    end;
 end;
 
 procedure TformPrincipal.atualizaDados (zerando: boolean);
@@ -1005,7 +1010,7 @@ procedure TformPrincipal.cb_rapidoClick(Sender: TObject);
 begin
     execucaoRapida := (Sender as TCheckBox).checked;
     if execucaoRapida = true then
-        TimerDeExecucao.Interval:=20
+        TimerDeExecucao.Interval:=10
     else
         TimerDeExecucao.Interval:=100;
 end;
@@ -1118,10 +1123,15 @@ begin
     running := true;
     //verificaa se está em breakpoint, se estiver, executa a proxima instrucao
     if VerificaBreakpoint() = true then
+    begin
         executaInstrucao;
+
+    end;
 
     atualizaInterface;
     TimerDeExecucao.enabled := true;
+    if execucaoRapida then lb_instrucoes.ItemIndex:= -1;
+    lb_instrucoes.Repaint;
 end;
 
 procedure TformPrincipal.b_pararClick(Sender: TObject);
@@ -1218,21 +1228,6 @@ procedure TformPrincipal.TimerDeExecucaoTimer(Sender: TObject);
 begin
     if running then
     begin
-      {
-       if execucaoRapida then
-       begin
-          if  VerificaBreakpoint() = true then
-          begin
-            running:= false;
-            execucaoRapida:= false;
-            TimerDeExecucao.Enabled:= false;
-            exit;
-          end;
-          executaInstrucao;
-          atualizaInterface;
-          exit;
-       end;
-       }
        if VerificaBreakpoint() = true then
            begin
              running:= false;
@@ -1242,6 +1237,7 @@ begin
 
         executaInstrucao;
         atualizaInterface;
+        Application.ProcessMessages;
     end
     else
         TimerDeExecucao.enabled := false;
@@ -1250,11 +1246,15 @@ end;
 function TformPrincipal.VerificaBreakpoint() : boolean;
 var idx, isBreakpoint : integer;
 begin
-    idx := lb_instrucoes.ItemIndex;
-    isBreakpoint :=  BreakpointList.IndexOf( IntToStr(idx));
+    //idx := lb_instrucoes.ItemIndex;
+    //isBreakpoint :=  BreakpointList.IndexOf( IntToStr(idx));
+    isBreakpoint :=  BreakpointList.IndexOf( IntToStr(ExecutingLine));
 
     if isBreakpoint > -1 then
-       VerificaBreakpoint:= true
+       begin
+         lb_instrucoes.ItemIndex := ExecutingLine;
+         VerificaBreakpoint:= true
+       end
     else
        VerificaBreakpoint:= false;
 end;
