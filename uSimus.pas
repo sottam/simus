@@ -501,6 +501,8 @@ begin
     BreakpointList:= TStringList.Create;
     BreakpointList.Duplicates:= dupIgnore;
     BreakpointList.Sorted:= true;
+
+    Codigo.ActivePage:=Edicao;
 end;
 
 procedure TformPrincipal.b_passoAPassoClick(Sender: TObject);
@@ -804,7 +806,9 @@ begin
       end;
       lb_instrucoes.ItemIndex := -1;
     end
+
     else
+
     begin
       spc := intToHex (PC, 4);
       for i := 0 to lb_instrucoes.Count-1 do
@@ -1125,9 +1129,8 @@ begin
     if VerificaBreakpoint() = true then
     begin
         executaInstrucao;
-
     end;
-
+    Codigo.ActivePage:=Execucao;
     atualizaInterface;
     TimerDeExecucao.enabled := true;
     if execucaoRapida then lb_instrucoes.ItemIndex:= -1;
@@ -1246,8 +1249,6 @@ end;
 function TformPrincipal.VerificaBreakpoint() : boolean;
 var idx, isBreakpoint : integer;
 begin
-    //idx := lb_instrucoes.ItemIndex;
-    //isBreakpoint :=  BreakpointList.IndexOf( IntToStr(idx));
     isBreakpoint :=  BreakpointList.IndexOf( IntToStr(ExecutingLine));
 
     if isBreakpoint > -1 then

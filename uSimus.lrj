@@ -7,7 +7,7 @@
 {"hash":4874882,"name":"tformprincipal.pastebtn.hint","sourcebytes":[67,111,108,97,114],"value":"Colar"},
 {"hash":366594,"name":"tformprincipal.exitbtn.hint","sourcebytes":[83,97,105,114],"value":"Sair"},
 {"hash":6015842,"name":"tformprincipal.tutorbtn.hint","sourcebytes":[84,117,116,111,114],"value":"Tutor"},
-{"hash":349903,"name":"tformprincipal.newbnt.hint","sourcebytes":[78,111,118,111],"value":"Novo"},
+{"hash":21703,"name":"tformprincipal.newbnt.hint","sourcebytes":[78,101,119],"value":"New"},
 {"hash":105317922,"name":"tformprincipal.compilebtn.hint","sourcebytes":[67,111,109,112,105,108,97,114],"value":"Compilar"},
 {"hash":150670581,"name":"tformprincipal.editorepaineldecontrole.caption","sourcebytes":[69,100,105,116,111,114,69,80,97,105,110,101,108,68,101,67,111,110,116,114,111,108,101],"value":"EditorEPainelDeControle"},
 {"hash":196128775,"name":"tformprincipal.edicao.caption","sourcebytes":[69,100,105,116,105,110,103],"value":"Editing"},

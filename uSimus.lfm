@@ -222,7 +222,7 @@ object formPrincipal: TformPrincipal
     object NewBnt: TSpeedButton
       Left = 1
       Height = 25
-      Hint = 'Novo'
+      Hint = 'New'
       Top = 0
       Width = 25
       Glyph.Data = {
@@ -241,6 +241,8 @@ object formPrincipal: TformPrincipal
         7777777777777777777777777777777777777777777777777777
       }
       OnClick = Novo1Click
+      ShowHint = True
+      ParentShowHint = False
     end
     object CompileBtn: TSpeedButton
       Left = 249
@@ -291,9 +293,9 @@ object formPrincipal: TformPrincipal
         ClientWidth = 715
         inline SynEditor: TSynEdit
           Left = 0
-          Height = 536
+          Height = 533
           Top = 0
-          Width = 720
+          Width = 716
           Anchors = [akTop, akLeft, akRight, akBottom]
           Font.Height = -16
           Font.Name = 'Courier New'
@@ -735,9 +737,11 @@ object formPrincipal: TformPrincipal
           Lines.Strings = (
             'SynEditor'
           )
+          MaxLeftChar = 1
           Options = [eoAutoIndent, eoBracketHighlight, eoGroupUndo, eoHideRightMargin, eoPersistentCaret, eoScrollPastEol, eoSmartTabs, eoTabIndent, eoTabsToSpaces, eoTrimTrailingSpaces, eoDragDropEditing]
           MouseOptions = [emDragDropEditing]
           VisibleSpecialChars = [vscSpace, vscTabAtLast]
+          ScrollBars = ssAutoBoth
           SelectedColor.BackPriority = 50
           SelectedColor.ForePriority = 50
           SelectedColor.FramePriority = 50
@@ -800,9 +804,9 @@ object formPrincipal: TformPrincipal
         ImageIndex = 1
         object m_listagem: TMemo
           Left = 0
-          Height = 528
+          Height = 533
           Top = 0
-          Width = 722
+          Width = 716
           Anchors = [akTop, akLeft, akRight, akBottom]
           Font.CharSet = ANSI_CHARSET
           Font.Color = clWindowText
@@ -811,8 +815,9 @@ object formPrincipal: TformPrincipal
           OnKeyUp = editorKeyUp
           ParentFont = False
           ReadOnly = True
-          ScrollBars = ssVertical
+          ScrollBars = ssAutoBoth
           TabOrder = 0
+          WordWrap = False
         end
       end
       object Execucao: TTabSheet

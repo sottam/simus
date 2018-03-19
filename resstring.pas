@@ -85,7 +85,7 @@ resourcestring
 
   SSHR = 'SHR (shift right) instruction shifts the accumulator bits to the right (the same as dividing by 2). Bit 7 is set to 0. Bit 0 (which would be lost) is stored in the Carry.';
 
-  SSHA = 'The SHA (shift right arithmetic) instruction shifts the accumulator bits to the right (the same as divide by 2). Bit 7 is kept the same. Bit 0 (which would be lost) is stored in the Carry.';
+  SSHA = 'SHA (shift right arithmetic) instruction shifts the accumulator bits to the right (the same as divide by 2). Bit 7 is kept the same. Bit 0 (which would be lost) is stored in the Carry.';
 
   SIN = 'IN (input) loads the value read into an external device indicated by the operand in the accumulator. In this simulator the devices are: keys (address 0) and the status of  "data available " of the keys (address 1).';
 
@@ -127,9 +127,9 @@ resourcestring
 
   SRET = 'RET (return from subroutine) instruction returns from a JSR call. In other words, it transfers 16 bits of the stack to the PC, and updates the SP. The SP is decremented by 2.';
 
-  SPUSH = 'The PUSH (push to stack) command copies the contents of the accumulator to the top of the stack. The SP is incremented by 1.';
+  SPUSH = 'PUSH (push to stack) copies the contents of the accumulator to the top of the stack. The SP is incremented by 1.';
 
-  SPOP = 'The POP (pop from stack) command copies the top of the stack (8 bits) to the accumulator. The SP is decremented by 1.';
+  SPOP = 'POP (pop from stack) copies the top of the stack (8 bits) to the accumulator. The SP is decremented by 1.';
 
 
 implementation
