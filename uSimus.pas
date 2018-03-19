@@ -56,14 +56,23 @@ type
   { TformPrincipal }
 
   TformPrincipal = class(TForm)
+    chave0: TLabel;
+    chave1: TLabel;
+    BreakPointBtn: TSpeedButton;
+    DisplayTitulo: TLabel;
     Label10: TLabel;
     Label11: TLabel;
     AbrirExemplo: TMenuItem;
     EditorEPainelDeControle: TPanel;
+    l_Valor: TLabel;
     MainMenu: TMainMenu;
     Arquivo1: TMenuItem;
     Abrir1: TMenuItem;
     MolduraBanner: TBevel;
+    MolduraChaves: TShape;
+    MolduraCtrlExec: TBevel;
+    MolduraVisor: TBevel;
+    Pronto: TLabel;
     Salvar1: TMenuItem;
     SalvarComo1: TMenuItem;
     Sair1: TMenuItem;
@@ -193,6 +202,7 @@ type
     CompileBtn: TSpeedButton;
 
     procedure AbrirExemploClick(Sender: TObject);
+    procedure BreakPointBtnClick(Sender: TObject);
     procedure b_pararClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure lb_instrucoesDrawItem(Control: TWinControl; Index: Integer;
@@ -585,6 +595,23 @@ begin
             end;
 
         end;
+end;
+
+procedure TformPrincipal.BreakPointBtnClick(Sender: TObject);
+begin
+  idx := 0;
+  if User = true then
+    begin
+      idx := lb_instrucoes.ItemIndex;
+
+      isBreakpoint :=  BreakpointList.IndexOf( IntToStr(idx));
+
+      if  isBreakpoint = -1 then
+         BreakpointList.Add(IntToStr(idx))
+      else
+         BreakpointList.Delete(isBreakPoint);
+      lb_instrucoes.Repaint;
+    end;
 end;
 
 procedure TformPrincipal.Abrir1Click(Sender: TObject);
