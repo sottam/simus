@@ -1257,21 +1257,20 @@ end;
 
 procedure TformPrincipal.TimerDeExecucaoTimer(Sender: TObject);
 begin
-    if running then
+  Application.ProcessMessages;
+  if running then
+  begin
+    if VerificaBreakpoint() = true then
     begin
-       if VerificaBreakpoint() = true then
-           begin
-             running:= false;
-             TimerDeExecucao.Enabled:= false;
-             exit;
-           end;
-
-        executaInstrucao;
-        atualizaInterface;
-        Application.ProcessMessages;
-    end
-    else
-        TimerDeExecucao.enabled := false;
+      running:= false;
+      TimerDeExecucao.Enabled:= false;
+      exit;
+    end;
+    executaInstrucao;
+    atualizaInterface;
+  end
+  else
+      TimerDeExecucao.enabled := false;
 end;
 
 function TformPrincipal.VerificaBreakpoint() : boolean;
