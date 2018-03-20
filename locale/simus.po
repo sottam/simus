@@ -1,5 +1,14 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8"
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Alonso <alonsoman@dcc.ufrj.br>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: resstring.sadc
 msgid "ADC (add with carry) instruction adds the contents of the memory position to the contents of the accumulator and the carry."
@@ -585,6 +594,7 @@ msgid "Hexadecimal"
 msgstr ""
 
 #: tformprincipal.abrir1.caption
+msgctxt "tformprincipal.abrir1.caption"
 msgid "Open"
 msgstr ""
 
@@ -606,6 +616,13 @@ msgstr ""
 
 #: tformprincipal.assistente1.caption
 msgid "Programming Guide"
+msgstr ""
+
+#: tformprincipal.breakpointbtn.hint
+msgid ""
+"BreakPoint\n"
+"\n"
+"Select a line on debugging, then click here.\n"
 msgstr ""
 
 #: tformprincipal.b_acc.caption
@@ -689,6 +706,7 @@ msgid "1"
 msgstr ""
 
 #: tformprincipal.colar1.caption
+msgctxt "tformprincipal.colar1.caption"
 msgid "Paste"
 msgstr ""
 
@@ -697,11 +715,13 @@ msgid "Compilation"
 msgstr ""
 
 #: tformprincipal.compilar1.caption
+msgctxt "tformprincipal.compilar1.caption"
 msgid "Compile"
 msgstr ""
 
 #: tformprincipal.compilebtn.hint
-msgid "Compilar"
+msgctxt "tformprincipal.compilebtn.hint"
+msgid "Compile"
 msgstr ""
 
 #: tformprincipal.console1.caption
@@ -718,11 +738,11 @@ msgid "Copy"
 msgstr ""
 
 #: tformprincipal.copybtn.hint
-msgid "Copiar seleção"
+msgid "Copy selection"
 msgstr ""
 
 #: tformprincipal.cutbtn.hint
-msgid "Cortar seleção"
+msgid "Cut selection"
 msgstr ""
 
 #: tformprincipal.desfazer1.caption
@@ -839,19 +859,23 @@ msgid "&?"
 msgstr ""
 
 #: tformprincipal.newbnt.hint
+msgctxt "tformprincipal.newbnt.hint"
 msgid "New"
 msgstr ""
 
 #: tformprincipal.novo1.caption
+msgctxt "tformprincipal.novo1.caption"
 msgid "New"
 msgstr ""
 
 #: tformprincipal.openbtn.hint
-msgid "Abrir"
+msgctxt "tformprincipal.openbtn.hint"
+msgid "Open"
 msgstr ""
 
 #: tformprincipal.pastebtn.hint
-msgid "Colar"
+msgctxt "tformprincipal.pastebtn.hint"
+msgid "Paste"
 msgstr ""
 
 #: tformprincipal.programaotutorada1.caption
@@ -876,6 +900,7 @@ msgid "Exit"
 msgstr ""
 
 #: tformprincipal.salvar1.caption
+msgctxt "tformprincipal.salvar1.caption"
 msgid "Save"
 msgstr ""
 
@@ -888,7 +913,8 @@ msgid "Dump Hex"
 msgstr ""
 
 #: tformprincipal.savebtn.hint
-msgid "Salvar"
+msgctxt "tformprincipal.savebtn.hint"
+msgid "Save"
 msgstr ""
 
 #: tformprincipal.sobreoprograma1.caption
@@ -946,10 +972,9 @@ msgid "#"
 msgstr ""
 
 #: tformprincipal.tutorbtn.hint
-msgid "Tutor"
+msgid "Guide"
 msgstr ""
 
 #: tformprincipal.zerarmemria1.caption
 msgid "Clear Memory"
 msgstr ""
-

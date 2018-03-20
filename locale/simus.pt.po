@@ -118,7 +118,7 @@ msgstr "O comando JSR (jump to subroutine) executa uma chamada de subrotina. Par
 
 #: resstring.sjz
 msgid "JZ (jump if zero) transfers program execution to the memory address given in the operand, only when the last executed operation produced a zero value."
-msgstr "O comando JZ (jump if zero) desvia a execução do programa para o endereço indicado pelo operando, apenas quando a última operação realizada produziu um valor zero"
+msgstr "O comando JZ (jump if zero) desvia a execução do programa para o endereço indicado pelo operando, apenas quando a última operação realizada produziu um valor zero."
 
 #: resstring.slda
 msgid "LDA (load accumulator) assigns the accumulator the contents of the memory location indicated by the operand."
@@ -201,18 +201,16 @@ msgid "Comments start with a semicolon."
 msgstr "Os comentários são começados por ponto e vírgula."
 
 #: resstring.spop
-#, fuzzy
-#| msgid "The POP (pop from stack) command copies the top of the stack (8 bits) to the accumulator. The SP is decremented by 1."
 msgid "POP (pop from stack) copies the top of the stack (8 bits) to the accumulator. The SP is decremented by 1."
 msgstr "O comando POP (pop from stack), traz para o acumulador o topo da pilha (8 bits). O SP é decrementado de 1."
 
 #: resstring.sporfavorpreenchaooperando
 msgid "Please, fill in the operand."
-msgstr "Por favor, preencha o operando"
+msgstr "Por favor, preencha o operando."
 
 #: resstring.sporfavorpreenchaorotulo
 msgid "Please fill in the label."
-msgstr "Por favor, preencha o rótulo"
+msgstr "Por favor, preencha o rótulo."
 
 #: resstring.sprograma
 msgid "; Program:"
@@ -223,8 +221,6 @@ msgid "Pseudo-instruction does not permit immediate neither indirect"
 msgstr "Pseudo-instrução não permite imediato nem indireto"
 
 #: resstring.spush
-#, fuzzy
-#| msgid "The PUSH (push to stack) command copies the contents of the accumulator to the top of the stack. The SP is incremented by 1."
 msgid "PUSH (push to stack) copies the contents of the accumulator to the top of the stack. The SP is incremented by 1."
 msgstr "O comando PUSH (push to stack), coloca o conteúdo do acumulador no topo da pilha. O SP é incrementado de 1."
 
@@ -241,8 +237,6 @@ msgid "SBC (subtract with carry) subtracts from the accumulator the contents of 
 msgstr "O comando SBC (subtract with carry) subtrai do acumulador o conteúdo de uma posição de memória indicada pelo operando, decrementando-o se o carry ligado."
 
 #: resstring.ssha
-#, fuzzy
-#| msgid "The SHA (shift right arithmetic) instruction shifts the accumulator bits to the right (the same as divide by 2). Bit 7 is kept the same. Bit 0 (which would be lost) is stored in the Carry."
 msgid "SHA (shift right arithmetic) instruction shifts the accumulator bits to the right (the same as divide by 2). Bit 7 is kept the same. Bit 0 (which would be lost) is stored in the Carry."
 msgstr "O comando SHA (shift right aritmético) desloca os bits do acumulador para a direita (ou seja, divide por 2). O bit 7 é mantido igual. O bit 0 (que seria perdido) é armazenado no Carry."
 
@@ -516,7 +510,7 @@ msgstr "Indireto"
 
 #: tformautomonta.label1.caption
 msgid "Description"
-msgstr "Descrição:"
+msgstr "Descrição"
 
 #: tformautomonta.l_instr.caption
 msgctxt "tformautomonta.l_instr.caption"
@@ -602,6 +596,7 @@ msgid "Hexadecimal"
 msgstr "Hexadecimal"
 
 #: tformprincipal.abrir1.caption
+msgctxt "tformprincipal.abrir1.caption"
 msgid "Open"
 msgstr "Abrir"
 
@@ -624,6 +619,16 @@ msgstr "Arquivo"
 #: tformprincipal.assistente1.caption
 msgid "Programming Guide"
 msgstr "Tutor de programação"
+
+#: tformprincipal.breakpointbtn.hint
+msgid ""
+"BreakPoint\n"
+"\n"
+"Select a line on debugging, then click here.\n"
+msgstr ""
+"BreakPoint\n"
+"\n"
+"Selecione uma linha na aba depuração, em seguida clique aqui.\n"
 
 #: tformprincipal.b_acc.caption
 msgid "ACC"
@@ -706,6 +711,7 @@ msgid "1"
 msgstr "1"
 
 #: tformprincipal.colar1.caption
+msgctxt "tformprincipal.colar1.caption"
 msgid "Paste"
 msgstr "Colar"
 
@@ -714,11 +720,13 @@ msgid "Compilation"
 msgstr "Compilação"
 
 #: tformprincipal.compilar1.caption
+msgctxt "tformprincipal.compilar1.caption"
 msgid "Compile"
 msgstr "Compilar"
 
 #: tformprincipal.compilebtn.hint
-msgid "Compilar"
+msgctxt "tformprincipal.compilebtn.hint"
+msgid "Compile"
 msgstr "Compilar"
 
 #: tformprincipal.console1.caption
@@ -735,11 +743,11 @@ msgid "Copy"
 msgstr "Copiar"
 
 #: tformprincipal.copybtn.hint
-msgid "Copiar seleção"
+msgid "Copy selection"
 msgstr "Copiar seleção"
 
 #: tformprincipal.cutbtn.hint
-msgid "Cortar seleção"
+msgid "Cut selection"
 msgstr "Cortar seleção"
 
 #: tformprincipal.desfazer1.caption
@@ -764,7 +772,7 @@ msgstr "EditorEPainelDeControle"
 
 #: tformprincipal.execucao.caption
 msgid "Debugging"
-msgstr "Execução"
+msgstr "Depuração"
 
 #: tformprincipal.exitbtn.hint
 msgid "Sair"
@@ -856,21 +864,23 @@ msgid "&?"
 msgstr "&?"
 
 #: tformprincipal.newbnt.hint
-#, fuzzy
-#| msgid "Novo"
+msgctxt "tformprincipal.newbnt.hint"
 msgid "New"
 msgstr "Novo"
 
 #: tformprincipal.novo1.caption
+msgctxt "tformprincipal.novo1.caption"
 msgid "New"
 msgstr "Novo"
 
 #: tformprincipal.openbtn.hint
-msgid "Abrir"
+msgctxt "tformprincipal.openbtn.hint"
+msgid "Open"
 msgstr "Abrir"
 
 #: tformprincipal.pastebtn.hint
-msgid "Colar"
+msgctxt "tformprincipal.pastebtn.hint"
+msgid "Paste"
 msgstr "Colar"
 
 #: tformprincipal.programaotutorada1.caption
@@ -895,6 +905,7 @@ msgid "Exit"
 msgstr "Sair"
 
 #: tformprincipal.salvar1.caption
+msgctxt "tformprincipal.salvar1.caption"
 msgid "Save"
 msgstr "Salvar"
 
@@ -907,7 +918,8 @@ msgid "Dump Hex"
 msgstr "Descarregar Hexa"
 
 #: tformprincipal.savebtn.hint
-msgid "Salvar"
+msgctxt "tformprincipal.savebtn.hint"
+msgid "Save"
 msgstr "Salvar"
 
 #: tformprincipal.sobreoprograma1.caption
@@ -965,10 +977,9 @@ msgid "#"
 msgstr "#"
 
 #: tformprincipal.tutorbtn.hint
-msgid "Tutor"
+msgid "Guide"
 msgstr "Tutor"
 
 #: tformprincipal.zerarmemria1.caption
 msgid "Clear Memory"
 msgstr "Zerar memória"
-

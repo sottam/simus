@@ -204,6 +204,7 @@ type
     procedure AbrirExemploClick(Sender: TObject);
     procedure BreakPointBtnClick(Sender: TObject);
     procedure b_pararClick(Sender: TObject);
+    procedure CodigoChange(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure lb_instrucoesDrawItem(Control: TWinControl; Index: Integer;
       ARect: TRect; State: TOwnerDrawState);
@@ -598,20 +599,19 @@ begin
 end;
 
 procedure TformPrincipal.BreakPointBtnClick(Sender: TObject);
+var
+  idx, isBreakpoint : integer;
 begin
-  idx := 0;
-  if User = true then
-    begin
-      idx := lb_instrucoes.ItemIndex;
+  idx := lb_instrucoes.ItemIndex;
 
-      isBreakpoint :=  BreakpointList.IndexOf( IntToStr(idx));
+  isBreakpoint :=  BreakpointList.IndexOf( IntToStr(idx));
 
-      if  isBreakpoint = -1 then
-         BreakpointList.Add(IntToStr(idx))
-      else
-         BreakpointList.Delete(isBreakPoint);
-      lb_instrucoes.Repaint;
-    end;
+  if isBreakpoint = -1 then
+     BreakpointList.Add(IntToStr(idx))
+  else
+     BreakpointList.Delete(isBreakPoint);
+  lb_instrucoes.Repaint;
+
 end;
 
 procedure TformPrincipal.Abrir1Click(Sender: TObject);
@@ -1168,6 +1168,14 @@ procedure TformPrincipal.b_pararClick(Sender: TObject);
 begin
     running := false;
     atualizaInterface;
+end;
+
+procedure TformPrincipal.CodigoChange(Sender: TObject);
+begin
+  if Codigo.ActivePage <> Execucao then
+     BreakPointBtn.Enabled:=false
+  else
+      BreakPointBtn.Enabled:=True;
 end;
 
 procedure TformPrincipal.FormCloseQuery(Sender: TObject; var CanClose: boolean);

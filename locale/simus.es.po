@@ -38,7 +38,7 @@ msgstr "Comentario o parámetro mal formado"
 
 #: resstring.scompilacaoemassemblydotexto
 msgid "Compilation Report: "
-msgstr "Compilación (ensamblado) del texto"
+msgstr "Compilación (ensamblado) del texto:"
 
 #: resstring.sdata
 msgid "; Date:"
@@ -54,7 +54,7 @@ msgstr "¿Desea guardar antes de salir?"
 
 #: resstring.sdoispontos
 msgid "A label is a name given to the current memory position. The name must be followed by a colon."
-msgstr "Una etiqueta es un nombre dado a la posición de memoria de la siguiente instrucción. El nombre es seguido por dos puntos"
+msgstr "Una etiqueta es un nombre dado a la posición de memoria de la siguiente instrucción. El nombre es seguido por dos puntos."
 
 #: resstring.sds
 msgid "DS (define storage) pseudo-instruction reserves in memory the amount of bytes specified by the operand."
@@ -118,7 +118,7 @@ msgstr "El comando JSR (jump to subroutine) realiza una llamada de subrutina. Pa
 
 #: resstring.sjz
 msgid "JZ (jump if zero) transfers program execution to the memory address given in the operand, only when the last executed operation produced a zero value."
-msgstr "El comando JZ (jump if zero) desvía la ejecución del programa a la dirección indicada por el operando, sólo cuando la última operación realizada produjo un valor cero"
+msgstr "El comando JZ (jump if zero) desvía la ejecución del programa a la dirección indicada por el operando, sólo cuando la última operación realizada produjo un valor cero."
 
 #: resstring.slda
 msgid "LDA (load accumulator) assigns the accumulator the contents of the memory location indicated by the operand."
@@ -201,8 +201,6 @@ msgid "Comments start with a semicolon."
 msgstr "Los comentarios se empiezan por punto y coma."
 
 #: resstring.spop
-#, fuzzy
-#| msgid "The POP (pop from stack) command copies the top of the stack (8 bits) to the accumulator. The SP is decremented by 1."
 msgid "POP (pop from stack) copies the top of the stack (8 bits) to the accumulator. The SP is decremented by 1."
 msgstr "El comando POP (pop from stack), trae al acumulador la parte superior de la pila (8 bits). El SP es decrementado de 1."
 
@@ -223,8 +221,6 @@ msgid "Pseudo-instruction does not permit immediate neither indirect"
 msgstr "Pseudo-instrucción no permite inmediato ni indirecto"
 
 #: resstring.spush
-#, fuzzy
-#| msgid "The PUSH (push to stack) command copies the contents of the accumulator to the top of the stack. The SP is incremented by 1."
 msgid "PUSH (push to stack) copies the contents of the accumulator to the top of the stack. The SP is incremented by 1."
 msgstr "El mando PUSH (push to stack), coloca el contenido del acumulador en la parte superior de la pila. El SP se incrementa de 1."
 
@@ -234,15 +230,13 @@ msgstr "El comando RET (return from subroutine) devuelve una llamada JSR. Para e
 
 #: resstring.srotuloduplicado
 msgid " - duplicate label"
-msgstr "- etiqueta duplicada"
+msgstr " - etiqueta duplicada"
 
 #: resstring.ssbc
 msgid "SBC (subtract with carry) subtracts from the accumulator the contents of a memory location indicated by the operand, decreasing it if the carry is on."
 msgstr "El comando SBC (subtract con carry) sustrae del acumulador el contenido de una posición de memoria indicada por el operando, decrementándolo si el carry está encendido."
 
 #: resstring.ssha
-#, fuzzy
-#| msgid "The SHA (shift right arithmetic) instruction shifts the accumulator bits to the right (the same as divide by 2). Bit 7 is kept the same. Bit 0 (which would be lost) is stored in the Carry."
 msgid "SHA (shift right arithmetic) instruction shifts the accumulator bits to the right (the same as divide by 2). Bit 7 is kept the same. Bit 0 (which would be lost) is stored in the Carry."
 msgstr "El comando SHA (shift right aritmético) desplaza los bits del acumulador a la derecha (es decir, divide por 2). El bit 7 se mantiene igual. El bit 0 (que se pierde) se almacena en Carry."
 
@@ -292,11 +286,11 @@ msgstr "El comando XOR (exclusive OR) realiza un  \"xor \" lógico entre el acum
 
 #: resstring.s_databeladesimbolos
 msgid " of symbol table"
-msgstr "de la tabla de símbolos"
+msgstr " de la tabla de símbolos"
 
 #: resstring.s_em
 msgid "In "
-msgstr "En"
+msgstr "Em "
 
 #: resstring.s_simuladordoprocsapiens8
 msgid " - Sapiens-8 processor simulator"
@@ -337,7 +331,7 @@ msgstr "OK"
 
 #: taboutbox.productname.caption
 msgid "Simus - Didactic Simulator for computer architecture teaching."
-msgstr "SimuS - Simulador didáctico para la enseñanza de la arquitectura de ordenadores"
+msgstr "SimuS - Simulador didáctico para la enseñanza de la arquitectura de ordenadores."
 
 #: taboutbox.version.caption
 msgid "Version 1.1 - February/2018"
@@ -357,7 +351,7 @@ msgstr "AND"
 
 #: tformautomonta.b_coment.caption
 msgid "Comment"
-msgstr "comentarios"
+msgstr "Comentarios"
 
 #: tformautomonta.b_db.caption
 msgid "DB"
@@ -516,7 +510,7 @@ msgstr "Indirecto"
 
 #: tformautomonta.label1.caption
 msgid "Description"
-msgstr "Descripción:"
+msgstr "Descripción"
 
 #: tformautomonta.l_instr.caption
 msgctxt "tformautomonta.l_instr.caption"
@@ -542,7 +536,7 @@ msgstr "Ocultar"
 
 #: tformconsole.limpar1.caption
 msgid "Clean"
-msgstr "limpio"
+msgstr "Limpio"
 
 #: tformhex.button1.caption
 msgid "Convert"
@@ -602,6 +596,7 @@ msgid "Hexadecimal"
 msgstr "Hexadecimal"
 
 #: tformprincipal.abrir1.caption
+msgctxt "tformprincipal.abrir1.caption"
 msgid "Open"
 msgstr "Abrir"
 
@@ -624,6 +619,16 @@ msgstr "Archivo"
 #: tformprincipal.assistente1.caption
 msgid "Programming Guide"
 msgstr "Tutor de programación"
+
+#: tformprincipal.breakpointbtn.hint
+msgid ""
+"BreakPoint\n"
+"\n"
+"Select a line on debugging, then click here.\n"
+msgstr ""
+"BreakPoint\n"
+"\n"
+"Seleccione una línea en la depuración, luego haga clic aquí.\n"
 
 #: tformprincipal.b_acc.caption
 msgid "ACC"
@@ -681,7 +686,7 @@ msgstr "Z"
 #: tformprincipal.b_zera.caption
 msgctxt "tformprincipal.b_zera.caption"
 msgid "Reset"
-msgstr "limpio"
+msgstr "Limpio"
 
 #: tformprincipal.caption
 msgid "SimuS - Sapiens-8 Processor Simulator"
@@ -706,6 +711,7 @@ msgid "1"
 msgstr "1"
 
 #: tformprincipal.colar1.caption
+msgctxt "tformprincipal.colar1.caption"
 msgid "Paste"
 msgstr "Pegar"
 
@@ -714,11 +720,13 @@ msgid "Compilation"
 msgstr "Compilación"
 
 #: tformprincipal.compilar1.caption
+msgctxt "tformprincipal.compilar1.caption"
 msgid "Compile"
 msgstr "Compilar"
 
 #: tformprincipal.compilebtn.hint
-msgid "Compilar"
+msgctxt "tformprincipal.compilebtn.hint"
+msgid "Compile"
 msgstr "Compilar"
 
 #: tformprincipal.console1.caption
@@ -735,11 +743,11 @@ msgid "Copy"
 msgstr "Copiar"
 
 #: tformprincipal.copybtn.hint
-msgid "Copiar seleção"
+msgid "Copy selection"
 msgstr "Copiar selección"
 
 #: tformprincipal.cutbtn.hint
-msgid "Cortar seleção"
+msgid "Cut selection"
 msgstr "Cortar selección"
 
 #: tformprincipal.desfazer1.caption
@@ -764,7 +772,7 @@ msgstr "EditorEPainelDeControle"
 
 #: tformprincipal.execucao.caption
 msgid "Debugging"
-msgstr "ejecución"
+msgstr "Depuración"
 
 #: tformprincipal.exitbtn.hint
 msgid "Sair"
@@ -856,21 +864,23 @@ msgid "&?"
 msgstr "?"
 
 #: tformprincipal.newbnt.hint
-#, fuzzy
-#| msgid "Novo"
+msgctxt "tformprincipal.newbnt.hint"
 msgid "New"
 msgstr "Nuevo"
 
 #: tformprincipal.novo1.caption
+msgctxt "tformprincipal.novo1.caption"
 msgid "New"
 msgstr "Nuevo"
 
 #: tformprincipal.openbtn.hint
-msgid "Abrir"
+msgctxt "tformprincipal.openbtn.hint"
+msgid "Open"
 msgstr "Abrir"
 
 #: tformprincipal.pastebtn.hint
-msgid "Colar"
+msgctxt "tformprincipal.pastebtn.hint"
+msgid "Paste"
 msgstr "Pegar"
 
 #: tformprincipal.programaotutorada1.caption
@@ -895,6 +905,7 @@ msgid "Exit"
 msgstr "Salir"
 
 #: tformprincipal.salvar1.caption
+msgctxt "tformprincipal.salvar1.caption"
 msgid "Save"
 msgstr "Guardar"
 
@@ -907,7 +918,8 @@ msgid "Dump Hex"
 msgstr "Descargar Hexa"
 
 #: tformprincipal.savebtn.hint
-msgid "Salvar"
+msgctxt "tformprincipal.savebtn.hint"
+msgid "Save"
 msgstr "Guardar"
 
 #: tformprincipal.sobreoprograma1.caption
@@ -965,10 +977,9 @@ msgid "#"
 msgstr "#"
 
 #: tformprincipal.tutorbtn.hint
-msgid "Tutor"
+msgid "Guide"
 msgstr "Tutor"
 
 #: tformprincipal.zerarmemria1.caption
 msgid "Clear Memory"
 msgstr "Zerar memoria"
-
