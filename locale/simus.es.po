@@ -13,16 +13,17 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 
 #: resstring.sadc
+#, fuzzy
 msgid "ADC (add with carry) instruction adds the contents of the memory position to the contents of the accumulator and the carry."
-msgstr "El comando ADC (add with carry) suma al acumulador el contenido de una posición de memoria indicada por el operando, más el valor del Carry."
+msgstr "La instrucción ADC (add with carry) suma al acumulador el contenido de una posición de memoria indicada por el operando, más el valor del bit de acarreo (C)."
 
 #: resstring.sadd
 msgid "ADD instruction adds the contents of the memory position to the contents of the accumulator. The result is stored in the accumulator."
-msgstr "El comando ADD suma al acumulador el contenido de una posición de memoria indicada por el operando."
+msgstr "La instrucción ADD suma al acumulador el contenido de una posición en la memoria indicada por el operando. El resultado se almacena en el acumulador."
 
 #: resstring.sand
 msgid "AND performs a binary \"AND\" between the accumulator and the contents of a memory location indicated by the operand."
-msgstr "El comando AND realiza un  \"and \" lógico entre el acumulador y el contenido de una posición de memoria indicada por el operando."
+msgstr "La instrucción AND realiza un \"AND\" binario entre el acumulador y el contenido de una posición de memoria indicada por el operando."
 
 #: resstring.sautor
 msgid "; Author:"
@@ -38,7 +39,7 @@ msgstr "Comentario o parámetro mal formado"
 
 #: resstring.scompilacaoemassemblydotexto
 msgid "Compilation Report: "
-msgstr "Compilación (ensamblado) del texto:"
+msgstr "Compilación (ensamblado) del texto "
 
 #: resstring.sdata
 msgid "; Date:"
@@ -54,7 +55,7 @@ msgstr "¿Desea guardar antes de salir?"
 
 #: resstring.sdoispontos
 msgid "A label is a name given to the current memory position. The name must be followed by a colon."
-msgstr "Una etiqueta es un nombre dado a la posición de memoria de la siguiente instrucción. El nombre es seguido por dos puntos."
+msgstr "Una etiqueta es un nombre dado a la posición de memoria siguiente. El nombre es seguido por dos puntos."
 
 #: resstring.sds
 msgid "DS (define storage) pseudo-instruction reserves in memory the amount of bytes specified by the operand."
@@ -78,55 +79,55 @@ msgstr "Esta instrucción no tiene parámetros"
 
 #: resstring.shlt
 msgid "HLT (halt) stops the machine."
-msgstr "El comando HLT (halt) para la máquina."
+msgstr "La instrucción HLT (halt) para la máquina."
 
 #: resstring.sin
 msgid "IN (input) loads the value read into an external device indicated by the operand in the accumulator. In this simulator the devices are: keys (address 0) and the status of  \"data available \" of the keys (address 1)."
-msgstr "El comando IN (input) carga en el acumulador el valor leído en un dispositivo externo indicado por el operando. En este simulador los dispositivos son: claves (dirección 0) y el estado de  \"dado disponible \" de las llaves (dirección 1)."
+msgstr "La instrucción IN (input) carga en el acumulador el valor leído en un dispositivo externo indicado por el operando."
 
 #: resstring.sinforme
 msgid "Insert"
-msgstr "Informe"
+msgstr "Insertar"
 
 #: resstring.sinstrucaoinvalida
 msgid "Illegal instruction"
-msgstr "Instrucción no válida"
+msgstr "Instrucción no es válida"
 
 #: resstring.sjc
 msgid "JC (jump if carry) transfers program execution to the memory address given in the operand, only if carry flag equals '1\"."
-msgstr "El comando JC (jump if carry) desvía la ejecución del programa a la dirección indicada por el operando ender, sólo cuando la última operación aritmética realizada no correspondió a los 8 bits del destino."
+msgstr "La instrucción JC (jump if carry) desvía la ejecución del programa a la dirección indicada por el operando ender, sólo cuando la última operación aritmética realizada no correspondió a los 8 bits del destino."
 
 #: resstring.sjmp
 msgid "JMP (jump) transfers program execution to the memory address given in the operand, (i.e., it places this address into PC register)."
-msgstr "El comando JMP (jump) desvía la ejecución del programa a la dirección indicada por el operando (es decir, coloca esta dirección en el registrador PC)."
+msgstr "La instrucción JMP (jump) desvía la ejecución del programa a la dirección indicada por el operando (es decir, coloca esta dirección en el registrador PC)."
 
 #: resstring.sjn
 msgid "JN (jump if negative) transfers program execution to the memory address given in the operand, only when the last operation performed produced a value with bit 7 connected."
-msgstr "El comando JN (jump if negative) desvía la ejecución del programa a la dirección indicada por el operando, sólo cuando la última operación realizada produjo un valor con el bit 7 conectado."
+msgstr "La instrucción JN (jump if negative) desvía la ejecución del programa a la dirección indicada por el operando, sólo cuando la última operación realizada produjo un valor con el bit 7 conectado."
 
 #: resstring.sjnc
 msgid "JNC (jump if not carry) transfers program execution to the memory address given in the operand, only if carry flag equals '0\"."
-msgstr "El comando JNC (jump if not carry) desvía la ejecución del programa a la dirección indicada por el operando dirección, sólo cuando la última operación aritmética realizada fue en los 8 bits del destino."
+msgstr "La instrucción JNC (jump if not carry) desvía la ejecución del programa a la dirección indicada por el operando dirección, sólo cuando la última operación aritmética realizada fue en los 8 bits del destino."
 
 #: resstring.sjnz
 msgid "JNZ (jump if not zero) transfers program execution to the memory address given in the operand, only when the last operation performed produced a nonzero value."
-msgstr "El comando JNZ (jump if not cero) desvía la ejecución del programa a la dirección indicada por el operando ender, sólo cuando la última operación realizada produjo un valor distinto de cero."
+msgstr "La instrucción JNZ (jump if not cero) desvía la ejecución del programa a la dirección indicada por el operando, sólo cuando la última operación realizada produjo un valor distinto de cero."
 
 #: resstring.sjsr
 msgid "JSR (jump to subroutine) executes a subroutine call. To do this, transfer the 16 bits of the PC (Program Counter) to the stack and put in the PC the 16 bits indicated in the operand. The SP is incremented by 2."
-msgstr "El comando JSR (jump to subroutine) realiza una llamada de subrutina. Para ello, transfiere los 16 bits del PC (Program Counter) a la pila y coloca en el PC los 16 bits indicados en el operando. El SP se incrementa de 2."
+msgstr "La instrucción JSR (jump to subroutine) realiza una llamada de subrutina. Para ello, transfiere los 16 bits del PC (Program Counter) a la pila y coloca en el PC los 16 bits indicados en el operando. El SP se incrementa de 2."
 
 #: resstring.sjz
 msgid "JZ (jump if zero) transfers program execution to the memory address given in the operand, only when the last executed operation produced a zero value."
-msgstr "El comando JZ (jump if zero) desvía la ejecución del programa a la dirección indicada por el operando, sólo cuando la última operación realizada produjo un valor cero."
+msgstr "La instrucción JZ (jump if zero) desvía la ejecución del programa a la dirección indicada por el operando, sólo cuando la última operación realizada produjo un valor cero."
 
 #: resstring.slda
 msgid "LDA (load accumulator) assigns the accumulator the contents of the memory location indicated by the operand."
-msgstr "El comando LDA (load accumulator) asigna al acumulador el contenido de la posición de memoria indicada por el operando."
+msgstr "La instrucción LDA (load accumulator) asigna al acumulador el contenido de la posición de memoria indicada por el operando."
 
 #: resstring.slds
 msgid "LDS (load from stack pointer) transfers the stack pointer to 16 bits in the memory indicated by the operand."
-msgstr "El comando LDS (load from stack pointer) transfiere el puntero de la pila (Stack Pointer) a 16 bits en la memoria indicada por el operando."
+msgstr "La instrucción LDS (load from stack pointer) transfiere el puntero de la pila (Stack Pointer) a 16 bits en la memoria indicada por el operando."
 
 #: resstring.slistagem
 msgid "List"
@@ -134,11 +135,12 @@ msgstr "Listado"
 
 #: resstring.snop
 msgid "NOP (no operation) does nothing."
-msgstr "El comando NOP (no operation) se utiliza sólo para pasar tiempo."
+msgstr "La instrucción NOP (no operation) no hace nada, se utiliza sólo para pasar tiempo."
 
 #: resstring.snot
+#, fuzzy
 msgid "NOT complements the accumulator contents. In other words, it flips '1's  into '0's  and '0's into '1's."
-msgstr "El comando NOT (negate) transforma 1 en 0 y 0 en 1 en los bits del acumulador."
+msgstr "La instrucción NOT (negate) cambia los bits '1' en '0' y los bits '0' en '1' en el acumulador."
 
 #: resstring.snovovalordoacc
 msgid "New ACC value"
@@ -158,11 +160,11 @@ msgstr "Nuevo valor del flag Z"
 
 #: resstring.snovovalordopc
 msgid "New PC value"
-msgstr "Nuevo valor del PCNuevo valor del PC"
+msgstr "Nuevo valor del PC"
 
 #: resstring.snumerodeerrosencontrados
 msgid "Number of errors found: "
-msgstr "Número de errores encontrados:"
+msgstr "Número de errores encontrados: "
 
 #: resstring.soperandoinvalido
 msgid "Invalid operand"
@@ -174,7 +176,7 @@ msgstr "Operando mal formado"
 
 #: resstring.sor
 msgid "OR performs a logical  \"OR\" between the accumulator and the contents of a memory location indicated by the operand."
-msgstr "El comando OR realiza un \"or \" lógico entre el acumulador y el contenido de una posición de memoria indicada por el operando."
+msgstr " La instrucción OR realiza un \"or \" bit a bit entre el acumulador y el contenido de una posición de memoria indicada por el operando."
 
 #: resstring.sorg
 msgid "ORG (origin) pseudo-instruction indicates to the assembler the memory location where the next instruction will be placed."
@@ -190,7 +192,7 @@ msgstr "El tipo de parámetro es incompatible con la instrucción"
 
 #: resstring.sout
 msgid "OUT (output) transfers the accumulator  value to an external device indicated by the operand. In this simulator the only available device is a display (address 0)."
-msgstr "El comando OUT (output) transfiere el valor del acumulador a un dispositivo externo indicado por el operando. En este simulador el único dispositivo disponible es un visor (dirección 0)."
+msgstr "La instrucción OUT (output) transfiere el valor del acumulador a un dispositivo externo indicado por el operando"
 
 #: resstring.sparametrodoequcomerro
 msgid "EQU Parameter with error"
@@ -201,8 +203,8 @@ msgid "Comments start with a semicolon."
 msgstr "Los comentarios se empiezan por punto y coma."
 
 #: resstring.spop
-msgid "POP (pop from stack) copies the top of the stack (8 bits) to the accumulator. The SP is decremented by 1."
-msgstr "El comando POP (pop from stack), trae al acumulador la parte superior de la pila (8 bits). El SP es decrementado de 1."
+msgid "The POP (pop from stack) command copies the top of the stack (8 bits) to the accumulator. The SP is decremented by 1."
+msgstr "La instrucción POP (pop from stack), trae al acumulador la parte superior de la pila (8 bits). El SP es decrecido de 1."
 
 #: resstring.sporfavorpreenchaooperando
 msgid "Please, fill in the operand."
@@ -221,32 +223,32 @@ msgid "Pseudo-instruction does not permit immediate neither indirect"
 msgstr "Pseudo-instrucción no permite inmediato ni indirecto"
 
 #: resstring.spush
-msgid "PUSH (push to stack) copies the contents of the accumulator to the top of the stack. The SP is incremented by 1."
-msgstr "El mando PUSH (push to stack), coloca el contenido del acumulador en la parte superior de la pila. El SP se incrementa de 1."
+msgid "The PUSH (push to stack) command copies the contents of the accumulator to the top of the stack. The SP is incremented by 1."
+msgstr "La instrucción PUSH (push to stack), coloca el contenido del acumulador en la parte superior de la pila. El SP se incrementa de 1."
 
 #: resstring.sret
 msgid "RET (return from subroutine) instruction returns from a JSR call. In other words, it transfers 16 bits of the stack to the PC, and updates the SP. The SP is decremented by 2."
-msgstr "El comando RET (return from subroutine) devuelve una llamada JSR. Para ello, transfiere al PC 16 bits de la pila, y actualiza el SP. El SP es decrementado de 2."
+msgstr "La instrucción RET (return from subroutine) devuelve una llamada JSR. Para ello, transfiere al PC 16 bits de la pila, y actualiza el SP. El SP es decrecido de 2."
 
 #: resstring.srotuloduplicado
 msgid " - duplicate label"
-msgstr " - etiqueta duplicada"
+msgstr "- etiqueta duplicada "
 
 #: resstring.ssbc
 msgid "SBC (subtract with carry) subtracts from the accumulator the contents of a memory location indicated by the operand, decreasing it if the carry is on."
-msgstr "El comando SBC (subtract con carry) sustrae del acumulador el contenido de una posición de memoria indicada por el operando, decrementándolo si el carry está encendido."
+msgstr "La instrucción SBC (subtract con carry) sustrae del acumulador el contenido de una posición de memoria indicada por el operando, y lo decrece si el bit de acarreo (C) está encendido."
 
 #: resstring.ssha
-msgid "SHA (shift right arithmetic) instruction shifts the accumulator bits to the right (the same as divide by 2). Bit 7 is kept the same. Bit 0 (which would be lost) is stored in the Carry."
-msgstr "El comando SHA (shift right aritmético) desplaza los bits del acumulador a la derecha (es decir, divide por 2). El bit 7 se mantiene igual. El bit 0 (que se pierde) se almacena en Carry."
+msgid "The SHA (shift right arithmetic) instruction shifts the accumulator bits to the right (the same as divide by 2). Bit 7 is kept the same. Bit 0 (which would be lost) is stored in the Carry."
+msgstr "La instrucción SRA (shift right aritmético) desplaza los bits del acumulador a la derecha (es decir, divide por 2). El bit 7 se mantiene igual. El bit 0 (que se pierde) se almacena en el bit de acarreo (C)."
 
 #: resstring.sshl
 msgid "SHL (shift left) instruction shifts the accumulator bits to the left (the same as multiplying by 2). Bit 0 is set to 0. Bit 7 (which would be lost) is stored in the Carry."
-msgstr "El comando SHL (shift left) desplaza los bits del acumulador hacia la izquierda (es decir, se multiplica por 2). El bit 0 recibe el valor 0. El bit 7 (que se pierde) se almacena en Carry."
+msgstr "La instrucción SHL (shift left) desplaza los bits del acumulador hacia la izquierda (es decir, se multiplica por 2). El bit 0 recibe el valor 0. El bit 7 (que se pierde) se almacena en el bit de acarreo (C)."
 
 #: resstring.sshr
 msgid "SHR (shift right) instruction shifts the accumulator bits to the right (the same as dividing by 2). Bit 7 is set to 0. Bit 0 (which would be lost) is stored in the Carry."
-msgstr "El comando SHR (shift right) desplaza los bits del acumulador a la derecha (es decir, divide por 2). El bit 7 recibe el valor 0. El bit 0 (que se pierde) se almacena en Carry."
+msgstr "La instrucción SHR (shift right) desplaza los bits del acumulador a la derecha (es decir, divide por 2). El bit 7 recibe el valor 0. El bit 0 (que se pierde) se almacena en el bit de acarreo (C)."
 
 #: resstring.ssimbolo_________linha__endereco
 msgid "Symbol           Line  Address"
@@ -254,23 +256,23 @@ msgstr "Símbolo         Línea  Dirección"
 
 #: resstring.ssimuladordoprocsapiens8
 msgid "Sapiens-8 processor simulator"
-msgstr "Simulador del procesador Sapiens-8"
+msgstr "Simulador del procesador Sapiens"
 
 #: resstring.ssta
 msgid "STA (store accumulator) transfers the value of the accumulator to the memory location indicated by the operand."
-msgstr "El comando STA (Store Accumulator) transfiere el valor del acumulador a la posición de memoria indicada por el operando."
+msgstr "La instrucción STA (Store Accumulator) transfiere el valor del acumulador a la posición de memoria indicada por el operando."
 
 #: resstring.ssts
 msgid "STS (store into stack pointer) transfers 16 bits of the memory indicated by the operand to the stack pointer (Stack Pointer)."
-msgstr "El comando STS (Store into stack pointer) transfiere 16 bits de la memoria indicada por el operando para el puntero de la pila (Stack Pointer)."
+msgstr "La instrucción STS (Store into stack pointer) transfiere 16 bits de la memoria indicada por el operando para el puntero de la pila (Stack Pointer)."
 
 #: resstring.ssub
 msgid "SUB (subtract) instruction subtracts from the accumulator the contents of a memory location indicated by the operand."
-msgstr "El comando SUB (subtract) sustrae del acumulador el contenido de una posición de memoria indicada por el operando."
+msgstr "La instrucción SUB (subtract) sustrae del acumulador el contenido de una posición de memoria indicada por el operando."
 
 #: resstring.strap
 msgid "TRAP simulates an operating system function, to simplify input and output programming."
-msgstr "El comando TRAP simula la ejecución de una función de sistema operativo para simplificar la programación de entrada y salida."
+msgstr "La instrucción TRAP simula la ejecución de una llamada al sistema operativo para simplificar la programación de entrada y salida."
 
 #: resstring.studofoisalvo
 msgid "Are you sure?"
@@ -282,28 +284,28 @@ msgstr "Valor digitado incoherente con la base especificada"
 
 #: resstring.sxor
 msgid "XOR (exclusive OR) performs a logical \"xor\" between the accumulator and the contents of a memory location indicated by the operand."
-msgstr "El comando XOR (exclusive OR) realiza un  \"xor \" lógico entre el acumulador y el contenido de una posición de memoria indicada por el operando."
+msgstr "La instrucción XOR (exclusive OR) realiza un \"xor \" lógico entre el acumulador y el contenido de una posición de memoria indicada por el operando."
 
 #: resstring.s_databeladesimbolos
 msgid " of symbol table"
-msgstr " de la tabla de símbolos"
+msgstr "de la tabla de símbolos "
 
 #: resstring.s_em
 msgid "In "
-msgstr "Em "
+msgstr "En "
 
 #: resstring.s_simuladordoprocsapiens8
 msgid " - Sapiens-8 processor simulator"
-msgstr " - Simulador del procesador Sapiens-8"
+msgstr " - Simulador del procesador Sapiens"
 
 #: resstring.s___sapiens8
 msgctxt "resstring.s___sapiens8"
 msgid "SAPIENS-8"
-msgstr "SAPIENS-8"
+msgstr "SAPIENS"
 
 #: resstring.s________atencao
 msgid "********* Warning: "
-msgstr "********* Atención: "
+msgstr "********* Advertencia: "
 
 #: resstring.s________erro
 msgid "********* Error: "
@@ -319,7 +321,7 @@ msgstr "Gabriel Pereira da Silva José Antonio Borges Alonso M. do Amparo Neto"
 
 #: taboutbox.copyright.caption
 msgid "Copyright (C) 2016/2018"
-msgstr "Copyright (C) 2016/2018"
+msgstr "Copyright (C) 2016-2018"
 
 #: taboutbox.label2.caption
 msgid "This simulator is compatible with Neander-X processor."
@@ -331,11 +333,11 @@ msgstr "OK"
 
 #: taboutbox.productname.caption
 msgid "Simus - Didactic Simulator for computer architecture teaching."
-msgstr "SimuS - Simulador didáctico para la enseñanza de la arquitectura de ordenadores."
+msgstr "SimuS - Simulador didáctico para la enseñanza de la arquitectura de computadoras "
 
 #: taboutbox.version.caption
 msgid "Version 1.1 - February/2018"
-msgstr "Versión 1.1 - Febrero/2018"
+msgstr "Versión 1.1 - Febrero 2018"
 
 #: tformautomonta.b_adc.caption
 msgid "ADC"
@@ -351,7 +353,7 @@ msgstr "AND"
 
 #: tformautomonta.b_coment.caption
 msgid "Comment"
-msgstr "Comentarios"
+msgstr "comentarios "
 
 #: tformautomonta.b_db.caption
 msgid "DB"
@@ -510,7 +512,7 @@ msgstr "Indirecto"
 
 #: tformautomonta.label1.caption
 msgid "Description"
-msgstr "Descripción"
+msgstr "Descripción: "
 
 #: tformautomonta.l_instr.caption
 msgctxt "tformautomonta.l_instr.caption"
@@ -536,7 +538,7 @@ msgstr "Ocultar"
 
 #: tformconsole.limpar1.caption
 msgid "Clean"
-msgstr "Limpio"
+msgstr "limpio "
 
 #: tformhex.button1.caption
 msgid "Convert"
@@ -596,7 +598,6 @@ msgid "Hexadecimal"
 msgstr "Hexadecimal"
 
 #: tformprincipal.abrir1.caption
-msgctxt "tformprincipal.abrir1.caption"
 msgid "Open"
 msgstr "Abrir"
 
@@ -686,11 +687,11 @@ msgstr "Z"
 #: tformprincipal.b_zera.caption
 msgctxt "tformprincipal.b_zera.caption"
 msgid "Reset"
-msgstr "Limpio"
+msgstr "limpio "
 
 #: tformprincipal.caption
 msgid "SimuS - Sapiens-8 Processor Simulator"
-msgstr "SimuS - Simulador del procesador Sapiens-8"
+msgstr "SimuS - Simulador del procesador Sapiens"
 
 #: tformprincipal.cb_hexa.caption
 msgid "Hex"
@@ -711,7 +712,6 @@ msgid "1"
 msgstr "1"
 
 #: tformprincipal.colar1.caption
-msgctxt "tformprincipal.colar1.caption"
 msgid "Paste"
 msgstr "Pegar"
 
@@ -720,13 +720,11 @@ msgid "Compilation"
 msgstr "Compilación"
 
 #: tformprincipal.compilar1.caption
-msgctxt "tformprincipal.compilar1.caption"
 msgid "Compile"
 msgstr "Compilar"
 
 #: tformprincipal.compilebtn.hint
-msgctxt "tformprincipal.compilebtn.hint"
-msgid "Compile"
+msgid "Compilar"
 msgstr "Compilar"
 
 #: tformprincipal.console1.caption
@@ -743,11 +741,11 @@ msgid "Copy"
 msgstr "Copiar"
 
 #: tformprincipal.copybtn.hint
-msgid "Copy selection"
+msgid "Copiar seleção"
 msgstr "Copiar selección"
 
 #: tformprincipal.cutbtn.hint
-msgid "Cut selection"
+msgid "Cortar seleção"
 msgstr "Cortar selección"
 
 #: tformprincipal.desfazer1.caption
@@ -772,7 +770,7 @@ msgstr "EditorEPainelDeControle"
 
 #: tformprincipal.execucao.caption
 msgid "Debugging"
-msgstr "Depuración"
+msgstr "ejecución "
 
 #: tformprincipal.exitbtn.hint
 msgid "Sair"
@@ -790,7 +788,7 @@ msgstr "00"
 #: tformprincipal.l_banner.caption
 msgctxt "tformprincipal.l_banner.caption"
 msgid "SAPIENS-8"
-msgstr "SAPIENS-8"
+msgstr "SAPIENS"
 
 #: tformprincipal.l_c.caption
 msgctxt "tformprincipal.l_c.caption"
@@ -864,23 +862,19 @@ msgid "&?"
 msgstr "?"
 
 #: tformprincipal.newbnt.hint
-msgctxt "tformprincipal.newbnt.hint"
-msgid "New"
+msgid "Novo"
 msgstr "Nuevo"
 
 #: tformprincipal.novo1.caption
-msgctxt "tformprincipal.novo1.caption"
 msgid "New"
 msgstr "Nuevo"
 
 #: tformprincipal.openbtn.hint
-msgctxt "tformprincipal.openbtn.hint"
-msgid "Open"
+msgid "Abrir"
 msgstr "Abrir"
 
 #: tformprincipal.pastebtn.hint
-msgctxt "tformprincipal.pastebtn.hint"
-msgid "Paste"
+msgid "Colar"
 msgstr "Pegar"
 
 #: tformprincipal.programaotutorada1.caption
@@ -905,7 +899,6 @@ msgid "Exit"
 msgstr "Salir"
 
 #: tformprincipal.salvar1.caption
-msgctxt "tformprincipal.salvar1.caption"
 msgid "Save"
 msgstr "Guardar"
 
@@ -918,8 +911,7 @@ msgid "Dump Hex"
 msgstr "Descargar Hexa"
 
 #: tformprincipal.savebtn.hint
-msgctxt "tformprincipal.savebtn.hint"
-msgid "Save"
+msgid "Salvar"
 msgstr "Guardar"
 
 #: tformprincipal.sobreoprograma1.caption
@@ -977,10 +969,9 @@ msgid "#"
 msgstr "#"
 
 #: tformprincipal.tutorbtn.hint
-msgid "Guide"
+msgid "Tutor"
 msgstr "Tutor"
 
 #: tformprincipal.zerarmemria1.caption
 msgid "Clear Memory"
-msgstr "Zerar memoria"
-
+msgstr "Limpiar memoria"
