@@ -41,10 +41,8 @@ program Simus;
 uses
 {$IFnDEF MSWINDOWS}
   clocale,
-{$ELSE}
-  Interfaces,
 {$ENDIF}
-  Forms, DefaultTranslator, LCLTranslator,
+  Forms, Interfaces, DefaultTranslator, LCLTranslator,
   uSimus in 'uSimus.pas' {formPrincipal},
   uSimula in 'uSimula.pas',
   uHex in 'uHex.pas' {formHex},

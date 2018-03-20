@@ -978,3 +978,4 @@ msgstr ""
 #: tformprincipal.zerarmemria1.caption
 msgid "Clear Memory"
 msgstr ""
+

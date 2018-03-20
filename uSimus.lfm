@@ -1,14 +1,14 @@
 object formPrincipal: TformPrincipal
-  Left = 515
+  Left = 381
   Height = 750
-  Top = 168
-  Width = 980
+  Top = 212
+  Width = 1024
   Caption = 'SimuS - Sapiens-8 Processor Simulator'
   ClientHeight = 730
-  ClientWidth = 980
+  ClientWidth = 1024
   Color = clBtnFace
   Constraints.MinHeight = 750
-  Constraints.MinWidth = 980
+  Constraints.MinWidth = 1024
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
@@ -17,16 +17,16 @@ object formPrincipal: TformPrincipal
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   Position = poDesktopCenter
-  LCLVersion = '1.8.0.6'
+  LCLVersion = '1.8.2.0'
   Visible = True
   object BarButton: TPanel
     Left = 0
     Height = 28
     Top = 0
-    Width = 980
+    Width = 1024
     Align = alTop
     ClientHeight = 28
-    ClientWidth = 980
+    ClientWidth = 1024
     TabOrder = 0
     object OpenBtn: TSpeedButton
       Left = 26
@@ -179,7 +179,7 @@ object formPrincipal: TformPrincipal
       ParentShowHint = False
     end
     object ExitBtn: TSpeedButton
-      Left = 1049
+      Left = 1093
       Height = 25
       Hint = 'Sair'
       Top = 0
@@ -349,22 +349,21 @@ object formPrincipal: TformPrincipal
     Left = 0
     Height = 702
     Top = 28
-    Width = 725
+    Width = 769
     Align = alClient
     Caption = 'EditorEPainelDeControle'
     ClientHeight = 702
-    ClientWidth = 725
+    ClientWidth = 769
     TabOrder = 1
     object Codigo: TPageControl
       Left = 0
       Height = 557
       Top = 144
-      Width = 723
+      Width = 767
       ActivePage = Execucao
       Anchors = [akTop, akLeft, akRight, akBottom]
       TabIndex = 2
       TabOrder = 1
-      OnChange = CodigoChange
       object Edicao: TTabSheet
         Caption = 'Editing'
         ClientHeight = 531
@@ -901,14 +900,14 @@ object formPrincipal: TformPrincipal
       object Execucao: TTabSheet
         Caption = 'Debugging'
         ClientHeight = 531
-        ClientWidth = 715
+        ClientWidth = 759
         ImageIndex = 2
         object Splitter: TSplitter
           Cursor = crVSplit
           Left = 0
           Height = 2
           Top = 337
-          Width = 715
+          Width = 759
           Align = alTop
           ResizeAnchor = akTop
         end
@@ -916,7 +915,7 @@ object formPrincipal: TformPrincipal
           Left = 0
           Height = 337
           Top = 0
-          Width = 715
+          Width = 759
           Align = alTop
           Constraints.MinHeight = 200
           Font.CharSet = ANSI_CHARSET
@@ -937,7 +936,7 @@ object formPrincipal: TformPrincipal
           Left = 0
           Height = 192
           Top = 339
-          Width = 715
+          Width = 759
           Align = alClient
           Color = clCream
           Constraints.MinHeight = 100
@@ -956,10 +955,10 @@ object formPrincipal: TformPrincipal
       Left = 0
       Height = 145
       Top = 0
-      Width = 714
+      Width = 758
       Anchors = [akTop, akLeft, akRight]
       ClientHeight = 145
-      ClientWidth = 714
+      ClientWidth = 758
       Color = clSkyBlue
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWindowText
@@ -975,10 +974,10 @@ object formPrincipal: TformPrincipal
         Width = 70
       end
       object MolduraCtrlExec: TBevel
-        Left = 536
+        Left = 550
         Height = 112
         Top = 15
-        Width = 168
+        Width = 192
         Shape = bsFrame
       end
       object MolduraBanner: TBevel
@@ -3884,7 +3883,7 @@ object formPrincipal: TformPrincipal
         Transparent = False
       end
       object ledOn_exec: TSpeedButton
-        Left = 646
+        Left = 660
         Height = 22
         Top = 86
         Width = 23
@@ -3906,7 +3905,7 @@ object formPrincipal: TformPrincipal
         NumGlyphs = 2
       end
       object ledOff_exec: TSpeedButton
-        Left = 646
+        Left = 660
         Height = 22
         Top = 86
         Width = 23
@@ -3929,7 +3928,7 @@ object formPrincipal: TformPrincipal
         Visible = False
       end
       object l_executando: TLabel
-        Left = 545
+        Left = 559
         Height = 22
         Top = 86
         Width = 95
@@ -3987,7 +3986,7 @@ object formPrincipal: TformPrincipal
         Left = 451
         Height = 50
         Top = 26
-        Width = 75
+        Width = 85
         Caption = 'Run'
         Font.Color = clBlack
         Font.Height = -11
@@ -4007,28 +4006,28 @@ object formPrincipal: TformPrincipal
         TabOrder = 13
       end
       object b_passoAPasso: TButton
-        Left = 540
+        Left = 554
         Height = 50
         Top = 26
-        Width = 81
+        Width = 92
         Caption = 'Step-by-Step'
         OnClick = b_passoAPassoClick
         TabOrder = 14
       end
       object b_parar: TButton
-        Left = 624
+        Left = 649
         Height = 24
         Top = 26
-        Width = 72
+        Width = 88
         Caption = 'Halt'
         OnClick = b_pararClick
         TabOrder = 15
       end
       object b_reset: TButton
-        Left = 624
+        Left = 649
         Height = 24
-        Top = 52
-        Width = 72
+        Top = 53
+        Width = 88
         Caption = 'Reset'
         OnClick = b_resetClick
         TabOrder = 16
@@ -4148,7 +4147,7 @@ object formPrincipal: TformPrincipal
     end
   end
   object RegistradoresEMemoria: TPanel
-    Left = 725
+    Left = 769
     Height = 702
     Top = 28
     Width = 255
@@ -4260,7 +4259,7 @@ object formPrincipal: TformPrincipal
         ParentColor = False
       end
       object l_instrucao: TLabel
-        Left = 61
+        Left = 74
         Height = 24
         Top = 2
         Width = 54
@@ -4272,7 +4271,7 @@ object formPrincipal: TformPrincipal
         ParentFont = False
       end
       object l_operInstrucao: TLabel
-        Left = 124
+        Left = 131
         Height = 24
         Top = 2
         Width = 71
@@ -4673,7 +4672,8 @@ object formPrincipal: TformPrincipal
     ExecCommandID = ecSynCompletionExecute
     Editor = SynEditor
     ToggleReplaceWhole = False
-    left = 792
+    left = 592
+    top = 256
   end
   object SynAutoComplete: TSynAutoComplete
     AutoCompleteList.Strings = (
@@ -4720,6 +4720,7 @@ object formPrincipal: TformPrincipal
     ShortCut = 8224
     ExecCommandID = ecSynAutoCompletionExecute
     Editor = SynEditor
-    left = 888
+    left = 504
+    top = 224
   end
 end

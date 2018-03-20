@@ -204,7 +204,6 @@ type
     procedure AbrirExemploClick(Sender: TObject);
     procedure BreakPointBtnClick(Sender: TObject);
     procedure b_pararClick(Sender: TObject);
-    procedure CodigoChange(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure lb_instrucoesDrawItem(Control: TWinControl; Index: Integer;
       ARect: TRect; State: TOwnerDrawState);
@@ -602,6 +601,8 @@ procedure TformPrincipal.BreakPointBtnClick(Sender: TObject);
 var
   idx, isBreakpoint : integer;
 begin
+  if Codigo.ActivePage <> Execucao then Exit;
+
   idx := lb_instrucoes.ItemIndex;
 
   isBreakpoint :=  BreakpointList.IndexOf( IntToStr(idx));
@@ -1168,14 +1169,6 @@ procedure TformPrincipal.b_pararClick(Sender: TObject);
 begin
     running := false;
     atualizaInterface;
-end;
-
-procedure TformPrincipal.CodigoChange(Sender: TObject);
-begin
-  if Codigo.ActivePage <> Execucao then
-     BreakPointBtn.Enabled:=false
-  else
-      BreakPointBtn.Enabled:=True;
 end;
 
 procedure TformPrincipal.FormCloseQuery(Sender: TObject; var CanClose: boolean);

@@ -983,3 +983,4 @@ msgstr "Tutor"
 #: tformprincipal.zerarmemria1.caption
 msgid "Clear Memory"
 msgstr "Zerar memória"
+
