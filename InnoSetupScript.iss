@@ -6,8 +6,8 @@
 #define MyAppPublisher "Gabriel P. Silva"
 #define MyAppURL "http://www.dcc.ufrj.br/~gabriel/"
 #define MyAppExeName "simus.exe"
-#define GitDir "C:\Users\Alonso\Documents\GitHub\simus"
-;#define GitDir "D:\GitHubRepo\SimusRepository\"
+;#define GitDir "C:\Users\Alonso\Documents\GitHub\simus"
+#define GitDir "D:\GitHubRepo\SimusRepository\"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
