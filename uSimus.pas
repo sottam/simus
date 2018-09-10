@@ -268,7 +268,7 @@ type
     procedure mostraAlterado (alteraDump: boolean);
     procedure geraDump (ender: integer);
     function geraLinhaDump (ender: integer): string;
-    procedure atualizaDump(redesenharTudo : Boolean = false);
+    procedure atualizaDump;
     procedure atualizaLeds;
     procedure atualizaDados (zerando: boolean);
     //procedure NovoArquivo;
@@ -432,25 +432,14 @@ begin
     dumpMem.items [ender div 8] := geraLinhaDump (ender);
 end;
 
-procedure TformPrincipal.atualizaDump(redesenharTudo : Boolean = false);
+procedure TformPrincipal.atualizaDump;
 var
     i, ini, fim: integer;
 begin
-    if redesenharTudo then
-    begin
-      ini := 0;
-      fim := dumpMem.Items.Count - 1;
-      for i := 0 to fim do
+    ini := dumpMem.TopIndex;
+    fim := ini + dumpMem.ClientHeight div dumpmem.ItemHeight - 1;
+    for i := ini to fim do
         dumpMem.Items[i] := geraLinhaDump(i*8);
-    end
-    else
-    begin
-      ini := dumpMem.TopIndex;
-      fim := ini + dumpMem.ClientHeight div dumpmem.ItemHeight - 1;
-      for i := 0 to fim do
-        dumpMem.Items[i] := geraLinhaDump(i*8);
-    end;
-
 end;
 
 procedure TformPrincipal.mostraAlterado (alteraDump: boolean);
@@ -601,7 +590,6 @@ begin
                 ndebugDados := 0;
                 setLength (debugDados, ndebugDados);
                 lb_dados.Clear;
-                BreakpointList.Clear;
             except
                 showMessage (SErroAoCarregarArquivo);
             end;
@@ -647,7 +635,6 @@ begin
                 ndebugDados := 0;
                 setLength (debugDados, ndebugDados);
                 lb_dados.Clear;
-                BreakpointList.Clear;
             except
                 showMessage (SErroAoCarregarArquivo);
             end;
@@ -1121,7 +1108,7 @@ end;
 procedure TformPrincipal.cb_hexaClick(Sender: TObject);
 begin
     atualizaDados(false);
-    atualizaDump(true);
+    atualizaDump;
 end;
 
 procedure TformPrincipal.Conversordebases1Click(Sender: TObject);

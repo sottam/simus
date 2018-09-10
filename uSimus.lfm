@@ -7,7 +7,7 @@ object formPrincipal: TformPrincipal
   ClientHeight = 730
   ClientWidth = 1024
   Color = clBtnFace
-  Constraints.MinHeight = 750
+  Constraints.MinHeight = 600
   Constraints.MinWidth = 1024
   Font.Color = clWindowText
   Font.Height = -11
@@ -360,19 +360,19 @@ object formPrincipal: TformPrincipal
       Height = 557
       Top = 144
       Width = 767
-      ActivePage = Execucao
+      ActivePage = Edicao
       Anchors = [akTop, akLeft, akRight, akBottom]
-      TabIndex = 2
+      TabIndex = 0
       TabOrder = 1
       object Edicao: TTabSheet
         Caption = 'Editing'
         ClientHeight = 531
-        ClientWidth = 715
+        ClientWidth = 759
         inline SynEditor: TSynEdit
           Left = 0
           Height = 533
           Top = 0
-          Width = 716
+          Width = 760
           Anchors = [akTop, akLeft, akRight, akBottom]
           Font.Height = -16
           Font.Name = 'Courier New'
@@ -877,13 +877,13 @@ object formPrincipal: TformPrincipal
       object Compilacao: TTabSheet
         Caption = 'Compilation'
         ClientHeight = 531
-        ClientWidth = 715
+        ClientWidth = 759
         ImageIndex = 1
         object m_listagem: TMemo
           Left = 0
           Height = 533
           Top = 0
-          Width = 716
+          Width = 760
           Anchors = [akTop, akLeft, akRight, akBottom]
           Font.CharSet = ANSI_CHARSET
           Font.Color = clWindowText
