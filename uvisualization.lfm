@@ -1,0 +1,1115 @@
+object Visualization: TVisualization
+  Left = 480
+  Height = 640
+  Top = 255
+  Width = 960
+  Caption = 'Visualization'
+  ClientHeight = 640
+  ClientWidth = 960
+  OnCreate = FormCreate
+  LCLVersion = '1.8.2.0'
+  object Shape75: TShape
+    Left = 714
+    Height = 26
+    Top = 280
+    Width = 96
+    Brush.Color = clGray
+    Pen.Style = psClear
+  end
+  object Shape72: TShape
+    Left = 768
+    Height = 50
+    Top = 544
+    Width = 46
+    Brush.Color = clGray
+    Pen.Style = psClear
+    Shape = stTriangleRight
+  end
+  object Shape71: TShape
+    Left = 677
+    Height = 26
+    Top = 556
+    Width = 96
+    Brush.Color = clGray
+    Pen.Style = psClear
+  end
+  object Shape67: TShape
+    Left = 677
+    Height = 26
+    Top = 351
+    Width = 96
+    Brush.Color = clGray
+    Pen.Style = psClear
+  end
+  object Shape68: TShape
+    Left = 768
+    Height = 50
+    Top = 339
+    Width = 46
+    Brush.Color = clGray
+    Pen.Style = psClear
+    Shape = stTriangleRight
+  end
+  object Shape25: TShape
+    Left = 768
+    Height = 50
+    Top = 85
+    Width = 46
+    Brush.Color = clGray
+    Pen.Style = psClear
+    Shape = stTriangleRight
+  end
+  object Shape24: TShape
+    Left = 677
+    Height = 26
+    Top = 97
+    Width = 96
+    Brush.Color = clGray
+    Pen.Style = psClear
+  end
+  object Shape21: TShape
+    Left = 8
+    Height = 624
+    Top = 8
+    Width = 665
+    Brush.Color = clForm
+    Pen.Style = psDash
+  end
+  object Shape64: TShape
+    Left = 303
+    Height = 6
+    Top = 102
+    Width = 27
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape56: TShape
+    Left = 447
+    Height = 88
+    Top = 144
+    Width = 6
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape51: TShape
+    Left = 540
+    Height = 49
+    Top = 446
+    Width = 6
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape49: TShape
+    Left = 388
+    Height = 49
+    Top = 446
+    Width = 6
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape46: TShape
+    Left = 199
+    Height = 6
+    Top = 438
+    Width = 96
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape30: TShape
+    Left = 223
+    Height = 6
+    Top = 316
+    Width = 398
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape33: TShape
+    Left = 119
+    Height = 59
+    Top = 446
+    Width = 6
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape31: TShape
+    Left = 119
+    Height = 137
+    Top = 248
+    Width = 6
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape28: TShape
+    Left = 391
+    Height = 6
+    Top = 105
+    Width = 94
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape26: TShape
+    Left = 511
+    Height = 6
+    Top = 105
+    Width = 96
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object ULAShape3: TShape
+    Left = 58
+    Height = 65
+    Top = 408
+    Width = 74
+    Brush.Color = 16777164
+    Shape = stTriangleDown
+  end
+  object MUXShape2: TShape
+    Left = 503
+    Height = 45
+    Top = 26
+    Width = 45
+    Brush.Color = 16777164
+    Shape = stTriangleRight
+  end
+  object MUXShape1: TShape
+    Left = 503
+    Height = 45
+    Top = 147
+    Width = 45
+    Brush.Color = 16777164
+    Shape = stTriangleRight
+  end
+  object REMShape: TShape
+    Left = 615
+    Height = 160
+    Top = 32
+    Width = 40
+    Brush.Color = 16777164
+  end
+  object RDMShape: TShape
+    Left = 615
+    Height = 160
+    Top = 248
+    Width = 40
+    Brush.Color = 16777164
+  end
+  object Shape11: TShape
+    Left = 335
+    Height = 91
+    Top = 520
+    Width = 274
+    Brush.Color = 16777164
+    Shape = stRoundRect
+  end
+  object Shape12: TShape
+    Left = 815
+    Height = 624
+    Top = 8
+    Width = 136
+    Brush.Color = clForm
+    Pen.Style = psDash
+  end
+  object PCShape: TShape
+    Left = 386
+    Height = 160
+    Top = 32
+    Width = 40
+    Brush.Color = 16777164
+  end
+  object SPShape: TShape
+    Left = 267
+    Height = 160
+    Top = 32
+    Width = 40
+    Brush.Color = 16777164
+  end
+  object SEMNOMEShape: TShape
+    Left = 367
+    Height = 40
+    Top = 216
+    Width = 168
+    Brush.Color = 16777164
+  end
+  object ACCShape: TShape
+    Left = 39
+    Height = 40
+    Top = 216
+    Width = 168
+    Brush.Color = 16777164
+  end
+  object NShape: TShape
+    Left = 330
+    Height = 40
+    Top = 424
+    Width = 40
+    Brush.Color = 16777164
+  end
+  object ZShape: TShape
+    Left = 369
+    Height = 40
+    Top = 424
+    Width = 40
+    Brush.Color = 16777164
+  end
+  object CShape: TShape
+    Left = 408
+    Height = 40
+    Top = 424
+    Width = 40
+    Brush.Color = 16777164
+  end
+  object RIShape: TShape
+    Left = 473
+    Height = 40
+    Top = 424
+    Width = 136
+    Brush.Color = 16777164
+  end
+  object Shape22: TShape
+    Left = 119
+    Height = 6
+    Top = 358
+    Width = 472
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape23: TShape
+    Left = 589
+    Height = 16
+    Top = 352
+    Width = 24
+    Brush.Color = clSilver
+    Pen.Style = psClear
+    Shape = stTriangleRight
+  end
+  object Shape27: TShape
+    Left = 589
+    Height = 16
+    Top = 99
+    Width = 24
+    Brush.Color = clSilver
+    Pen.Style = psClear
+    Shape = stTriangleRight
+  end
+  object Shape29: TShape
+    Left = 479
+    Height = 16
+    Top = 99
+    Width = 24
+    Brush.Color = clSilver
+    Pen.Style = psClear
+    Shape = stTriangleRight
+  end
+  object Shape32: TShape
+    Left = 15
+    Height = 369
+    Top = 136
+    Width = 6
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape34: TShape
+    Left = 15
+    Height = 6
+    Top = 504
+    Width = 110
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape35: TShape
+    Left = 15
+    Height = 6
+    Top = 136
+    Width = 110
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape36: TShape
+    Left = 114
+    Height = 24
+    Top = 384
+    Width = 16
+    Brush.Color = clSilver
+    Pen.Style = psClear
+    Shape = stTriangleDown
+  end
+  object Shape37: TShape
+    Left = 114
+    Height = 24
+    Top = 189
+    Width = 16
+    Brush.Color = clSilver
+    Pen.Style = psClear
+    Shape = stTriangleDown
+  end
+  object Shape38: TShape
+    Left = 119
+    Height = 56
+    Top = 136
+    Width = 6
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape39: TShape
+    Left = 219
+    Height = 280
+    Top = 105
+    Width = 6
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape40: TShape
+    Left = 214
+    Height = 24
+    Top = 384
+    Width = 16
+    Brush.Color = clSilver
+    Pen.Style = psClear
+    Shape = stTriangleDown
+  end
+  object Shape41: TShape
+    Left = 223
+    Height = 6
+    Top = 105
+    Width = 24
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape42: TShape
+    Left = 245
+    Height = 16
+    Top = 99
+    Width = 24
+    Brush.Color = clSilver
+    Pen.Style = psClear
+    Shape = stTriangleRight
+  end
+  object Shape43: TShape
+    Left = 364
+    Height = 16
+    Top = 96
+    Width = 24
+    Brush.Color = clSilver
+    Pen.Style = psClear
+    Shape = stTriangleRight
+  end
+  object Shape44: TShape
+    Left = 341
+    Height = 6
+    Top = 102
+    Width = 27
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape45: TShape
+    Left = 341
+    Height = 218
+    Top = 102
+    Width = 6
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape47: TShape
+    Left = 293
+    Height = 16
+    Top = 432
+    Width = 24
+    Brush.Color = clSilver
+    Pen.Style = psClear
+    Shape = stTriangleRight
+  end
+  object Shape48: TShape
+    Left = 383
+    Height = 24
+    Top = 494
+    Width = 16
+    Brush.Color = clSilver
+    Pen.Style = psClear
+    Shape = stTriangleDown
+  end
+  object Shape50: TShape
+    Left = 535
+    Height = 24
+    Top = 494
+    Width = 16
+    Brush.Color = clSilver
+    Pen.Style = psClear
+    Shape = stTriangleDown
+  end
+  object Shape52: TShape
+    Left = 535
+    Height = 24
+    Top = 392
+    Width = 16
+    Brush.Color = clSilver
+    Pen.Style = psClear
+    Shape = stTriangleDown
+  end
+  object Shape53: TShape
+    Left = 540
+    Height = 77
+    Top = 316
+    Width = 6
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape54: TShape
+    Left = 479
+    Height = 16
+    Top = 136
+    Width = 24
+    Brush.Color = clSilver
+    Pen.Style = psClear
+    Shape = stTriangleRight
+  end
+  object Shape55: TShape
+    Left = 447
+    Height = 6
+    Top = 142
+    Width = 40
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape57: TShape
+    Left = 447
+    Height = 42
+    Top = 280
+    Width = 6
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape58: TShape
+    Left = 441
+    Height = 24
+    Top = 259
+    Width = 17
+    Brush.Color = clSilver
+    Pen.Style = psClear
+    Shape = stTriangle
+  end
+  object Shape59: TShape
+    Left = 478
+    Height = 16
+    Top = 64
+    Width = 24
+    Brush.Color = clSilver
+    Pen.Style = psClear
+    Shape = stTriangleRight
+  end
+  object Shape60: TShape
+    Left = 455
+    Height = 6
+    Top = 70
+    Width = 27
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape61: TShape
+    Left = 455
+    Height = 60
+    Top = 16
+    Width = 6
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape62: TShape
+    Left = 324
+    Height = 6
+    Top = 16
+    Width = 137
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape63: TShape
+    Left = 324
+    Height = 90
+    Top = 16
+    Width = 6
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object Shape7: TShape
+    Left = 679
+    Height = 22
+    Top = 99
+    Width = 96
+    Brush.Color = clAqua
+    Pen.Style = psClear
+  end
+  object Shape8: TShape
+    Left = 770
+    Height = 44
+    Top = 88
+    Width = 40
+    Brush.Color = clAqua
+    Pen.Style = psClear
+    Shape = stTriangleRight
+  end
+  object Shape65: TShape
+    Left = 679
+    Height = 22
+    Top = 353
+    Width = 96
+    Brush.Color = clAqua
+    Pen.Style = psClear
+  end
+  object Shape66: TShape
+    Left = 770
+    Height = 44
+    Top = 342
+    Width = 40
+    Brush.Color = clAqua
+    Pen.Style = psClear
+    Shape = stTriangleRight
+  end
+  object Shape69: TShape
+    Left = 679
+    Height = 22
+    Top = 558
+    Width = 96
+    Brush.Color = clAqua
+    Pen.Style = psClear
+  end
+  object Shape70: TShape
+    Left = 770
+    Height = 44
+    Top = 547
+    Width = 40
+    Brush.Color = clAqua
+    Pen.Style = psClear
+    Shape = stTriangleRight
+  end
+  object Shape76: TShape
+    Left = 675
+    Height = 50
+    Top = 268
+    Width = 46
+    Brush.Color = clGray
+    Pen.Style = psClear
+    Shape = stTriangleLeft
+  end
+  object Shape74: TShape
+    Left = 679
+    Height = 44
+    Top = 271
+    Width = 40
+    Brush.Color = clAqua
+    Pen.Style = psClear
+    Shape = stTriangleLeft
+  end
+  object Shape73: TShape
+    Left = 712
+    Height = 22
+    Top = 282
+    Width = 96
+    Brush.Color = clAqua
+    Pen.Style = psClear
+  end
+  object ULAShape2: TShape
+    Left = 211
+    Height = 65
+    Top = 408
+    Width = 74
+    Brush.Color = 16777164
+    Shape = stTriangleDown
+  end
+  object MUXShape3: TShape
+    Left = 503
+    Height = 121
+    Top = 48
+    Width = 45
+    Brush.Color = 16777164
+  end
+  object ULAShape1: TShape
+    Left = 95
+    Height = 65
+    Top = 408
+    Width = 152
+    Brush.Color = 16777164
+  end
+  object ULAShape4: TShape
+    Left = 95
+    Height = 64
+    Top = 409
+    Width = 17
+    Brush.Color = 16777164
+    Pen.Style = psClear
+  end
+  object ULAShape5: TShape
+    Left = 232
+    Height = 64
+    Top = 409
+    Width = 17
+    Brush.Color = 16777164
+    Pen.Style = psClear
+  end
+  object MUXShape5: TShape
+    Left = 504
+    Height = 10
+    Top = 160
+    Width = 44
+    Brush.Color = 16777164
+    Pen.Style = psClear
+  end
+  object MUXShape4: TShape
+    Left = 504
+    Height = 10
+    Top = 48
+    Width = 44
+    Brush.Color = 16777164
+    Pen.Style = psClear
+  end
+  object Label1: TLabel
+    Left = 27
+    Height = 45
+    Top = 584
+    Width = 131
+    Caption = 'SAPIENS'
+    Font.Height = -32
+    Font.Style = [fsBold, fsItalic]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 714
+    Height = 25
+    Top = 316
+    Width = 62
+    Caption = 'DADOS'
+    Font.Height = -19
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 696
+    Height = 25
+    Top = 60
+    Width = 93
+    Caption = 'ENDEREÇO'
+    Font.Height = -19
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 696
+    Height = 25
+    Top = 519
+    Width = 93
+    Caption = 'CONTROLE'
+    Font.Height = -19
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label5: TLabel
+    Left = 386
+    Height = 25
+    Top = 33
+    Width = 39
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'PC'
+    Font.Height = -19
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label6: TLabel
+    Left = 268
+    Height = 25
+    Top = 33
+    Width = 39
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'SP'
+    Font.Height = -19
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label7: TLabel
+    Left = 40
+    Height = 40
+    Top = 216
+    Width = 48
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'ACC'
+    Font.Height = -19
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label8: TLabel
+    Left = 95
+    Height = 65
+    Top = 408
+    Width = 152
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'UNIDADE'#13#10'ARITMÉTICA E '#13#10'LÓGICA '
+    Font.Height = -16
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label9: TLabel
+    Left = 331
+    Height = 25
+    Top = 400
+    Width = 40
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'N'
+    Font.Height = -19
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label10: TLabel
+    Left = 369
+    Height = 25
+    Top = 400
+    Width = 40
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Z'
+    Font.Height = -19
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label11: TLabel
+    Left = 408
+    Height = 25
+    Top = 400
+    Width = 40
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'C'
+    Font.Height = -19
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label12: TLabel
+    Left = 473
+    Height = 40
+    Top = 424
+    Width = 40
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'RI'
+    Font.Height = -19
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+  end
+  object UCLabel: TLabel
+    Left = 335
+    Height = 91
+    Top = 520
+    Width = 274
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'UNIDADE DE CONTROLE'
+    Font.Height = -19
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label14: TLabel
+    Left = 615
+    Height = 25
+    Top = 248
+    Width = 40
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'RDM'
+    Font.Height = -16
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label15: TLabel
+    Left = 615
+    Height = 25
+    Top = 33
+    Width = 40
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'REM'
+    Font.Height = -16
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label16: TLabel
+    Left = 368
+    Height = 40
+    Top = 216
+    Width = 40
+    Alignment = taCenter
+    AutoSize = False
+    Caption = '??'
+    Font.Height = -19
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label17: TLabel
+    Left = 506
+    Height = 120
+    Top = 48
+    Width = 40
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'M'#13#10'U'#13#10'X'
+    Font.Height = -19
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+  end
+  object SPHIGH: TLabel
+    Left = 267
+    Height = 30
+    Top = 76
+    Width = 40
+    Alignment = taCenter
+    AutoSize = False
+    Caption = '00'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -24
+    Font.Name = 'Consolas'
+    Font.Pitch = fpFixed
+    Font.Quality = fqDraft
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+  end
+  object SPLOW: TLabel
+    Left = 267
+    Height = 30
+    Top = 99
+    Width = 40
+    Alignment = taCenter
+    AutoSize = False
+    Caption = '00'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -24
+    Font.Name = 'Consolas'
+    Font.Pitch = fpFixed
+    Font.Quality = fqDraft
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+  end
+  object PCLOW: TLabel
+    Left = 386
+    Height = 30
+    Top = 103
+    Width = 40
+    Alignment = taCenter
+    AutoSize = False
+    Caption = '00'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -24
+    Font.Name = 'Consolas'
+    Font.Pitch = fpFixed
+    Font.Quality = fqDraft
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+  end
+  object PCHIGH: TLabel
+    Left = 386
+    Height = 30
+    Top = 80
+    Width = 40
+    Alignment = taCenter
+    AutoSize = False
+    Caption = '00'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -24
+    Font.Name = 'Consolas'
+    Font.Pitch = fpFixed
+    Font.Quality = fqDraft
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+  end
+  object REM: TLabel
+    Left = 615
+    Height = 30
+    Top = 96
+    Width = 40
+    Alignment = taCenter
+    AutoSize = False
+    Caption = '00'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -24
+    Font.Name = 'Consolas'
+    Font.Pitch = fpFixed
+    Font.Quality = fqDraft
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+  end
+  object RDM: TLabel
+    Left = 616
+    Height = 30
+    Top = 314
+    Width = 40
+    Alignment = taCenter
+    AutoSize = False
+    Caption = '00'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -24
+    Font.Name = 'Consolas'
+    Font.Pitch = fpFixed
+    Font.Quality = fqDraft
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+  end
+  object RI: TLabel
+    Left = 523
+    Height = 40
+    Top = 424
+    Width = 40
+    Alignment = taCenter
+    AutoSize = False
+    Caption = '00'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -24
+    Font.Name = 'Consolas'
+    Font.Pitch = fpFixed
+    Font.Quality = fqDraft
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+  end
+  object REGSEMNOME: TLabel
+    Left = 430
+    Height = 40
+    Top = 216
+    Width = 40
+    Alignment = taCenter
+    AutoSize = False
+    Caption = '00'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -24
+    Font.Name = 'Consolas'
+    Font.Pitch = fpFixed
+    Font.Quality = fqDraft
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+  end
+  object ACC: TLabel
+    Left = 102
+    Height = 40
+    Top = 216
+    Width = 40
+    Alignment = taCenter
+    AutoSize = False
+    Caption = '00'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -24
+    Font.Name = 'Consolas'
+    Font.Pitch = fpFixed
+    Font.Quality = fqDraft
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+  end
+  object N_FLAG: TLabel
+    Left = 330
+    Height = 40
+    Top = 424
+    Width = 40
+    Alignment = taCenter
+    AutoSize = False
+    Caption = '0'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -24
+    Font.Name = 'Consolas'
+    Font.Pitch = fpFixed
+    Font.Quality = fqDraft
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+  end
+  object Z_FLAG: TLabel
+    Left = 369
+    Height = 40
+    Top = 424
+    Width = 40
+    Alignment = taCenter
+    AutoSize = False
+    Caption = '0'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -24
+    Font.Name = 'Consolas'
+    Font.Pitch = fpFixed
+    Font.Quality = fqDraft
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+  end
+  object C_FLAG: TLabel
+    Left = 408
+    Height = 40
+    Top = 424
+    Width = 40
+    Alignment = taCenter
+    AutoSize = False
+    Caption = '0'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -24
+    Font.Name = 'Consolas'
+    Font.Pitch = fpFixed
+    Font.Quality = fqDraft
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+  end
+  object MemoryGrid: TStringGrid
+    Left = 816
+    Height = 622
+    Top = 9
+    Width = 134
+    AutoFillColumns = True
+    BorderStyle = bsNone
+    Color = clWhite
+    ColCount = 2
+    Columns = <    
+      item
+        Alignment = taRightJustify
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Name = 'Consolas'
+        Font.Pitch = fpFixed
+        Font.Quality = fqDraft
+        ReadOnly = True
+        Title.Alignment = taRightJustify
+        Title.Caption = 'POSICAO'
+        Width = 58
+      end    
+      item
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -13
+        Font.Name = 'Consolas'
+        Font.Pitch = fpFixed
+        Font.Quality = fqDraft
+        ReadOnly = True
+        Title.Font.CharSet = ANSI_CHARSET
+        Title.Font.Height = -13
+        Title.Font.Name = 'Consolas'
+        Title.Font.Pitch = fpFixed
+        Title.Font.Quality = fqDraft
+        Title.Caption = 'VALOR'
+        Width = 59
+      end>
+    FixedCols = 0
+    FixedRows = 0
+    Flat = True
+    RowCount = 65535
+    TabOrder = 0
+    ColWidths = (
+      58
+      59
+    )
+  end
+end

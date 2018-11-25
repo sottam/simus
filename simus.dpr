@@ -51,6 +51,7 @@ uses
   uvars in 'uvars.pas',
   uAssemb in 'uAssemb.pas',
   uconsole in 'uconsole.pas' {FormConsole},
+  uVisualization in 'uVisualization.pas' {Visualization},
   uSound in 'uSound.pas';
 
 {$R *.res}
@@ -62,5 +63,6 @@ begin
   Application.CreateForm(TAboutBox, AboutBox);
   Application.CreateForm(TformAutoMonta, formAutoMonta);
   Application.CreateForm(TFormConsole, FormConsole);
+  Application.CreateForm(TVisualization,Visualization);
   Application.Run;
 end.

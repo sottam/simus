@@ -49,7 +49,7 @@ uses
   SysUtils, Variants, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, Menus, Buttons, uSimula, ExtCtrls, ComCtrls, SynEdit,
   SynHighlighterPas, SynHighlighterAny, SynCompletion, Types, LCLTranslator,
-  DefaultTranslator, ResString, utrap;
+  DefaultTranslator, ResString;
 
 type
 
@@ -68,6 +68,7 @@ type
     MainMenu: TMainMenu;
     Arquivo1: TMenuItem;
     Abrir1: TMenuItem;
+    MenuItem1: TMenuItem;
     MolduraBanner: TBevel;
     MolduraChaves: TShape;
     MolduraCtrlExec: TBevel;
@@ -210,6 +211,7 @@ type
     procedure lb_instrucoesKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure lb_instrucoesSelectionChange(Sender: TObject; User: boolean);
+    procedure MenuItem1Click(Sender: TObject);
     procedure TimerDeExecucaoTimer(Sender: TObject);
     procedure b_executarClick(Sender: TObject);
     procedure b_resetClick(Sender: TObject);
@@ -286,7 +288,7 @@ var
 
 implementation
 
-uses uHex, uvars, uAbout, uAutoPrg, uAssemb, uconsole;
+uses uHex, uvars, uAbout, uAutoPrg, uAssemb, uconsole, uVisualization;
 
 {$IFnDEF FPC}
   {$R *.dfm}
@@ -1255,6 +1257,11 @@ begin
     end;
 end;
 
+procedure TformPrincipal.MenuItem1Click(Sender: TObject);
+begin
+  Visualization.Visible:= not Visualization.Visible;
+end;
+
 procedure TformPrincipal.TimerDeExecucaoTimer(Sender: TObject);
 begin
   Application.ProcessMessages;
@@ -1274,7 +1281,7 @@ begin
 end;
 
 function TformPrincipal.VerificaBreakpoint() : boolean;
-var idx, isBreakpoint : integer;
+var isBreakpoint : integer;
 begin
     isBreakpoint :=  BreakpointList.IndexOf( IntToStr(ExecutingLine));
 

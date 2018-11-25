@@ -626,6 +626,7 @@ msgid ""
 msgstr ""
 
 #: tformprincipal.b_acc.caption
+msgctxt "tformprincipal.b_acc.caption"
 msgid "ACC"
 msgstr ""
 
@@ -634,6 +635,7 @@ msgid ">>"
 msgstr ""
 
 #: tformprincipal.b_c.caption
+msgctxt "tformprincipal.b_c.caption"
 msgid "C"
 msgstr ""
 
@@ -646,6 +648,7 @@ msgid "Run"
 msgstr ""
 
 #: tformprincipal.b_n.caption
+msgctxt "tformprincipal.b_n.caption"
 msgid "N"
 msgstr ""
 
@@ -658,6 +661,7 @@ msgid "Step-by-Step"
 msgstr ""
 
 #: tformprincipal.b_pc.caption
+msgctxt "tformprincipal.b_pc.caption"
 msgid "PC"
 msgstr ""
 
@@ -671,10 +675,12 @@ msgid "Reset"
 msgstr ""
 
 #: tformprincipal.b_sp.caption
+msgctxt "tformprincipal.b_sp.caption"
 msgid "SP"
 msgstr ""
 
 #: tformprincipal.b_z.caption
+msgctxt "tformprincipal.b_z.caption"
 msgid "Z"
 msgstr ""
 
@@ -854,6 +860,11 @@ msgctxt "tformprincipal.l_z.caption"
 msgid "0"
 msgstr ""
 
+#: tformprincipal.menuitem1.caption
+msgctxt "tformprincipal.menuitem1.caption"
+msgid "Visualization"
+msgstr ""
+
 #: tformprincipal.n1.caption
 msgid "&?"
 msgstr ""
@@ -977,5 +988,158 @@ msgstr ""
 
 #: tformprincipal.zerarmemria1.caption
 msgid "Clear Memory"
+msgstr ""
+
+#: tvisualization.acc.caption
+msgctxt "tvisualization.acc.caption"
+msgid "00"
+msgstr ""
+
+#: tvisualization.caption
+msgctxt "tvisualization.caption"
+msgid "Visualization"
+msgstr ""
+
+#: tvisualization.c_flag.caption
+msgctxt "tvisualization.c_flag.caption"
+msgid "0"
+msgstr ""
+
+#: tvisualization.label1.caption
+msgid "SAPIENS"
+msgstr ""
+
+#: tvisualization.label10.caption
+msgctxt "tvisualization.label10.caption"
+msgid "Z"
+msgstr ""
+
+#: tvisualization.label11.caption
+msgctxt "tvisualization.label11.caption"
+msgid "C"
+msgstr ""
+
+#: tvisualization.label12.caption
+msgid "RI"
+msgstr ""
+
+#: tvisualization.label14.caption
+msgid "RDM"
+msgstr ""
+
+#: tvisualization.label15.caption
+msgid "REM"
+msgstr ""
+
+#: tvisualization.label16.caption
+msgid "??"
+msgstr ""
+
+#: tvisualization.label17.caption
+msgid ""
+"M\n"
+"U\n"
+"X\n"
+msgstr ""
+
+#: tvisualization.label2.caption
+msgid "DADOS"
+msgstr ""
+
+#: tvisualization.label3.caption
+msgid "ENDEREÇO"
+msgstr ""
+
+#: tvisualization.label4.caption
+msgid "CONTROLE"
+msgstr ""
+
+#: tvisualization.label5.caption
+msgctxt "tvisualization.label5.caption"
+msgid "PC"
+msgstr ""
+
+#: tvisualization.label6.caption
+msgctxt "tvisualization.label6.caption"
+msgid "SP"
+msgstr ""
+
+#: tvisualization.label7.caption
+msgctxt "tvisualization.label7.caption"
+msgid "ACC"
+msgstr ""
+
+#: tvisualization.label8.caption
+msgid ""
+"UNIDADE\n"
+"ARITMÉTICA E \n"
+"LÓGICA \n"
+msgstr ""
+
+#: tvisualization.label9.caption
+msgctxt "tvisualization.label9.caption"
+msgid "N"
+msgstr ""
+
+#: tvisualization.memorygrid.columns[0].title.caption
+msgid "POSICAO"
+msgstr ""
+
+#: tvisualization.memorygrid.columns[1].title.caption
+msgid "VALOR"
+msgstr ""
+
+#: tvisualization.n_flag.caption
+msgctxt "tvisualization.n_flag.caption"
+msgid "0"
+msgstr ""
+
+#: tvisualization.pchigh.caption
+msgctxt "tvisualization.pchigh.caption"
+msgid "00"
+msgstr ""
+
+#: tvisualization.pclow.caption
+msgctxt "tvisualization.pclow.caption"
+msgid "00"
+msgstr ""
+
+#: tvisualization.rdm.caption
+msgctxt "tvisualization.rdm.caption"
+msgid "00"
+msgstr ""
+
+#: tvisualization.regsemnome.caption
+msgctxt "tvisualization.regsemnome.caption"
+msgid "00"
+msgstr ""
+
+#: tvisualization.rem.caption
+msgctxt "tvisualization.rem.caption"
+msgid "00"
+msgstr ""
+
+#: tvisualization.ri.caption
+msgctxt "tvisualization.ri.caption"
+msgid "00"
+msgstr ""
+
+#: tvisualization.sphigh.caption
+msgctxt "tvisualization.sphigh.caption"
+msgid "00"
+msgstr ""
+
+#: tvisualization.splow.caption
+msgctxt "tvisualization.splow.caption"
+msgid "00"
+msgstr ""
+
+#: tvisualization.uclabel.caption
+msgid "UNIDADE DE CONTROLE"
+msgstr ""
+
+#: tvisualization.z_flag.caption
+msgctxt "tvisualization.z_flag.caption"
+msgid "0"
 msgstr ""
 

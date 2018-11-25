@@ -87,5 +87,6 @@
 {"hash":224764533,"name":"tformprincipal.console1.caption","sourcebytes":[67,38,111,110,115,111,108,101],"value":"C&onsole"},
 {"hash":671,"name":"tformprincipal.n1.caption","sourcebytes":[38,63],"value":"&?"},
 {"hash":44571553,"name":"tformprincipal.ajuda2.caption","sourcebytes":[38,65,106,117,100,97],"value":"&Ajuda"},
-{"hash":16791249,"name":"tformprincipal.sobreoprograma1.caption","sourcebytes":[38,83,111,98,114,101,32,111,32,112,114,111,103,114,97,109,97],"value":"&Sobre o programa"}
+{"hash":16791249,"name":"tformprincipal.sobreoprograma1.caption","sourcebytes":[38,83,111,98,114,101,32,111,32,112,114,111,103,114,97,109,97],"value":"&Sobre o programa"},
+{"hash":235018462,"name":"tformprincipal.menuitem1.caption","sourcebytes":[86,105,115,117,97,108,105,122,97,116,105,111,110],"value":"Visualization"}
 ]}

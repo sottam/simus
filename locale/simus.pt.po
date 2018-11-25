@@ -201,7 +201,9 @@ msgid "Comments start with a semicolon."
 msgstr "Os comentários são começados por ponto e vírgula."
 
 #: resstring.spop
-msgid "The POP (pop from stack) command copies the top of the stack (8 bits) to the accumulator. The SP is decremented by 1."
+#, fuzzy
+#| msgid "The POP (pop from stack) command copies the top of the stack (8 bits) to the accumulator. The SP is decremented by 1."
+msgid "POP (pop from stack) copies the top of the stack (8 bits) to the accumulator. The SP is decremented by 1."
 msgstr "A instrução POP (pop from stack), traz para o acumulador o topo da pilha (8 bits). O SP é decrementado de 1."
 
 #: resstring.sporfavorpreenchaooperando
@@ -221,7 +223,9 @@ msgid "Pseudo-instruction does not permit immediate neither indirect"
 msgstr "Pseudo-instrução não permite imediato nem indireto"
 
 #: resstring.spush
-msgid "The PUSH (push to stack) command copies the contents of the accumulator to the top of the stack. The SP is incremented by 1."
+#, fuzzy
+#| msgid "The PUSH (push to stack) command copies the contents of the accumulator to the top of the stack. The SP is incremented by 1."
+msgid "PUSH (push to stack) copies the contents of the accumulator to the top of the stack. The SP is incremented by 1."
 msgstr "A instrução PUSH (push to stack), coloca o conteúdo do acumulador no topo da pilha. O SP é incrementado de 1."
 
 #: resstring.sret
@@ -237,7 +241,9 @@ msgid "SBC (subtract with carry) subtracts from the accumulator the contents of 
 msgstr "A instrução SBC (subtract with carry) subtrai do acumulador o conteúdo de uma posição de memória indicada pelo operando, decrementando-o se o carry ligado."
 
 #: resstring.ssha
-msgid "The SHA (shift right arithmetic) instruction shifts the accumulator bits to the right (the same as divide by 2). Bit 7 is kept the same. Bit 0 (which would be lost) is stored in the Carry."
+#, fuzzy
+#| msgid "The SHA (shift right arithmetic) instruction shifts the accumulator bits to the right (the same as divide by 2). Bit 7 is kept the same. Bit 0 (which would be lost) is stored in the Carry."
+msgid "SHA (shift right arithmetic) instruction shifts the accumulator bits to the right (the same as divide by 2). Bit 7 is kept the same. Bit 0 (which would be lost) is stored in the Carry."
 msgstr "A instrução SRA (shift right aritmético) desloca os bits do acumulador para a direita (ou seja, divide por 2). O bit 7 é mantido igual. O bit 0 (que seria perdido) é armazenado no Carry."
 
 #: resstring.sshl
@@ -596,6 +602,7 @@ msgid "Hexadecimal"
 msgstr "Hexadecimal"
 
 #: tformprincipal.abrir1.caption
+msgctxt "tformprincipal.abrir1.caption"
 msgid "Open"
 msgstr "Abrir"
 
@@ -630,6 +637,7 @@ msgstr ""
 "Selecione uma linha na aba depuração, em seguida clique aqui.\n"
 
 #: tformprincipal.b_acc.caption
+msgctxt "tformprincipal.b_acc.caption"
 msgid "ACC"
 msgstr "ACC"
 
@@ -638,6 +646,7 @@ msgid ">>"
 msgstr ">>"
 
 #: tformprincipal.b_c.caption
+msgctxt "tformprincipal.b_c.caption"
 msgid "C"
 msgstr "C"
 
@@ -650,6 +659,7 @@ msgid "Run"
 msgstr "Executar"
 
 #: tformprincipal.b_n.caption
+msgctxt "tformprincipal.b_n.caption"
 msgid "N"
 msgstr "N"
 
@@ -662,6 +672,7 @@ msgid "Step-by-Step"
 msgstr "Passo a passo"
 
 #: tformprincipal.b_pc.caption
+msgctxt "tformprincipal.b_pc.caption"
 msgid "PC"
 msgstr "PC"
 
@@ -675,10 +686,12 @@ msgid "Reset"
 msgstr "Reset"
 
 #: tformprincipal.b_sp.caption
+msgctxt "tformprincipal.b_sp.caption"
 msgid "SP"
 msgstr "SP"
 
 #: tformprincipal.b_z.caption
+msgctxt "tformprincipal.b_z.caption"
 msgid "Z"
 msgstr "Z"
 
@@ -710,6 +723,7 @@ msgid "1"
 msgstr "1"
 
 #: tformprincipal.colar1.caption
+msgctxt "tformprincipal.colar1.caption"
 msgid "Paste"
 msgstr "Colar"
 
@@ -718,11 +732,15 @@ msgid "Compilation"
 msgstr "Compilação"
 
 #: tformprincipal.compilar1.caption
+msgctxt "tformprincipal.compilar1.caption"
 msgid "Compile"
 msgstr "Compilar"
 
 #: tformprincipal.compilebtn.hint
-msgid "Compilar"
+#, fuzzy
+#| msgid "Compilar"
+msgctxt "tformprincipal.compilebtn.hint"
+msgid "Compile"
 msgstr "Compilar"
 
 #: tformprincipal.console1.caption
@@ -739,11 +757,15 @@ msgid "Copy"
 msgstr "Copiar"
 
 #: tformprincipal.copybtn.hint
-msgid "Copiar seleção"
+#, fuzzy
+#| msgid "Copiar seleção"
+msgid "Copy selection"
 msgstr "Copiar seleção"
 
 #: tformprincipal.cutbtn.hint
-msgid "Cortar seleção"
+#, fuzzy
+#| msgid "Cortar seleção"
+msgid "Cut selection"
 msgstr "Cortar seleção"
 
 #: tformprincipal.desfazer1.caption
@@ -855,24 +877,39 @@ msgctxt "tformprincipal.l_z.caption"
 msgid "0"
 msgstr "0"
 
+#: tformprincipal.menuitem1.caption
+msgctxt "tformprincipal.menuitem1.caption"
+msgid "Visualization"
+msgstr ""
+
 #: tformprincipal.n1.caption
 msgid "&?"
 msgstr "&?"
 
 #: tformprincipal.newbnt.hint
-msgid "Novo"
+#, fuzzy
+#| msgid "Novo"
+msgctxt "tformprincipal.newbnt.hint"
+msgid "New"
 msgstr "Novo"
 
 #: tformprincipal.novo1.caption
+msgctxt "tformprincipal.novo1.caption"
 msgid "New"
 msgstr "Novo"
 
 #: tformprincipal.openbtn.hint
-msgid "Abrir"
+#, fuzzy
+#| msgid "Abrir"
+msgctxt "tformprincipal.openbtn.hint"
+msgid "Open"
 msgstr "Abrir"
 
 #: tformprincipal.pastebtn.hint
-msgid "Colar"
+#, fuzzy
+#| msgid "Colar"
+msgctxt "tformprincipal.pastebtn.hint"
+msgid "Paste"
 msgstr "Colar"
 
 #: tformprincipal.programaotutorada1.caption
@@ -897,6 +934,7 @@ msgid "Exit"
 msgstr "Sair"
 
 #: tformprincipal.salvar1.caption
+msgctxt "tformprincipal.salvar1.caption"
 msgid "Save"
 msgstr "Salvar"
 
@@ -909,7 +947,10 @@ msgid "Dump Hex"
 msgstr "Descarregar Hexa"
 
 #: tformprincipal.savebtn.hint
-msgid "Salvar"
+#, fuzzy
+#| msgid "Salvar"
+msgctxt "tformprincipal.savebtn.hint"
+msgid "Save"
 msgstr "Salvar"
 
 #: tformprincipal.sobreoprograma1.caption
@@ -967,9 +1008,183 @@ msgid "#"
 msgstr "#"
 
 #: tformprincipal.tutorbtn.hint
-msgid "Tutor"
+#, fuzzy
+#| msgid "Tutor"
+msgid "Guide"
 msgstr "Tutor"
 
 #: tformprincipal.zerarmemria1.caption
 msgid "Clear Memory"
 msgstr "Zerar memória"
+
+#: tvisualization.acc.caption
+#, fuzzy
+msgctxt "tvisualization.acc.caption"
+msgid "00"
+msgstr "00"
+
+#: tvisualization.caption
+msgctxt "tvisualization.caption"
+msgid "Visualization"
+msgstr ""
+
+#: tvisualization.c_flag.caption
+#, fuzzy
+msgctxt "tvisualization.c_flag.caption"
+msgid "0"
+msgstr "0"
+
+#: tvisualization.label1.caption
+msgid "SAPIENS"
+msgstr ""
+
+#: tvisualization.label10.caption
+#, fuzzy
+msgctxt "tvisualization.label10.caption"
+msgid "Z"
+msgstr "Z"
+
+#: tvisualization.label11.caption
+#, fuzzy
+msgctxt "tvisualization.label11.caption"
+msgid "C"
+msgstr "C"
+
+#: tvisualization.label12.caption
+msgid "RI"
+msgstr ""
+
+#: tvisualization.label14.caption
+msgid "RDM"
+msgstr ""
+
+#: tvisualization.label15.caption
+msgid "REM"
+msgstr ""
+
+#: tvisualization.label16.caption
+msgid "??"
+msgstr ""
+
+#: tvisualization.label17.caption
+msgid ""
+"M\n"
+"U\n"
+"X\n"
+msgstr ""
+
+#: tvisualization.label2.caption
+msgid "DADOS"
+msgstr ""
+
+#: tvisualization.label3.caption
+msgid "ENDEREÇO"
+msgstr ""
+
+#: tvisualization.label4.caption
+msgid "CONTROLE"
+msgstr ""
+
+#: tvisualization.label5.caption
+#, fuzzy
+msgctxt "tvisualization.label5.caption"
+msgid "PC"
+msgstr "PC"
+
+#: tvisualization.label6.caption
+#, fuzzy
+msgctxt "tvisualization.label6.caption"
+msgid "SP"
+msgstr "SP"
+
+#: tvisualization.label7.caption
+#, fuzzy
+msgctxt "tvisualization.label7.caption"
+msgid "ACC"
+msgstr "ACC"
+
+#: tvisualization.label8.caption
+msgid ""
+"UNIDADE\n"
+"ARITMÉTICA E \n"
+"LÓGICA \n"
+msgstr ""
+
+#: tvisualization.label9.caption
+#, fuzzy
+msgctxt "tvisualization.label9.caption"
+msgid "N"
+msgstr "N"
+
+#: tvisualization.memorygrid.columns[0].title.caption
+msgid "POSICAO"
+msgstr ""
+
+#: tvisualization.memorygrid.columns[1].title.caption
+msgid "VALOR"
+msgstr ""
+
+#: tvisualization.n_flag.caption
+#, fuzzy
+msgctxt "tvisualization.n_flag.caption"
+msgid "0"
+msgstr "0"
+
+#: tvisualization.pchigh.caption
+#, fuzzy
+msgctxt "tvisualization.pchigh.caption"
+msgid "00"
+msgstr "00"
+
+#: tvisualization.pclow.caption
+#, fuzzy
+msgctxt "tvisualization.pclow.caption"
+msgid "00"
+msgstr "00"
+
+#: tvisualization.rdm.caption
+#, fuzzy
+msgctxt "tvisualization.rdm.caption"
+msgid "00"
+msgstr "00"
+
+#: tvisualization.regsemnome.caption
+#, fuzzy
+msgctxt "tvisualization.regsemnome.caption"
+msgid "00"
+msgstr "00"
+
+#: tvisualization.rem.caption
+#, fuzzy
+msgctxt "tvisualization.rem.caption"
+msgid "00"
+msgstr "00"
+
+#: tvisualization.ri.caption
+#, fuzzy
+msgctxt "tvisualization.ri.caption"
+msgid "00"
+msgstr "00"
+
+#: tvisualization.sphigh.caption
+#, fuzzy
+msgctxt "tvisualization.sphigh.caption"
+msgid "00"
+msgstr "00"
+
+#: tvisualization.splow.caption
+#, fuzzy
+msgctxt "tvisualization.splow.caption"
+msgid "00"
+msgstr "00"
+
+#: tvisualization.uclabel.caption
+msgid "UNIDADE DE CONTROLE"
+msgstr ""
+
+#: tvisualization.z_flag.caption
+#, fuzzy
+msgctxt "tvisualization.z_flag.caption"
+msgid "0"
+msgstr "0"
+

@@ -71,7 +71,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="13">
+    <Units Count="14">
       <Unit0>
         <Filename Value="simus.dpr"/>
         <IsPartOfProject Value="True"/>
@@ -141,6 +141,13 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ResString"/>
       </Unit12>
+      <Unit13>
+        <Filename Value="uvisualization.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Visualization"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uVisualization"/>
+      </Unit13>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

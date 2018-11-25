@@ -1,7 +1,7 @@
 object formPrincipal: TformPrincipal
-  Left = 381
+  Left = 442
   Height = 750
-  Top = 212
+  Top = 205
   Width = 1024
   Caption = 'SimuS - Sapiens-8 Processor Simulator'
   ClientHeight = 730
@@ -3874,9 +3874,10 @@ object formPrincipal: TformPrincipal
         Color = clNavy
         Font.CharSet = ANSI_CHARSET
         Font.Color = clWhite
-        Font.Height = -37
-        Font.Name = 'Arial'
-        Font.Style = [fsBold]
+        Font.Height = -43
+        Font.Name = 'Consolas'
+        Font.Pitch = fpFixed
+        Font.Quality = fqDraft
         Layout = tlCenter
         ParentColor = False
         ParentFont = False
@@ -4260,25 +4261,31 @@ object formPrincipal: TformPrincipal
       end
       object l_instrucao: TLabel
         Left = 74
-        Height = 24
+        Height = 22
         Top = 2
-        Width = 54
+        Width = 40
         Caption = 'NOPE'
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -19
-        Font.Name = 'MS Sans Serif'
+        Font.Name = 'Consolas'
+        Font.Pitch = fpFixed
+        Font.Quality = fqDraft
         ParentColor = False
         ParentFont = False
       end
       object l_operInstrucao: TLabel
         Left = 131
-        Height = 24
+        Height = 22
         Top = 2
-        Width = 71
+        Width = 50
         Caption = '@AAAA'
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -19
-        Font.Name = 'MS Sans Serif'
+        Font.Name = 'Consolas'
+        Font.Pitch = fpFixed
+        Font.Quality = fqDraft
         ParentColor = False
         ParentFont = False
       end
@@ -4294,73 +4301,91 @@ object formPrincipal: TformPrincipal
       end
       object l_PC: TLabel
         Left = 74
-        Height = 24
+        Height = 22
         Top = 50
         Width = 40
         Caption = '0000'
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -19
-        Font.Name = 'MS Sans Serif'
+        Font.Name = 'Consolas'
+        Font.Pitch = fpFixed
+        Font.Quality = fqDraft
         ParentColor = False
         ParentFont = False
       end
       object l_ACC: TLabel
         Left = 74
-        Height = 24
+        Height = 22
         Top = 78
         Width = 20
         Caption = '00'
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -19
-        Font.Name = 'MS Sans Serif'
+        Font.Name = 'Consolas'
+        Font.Pitch = fpFixed
+        Font.Quality = fqDraft
         ParentColor = False
         ParentFont = False
       end
       object l_Z: TLabel
         Left = 202
-        Height = 24
+        Height = 22
         Top = 50
         Width = 10
         Caption = '0'
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -19
-        Font.Name = 'MS Sans Serif'
+        Font.Name = 'Consolas'
+        Font.Pitch = fpFixed
+        Font.Quality = fqDraft
         ParentColor = False
         ParentFont = False
       end
       object l_N: TLabel
         Left = 202
-        Height = 24
+        Height = 22
         Top = 78
         Width = 10
         Caption = '0'
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -19
-        Font.Name = 'MS Sans Serif'
+        Font.Name = 'Consolas'
+        Font.Pitch = fpFixed
+        Font.Quality = fqDraft
         ParentColor = False
         ParentFont = False
       end
       object l_SP: TLabel
         Left = 74
-        Height = 24
+        Height = 22
         Top = 106
         Width = 40
         Caption = '0000'
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -19
-        Font.Name = 'MS Sans Serif'
+        Font.Name = 'Consolas'
+        Font.Pitch = fpFixed
+        Font.Quality = fqDraft
         ParentColor = False
         ParentFont = False
       end
       object l_C: TLabel
         Left = 202
-        Height = 24
+        Height = 22
         Top = 108
         Width = 10
         Caption = '0'
+        Font.CharSet = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -19
-        Font.Name = 'MS Sans Serif'
+        Font.Name = 'Consolas'
+        Font.Pitch = fpFixed
+        Font.Quality = fqDraft
         ParentColor = False
         ParentFont = False
       end
@@ -4427,11 +4452,13 @@ object formPrincipal: TformPrincipal
       Font.CharSet = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -15
-      Font.Name = 'Arial'
+      Font.Name = 'Consolas'
+      Font.Pitch = fpFixed
+      Font.Quality = fqDraft
       Items.Strings = (
         ''
       )
-      ItemHeight = 17
+      ItemHeight = 18
       OnClick = dumpMemClick
       ParentFont = False
       ScrollWidth = 219
@@ -4531,6 +4558,10 @@ object formPrincipal: TformPrincipal
         Caption = '&Sobre o programa'
         OnClick = Sobreoprograma1Click
       end
+    end
+    object MenuItem1: TMenuItem
+      Caption = 'Visualization'
+      OnClick = MenuItem1Click
     end
   end
   object TimerDeExecucao: TTimer
